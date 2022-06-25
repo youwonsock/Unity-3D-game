@@ -1,0 +1,610 @@
+\hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor}{}\doxysection{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor 클래스 참조}
+\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor}\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a6d3c45bf80b0b0f1e8e1fddbd79df23b}{Net\+Packet\+Processor}} ()
+\item 
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a16631361d094f48dfb8cc90cc39563a0}{Net\+Packet\+Processor}} (int max\+String\+Length)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a31fcfcb0c317af207f32883f978357b6}{Register\+Nested\+Type$<$ T $>$}} ()
+\begin{DoxyCompactList}\small\item\em Register nested property type \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a44e7828c9c416b57a93028bc30225431}{Register\+Nested\+Type$<$ T $>$}} (Action$<$ \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}, T $>$ write\+Delegate, Func$<$ \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}}, T $>$ read\+Delegate)
+\begin{DoxyCompactList}\small\item\em Register nested property type \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_ab03af4b8051c5b0ae29f4f60e34c8756}{Register\+Nested\+Type$<$ T $>$}} (Func$<$ T $>$ constructor)
+\begin{DoxyCompactList}\small\item\em Register nested property type \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af46830ad9af307ce1e766fec6d31edf0}{Read\+All\+Packets}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} reader)
+\begin{DoxyCompactList}\small\item\em Reads all available data from \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} and calls On\+Receive delegates \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a552e8ef1a8f2762cdd03ebc2a59f31dd}{Read\+All\+Packets}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} reader, object user\+Data)
+\begin{DoxyCompactList}\small\item\em Reads all available data from \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} and calls On\+Receive delegates \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a77de601375decbc1b628dc125c906c6e}{Read\+Packet}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} reader)
+\begin{DoxyCompactList}\small\item\em Reads one packet from \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} and calls On\+Receive delegate \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a1de786e7cdf51768238cc5977587c878}{Send$<$ T $>$}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} peer, T packet, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a27fad26f5288e94d58f79005e441417c}{Send\+Net\+Serializable$<$ T $>$}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} peer, T packet, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_acc206f14cc9468dec9552628b03fc740}{Send$<$ T $>$}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} manager, T packet, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a4a907a30f827c5ec42e5ce14634728f2}{Send\+Net\+Serializable$<$ T $>$}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} manager, T packet, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af1b7bf9915bee79f7154f7768870bb10}{Write$<$ T $>$}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} writer, T packet)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a36a21d80a338c3d814c90c51c357fcf4}{Write\+Net\+Serializable$<$ T $>$}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} writer, T packet)
+\item 
+byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a89683a2f7f3f509f202d6048303810d2}{Write$<$ T $>$}} (T packet)
+\item 
+byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af8f2be2870f337703df189d197058381}{Write\+Net\+Serializable$<$ T $>$}} (T packet)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_aba813a3908bc2f623e15b29fad290595}{Read\+Packet}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} reader, object user\+Data)
+\begin{DoxyCompactList}\small\item\em Reads one packet from \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} and calls On\+Receive delegate \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a6b761f4502a3a6e0edd2e8ce1031c9ca}{Subscribe$<$ T $>$}} (Action$<$ T $>$ on\+Receive, Func$<$ T $>$ packet\+Constructor)
+\begin{DoxyCompactList}\small\item\em Register and subscribe to packet receive event \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_ace7e3773a03ba4461e46346311fb7868}{Subscribe$<$ T, TUser\+Data $>$}} (Action$<$ T, TUser\+Data $>$ on\+Receive, Func$<$ T $>$ packet\+Constructor)
+\begin{DoxyCompactList}\small\item\em Register and subscribe to packet receive event (with user\+Data) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af0c7e9ca239eadfd8a851a86cd339fa0}{Subscribe\+Reusable$<$ T $>$}} (Action$<$ T $>$ on\+Receive)
+\begin{DoxyCompactList}\small\item\em Register and subscribe to packet receive event This method will overwrite last received packet class on receive (less garbage) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a71a3dba1e8aa80128d3fcf475d891c26}{Subscribe\+Reusable$<$ T, TUser\+Data $>$}} (Action$<$ T, TUser\+Data $>$ on\+Receive)
+\begin{DoxyCompactList}\small\item\em Register and subscribe to packet receive event This method will overwrite last received packet class on receive (less garbage) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_afd71ca97fe04fe5684881e27fa55140b}{Subscribe\+Net\+Serializable$<$ T, TUser\+Data $>$}} (Action$<$ T, TUser\+Data $>$ on\+Receive, Func$<$ T $>$ packet\+Constructor)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_ad3cb8e4de7cadba693b66f2c379c82c1}{Subscribe\+Net\+Serializable$<$ T $>$}} (Action$<$ T $>$ on\+Receive, Func$<$ T $>$ packet\+Constructor)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af2657d3dbb7a215039ebc5c7c32f3c87}{Subscribe\+Net\+Serializable$<$ T, TUser\+Data $>$}} (Action$<$ T, TUser\+Data $>$ on\+Receive)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_abdcc584a9c14c76a0857b1dea645d28a}{Subscribe\+Net\+Serializable$<$ T $>$}} (Action$<$ T $>$ on\+Receive)
+\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a6caa53a43fbe4cf92c01e0e425e6b8e5}{Remove\+Subscription$<$ T $>$}} ()
+\begin{DoxyCompactList}\small\item\em Remove any subscriptions by type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+delegate void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a0ac309bd3547cc2917f51571bd772662}{Subscribe\+Delegate}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} reader, object user\+Data)
+\item 
+virtual ulong \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_abc95fbc3b6d10991e5d97496c5af94f0}{Get\+Hash$<$ T $>$}} ()
+\item 
+virtual \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a0ac309bd3547cc2917f51571bd772662}{Subscribe\+Delegate}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a0f60e6b9057f8c1c266fcc4f826d3cb6}{Get\+Callback\+From\+Data}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} reader)
+\item 
+virtual void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_aa14ff0c1ff3bc10c6e3b4e7dc745d9bd}{Write\+Hash$<$ T $>$}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} writer)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{상세한 설명}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00006}{6}} 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a6d3c45bf80b0b0f1e8e1fddbd79df23b}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a6d3c45bf80b0b0f1e8e1fddbd79df23b}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!NetPacketProcessor@{NetPacketProcessor}}
+\index{NetPacketProcessor@{NetPacketProcessor}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{NetPacketProcessor()}{NetPacketProcessor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Net\+Packet\+Processor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00031}{31}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a16631361d094f48dfb8cc90cc39563a0}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a16631361d094f48dfb8cc90cc39563a0}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!NetPacketProcessor@{NetPacketProcessor}}
+\index{NetPacketProcessor@{NetPacketProcessor}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{NetPacketProcessor()}{NetPacketProcessor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Net\+Packet\+Processor (\begin{DoxyParamCaption}\item[{int}]{max\+String\+Length }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00036}{36}} 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a0f60e6b9057f8c1c266fcc4f826d3cb6}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a0f60e6b9057f8c1c266fcc4f826d3cb6}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!GetCallbackFromData@{GetCallbackFromData}}
+\index{GetCallbackFromData@{GetCallbackFromData}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{GetCallbackFromData()}{GetCallbackFromData()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a0ac309bd3547cc2917f51571bd772662}{Subscribe\+Delegate}} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Get\+Callback\+From\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}}}]{reader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00046}{46}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_abc95fbc3b6d10991e5d97496c5af94f0}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_abc95fbc3b6d10991e5d97496c5af94f0}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!GetHash$<$ T $>$@{GetHash$<$ T $>$}}
+\index{GetHash$<$ T $>$@{GetHash$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{GetHash$<$ T $>$()}{GetHash< T >()}}
+{\footnotesize\ttfamily virtual ulong Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Get\+Hash$<$ T $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00041}{41}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af46830ad9af307ce1e766fec6d31edf0}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af46830ad9af307ce1e766fec6d31edf0}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!ReadAllPackets@{ReadAllPackets}}
+\index{ReadAllPackets@{ReadAllPackets}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{ReadAllPackets()}{ReadAllPackets()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Read\+All\+Packets (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}}}]{reader }\end{DoxyParamCaption})}
+
+
+
+Reads all available data from \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} and calls On\+Receive delegates 
+
+
+\begin{DoxyParams}{매개변수}
+{\em reader} & \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} with packets data\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00094}{94}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a552e8ef1a8f2762cdd03ebc2a59f31dd}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a552e8ef1a8f2762cdd03ebc2a59f31dd}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!ReadAllPackets@{ReadAllPackets}}
+\index{ReadAllPackets@{ReadAllPackets}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{ReadAllPackets()}{ReadAllPackets()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Read\+All\+Packets (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}}}]{reader,  }\item[{object}]{user\+Data }\end{DoxyParamCaption})}
+
+
+
+Reads all available data from \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} and calls On\+Receive delegates 
+
+
+\begin{DoxyParams}{매개변수}
+{\em reader} & \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} with packets data\\
+\hline
+{\em user\+Data} & Argument that passed to On\+Received\+Event\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_parse_exception}{Parse\+Exception}}} & Malformed packet\\
+\hline
+\end{DoxyExceptions}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00106}{106}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a77de601375decbc1b628dc125c906c6e}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a77de601375decbc1b628dc125c906c6e}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!ReadPacket@{ReadPacket}}
+\index{ReadPacket@{ReadPacket}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{ReadPacket()}{ReadPacket()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Read\+Packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}}}]{reader }\end{DoxyParamCaption})}
+
+
+
+Reads one packet from \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} and calls On\+Receive delegate 
+
+
+\begin{DoxyParams}{매개변수}
+{\em reader} & \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} with packet\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_parse_exception}{Parse\+Exception}}} & Malformed packet\\
+\hline
+\end{DoxyExceptions}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00117}{117}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_aba813a3908bc2f623e15b29fad290595}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_aba813a3908bc2f623e15b29fad290595}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!ReadPacket@{ReadPacket}}
+\index{ReadPacket@{ReadPacket}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{ReadPacket()}{ReadPacket()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Read\+Packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}}}]{reader,  }\item[{object}]{user\+Data }\end{DoxyParamCaption})}
+
+
+
+Reads one packet from \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} and calls On\+Receive delegate 
+
+
+\begin{DoxyParams}{매개변수}
+{\em reader} & \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} with packet\\
+\hline
+{\em user\+Data} & Argument that passed to On\+Received\+Event\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_parse_exception}{Parse\+Exception}}} & Malformed packet\\
+\hline
+\end{DoxyExceptions}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00184}{184}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a31fcfcb0c317af207f32883f978357b6}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a31fcfcb0c317af207f32883f978357b6}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!RegisterNestedType$<$ T $>$@{RegisterNestedType$<$ T $>$}}
+\index{RegisterNestedType$<$ T $>$@{RegisterNestedType$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{RegisterNestedType$<$ T $>$()}{RegisterNestedType< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Register\+Nested\+Type$<$ T $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Register nested property type 
+
+
+\begin{DoxyTemplParams}{템플릿 파라메터}
+{\em T} & \mbox{\hyperlink{interface_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_i_net_serializable}{INet\+Serializable}} structure\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em struct}]\item[{\em T} : {\em INet\+Serializable}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00066}{66}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a44e7828c9c416b57a93028bc30225431}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a44e7828c9c416b57a93028bc30225431}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!RegisterNestedType$<$ T $>$@{RegisterNestedType$<$ T $>$}}
+\index{RegisterNestedType$<$ T $>$@{RegisterNestedType$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{RegisterNestedType$<$ T $>$()}{RegisterNestedType< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Register\+Nested\+Type$<$ T $>$ (\begin{DoxyParamCaption}\item[{Action$<$ \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}, T $>$}]{write\+Delegate,  }\item[{Func$<$ \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}}, T $>$}]{read\+Delegate }\end{DoxyParamCaption})}
+
+
+
+Register nested property type 
+
+
+\begin{DoxyParams}{매개변수}
+{\em write\+Delegate} & \\
+\hline
+{\em read\+Delegate} & \\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00076}{76}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_ab03af4b8051c5b0ae29f4f60e34c8756}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_ab03af4b8051c5b0ae29f4f60e34c8756}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!RegisterNestedType$<$ T $>$@{RegisterNestedType$<$ T $>$}}
+\index{RegisterNestedType$<$ T $>$@{RegisterNestedType$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{RegisterNestedType$<$ T $>$()}{RegisterNestedType< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Register\+Nested\+Type$<$ T $>$ (\begin{DoxyParamCaption}\item[{Func$<$ T $>$}]{constructor }\end{DoxyParamCaption})}
+
+
+
+Register nested property type 
+
+
+\begin{DoxyTemplParams}{템플릿 파라메터}
+{\em T} & \mbox{\hyperlink{interface_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_i_net_serializable}{INet\+Serializable}} class\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em T} : {\em INet\+Serializable}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00085}{85}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a6caa53a43fbe4cf92c01e0e425e6b8e5}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a6caa53a43fbe4cf92c01e0e425e6b8e5}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!RemoveSubscription$<$ T $>$@{RemoveSubscription$<$ T $>$}}
+\index{RemoveSubscription$<$ T $>$@{RemoveSubscription$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{RemoveSubscription$<$ T $>$()}{RemoveSubscription< T >()}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Remove\+Subscription$<$ T $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Remove any subscriptions by type 
+
+
+\begin{DoxyTemplParams}{템플릿 파라메터}
+{\em T} & Packet type\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{반환값}
+true if remove is success
+\end{DoxyReturn}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00308}{308}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_acc206f14cc9468dec9552628b03fc740}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_acc206f14cc9468dec9552628b03fc740}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!Send$<$ T $>$@{Send$<$ T $>$}}
+\index{Send$<$ T $>$@{Send$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{Send$<$ T $>$()}{Send< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Send$<$ T $>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}}}]{manager,  }\item[{T}]{packet,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00136}{136}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a1de786e7cdf51768238cc5977587c878}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a1de786e7cdf51768238cc5977587c878}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!Send$<$ T $>$@{Send$<$ T $>$}}
+\index{Send$<$ T $>$@{Send$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{Send$<$ T $>$()}{Send< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Send$<$ T $>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}}]{peer,  }\item[{T}]{packet,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00122}{122}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a4a907a30f827c5ec42e5ce14634728f2}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a4a907a30f827c5ec42e5ce14634728f2}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!SendNetSerializable$<$ T $>$@{SendNetSerializable$<$ T $>$}}
+\index{SendNetSerializable$<$ T $>$@{SendNetSerializable$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{SendNetSerializable$<$ T $>$()}{SendNetSerializable< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Send\+Net\+Serializable$<$ T $>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}}}]{manager,  }\item[{T}]{packet,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em INet\+Serializable}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00143}{143}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a27fad26f5288e94d58f79005e441417c}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a27fad26f5288e94d58f79005e441417c}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!SendNetSerializable$<$ T $>$@{SendNetSerializable$<$ T $>$}}
+\index{SendNetSerializable$<$ T $>$@{SendNetSerializable$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{SendNetSerializable$<$ T $>$()}{SendNetSerializable< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Send\+Net\+Serializable$<$ T $>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}}]{peer,  }\item[{T}]{packet,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em INet\+Serializable}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00129}{129}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a6b761f4502a3a6e0edd2e8ce1031c9ca}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a6b761f4502a3a6e0edd2e8ce1031c9ca}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!Subscribe$<$ T $>$@{Subscribe$<$ T $>$}}
+\index{Subscribe$<$ T $>$@{Subscribe$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{Subscribe$<$ T $>$()}{Subscribe< T >()}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Subscribe$<$ T $>$ (\begin{DoxyParamCaption}\item[{Action$<$ T $>$}]{on\+Receive,  }\item[{Func$<$ T $>$}]{packet\+Constructor }\end{DoxyParamCaption})}
+
+
+
+Register and subscribe to packet receive event 
+
+
+\begin{DoxyParams}{매개변수}
+{\em on\+Receive} & event that will be called when packet deserialized with Read\+Packet method\\
+\hline
+{\em packet\+Constructor} & Method that constructs packet instead of slow Activator.\+Create\+Instance\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_invalid_type_exception}{Invalid\+Type\+Exception}}} & {\itshape T} \textquotesingle{}s fields are not supported, or it has no fields\\
+\hline
+\end{DoxyExceptions}
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00195}{195}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_ace7e3773a03ba4461e46346311fb7868}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_ace7e3773a03ba4461e46346311fb7868}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!Subscribe$<$ T, TUserData $>$@{Subscribe$<$ T, TUserData $>$}}
+\index{Subscribe$<$ T, TUserData $>$@{Subscribe$<$ T, TUserData $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{Subscribe$<$ T, TUserData $>$()}{Subscribe< T, TUserData >()}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Subscribe$<$ T, TUser\+Data $>$ (\begin{DoxyParamCaption}\item[{Action$<$ T, TUser\+Data $>$}]{on\+Receive,  }\item[{Func$<$ T $>$}]{packet\+Constructor }\end{DoxyParamCaption})}
+
+
+
+Register and subscribe to packet receive event (with user\+Data) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em on\+Receive} & event that will be called when packet deserialized with Read\+Packet method\\
+\hline
+{\em packet\+Constructor} & Method that constructs packet instead of slow Activator.\+Create\+Instance\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_invalid_type_exception}{Invalid\+Type\+Exception}}} & {\itshape T} \textquotesingle{}s fields are not supported, or it has no fields\\
+\hline
+\end{DoxyExceptions}
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00212}{212}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a0ac309bd3547cc2917f51571bd772662}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a0ac309bd3547cc2917f51571bd772662}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!SubscribeDelegate@{SubscribeDelegate}}
+\index{SubscribeDelegate@{SubscribeDelegate}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{SubscribeDelegate()}{SubscribeDelegate()}}
+{\footnotesize\ttfamily delegate void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Subscribe\+Delegate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}}}]{reader,  }\item[{object}]{user\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_abdcc584a9c14c76a0857b1dea645d28a}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_abdcc584a9c14c76a0857b1dea645d28a}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!SubscribeNetSerializable$<$ T $>$@{SubscribeNetSerializable$<$ T $>$}}
+\index{SubscribeNetSerializable$<$ T $>$@{SubscribeNetSerializable$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{SubscribeNetSerializable$<$ T $>$()}{SubscribeNetSerializable< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Subscribe\+Net\+Serializable$<$ T $>$ (\begin{DoxyParamCaption}\item[{Action$<$ T $>$}]{on\+Receive }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em INet\+Serializable}]\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00292}{292}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_ad3cb8e4de7cadba693b66f2c379c82c1}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_ad3cb8e4de7cadba693b66f2c379c82c1}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!SubscribeNetSerializable$<$ T $>$@{SubscribeNetSerializable$<$ T $>$}}
+\index{SubscribeNetSerializable$<$ T $>$@{SubscribeNetSerializable$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{SubscribeNetSerializable$<$ T $>$()}{SubscribeNetSerializable< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Subscribe\+Net\+Serializable$<$ T $>$ (\begin{DoxyParamCaption}\item[{Action$<$ T $>$}]{on\+Receive,  }\item[{Func$<$ T $>$}]{packet\+Constructor }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em INet\+Serializable}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00269}{269}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af2657d3dbb7a215039ebc5c7c32f3c87}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af2657d3dbb7a215039ebc5c7c32f3c87}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!SubscribeNetSerializable$<$ T, TUserData $>$@{SubscribeNetSerializable$<$ T, TUserData $>$}}
+\index{SubscribeNetSerializable$<$ T, TUserData $>$@{SubscribeNetSerializable$<$ T, TUserData $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{SubscribeNetSerializable$<$ T, TUserData $>$()}{SubscribeNetSerializable< T, TUserData >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Subscribe\+Net\+Serializable$<$ T, TUser\+Data $>$ (\begin{DoxyParamCaption}\item[{Action$<$ T, TUser\+Data $>$}]{on\+Receive }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em INet\+Serializable}]\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00281}{281}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_afd71ca97fe04fe5684881e27fa55140b}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_afd71ca97fe04fe5684881e27fa55140b}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!SubscribeNetSerializable$<$ T, TUserData $>$@{SubscribeNetSerializable$<$ T, TUserData $>$}}
+\index{SubscribeNetSerializable$<$ T, TUserData $>$@{SubscribeNetSerializable$<$ T, TUserData $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{SubscribeNetSerializable$<$ T, TUserData $>$()}{SubscribeNetSerializable< T, TUserData >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Subscribe\+Net\+Serializable$<$ T, TUser\+Data $>$ (\begin{DoxyParamCaption}\item[{Action$<$ T, TUser\+Data $>$}]{on\+Receive,  }\item[{Func$<$ T $>$}]{packet\+Constructor }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em INet\+Serializable}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00257}{257}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af0c7e9ca239eadfd8a851a86cd339fa0}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af0c7e9ca239eadfd8a851a86cd339fa0}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!SubscribeReusable$<$ T $>$@{SubscribeReusable$<$ T $>$}}
+\index{SubscribeReusable$<$ T $>$@{SubscribeReusable$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{SubscribeReusable$<$ T $>$()}{SubscribeReusable< T >()}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Subscribe\+Reusable$<$ T $>$ (\begin{DoxyParamCaption}\item[{Action$<$ T $>$}]{on\+Receive }\end{DoxyParamCaption})}
+
+
+
+Register and subscribe to packet receive event This method will overwrite last received packet class on receive (less garbage) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em on\+Receive} & event that will be called when packet deserialized with Read\+Packet method\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_invalid_type_exception}{Invalid\+Type\+Exception}}} & {\itshape T} \textquotesingle{}s fields are not supported, or it has no fields\\
+\hline
+\end{DoxyExceptions}
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00229}{229}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a71a3dba1e8aa80128d3fcf475d891c26}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a71a3dba1e8aa80128d3fcf475d891c26}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!SubscribeReusable$<$ T, TUserData $>$@{SubscribeReusable$<$ T, TUserData $>$}}
+\index{SubscribeReusable$<$ T, TUserData $>$@{SubscribeReusable$<$ T, TUserData $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{SubscribeReusable$<$ T, TUserData $>$()}{SubscribeReusable< T, TUserData >()}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Subscribe\+Reusable$<$ T, TUser\+Data $>$ (\begin{DoxyParamCaption}\item[{Action$<$ T, TUser\+Data $>$}]{on\+Receive }\end{DoxyParamCaption})}
+
+
+
+Register and subscribe to packet receive event This method will overwrite last received packet class on receive (less garbage) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em on\+Receive} & event that will be called when packet deserialized with Read\+Packet method\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_invalid_type_exception}{Invalid\+Type\+Exception}}} & {\itshape T} \textquotesingle{}s fields are not supported, or it has no fields\\
+\hline
+\end{DoxyExceptions}
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00246}{246}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af1b7bf9915bee79f7154f7768870bb10}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af1b7bf9915bee79f7154f7768870bb10}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!Write$<$ T $>$@{Write$<$ T $>$}}
+\index{Write$<$ T $>$@{Write$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{Write$<$ T $>$()}{Write< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Write$<$ T $>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{writer,  }\item[{T}]{packet }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00150}{150}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a89683a2f7f3f509f202d6048303810d2}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a89683a2f7f3f509f202d6048303810d2}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!Write$<$ T $>$@{Write$<$ T $>$}}
+\index{Write$<$ T $>$@{Write$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{Write$<$ T $>$()}{Write< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily byte\mbox{[}$\,$\mbox{]} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Write$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{packet }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00162}{162}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_aa14ff0c1ff3bc10c6e3b4e7dc745d9bd}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_aa14ff0c1ff3bc10c6e3b4e7dc745d9bd}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!WriteHash$<$ T $>$@{WriteHash$<$ T $>$}}
+\index{WriteHash$<$ T $>$@{WriteHash$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{WriteHash$<$ T $>$()}{WriteHash< T >()}}
+{\footnotesize\ttfamily virtual void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Write\+Hash$<$ T $>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{writer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00057}{57}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a36a21d80a338c3d814c90c51c357fcf4}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_a36a21d80a338c3d814c90c51c357fcf4}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!WriteNetSerializable$<$ T $>$@{WriteNetSerializable$<$ T $>$}}
+\index{WriteNetSerializable$<$ T $>$@{WriteNetSerializable$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{WriteNetSerializable$<$ T $>$()}{WriteNetSerializable< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Write\+Net\+Serializable$<$ T $>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{writer,  }\item[{T}]{packet }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em INet\+Serializable}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00156}{156}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af8f2be2870f337703df189d197058381}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor_af8f2be2870f337703df189d197058381}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}!WriteNetSerializable$<$ T $>$@{WriteNetSerializable$<$ T $>$}}
+\index{WriteNetSerializable$<$ T $>$@{WriteNetSerializable$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor@{FlyingWormConsole3.LiteNetLib.Utils.NetPacketProcessor}}
+\doxysubsubsection{\texorpdfstring{WriteNetSerializable$<$ T $>$()}{WriteNetSerializable< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily byte\mbox{[}$\,$\mbox{]} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Packet\+Processor.\+Write\+Net\+Serializable$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{packet }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em INet\+Serializable}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_packet_processor_8cs_source}{Net\+Packet\+Processor.\+cs}} 파일의 \mbox{\hyperlink{_net_packet_processor_8cs_source_l00170}{170}} 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Console\+Pro/\+Remote/\+Lite\+Net\+Lib/\+Utils/\mbox{\hyperlink{_net_packet_processor_8cs}{Net\+Packet\+Processor.\+cs}}\end{DoxyCompactItemize}

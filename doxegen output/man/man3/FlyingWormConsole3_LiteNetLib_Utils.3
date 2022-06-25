@@ -1,0 +1,115 @@
+.TH "FlyingWormConsole3.LiteNetLib.Utils" 3 "금 6월 24 2022" "Version 1.0" "Unity 3D Game Doxygen" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FlyingWormConsole3.LiteNetLib.Utils
+.SH SYNOPSIS
+.br
+.PP
+.SS "클래스"
+
+.in +1c
+.ti -1c
+.RI "class \fBCRC32C\fP"
+.br
+.ti -1c
+.RI "class \fBFastBitConverter\fP"
+.br
+.ti -1c
+.RI "interface \fBINetSerializable\fP"
+.br
+.ti -1c
+.RI "class \fBInvalidTypeException\fP"
+.br
+.ti -1c
+.RI "class \fBNetDataReader\fP"
+.br
+.ti -1c
+.RI "class \fBNetDataWriter\fP"
+.br
+.ti -1c
+.RI "class \fBNetPacketProcessor\fP"
+.br
+.ti -1c
+.RI "class \fBNetSerializer\fP"
+.br
+.ti -1c
+.RI "class \fBNtpPacket\fP"
+.br
+.RI "Represents RFC4330 SNTP packet used for communication to and from a network time server\&. "
+.ti -1c
+.RI "class \fBNtpRequest\fP"
+.br
+.ti -1c
+.RI "class \fBParseException\fP"
+.br
+.in -1c
+.SS "열거형 타입"
+
+.in +1c
+.ti -1c
+.RI "enum \fBNtpLeapIndicator\fP { \fBNoWarning\fP, \fBLastMinuteHas61Seconds\fP, \fBLastMinuteHas59Seconds\fP, \fBAlarmCondition\fP }"
+.br
+.RI "Represents leap second warning from the server that instructs the client to add or remove leap second\&. "
+.ti -1c
+.RI "enum \fBNtpMode\fP { \fBClient\fP = 3, \fBServer\fP = 4 }"
+.br
+.RI "Describes SNTP packet mode, i\&.e\&. client or server\&. "
+.in -1c
+.SH "열거형 타입 문서화"
+.PP 
+.SS "enum \fBFlyingWormConsole3\&.LiteNetLib\&.Utils\&.NtpLeapIndicator\fP"
+
+.PP
+Represents leap second warning from the server that instructs the client to add or remove leap second\&. 
+.PP
+\fB참고\fP
+.RS 4
+\fBNtpPacket\&.LeapIndicator\fP
+.PP
+.RE
+.PP
+
+.PP
+\fB열거형 멤버\fP
+.in +1c
+.TP
+\fB\fINoWarning \fP\fP
+No leap second warning\&. No action required\&. 
+.TP
+\fB\fILastMinuteHas61Seconds \fP\fP
+Warns the client that the last minute of the current day has 61 seconds\&. 
+.TP
+\fB\fILastMinuteHas59Seconds \fP\fP
+Warns the client that the last minute of the current day has 59 seconds\&. 
+.TP
+\fB\fIAlarmCondition \fP\fP
+Special value indicating that the server clock is unsynchronized and the returned time is unreliable\&. 
+.PP
+\fBNtpPacket\&.cs\fP 파일의 \fB387\fP 번째 라인에서 정의되었습니다\&.
+.SS "enum \fBFlyingWormConsole3\&.LiteNetLib\&.Utils\&.NtpMode\fP"
+
+.PP
+Describes SNTP packet mode, i\&.e\&. client or server\&. 
+.PP
+\fB참고\fP
+.RS 4
+\fBNtpPacket\&.Mode\fP
+.PP
+.RE
+.PP
+
+.PP
+\fB열거형 멤버\fP
+.in +1c
+.TP
+\fB\fIClient \fP\fP
+Identifies client-to-server SNTP packet\&. 
+.TP
+\fB\fIServer \fP\fP
+Identifies server-to-client SNTP packet\&. 
+.PP
+\fBNtpPacket\&.cs\fP 파일의 \fB414\fP 번째 라인에서 정의되었습니다\&.
+.SH "작성자"
+.PP 
+소스 코드로부터 Unity 3D Game Doxygen를 위해 Doxygen에 의해 자동으로 생성됨\&.

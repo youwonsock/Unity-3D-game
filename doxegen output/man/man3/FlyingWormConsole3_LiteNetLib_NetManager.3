@@ -1,0 +1,1319 @@
+.TH "FlyingWormConsole3.LiteNetLib.NetManager" 3 "금 6월 24 2022" "Version 1.0" "Unity 3D Game Doxygen" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FlyingWormConsole3.LiteNetLib.NetManager \- Main class for all network operations\&. Can be used as client and/or server\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+IEnumerable< NetPeer >를(을) 상속했습니다\&.
+.SS "클래스"
+
+.in +1c
+.ti -1c
+.RI "struct \fBNetPeerEnumerator\fP"
+.br
+.in -1c
+.SS "Public 멤버 함수"
+
+.in +1c
+.ti -1c
+.RI "\fBNetPeer\fP \fBGetPeerById\fP (int id)"
+.br
+.RI "Gets peer by peer id "
+.ti -1c
+.RI "\fBNetManager\fP (\fBINetEventListener\fP listener, \fBPacketLayerBase\fP extraPacketLayer=null)"
+.br
+.RI "\fBNetManager\fP constructor "
+.ti -1c
+.RI "void \fBManualUpdate\fP (int elapsedMilliseconds)"
+.br
+.RI "Update and send logic\&. Use this only when \fBNetManager\fP started in manual mode "
+.ti -1c
+.RI "void \fBManualReceive\fP ()"
+.br
+.RI "Receive logic\&. It will call Receive events immediately without need to use PollEvents or UnsyncedEvents Use this only when \fBNetManager\fP started in manual mode "
+.ti -1c
+.RI "void \fBSendToAll\fP (\fBNetDataWriter\fP writer, \fBDeliveryMethod\fP options)"
+.br
+.RI "Send data to all connected peers (channel - 0) "
+.ti -1c
+.RI "void \fBSendToAll\fP (byte[] data, \fBDeliveryMethod\fP options)"
+.br
+.RI "Send data to all connected peers (channel - 0) "
+.ti -1c
+.RI "void \fBSendToAll\fP (byte[] data, int start, int length, \fBDeliveryMethod\fP options)"
+.br
+.RI "Send data to all connected peers (channel - 0) "
+.ti -1c
+.RI "void \fBSendToAll\fP (\fBNetDataWriter\fP writer, byte channelNumber, \fBDeliveryMethod\fP options)"
+.br
+.RI "Send data to all connected peers "
+.ti -1c
+.RI "void \fBSendToAll\fP (byte[] data, byte channelNumber, \fBDeliveryMethod\fP options)"
+.br
+.RI "Send data to all connected peers "
+.ti -1c
+.RI "void \fBSendToAll\fP (byte[] data, int start, int length, byte channelNumber, \fBDeliveryMethod\fP options)"
+.br
+.RI "Send data to all connected peers "
+.ti -1c
+.RI "void \fBSendToAll\fP (\fBNetDataWriter\fP writer, \fBDeliveryMethod\fP options, \fBNetPeer\fP excludePeer)"
+.br
+.RI "Send data to all connected peers (channel - 0) "
+.ti -1c
+.RI "void \fBSendToAll\fP (byte[] data, \fBDeliveryMethod\fP options, \fBNetPeer\fP excludePeer)"
+.br
+.RI "Send data to all connected peers (channel - 0) "
+.ti -1c
+.RI "void \fBSendToAll\fP (byte[] data, int start, int length, \fBDeliveryMethod\fP options, \fBNetPeer\fP excludePeer)"
+.br
+.RI "Send data to all connected peers (channel - 0) "
+.ti -1c
+.RI "void \fBSendToAll\fP (\fBNetDataWriter\fP writer, byte channelNumber, \fBDeliveryMethod\fP options, \fBNetPeer\fP excludePeer)"
+.br
+.RI "Send data to all connected peers "
+.ti -1c
+.RI "void \fBSendToAll\fP (byte[] data, byte channelNumber, \fBDeliveryMethod\fP options, \fBNetPeer\fP excludePeer)"
+.br
+.RI "Send data to all connected peers "
+.ti -1c
+.RI "void \fBSendToAll\fP (byte[] data, int start, int length, byte channelNumber, \fBDeliveryMethod\fP options, \fBNetPeer\fP excludePeer)"
+.br
+.RI "Send data to all connected peers "
+.ti -1c
+.RI "bool \fBStart\fP ()"
+.br
+.RI "Start logic thread and listening on available port "
+.ti -1c
+.RI "bool \fBStart\fP (IPAddress addressIPv4, IPAddress addressIPv6, int port)"
+.br
+.RI "Start logic thread and listening on selected port "
+.ti -1c
+.RI "bool \fBStart\fP (string addressIPv4, string addressIPv6, int port)"
+.br
+.RI "Start logic thread and listening on selected port "
+.ti -1c
+.RI "bool \fBStart\fP (int port)"
+.br
+.RI "Start logic thread and listening on selected port "
+.ti -1c
+.RI "bool \fBStartInManualMode\fP (IPAddress addressIPv4, IPAddress addressIPv6, int port)"
+.br
+.RI "Start in manual mode and listening on selected port In this mode you should use ManualReceive (without PollEvents) for receive packets and ManualUpdate(\&.\&.\&.) for update and send packets This mode useful mostly for single-threaded servers "
+.ti -1c
+.RI "bool \fBStartInManualMode\fP (string addressIPv4, string addressIPv6, int port)"
+.br
+.RI "Start in manual mode and listening on selected port In this mode you should use ManualReceive (without PollEvents) for receive packets and ManualUpdate(\&.\&.\&.) for update and send packets This mode useful mostly for single-threaded servers "
+.ti -1c
+.RI "bool \fBStartInManualMode\fP (int port)"
+.br
+.RI "Start in manual mode and listening on selected port In this mode you should use ManualReceive (without PollEvents) for receive packets and ManualUpdate(\&.\&.\&.) for update and send packets This mode useful mostly for single-threaded servers "
+.ti -1c
+.RI "bool \fBSendUnconnectedMessage\fP (byte[] message, IPEndPoint remoteEndPoint)"
+.br
+.RI "Send message without connection "
+.ti -1c
+.RI "bool \fBSendUnconnectedMessage\fP (\fBNetDataWriter\fP writer, IPEndPoint remoteEndPoint)"
+.br
+.RI "Send message without connection "
+.ti -1c
+.RI "bool \fBSendUnconnectedMessage\fP (byte[] message, int start, int length, IPEndPoint remoteEndPoint)"
+.br
+.RI "Send message without connection "
+.ti -1c
+.RI "bool \fBSendBroadcast\fP (\fBNetDataWriter\fP writer, int port)"
+.br
+.ti -1c
+.RI "bool \fBSendBroadcast\fP (byte[] data, int port)"
+.br
+.ti -1c
+.RI "bool \fBSendBroadcast\fP (byte[] data, int start, int length, int port)"
+.br
+.ti -1c
+.RI "void \fBTriggerUpdate\fP ()"
+.br
+.RI "Triggers update and send logic immediately (works asynchronously) "
+.ti -1c
+.RI "void \fBPollEvents\fP ()"
+.br
+.RI "Receive all pending events\&. Call this in game update code "
+.ti -1c
+.RI "\fBNetPeer\fP \fBConnect\fP (string address, int port, string key)"
+.br
+.RI "Connect to remote host "
+.ti -1c
+.RI "\fBNetPeer\fP \fBConnect\fP (string address, int port, \fBNetDataWriter\fP connectionData)"
+.br
+.RI "Connect to remote host "
+.ti -1c
+.RI "\fBNetPeer\fP \fBConnect\fP (IPEndPoint target, string key)"
+.br
+.RI "Connect to remote host "
+.ti -1c
+.RI "\fBNetPeer\fP \fBConnect\fP (IPEndPoint target, \fBNetDataWriter\fP connectionData)"
+.br
+.RI "Connect to remote host "
+.ti -1c
+.RI "void \fBStop\fP ()"
+.br
+.RI "Force closes connection and stop all threads\&. "
+.ti -1c
+.RI "void \fBStop\fP (bool sendDisconnectMessages)"
+.br
+.RI "Force closes connection and stop all threads\&. "
+.ti -1c
+.RI "int \fBGetPeersCount\fP (\fBConnectionState\fP peerState)"
+.br
+.RI "Return peers count with connection state "
+.ti -1c
+.RI "void \fBGetPeersNonAlloc\fP (List< \fBNetPeer\fP > peers, \fBConnectionState\fP peerState)"
+.br
+.RI "Get copy of peers (without allocations) "
+.ti -1c
+.RI "void \fBDisconnectAll\fP ()"
+.br
+.RI "Disconnect all peers without any additional data "
+.ti -1c
+.RI "void \fBDisconnectAll\fP (byte[] data, int start, int count)"
+.br
+.RI "Disconnect all peers with shutdown message "
+.ti -1c
+.RI "void \fBDisconnectPeerForce\fP (\fBNetPeer\fP peer)"
+.br
+.RI "Immediately disconnect peer from server without additional data "
+.ti -1c
+.RI "void \fBDisconnectPeer\fP (\fBNetPeer\fP peer)"
+.br
+.RI "Disconnect peer from server "
+.ti -1c
+.RI "void \fBDisconnectPeer\fP (\fBNetPeer\fP peer, byte[] data)"
+.br
+.RI "Disconnect peer from server and send additional data (Size must be less or equal MTU - 8) "
+.ti -1c
+.RI "void \fBDisconnectPeer\fP (\fBNetPeer\fP peer, \fBNetDataWriter\fP writer)"
+.br
+.RI "Disconnect peer from server and send additional data (Size must be less or equal MTU - 8) "
+.ti -1c
+.RI "void \fBDisconnectPeer\fP (\fBNetPeer\fP peer, byte[] data, int start, int count)"
+.br
+.RI "Disconnect peer from server and send additional data (Size must be less or equal MTU - 8) "
+.ti -1c
+.RI "void \fBCreateNtpRequest\fP (IPEndPoint endPoint)"
+.br
+.RI "Create the requests for NTP server "
+.ti -1c
+.RI "void \fBCreateNtpRequest\fP (string ntpServerAddress, int port)"
+.br
+.RI "Create the requests for NTP server "
+.ti -1c
+.RI "void \fBCreateNtpRequest\fP (string ntpServerAddress)"
+.br
+.RI "Create the requests for NTP server (default port) "
+.ti -1c
+.RI "\fBNetPeerEnumerator\fP \fBGetEnumerator\fP ()"
+.br
+.in -1c
+.SS "Public 속성"
+
+.in +1c
+.ti -1c
+.RI "bool \fBUnconnectedMessagesEnabled\fP = false"
+.br
+.RI "Enable messages receiving without connection\&. (with SendUnconnectedMessage method) "
+.ti -1c
+.RI "bool \fBNatPunchEnabled\fP = false"
+.br
+.RI "Enable nat punch messages "
+.ti -1c
+.RI "int \fBUpdateTime\fP = 15"
+.br
+.RI "Library logic update and send period in milliseconds "
+.ti -1c
+.RI "int \fBPingInterval\fP = 1000"
+.br
+.RI "Interval for latency detection and checking connection "
+.ti -1c
+.RI "int \fBDisconnectTimeout\fP = 5000"
+.br
+.RI "If \fBNetManager\fP doesn't receive any packet from remote peer during this time then connection will be closed (including library internal keepalive packets) "
+.ti -1c
+.RI "bool \fBSimulatePacketLoss\fP = false"
+.br
+.RI "Simulate packet loss by dropping random amount of packets\&. (Works only in DEBUG mode) "
+.ti -1c
+.RI "bool \fBSimulateLatency\fP = false"
+.br
+.RI "Simulate latency by holding packets for random time\&. (Works only in DEBUG mode) "
+.ti -1c
+.RI "int \fBSimulationPacketLossChance\fP = 10"
+.br
+.RI "Chance of packet loss when simulation enabled\&. value in percents (1 - 100)\&. "
+.ti -1c
+.RI "int \fBSimulationMinLatency\fP = 30"
+.br
+.RI "Minimum simulated latency "
+.ti -1c
+.RI "int \fBSimulationMaxLatency\fP = 100"
+.br
+.RI "Maximum simulated latency "
+.ti -1c
+.RI "bool \fBUnsyncedEvents\fP = false"
+.br
+.RI "Events automatically will be called without PollEvents method from another thread "
+.ti -1c
+.RI "bool \fBUnsyncedReceiveEvent\fP = false"
+.br
+.RI "If true - receive event will be called from 'receive' thread immediately otherwise on PollEvents call "
+.ti -1c
+.RI "bool \fBUnsyncedDeliveryEvent\fP = false"
+.br
+.RI "If true - delivery event will be called from 'receive' thread immediately otherwise on PollEvents call "
+.ti -1c
+.RI "bool \fBBroadcastReceiveEnabled\fP = false"
+.br
+.RI "Allows receive broadcast packets "
+.ti -1c
+.RI "int \fBReconnectDelay\fP = 500"
+.br
+.RI "Delay between initial connection attempts "
+.ti -1c
+.RI "int \fBMaxConnectAttempts\fP = 10"
+.br
+.RI "Maximum connection attempts before client stops and call disconnect event\&. "
+.ti -1c
+.RI "bool \fBReuseAddress\fP = false"
+.br
+.RI "Enables socket option 'ReuseAddress' for specific purposes "
+.ti -1c
+.RI "readonly \fBNetStatistics\fP \fBStatistics\fP"
+.br
+.RI "Statistics of all connections "
+.ti -1c
+.RI "bool \fBEnableStatistics\fP = false"
+.br
+.RI "Toggles the collection of network statistics for the instance and all known peers "
+.ti -1c
+.RI "readonly \fBNatPunchModule\fP \fBNatPunchModule\fP"
+.br
+.RI "\fBNatPunchModule\fP for NAT hole punching operations "
+.ti -1c
+.RI "bool \fBAutoRecycle\fP"
+.br
+.RI "Automatically recycle \fBNetPacketReader\fP after OnReceive event "
+.ti -1c
+.RI "\fBIPv6Mode\fP \fBIPv6Enabled\fP = \fBIPv6Mode\&.SeparateSocket\fP"
+.br
+.RI "IPv6 support "
+.ti -1c
+.RI "int \fBMtuOverride\fP = 0"
+.br
+.RI "Override MTU for all new peers registered in this \fBNetManager\fP, will ignores MTU Discovery! "
+.ti -1c
+.RI "bool \fBUseSafeMtu\fP = false"
+.br
+.RI "Sets initial MTU to lowest possible value according to RFC1191 (576 bytes) "
+.ti -1c
+.RI "bool \fBDisconnectOnUnreachable\fP = false"
+.br
+.RI "Disconnect peers if HostUnreachable or NetworkUnreachable spawned (old behaviour 0\&.9\&.x was true) "
+.in -1c
+.SS "속성"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsRunning\fP\fC [get]\fP"
+.br
+.RI "Returns true if socket listening and update thread is running "
+.ti -1c
+.RI "int \fBLocalPort\fP\fC [get]\fP"
+.br
+.RI "Local EndPoint (host and port) "
+.ti -1c
+.RI "\fBNetPeer\fP \fBFirstPeer\fP\fC [get]\fP"
+.br
+.RI "First peer\&. Useful for Client mode "
+.ti -1c
+.RI "byte \fBChannelsCount\fP\fC [get, set]\fP"
+.br
+.RI "QoS channel count per message type (value must be between 1 and 64 channels) "
+.ti -1c
+.RI "List< \fBNetPeer\fP > \fBConnectedPeerList\fP\fC [get]\fP"
+.br
+.RI "Returns connected peers list (with internal cached list) "
+.ti -1c
+.RI "int \fBConnectedPeersCount\fP\fC [get]\fP"
+.br
+.RI "Returns connected peers count "
+.ti -1c
+.RI "int \fBExtraPacketSizeForLayer\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "상세한 설명"
+.PP 
+Main class for all network operations\&. Can be used as client and/or server\&. 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB94\fP 번째 라인에서 정의되었습니다\&.
+.SH "생성자 & 소멸자 문서화"
+.PP 
+.SS "FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.NetManager (\fBINetEventListener\fP listener, \fBPacketLayerBase\fP extraPacketLayer = \fCnull\fP)"
+
+.PP
+\fBNetManager\fP constructor 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIlistener\fP Network events listener (also can implement \fBIDeliveryEventListener\fP)
+.br
+\fIextraPacketLayer\fP Extra processing of packages, like CRC checksum or encryption\&. All connected NetManagers must have same layer\&.
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB436\fP 번째 라인에서 정의되었습니다\&.
+.SH "멤버 함수 문서화"
+.PP 
+.SS "\fBNetPeer\fP FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.Connect (IPEndPoint target, \fBNetDataWriter\fP connectionData)"
+
+.PP
+Connect to remote host 
+.PP
+\fB매개변수\fP
+.RS 4
+\fItarget\fP Server end point (ip and port)
+.br
+\fIconnectionData\fP Additional data for remote peer
+.RE
+.PP
+\fB반환값\fP
+.RS 4
+New \fBNetPeer\fP if new connection, Old \fBNetPeer\fP if already connected, null peer if there is \fBConnectionRequest\fP awaiting
+.RE
+.PP
+\fB예외\fP
+.RS 4
+\fIInvalidOperationException\fP Manager is not running\&. Call \fBStart()\fP
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1571\fP 번째 라인에서 정의되었습니다\&.
+.SS "\fBNetPeer\fP FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.Connect (IPEndPoint target, string key)"
+
+.PP
+Connect to remote host 
+.PP
+\fB매개변수\fP
+.RS 4
+\fItarget\fP Server end point (ip and port)
+.br
+\fIkey\fP Connection key
+.RE
+.PP
+\fB반환값\fP
+.RS 4
+New \fBNetPeer\fP if new connection, Old \fBNetPeer\fP if already connected, null peer if there is \fBConnectionRequest\fP awaiting
+.RE
+.PP
+\fB예외\fP
+.RS 4
+\fIInvalidOperationException\fP Manager is not running\&. Call \fBStart()\fP
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1559\fP 번째 라인에서 정의되었습니다\&.
+.SS "\fBNetPeer\fP FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.Connect (string address, int port, \fBNetDataWriter\fP connectionData)"
+
+.PP
+Connect to remote host 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIaddress\fP Server IP or hostname
+.br
+\fIport\fP Server Port
+.br
+\fIconnectionData\fP Additional data for remote peer
+.RE
+.PP
+\fB반환값\fP
+.RS 4
+New \fBNetPeer\fP if new connection, Old \fBNetPeer\fP if already connected, null peer if there is \fBConnectionRequest\fP awaiting
+.RE
+.PP
+\fB예외\fP
+.RS 4
+\fIInvalidOperationException\fP Manager is not running\&. Call \fBStart()\fP
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1537\fP 번째 라인에서 정의되었습니다\&.
+.SS "\fBNetPeer\fP FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.Connect (string address, int port, string key)"
+
+.PP
+Connect to remote host 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIaddress\fP Server IP or hostname
+.br
+\fIport\fP Server Port
+.br
+\fIkey\fP Connection key
+.RE
+.PP
+\fB반환값\fP
+.RS 4
+New \fBNetPeer\fP if new connection, Old \fBNetPeer\fP if already connected, null peer if there is \fBConnectionRequest\fP awaiting
+.RE
+.PP
+\fB예외\fP
+.RS 4
+\fIInvalidOperationException\fP Manager is not running\&. Call \fBStart()\fP
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1524\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.CreateNtpRequest (IPEndPoint endPoint)"
+
+.PP
+Create the requests for NTP server 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIendPoint\fP NTP Server address\&.
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1788\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.CreateNtpRequest (string ntpServerAddress)"
+
+.PP
+Create the requests for NTP server (default port) 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIntpServerAddress\fP NTP Server address\&.
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1808\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.CreateNtpRequest (string ntpServerAddress, int port)"
+
+.PP
+Create the requests for NTP server 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIntpServerAddress\fP NTP Server address\&.
+.br
+\fIport\fP port
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1798\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.DisconnectAll ()"
+
+.PP
+Disconnect all peers without any additional data 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1696\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.DisconnectAll (byte[] data, int start, int count)"
+
+.PP
+Disconnect all peers with shutdown message 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data to send (must be less or equal MTU)
+.br
+\fIstart\fP Data start
+.br
+\fIcount\fP Data count
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1707\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.DisconnectPeer (\fBNetPeer\fP peer)"
+
+.PP
+Disconnect peer from server 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIpeer\fP peer to disconnect
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1739\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.DisconnectPeer (\fBNetPeer\fP peer, byte[] data)"
+
+.PP
+Disconnect peer from server and send additional data (Size must be less or equal MTU - 8) 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIpeer\fP peer to disconnect
+.br
+\fIdata\fP additional data
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1749\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.DisconnectPeer (\fBNetPeer\fP peer, byte[] data, int start, int count)"
+
+.PP
+Disconnect peer from server and send additional data (Size must be less or equal MTU - 8) 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIpeer\fP peer to disconnect
+.br
+\fIdata\fP additional data
+.br
+\fIstart\fP data start
+.br
+\fIcount\fP data length
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1771\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.DisconnectPeer (\fBNetPeer\fP peer, \fBNetDataWriter\fP writer)"
+
+.PP
+Disconnect peer from server and send additional data (Size must be less or equal MTU - 8) 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIpeer\fP peer to disconnect
+.br
+\fIwriter\fP additional data
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1759\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.DisconnectPeerForce (\fBNetPeer\fP peer)"
+
+.PP
+Immediately disconnect peer from server without additional data 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIpeer\fP peer to disconnect
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1730\fP 번째 라인에서 정의되었습니다\&.
+.SS "\fBNetPeerEnumerator\fP FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.GetEnumerator ()"
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1814\fP 번째 라인에서 정의되었습니다\&.
+.SS "\fBNetPeer\fP FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.GetPeerById (int id)"
+
+.PP
+Gets peer by peer id 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIid\fP id of peer
+.RE
+.PP
+\fB반환값\fP
+.RS 4
+Peer if peer with id exist, otherwise null
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB362\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.GetPeersCount (\fBConnectionState\fP peerState)"
+
+.PP
+Return peers count with connection state 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIpeerState\fP peer connection state (you can use as bit flags)
+.RE
+.PP
+\fB반환값\fP
+.RS 4
+peers count
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1663\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.GetPeersNonAlloc (List< \fBNetPeer\fP > peers, \fBConnectionState\fP peerState)"
+
+.PP
+Get copy of peers (without allocations) 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIpeers\fP List that will contain result
+.br
+\fIpeerState\fP State of peers
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1681\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.ManualReceive ()"
+
+.PP
+Receive logic\&. It will call Receive events immediately without need to use PollEvents or UnsyncedEvents Use this only when \fBNetManager\fP started in manual mode 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB792\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.ManualUpdate (int elapsedMilliseconds)"
+
+.PP
+Update and send logic\&. Use this only when \fBNetManager\fP started in manual mode 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIelapsedMilliseconds\fP elapsed milliseconds since last update call
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB769\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.PollEvents ()"
+
+.PP
+Receive all pending events\&. Call this in game update code 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1500\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendBroadcast (byte[] data, int port)"
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1461\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendBroadcast (byte[] data, int start, int length, int port)"
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1466\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendBroadcast (\fBNetDataWriter\fP writer, int port)"
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1456\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendToAll (byte[] data, byte channelNumber, \fBDeliveryMethod\fP options)"
+
+.PP
+Send data to all connected peers 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data
+.br
+\fIchannelNumber\fP Number of channel (from 0 to channelsCount - 1)
+.br
+\fIoptions\fP Send options (reliable, unreliable, etc\&.)
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1215\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendToAll (byte[] data, byte channelNumber, \fBDeliveryMethod\fP options, \fBNetPeer\fP excludePeer)"
+
+.PP
+Send data to all connected peers 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data
+.br
+\fIchannelNumber\fP Number of channel (from 0 to channelsCount - 1)
+.br
+\fIoptions\fP Send options (reliable, unreliable, etc\&.)
+.br
+\fIexcludePeer\fP Excluded peer
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1296\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendToAll (byte[] data, \fBDeliveryMethod\fP options)"
+
+.PP
+Send data to all connected peers (channel - 0) 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data
+.br
+\fIoptions\fP Send options (reliable, unreliable, etc\&.)
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1181\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendToAll (byte[] data, \fBDeliveryMethod\fP options, \fBNetPeer\fP excludePeer)"
+
+.PP
+Send data to all connected peers (channel - 0) 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data
+.br
+\fIoptions\fP Send options (reliable, unreliable, etc\&.)
+.br
+\fIexcludePeer\fP Excluded peer
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1259\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendToAll (byte[] data, int start, int length, byte channelNumber, \fBDeliveryMethod\fP options)"
+
+.PP
+Send data to all connected peers 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data
+.br
+\fIstart\fP Start of data
+.br
+\fIlength\fP Length of data
+.br
+\fIchannelNumber\fP Number of channel (from 0 to channelsCount - 1)
+.br
+\fIoptions\fP Send options (reliable, unreliable, etc\&.)
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1228\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendToAll (byte[] data, int start, int length, byte channelNumber, \fBDeliveryMethod\fP options, \fBNetPeer\fP excludePeer)"
+
+.PP
+Send data to all connected peers 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data
+.br
+\fIstart\fP Start of data
+.br
+\fIlength\fP Length of data
+.br
+\fIchannelNumber\fP Number of channel (from 0 to channelsCount - 1)
+.br
+\fIoptions\fP Send options (reliable, unreliable, etc\&.)
+.br
+\fIexcludePeer\fP Excluded peer
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1311\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendToAll (byte[] data, int start, int length, \fBDeliveryMethod\fP options)"
+
+.PP
+Send data to all connected peers (channel - 0) 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data
+.br
+\fIstart\fP Start of data
+.br
+\fIlength\fP Length of data
+.br
+\fIoptions\fP Send options (reliable, unreliable, etc\&.)
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1193\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendToAll (byte[] data, int start, int length, \fBDeliveryMethod\fP options, \fBNetPeer\fP excludePeer)"
+
+.PP
+Send data to all connected peers (channel - 0) 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data
+.br
+\fIstart\fP Start of data
+.br
+\fIlength\fP Length of data
+.br
+\fIoptions\fP Send options (reliable, unreliable, etc\&.)
+.br
+\fIexcludePeer\fP Excluded peer
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1272\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendToAll (\fBNetDataWriter\fP writer, byte channelNumber, \fBDeliveryMethod\fP options)"
+
+.PP
+Send data to all connected peers 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIwriter\fP DataWriter with data
+.br
+\fIchannelNumber\fP Number of channel (from 0 to channelsCount - 1)
+.br
+\fIoptions\fP Send options (reliable, unreliable, etc\&.)
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1204\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendToAll (\fBNetDataWriter\fP writer, byte channelNumber, \fBDeliveryMethod\fP options, \fBNetPeer\fP excludePeer)"
+
+.PP
+Send data to all connected peers 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIwriter\fP DataWriter with data
+.br
+\fIchannelNumber\fP Number of channel (from 0 to channelsCount - 1)
+.br
+\fIoptions\fP Send options (reliable, unreliable, etc\&.)
+.br
+\fIexcludePeer\fP Excluded peer
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1284\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendToAll (\fBNetDataWriter\fP writer, \fBDeliveryMethod\fP options)"
+
+.PP
+Send data to all connected peers (channel - 0) 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIwriter\fP DataWriter with data
+.br
+\fIoptions\fP Send options (reliable, unreliable, etc\&.)
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1171\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendToAll (\fBNetDataWriter\fP writer, \fBDeliveryMethod\fP options, \fBNetPeer\fP excludePeer)"
+
+.PP
+Send data to all connected peers (channel - 0) 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIwriter\fP DataWriter with data
+.br
+\fIoptions\fP Send options (reliable, unreliable, etc\&.)
+.br
+\fIexcludePeer\fP Excluded peer
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1248\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendUnconnectedMessage (byte[] message, int start, int length, IPEndPoint remoteEndPoint)"
+
+.PP
+Send message without connection 
+.PP
+\fB매개변수\fP
+.RS 4
+\fImessage\fP Raw data
+.br
+\fIstart\fP data start
+.br
+\fIlength\fP data length
+.br
+\fIremoteEndPoint\fP Packet destination
+.RE
+.PP
+\fB반환값\fP
+.RS 4
+Operation result
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1449\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendUnconnectedMessage (byte[] message, IPEndPoint remoteEndPoint)"
+
+.PP
+Send message without connection 
+.PP
+\fB매개변수\fP
+.RS 4
+\fImessage\fP Raw data
+.br
+\fIremoteEndPoint\fP Packet destination
+.RE
+.PP
+\fB반환값\fP
+.RS 4
+Operation result
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1425\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SendUnconnectedMessage (\fBNetDataWriter\fP writer, IPEndPoint remoteEndPoint)"
+
+.PP
+Send message without connection 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIwriter\fP Data serializer
+.br
+\fIremoteEndPoint\fP Packet destination
+.RE
+.PP
+\fB반환값\fP
+.RS 4
+Operation result
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1436\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.Start ()"
+
+.PP
+Start logic thread and listening on available port 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1331\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.Start (int port)"
+
+.PP
+Start logic thread and listening on selected port 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIport\fP port to listen
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1369\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.Start (IPAddress addressIPv4, IPAddress addressIPv6, int port)"
+
+.PP
+Start logic thread and listening on selected port 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIaddressIPv4\fP bind to specific ipv4 address
+.br
+\fIaddressIPv6\fP bind to specific ipv6 address
+.br
+\fIport\fP port to listen
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1342\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.Start (string addressIPv4, string addressIPv6, int port)"
+
+.PP
+Start logic thread and listening on selected port 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIaddressIPv4\fP bind to specific ipv4 address
+.br
+\fIaddressIPv6\fP bind to specific ipv6 address
+.br
+\fIport\fP port to listen
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1358\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.StartInManualMode (int port)"
+
+.PP
+Start in manual mode and listening on selected port In this mode you should use ManualReceive (without PollEvents) for receive packets and ManualUpdate(\&.\&.\&.) for update and send packets This mode useful mostly for single-threaded servers 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIport\fP port to listen
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1414\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.StartInManualMode (IPAddress addressIPv4, IPAddress addressIPv6, int port)"
+
+.PP
+Start in manual mode and listening on selected port In this mode you should use ManualReceive (without PollEvents) for receive packets and ManualUpdate(\&.\&.\&.) for update and send packets This mode useful mostly for single-threaded servers 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIaddressIPv4\fP bind to specific ipv4 address
+.br
+\fIaddressIPv6\fP bind to specific ipv6 address
+.br
+\fIport\fP port to listen
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1383\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.StartInManualMode (string addressIPv4, string addressIPv6, int port)"
+
+.PP
+Start in manual mode and listening on selected port In this mode you should use ManualReceive (without PollEvents) for receive packets and ManualUpdate(\&.\&.\&.) for update and send packets This mode useful mostly for single-threaded servers 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIaddressIPv4\fP bind to specific ipv4 address
+.br
+\fIaddressIPv6\fP bind to specific ipv6 address
+.br
+\fIport\fP port to listen
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1400\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.Stop ()"
+
+.PP
+Force closes connection and stop all threads\&. 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1613\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.Stop (bool sendDisconnectMessages)"
+
+.PP
+Force closes connection and stop all threads\&. 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIsendDisconnectMessages\fP Send disconnect messages
+.RE
+.PP
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1622\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.TriggerUpdate ()"
+
+.PP
+Triggers update and send logic immediately (works asynchronously) 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB1492\fP 번째 라인에서 정의되었습니다\&.
+.SH "멤버 데이터 문서화"
+.PP 
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.AutoRecycle"
+
+.PP
+Automatically recycle \fBNetPacketReader\fP after OnReceive event 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB301\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.BroadcastReceiveEnabled = false"
+
+.PP
+Allows receive broadcast packets 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB256\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.DisconnectOnUnreachable = false"
+
+.PP
+Disconnect peers if HostUnreachable or NetworkUnreachable spawned (old behaviour 0\&.9\&.x was true) 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB329\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.DisconnectTimeout = 5000"
+
+.PP
+If \fBNetManager\fP doesn't receive any packet from remote peer during this time then connection will be closed (including library internal keepalive packets) 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB211\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.EnableStatistics = false"
+
+.PP
+Toggles the collection of network statistics for the instance and all known peers 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB281\fP 번째 라인에서 정의되었습니다\&.
+.SS "\fBIPv6Mode\fP FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.IPv6Enabled = \fBIPv6Mode\&.SeparateSocket\fP"
+
+.PP
+IPv6 support 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB306\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.MaxConnectAttempts = 10"
+
+.PP
+Maximum connection attempts before client stops and call disconnect event\&. 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB266\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.MtuOverride = 0"
+
+.PP
+Override MTU for all new peers registered in this \fBNetManager\fP, will ignores MTU Discovery! 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB311\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.NatPunchEnabled = false"
+
+.PP
+Enable nat punch messages 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB195\fP 번째 라인에서 정의되었습니다\&.
+.SS "readonly \fBNatPunchModule\fP FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.NatPunchModule"
+
+.PP
+\fBNatPunchModule\fP for NAT hole punching operations 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB286\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.PingInterval = 1000"
+
+.PP
+Interval for latency detection and checking connection 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB205\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.ReconnectDelay = 500"
+
+.PP
+Delay between initial connection attempts 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB261\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.ReuseAddress = false"
+
+.PP
+Enables socket option 'ReuseAddress' for specific purposes 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB271\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SimulateLatency = false"
+
+.PP
+Simulate latency by holding packets for random time\&. (Works only in DEBUG mode) 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB221\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SimulatePacketLoss = false"
+
+.PP
+Simulate packet loss by dropping random amount of packets\&. (Works only in DEBUG mode) 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB216\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SimulationMaxLatency = 100"
+
+.PP
+Maximum simulated latency 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB236\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SimulationMinLatency = 30"
+
+.PP
+Minimum simulated latency 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB231\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.SimulationPacketLossChance = 10"
+
+.PP
+Chance of packet loss when simulation enabled\&. value in percents (1 - 100)\&. 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB226\fP 번째 라인에서 정의되었습니다\&.
+.SS "readonly \fBNetStatistics\fP FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.Statistics"
+
+.PP
+Statistics of all connections 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB276\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.UnconnectedMessagesEnabled = false"
+
+.PP
+Enable messages receiving without connection\&. (with SendUnconnectedMessage method) 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB190\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.UnsyncedDeliveryEvent = false"
+
+.PP
+If true - delivery event will be called from 'receive' thread immediately otherwise on PollEvents call 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB251\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.UnsyncedEvents = false"
+
+.PP
+Events automatically will be called without PollEvents method from another thread 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB241\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.UnsyncedReceiveEvent = false"
+
+.PP
+If true - receive event will be called from 'receive' thread immediately otherwise on PollEvents call 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB246\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.UpdateTime = 15"
+
+.PP
+Library logic update and send period in milliseconds 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB200\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.UseSafeMtu = false"
+
+.PP
+Sets initial MTU to lowest possible value according to RFC1191 (576 bytes) 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB316\fP 번째 라인에서 정의되었습니다\&.
+.SH "속성 문서화"
+.PP 
+.SS "byte FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.ChannelsCount\fC [get]\fP, \fC [set]\fP"
+
+.PP
+QoS channel count per message type (value must be between 1 and 64 channels) 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB334\fP 번째 라인에서 정의되었습니다\&.
+.SS "List<\fBNetPeer\fP> FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.ConnectedPeerList\fC [get]\fP"
+
+.PP
+Returns connected peers list (with internal cached list) 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB348\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.ConnectedPeersCount\fC [get]\fP"
+
+.PP
+Returns connected peers count 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB370\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.ExtraPacketSizeForLayer\fC [get]\fP"
+
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB372\fP 번째 라인에서 정의되었습니다\&.
+.SS "\fBNetPeer\fP FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.FirstPeer\fC [get]\fP"
+
+.PP
+First peer\&. Useful for Client mode 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB321\fP 번째 라인에서 정의되었습니다\&.
+.SS "bool FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.IsRunning\fC [get]\fP"
+
+.PP
+Returns true if socket listening and update thread is running 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB291\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetManager\&.LocalPort\fC [get]\fP"
+
+.PP
+Local EndPoint (host and port) 
+.PP
+\fBNetManager\&.cs\fP 파일의 \fB296\fP 번째 라인에서 정의되었습니다\&.
+
+.SH "작성자"
+.PP 
+소스 코드로부터 Unity 3D Game Doxygen를 위해 Doxygen에 의해 자동으로 생성됨\&.

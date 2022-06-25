@@ -1,0 +1,139 @@
+\hypertarget{_connection_request_8cs_source}{}\doxysection{Connection\+Request.\+cs}
+\label{_connection_request_8cs_source}\index{Assets/ConsolePro/Remote/LiteNetLib/ConnectionRequest.cs@{Assets/ConsolePro/Remote/LiteNetLib/ConnectionRequest.cs}}
+\mbox{\hyperlink{_connection_request_8cs}{이 파일의 문서화 페이지로 가기}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00001}00001 \textcolor{keyword}{using }System.Net;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00002}00002 \textcolor{keyword}{using }System.Threading;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00003}00003 \textcolor{keyword}{using }\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils}{FlyingWormConsole3.LiteNetLib.Utils}};}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00005}00005 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib}{FlyingWormConsole3.LiteNetLib}}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00006}00006 \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00007}00007     \textcolor{keyword}{internal} \textcolor{keyword}{enum} ConnectionRequestResult}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00008}00008     \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00009}00009         None,}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00010}00010         Accept,}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00011}00011         Reject,}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00012}00012         RejectForce}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00013}00013     \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00015}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request}{00015}}     \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request}{ConnectionRequest}}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00016}00016     \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00017}00017         \textcolor{keyword}{private} readonly \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}} \_listener;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00018}00018         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_used;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00020}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a0a4e442cd1cc1392ce4cbf96b154a7fd}{00020}}         \textcolor{keyword}{public} readonly \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{NetDataReader}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a0a4e442cd1cc1392ce4cbf96b154a7fd}{Data}};}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00022}00022         \textcolor{keyword}{internal} ConnectionRequestResult Result \{ \textcolor{keyword}{get}; \textcolor{keyword}{private} \textcolor{keyword}{set}; \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00023}00023         \textcolor{keyword}{internal} \textcolor{keywordtype}{long} ConnectionTime;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00024}00024         \textcolor{keyword}{internal} \textcolor{keywordtype}{byte} ConnectionNumber;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00025}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a35ce40df31d24257877387f2875f0770}{00025}}         \textcolor{keyword}{public} readonly IPEndPoint \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a35ce40df31d24257877387f2875f0770}{RemoteEndPoint}};}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00027}00027         \textcolor{keyword}{private} \textcolor{keywordtype}{bool} TryActivate()}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00028}00028         \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00029}00029             \textcolor{keywordflow}{return} Interlocked.CompareExchange(ref \_used, 1, 0) == 0;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00030}00030         \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00032}00032         \textcolor{keyword}{internal} \textcolor{keywordtype}{void} UpdateRequest(NetConnectRequestPacket connRequest)}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00033}00033         \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00034}00034             \textcolor{keywordflow}{if} (connRequest.ConnectionTime >= ConnectionTime)}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00035}00035             \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00036}00036                 ConnectionTime = connRequest.ConnectionTime;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00037}00037                 ConnectionNumber = connRequest.ConnectionNumber;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00038}00038             \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00039}00039         \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00041}00041         \textcolor{keyword}{internal} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request}{ConnectionRequest}}(}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00042}00042             \textcolor{keywordtype}{long} connectionId,}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00043}00043             \textcolor{keywordtype}{byte} connectionNumber,}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00044}00044             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{NetDataReader}} netDataReader,}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00045}00045             IPEndPoint endPoint,}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00046}00046             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}} listener)}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00047}00047         \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00048}00048             ConnectionTime = connectionId;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00049}00049             ConnectionNumber = connectionNumber;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00050}00050             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a35ce40df31d24257877387f2875f0770}{RemoteEndPoint}} = endPoint;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00051}00051             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a0a4e442cd1cc1392ce4cbf96b154a7fd}{Data}} = netDataReader;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00052}00052             \_listener = listener;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00053}00053         \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00055}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a22adaa58d5799232c9d0a08b43d2fc59}{00055}}         \textcolor{keyword}{public} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{NetPeer}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a22adaa58d5799232c9d0a08b43d2fc59}{AcceptIfKey}}(\textcolor{keywordtype}{string} key)}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00056}00056         \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00057}00057             \textcolor{keywordflow}{if} (!TryActivate())}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00058}00058                 \textcolor{keywordflow}{return} \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00059}00059             \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00060}00060             \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00061}00061                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a0a4e442cd1cc1392ce4cbf96b154a7fd}{Data}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader_ac7f1372ea8da1c8d60641dd82e06f12e}{GetString}}() == key)}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00062}00062                     Result = ConnectionRequestResult.Accept;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00063}00063             \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00064}00064             \textcolor{keywordflow}{catch}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00065}00065             \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00066}00066                 NetDebug.WriteError(\textcolor{stringliteral}{"{}[AC] Invalid incoming data"{}});}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00067}00067             \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00068}00068             \textcolor{keywordflow}{if} (Result == ConnectionRequestResult.Accept)}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00069}00069                 \textcolor{keywordflow}{return} \_listener.OnConnectionSolved(\textcolor{keyword}{this}, \textcolor{keyword}{null}, 0, 0);}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00071}00071             Result = ConnectionRequestResult.Reject;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00072}00072             \_listener.OnConnectionSolved(\textcolor{keyword}{this}, \textcolor{keyword}{null}, 0, 0);}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00073}00073             \textcolor{keywordflow}{return} \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00074}00074         \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00080}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a88c7f451581fbd11a15d4cfd2542d147}{00080}}         \textcolor{keyword}{public} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{NetPeer}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a88c7f451581fbd11a15d4cfd2542d147}{Accept}}()}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00081}00081         \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00082}00082             \textcolor{keywordflow}{if} (!TryActivate())}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00083}00083                 \textcolor{keywordflow}{return} \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00084}00084             Result = ConnectionRequestResult.Accept;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00085}00085             \textcolor{keywordflow}{return} \_listener.OnConnectionSolved(\textcolor{keyword}{this}, \textcolor{keyword}{null}, 0, 0);}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00086}00086         \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00087}00087         }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00088}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a929a6f916434507c9dea5fca9807901d}{00088}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a929a6f916434507c9dea5fca9807901d}{Reject}}(\textcolor{keywordtype}{byte}[] rejectData, \textcolor{keywordtype}{int} start, \textcolor{keywordtype}{int} length, \textcolor{keywordtype}{bool} force)}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00089}00089         \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00090}00090             \textcolor{keywordflow}{if} (!TryActivate())}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00091}00091                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00092}00092             Result = force ? ConnectionRequestResult.RejectForce : ConnectionRequestResult.Reject;}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00093}00093             \_listener.OnConnectionSolved(\textcolor{keyword}{this}, rejectData, start, length);}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00094}00094         \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00096}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_ac4d14978d0d7770cfcb9f421c2cd2ae8}{00096}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_ac4d14978d0d7770cfcb9f421c2cd2ae8}{Reject}}(\textcolor{keywordtype}{byte}[] rejectData, \textcolor{keywordtype}{int} start, \textcolor{keywordtype}{int} length)}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00097}00097         \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00098}00098             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a50033c07c4d916515d4f6a7d0311dc77}{Reject}}(rejectData, start, length, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00099}00099         \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00102}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a09f0d41e50a25d62c3a2d693f7460d74}{00102}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a09f0d41e50a25d62c3a2d693f7460d74}{RejectForce}}(\textcolor{keywordtype}{byte}[] rejectData, \textcolor{keywordtype}{int} start, \textcolor{keywordtype}{int} length)}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00103}00103         \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00104}00104             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a50033c07c4d916515d4f6a7d0311dc77}{Reject}}(rejectData, start, length, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00105}00105         \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00107}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_aba0cc2c634264bae0b74cedb23468461}{00107}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_aba0cc2c634264bae0b74cedb23468461}{RejectForce}}()}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00108}00108         \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00109}00109             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a50033c07c4d916515d4f6a7d0311dc77}{Reject}}(\textcolor{keyword}{null}, 0, 0, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00110}00110         \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00111}00111 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00112}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a02cef074e4719205a24dd3265025fb26}{00112}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a02cef074e4719205a24dd3265025fb26}{RejectForce}}(\textcolor{keywordtype}{byte}[] rejectData)}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00113}00113         \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00114}00114             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a50033c07c4d916515d4f6a7d0311dc77}{Reject}}(rejectData, 0, rejectData.Length, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00115}00115         \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00117}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a81b980825df155388bf93e6ff38dcb06}{00117}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a81b980825df155388bf93e6ff38dcb06}{RejectForce}}(\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{NetDataWriter}} rejectData)}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00118}00118         \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00119}00119             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a50033c07c4d916515d4f6a7d0311dc77}{Reject}}(rejectData.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer_a5110c012d61a2d205eb3c61835acb278}{Data}}, 0, rejectData.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer_a7b8cf217eff327183d292a07f06bea23}{Length}}, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00120}00120         \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00122}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a50033c07c4d916515d4f6a7d0311dc77}{00122}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a50033c07c4d916515d4f6a7d0311dc77}{Reject}}()}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00123}00123         \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00124}00124             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a50033c07c4d916515d4f6a7d0311dc77}{Reject}}(\textcolor{keyword}{null}, 0, 0, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00125}00125         \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00126}00126 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00127}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_ab168b4bb57fde604e90119499cbf6a4a}{00127}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_ab168b4bb57fde604e90119499cbf6a4a}{Reject}}(\textcolor{keywordtype}{byte}[] rejectData)}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00128}00128         \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00129}00129             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a50033c07c4d916515d4f6a7d0311dc77}{Reject}}(rejectData, 0, rejectData.Length, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00130}00130         \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00132}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a3586b10643e8b5d55eee7a8dfd32c438}{00132}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a3586b10643e8b5d55eee7a8dfd32c438}{Reject}}(\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{NetDataWriter}} rejectData)}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00133}00133         \{}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00134}00134             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request_a50033c07c4d916515d4f6a7d0311dc77}{Reject}}(rejectData.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer_a5110c012d61a2d205eb3c61835acb278}{Data}}, 0, rejectData.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer_a7b8cf217eff327183d292a07f06bea23}{Length}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00135}00135         \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00136}00136     \}}
+\DoxyCodeLine{\Hypertarget{_connection_request_8cs_source_l00137}00137 \}}
+
+\end{DoxyCode}

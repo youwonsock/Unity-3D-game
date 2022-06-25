@@ -1,0 +1,109 @@
+\hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils}{}\doxysection{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils 네임스페이스 참조}
+\label{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils}\index{FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}}
+\doxysubsection*{클래스}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries CRC32C}
+\item 
+class {\bfseries Fast\+Bit\+Converter}
+\item 
+interface \mbox{\hyperlink{interface_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_i_net_serializable}{INet\+Serializable}}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_invalid_type_exception}{Invalid\+Type\+Exception}}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_packet_processor}{Net\+Packet\+Processor}}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer}{Net\+Serializer}}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_ntp_packet}{Ntp\+Packet}}
+\begin{DoxyCompactList}\small\item\em Represents RFC4330 SNTP packet used for communication to and from a network time server. \end{DoxyCompactList}\item 
+class {\bfseries Ntp\+Request}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_parse_exception}{Parse\+Exception}}
+\end{DoxyCompactItemize}
+\doxysubsection*{열거형 타입}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799}{Ntp\+Leap\+Indicator}} \{ \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799aefd3a8032a01df4c142afa3fe873d481}{No\+Warning}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799ab3c5f821f6f2ddefdf457b387060b764}{Last\+Minute\+Has61\+Seconds}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799a7c2b881a9c6359c1a10f887eff8ac09f}{Last\+Minute\+Has59\+Seconds}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799afba462f268c7c476a867191b8074811f}{Alarm\+Condition}}
+ \}
+\begin{DoxyCompactList}\small\item\em Represents leap second warning from the server that instructs the client to add or remove leap second. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_afab00f53721ff895100fa40f2af62b7d}{Ntp\+Mode}} \{ \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_afab00f53721ff895100fa40f2af62b7da577d7068826de925ea2aec01dbadf5e4}{Client}} = 3
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_afab00f53721ff895100fa40f2af62b7da9aa1b03934893d7134a660af4204f2a9}{Server}} = 4
+ \}
+\begin{DoxyCompactList}\small\item\em Describes SNTP packet mode, i.\+e. client or server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{열거형 타입 문서화}
+\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799}\label{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}!NtpLeapIndicator@{NtpLeapIndicator}}
+\index{NtpLeapIndicator@{NtpLeapIndicator}!FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}}
+\doxysubsubsection{\texorpdfstring{NtpLeapIndicator}{NtpLeapIndicator}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799}{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Ntp\+Leap\+Indicator}}}
+
+
+
+Represents leap second warning from the server that instructs the client to add or remove leap second. 
+
+\begin{DoxySeeAlso}{참고}
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_ntp_packet_ae886465aeb634646ac918072f8609ae1}{Ntp\+Packet.\+Leap\+Indicator}}
+
+
+\end{DoxySeeAlso}
+\begin{DoxyEnumFields}{열거형 멤버}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NoWarning@{NoWarning}!FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}}\index{FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}!NoWarning@{NoWarning}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799aefd3a8032a01df4c142afa3fe873d481}\label{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799aefd3a8032a01df4c142afa3fe873d481}} 
+No\+Warning&No leap second warning. No action required. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LastMinuteHas61Seconds@{LastMinuteHas61Seconds}!FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}}\index{FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}!LastMinuteHas61Seconds@{LastMinuteHas61Seconds}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799ab3c5f821f6f2ddefdf457b387060b764}\label{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799ab3c5f821f6f2ddefdf457b387060b764}} 
+Last\+Minute\+Has61\+Seconds&Warns the client that the last minute of the current day has 61 seconds. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LastMinuteHas59Seconds@{LastMinuteHas59Seconds}!FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}}\index{FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}!LastMinuteHas59Seconds@{LastMinuteHas59Seconds}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799a7c2b881a9c6359c1a10f887eff8ac09f}\label{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799a7c2b881a9c6359c1a10f887eff8ac09f}} 
+Last\+Minute\+Has59\+Seconds&Warns the client that the last minute of the current day has 59 seconds. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AlarmCondition@{AlarmCondition}!FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}}\index{FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}!AlarmCondition@{AlarmCondition}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799afba462f268c7c476a867191b8074811f}\label{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_a6a2bd2dfcd20c396028e48b56ebc5799afba462f268c7c476a867191b8074811f}} 
+Alarm\+Condition&Special value indicating that the server clock is unsynchronized and the returned time is unreliable. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\mbox{\hyperlink{_ntp_packet_8cs_source}{Ntp\+Packet.\+cs}} 파일의 \mbox{\hyperlink{_ntp_packet_8cs_source_l00387}{387}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_afab00f53721ff895100fa40f2af62b7d}\label{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_afab00f53721ff895100fa40f2af62b7d}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}!NtpMode@{NtpMode}}
+\index{NtpMode@{NtpMode}!FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}}
+\doxysubsubsection{\texorpdfstring{NtpMode}{NtpMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_afab00f53721ff895100fa40f2af62b7d}{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Ntp\+Mode}}}
+
+
+
+Describes SNTP packet mode, i.\+e. client or server. 
+
+\begin{DoxySeeAlso}{참고}
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_ntp_packet_a45ff3633afead3aeae270bd9b7679d61}{Ntp\+Packet.\+Mode}}
+
+
+\end{DoxySeeAlso}
+\begin{DoxyEnumFields}{열거형 멤버}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Client@{Client}!FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}}\index{FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}!Client@{Client}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_afab00f53721ff895100fa40f2af62b7da577d7068826de925ea2aec01dbadf5e4}\label{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_afab00f53721ff895100fa40f2af62b7da577d7068826de925ea2aec01dbadf5e4}} 
+Client&Identifies client-\/to-\/server SNTP packet. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Server@{Server}!FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}}\index{FlyingWormConsole3.LiteNetLib.Utils@{FlyingWormConsole3.LiteNetLib.Utils}!Server@{Server}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_afab00f53721ff895100fa40f2af62b7da9aa1b03934893d7134a660af4204f2a9}\label{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils_afab00f53721ff895100fa40f2af62b7da9aa1b03934893d7134a660af4204f2a9}} 
+Server&Identifies server-\/to-\/client SNTP packet. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\mbox{\hyperlink{_ntp_packet_8cs_source}{Ntp\+Packet.\+cs}} 파일의 \mbox{\hyperlink{_ntp_packet_8cs_source_l00414}{414}} 번째 라인에서 정의되었습니다.
+

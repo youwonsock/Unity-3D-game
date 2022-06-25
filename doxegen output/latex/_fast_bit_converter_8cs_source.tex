@@ -1,0 +1,124 @@
+\hypertarget{_fast_bit_converter_8cs_source}{}\doxysection{Fast\+Bit\+Converter.\+cs}
+\label{_fast_bit_converter_8cs_source}\index{Assets/ConsolePro/Remote/LiteNetLib/Utils/FastBitConverter.cs@{Assets/ConsolePro/Remote/LiteNetLib/Utils/FastBitConverter.cs}}
+\mbox{\hyperlink{_fast_bit_converter_8cs}{이 파일의 문서화 페이지로 가기}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00001}00001 \textcolor{keyword}{using }System.Runtime.InteropServices;}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00003}00003 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils}{FlyingWormConsole3.LiteNetLib.Utils}}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00004}00004 \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00005}00005     \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keyword}{class }FastBitConverter}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00006}00006     \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00007}00007         [StructLayout(LayoutKind.Explicit)]}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00008}00008         \textcolor{keyword}{private} \textcolor{keyword}{struct }ConverterHelperDouble}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00009}00009         \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00010}00010             [FieldOffset(0)]}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00011}00011             \textcolor{keyword}{public} ulong Along;}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00013}00013             [FieldOffset(0)]}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00014}00014             \textcolor{keyword}{public} \textcolor{keywordtype}{double} Adouble;}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00015}00015         \}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00017}00017         [StructLayout(LayoutKind.Explicit)]}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00018}00018         \textcolor{keyword}{private} \textcolor{keyword}{struct }ConverterHelperFloat}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00019}00019         \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00020}00020             [FieldOffset(0)]}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00021}00021             \textcolor{keyword}{public} \textcolor{keywordtype}{int} Aint;}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00023}00023             [FieldOffset(0)]}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00024}00024             \textcolor{keyword}{public} \textcolor{keywordtype}{float} Afloat;}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00025}00025         \}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00027}00027         \textcolor{keyword}{private} \textcolor{keyword}{static} \textcolor{keywordtype}{void} WriteLittleEndian(\textcolor{keywordtype}{byte}[] buffer, \textcolor{keywordtype}{int} offset, ulong data)}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00028}00028         \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00029}00029 \textcolor{preprocessor}{\#if BIGENDIAN}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00030}00030             buffer[offset + 7] = (byte)(data);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00031}00031             buffer[offset + 6] = (byte)(data >> 8);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00032}00032             buffer[offset + 5] = (byte)(data >> 16);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00033}00033             buffer[offset + 4] = (byte)(data >> 24);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00034}00034             buffer[offset + 3] = (byte)(data >> 32);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00035}00035             buffer[offset + 2] = (byte)(data >> 40);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00036}00036             buffer[offset + 1] = (byte)(data >> 48);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00037}00037             buffer[offset    ] = (byte)(data >> 56);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00038}00038 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00039}00039             buffer[offset] = (byte)(data);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00040}00040             buffer[offset + 1] = (byte)(data >> 8);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00041}00041             buffer[offset + 2] = (byte)(data >> 16);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00042}00042             buffer[offset + 3] = (byte)(data >> 24);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00043}00043             buffer[offset + 4] = (byte)(data >> 32);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00044}00044             buffer[offset + 5] = (byte)(data >> 40);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00045}00045             buffer[offset + 6] = (byte)(data >> 48);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00046}00046             buffer[offset + 7] = (byte)(data >> 56);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00047}00047 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00048}00048         \}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00050}00050         \textcolor{keyword}{private} \textcolor{keyword}{static} \textcolor{keywordtype}{void} WriteLittleEndian(\textcolor{keywordtype}{byte}[] buffer, \textcolor{keywordtype}{int} offset, \textcolor{keywordtype}{int} data)}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00051}00051         \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00052}00052 \textcolor{preprocessor}{\#if BIGENDIAN}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00053}00053             buffer[offset + 3] = (byte)(data);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00054}00054             buffer[offset + 2] = (byte)(data >> 8);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00055}00055             buffer[offset + 1] = (byte)(data >> 16);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00056}00056             buffer[offset    ] = (byte)(data >> 24);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00057}00057 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00058}00058             buffer[offset] = (byte)(data);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00059}00059             buffer[offset + 1] = (byte)(data >> 8);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00060}00060             buffer[offset + 2] = (byte)(data >> 16);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00061}00061             buffer[offset + 3] = (byte)(data >> 24);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00062}00062 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00063}00063         \}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00065}00065         \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keywordtype}{void} WriteLittleEndian(\textcolor{keywordtype}{byte}[] buffer, \textcolor{keywordtype}{int} offset, \textcolor{keywordtype}{short} data)}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00066}00066         \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00067}00067 \textcolor{preprocessor}{\#if BIGENDIAN}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00068}00068             buffer[offset + 1] = (byte)(data);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00069}00069             buffer[offset    ] = (byte)(data >> 8);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00070}00070 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00071}00071             buffer[offset] = (byte)(data);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00072}00072             buffer[offset + 1] = (byte)(data >> 8);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00073}00073 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00074}00074         \}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00076}00076         \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keywordtype}{void} GetBytes(\textcolor{keywordtype}{byte}[] bytes, \textcolor{keywordtype}{int} startIndex, \textcolor{keywordtype}{double} value)}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00077}00077         \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00078}00078             ConverterHelperDouble ch = \textcolor{keyword}{new} ConverterHelperDouble \{ Adouble = value \};}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00079}00079             WriteLittleEndian(bytes, startIndex, ch.Along);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00080}00080         \}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00082}00082         \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keywordtype}{void} GetBytes(\textcolor{keywordtype}{byte}[] bytes, \textcolor{keywordtype}{int} startIndex, \textcolor{keywordtype}{float} value)}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00083}00083         \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00084}00084             ConverterHelperFloat ch = \textcolor{keyword}{new} ConverterHelperFloat \{ Afloat = value \};}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00085}00085             WriteLittleEndian(bytes, startIndex, ch.Aint);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00086}00086         \}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00088}00088         \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keywordtype}{void} GetBytes(\textcolor{keywordtype}{byte}[] bytes, \textcolor{keywordtype}{int} startIndex, \textcolor{keywordtype}{short} value)}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00089}00089         \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00090}00090             WriteLittleEndian(bytes, startIndex, value);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00091}00091         \}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00093}00093         \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keywordtype}{void} GetBytes(\textcolor{keywordtype}{byte}[] bytes, \textcolor{keywordtype}{int} startIndex, ushort value)}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00094}00094         \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00095}00095             WriteLittleEndian(bytes, startIndex, (\textcolor{keywordtype}{short})value);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00096}00096         \}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00098}00098         \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keywordtype}{void} GetBytes(\textcolor{keywordtype}{byte}[] bytes, \textcolor{keywordtype}{int} startIndex, \textcolor{keywordtype}{int} value)}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00099}00099         \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00100}00100             WriteLittleEndian(bytes, startIndex, value);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00101}00101         \}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00103}00103         \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keywordtype}{void} GetBytes(\textcolor{keywordtype}{byte}[] bytes, \textcolor{keywordtype}{int} startIndex, uint value)}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00104}00104         \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00105}00105             WriteLittleEndian(bytes, startIndex, (\textcolor{keywordtype}{int})value);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00106}00106         \}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00108}00108         \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keywordtype}{void} GetBytes(\textcolor{keywordtype}{byte}[] bytes, \textcolor{keywordtype}{int} startIndex, \textcolor{keywordtype}{long} value)}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00109}00109         \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00110}00110             WriteLittleEndian(bytes, startIndex, (ulong)value);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00111}00111         \}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00113}00113         \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keywordtype}{void} GetBytes(\textcolor{keywordtype}{byte}[] bytes, \textcolor{keywordtype}{int} startIndex, ulong value)}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00114}00114         \{}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00115}00115             WriteLittleEndian(bytes, startIndex, value);}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00116}00116         \}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00117}00117     \}}
+\DoxyCodeLine{\Hypertarget{_fast_bit_converter_8cs_source_l00118}00118 \}}
+
+\end{DoxyCode}

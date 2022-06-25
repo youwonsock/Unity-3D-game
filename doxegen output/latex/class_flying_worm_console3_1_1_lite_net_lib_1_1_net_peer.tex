@@ -1,0 +1,605 @@
+\hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{}\doxysection{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer 클래스 참조}
+\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+
+
+Network peer. Main purpose is sending messages to specific peer.  
+
+
+\doxysubsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a2a7a5516f307edb7223d36dc88ac9449}{Get\+Packets\+Count\+In\+Reliable\+Queue}} (byte channel\+Number, bool ordered)
+\begin{DoxyCompactList}\small\item\em Returns packets count in queue for reliable channel \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a824fcbd5f13cb3e5e891e69e23f14c1c}{Get\+Max\+Single\+Packet\+Size}} (\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options)
+\begin{DoxyCompactList}\small\item\em Gets maximum size of packet that will be not fragmented. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab41fb5e4e307769dd0a6bc0fcd1be5e4}{Send\+With\+Delivery\+Event}} (byte\mbox{[}$\,$\mbox{]} data, byte channel\+Number, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} delivery\+Method, object user\+Data)
+\begin{DoxyCompactList}\small\item\em Send data to peer with delivery event called \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a550a28c93b8c401659aeb4d49e0703e7}{Send\+With\+Delivery\+Event}} (byte\mbox{[}$\,$\mbox{]} data, int start, int length, byte channel\+Number, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} delivery\+Method, object user\+Data)
+\begin{DoxyCompactList}\small\item\em Send data to peer with delivery event called \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a93ab7537c1edf7848bb7d0b0d2f73d3d}{Send\+With\+Delivery\+Event}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} data\+Writer, byte channel\+Number, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} delivery\+Method, object user\+Data)
+\begin{DoxyCompactList}\small\item\em Send data to peer with delivery event called \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a3adca4396cc1b8c97b067ac640e149dd}{Send}} (byte\mbox{[}$\,$\mbox{]} data, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} delivery\+Method)
+\begin{DoxyCompactList}\small\item\em Send data to peer (channel -\/ 0) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a3c4f43bcb15cf819f99ea1ef32f158d1}{Send}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} data\+Writer, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} delivery\+Method)
+\begin{DoxyCompactList}\small\item\em Send data to peer (channel -\/ 0) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a7df05ed7cca9d5763f1c5bb77cd5306e}{Send}} (byte\mbox{[}$\,$\mbox{]} data, int start, int length, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options)
+\begin{DoxyCompactList}\small\item\em Send data to peer (channel -\/ 0) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a1c5f794c310e5b076b7f6f17627efd42}{Send}} (byte\mbox{[}$\,$\mbox{]} data, byte channel\+Number, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} delivery\+Method)
+\begin{DoxyCompactList}\small\item\em Send data to peer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae2dd1179386300c4007095573ca86b72}{Send}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} data\+Writer, byte channel\+Number, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} delivery\+Method)
+\begin{DoxyCompactList}\small\item\em Send data to peer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ac77d5f40c3ddc2aa5349bd37532c75e6}{Send}} (byte\mbox{[}$\,$\mbox{]} data, int start, int length, byte channel\+Number, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} delivery\+Method)
+\begin{DoxyCompactList}\small\item\em Send data to peer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab0d1b02a418ed31f3bc7c6557952b589}{Disconnect}} (byte\mbox{[}$\,$\mbox{]} data)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a05e4207d2e6ddc363113d711f9b81420}{Disconnect}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} writer)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a5728d091b94fd01d22398413136cefba}{Disconnect}} (byte\mbox{[}$\,$\mbox{]} data, int start, int count)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a35780b8c55541cd48c68702ef16b42aa}{Disconnect}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 속성}
+\begin{DoxyCompactItemize}
+\item 
+readonly IPEnd\+Point \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{End\+Point}}
+\begin{DoxyCompactList}\small\item\em Peer ip address and port \end{DoxyCompactList}\item 
+readonly \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab5fe59fe523190a938fdb79562d85f7b}{Net\+Manager}}
+\begin{DoxyCompactList}\small\item\em Peer parent \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} \end{DoxyCompactList}\item 
+readonly int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_acf6563874ed477638e44fc77f3299f0f}{Id}}
+\begin{DoxyCompactList}\small\item\em Peer id can be used as key in your dictionary of peers \end{DoxyCompactList}\item 
+object \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a0fa2e8388fdcca292c70eb0b93a2ea56}{Tag}}
+\begin{DoxyCompactList}\small\item\em Application defined object containing data about the connection \end{DoxyCompactList}\item 
+readonly \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_statistics}{Net\+Statistics}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_abd2070e63ffd5b35b14ea42a0cdf7959}{Statistics}}
+\begin{DoxyCompactList}\small\item\em Statistics of peer connection \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{속성}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{Connection\+State}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a6af440de96961ed6e565d834aa4c92b5}{Connection\+State}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Current connection state \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_afeff04b1c5afe1798cb6ca87c0e46092}{Ping}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Current ping in milliseconds \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a18e002547bec53dae3ce02ebe4314d7a}{Mtu}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Current MTU -\/ Maximum Transfer Unit ( maximum udp packet size without fragmentation ) \end{DoxyCompactList}\item 
+long \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a78fc67f75cfaadac5eee8da3c9829c99}{Remote\+Time\+Delta}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Delta with remote time in ticks (not accurate) positive -\/ remote time \texorpdfstring{$>$}{>} our time \end{DoxyCompactList}\item 
+Date\+Time \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a1fcfd0f686f9dd6dddcb990b8ba6cad2}{Remote\+Utc\+Time}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Remote UTC time (not accurate) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a444dfb30740ca6bf8b6b459d8caef54d}{Time\+Since\+Last\+Packet}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Time since last packet received (including internal library packets) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{상세한 설명}
+Network peer. Main purpose is sending messages to specific peer. 
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00051}{51}} 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a35780b8c55541cd48c68702ef16b42aa}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a35780b8c55541cd48c68702ef16b42aa}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Disconnect@{Disconnect}}
+\index{Disconnect@{Disconnect}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Disconnect()}{Disconnect()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00609}{609}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab0d1b02a418ed31f3bc7c6557952b589}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab0d1b02a418ed31f3bc7c6557952b589}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Disconnect@{Disconnect}}
+\index{Disconnect@{Disconnect}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Disconnect()}{Disconnect()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Disconnect (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00594}{594}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a5728d091b94fd01d22398413136cefba}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a5728d091b94fd01d22398413136cefba}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Disconnect@{Disconnect}}
+\index{Disconnect@{Disconnect}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Disconnect()}{Disconnect()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Disconnect (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{int}]{start,  }\item[{int}]{count }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00604}{604}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a05e4207d2e6ddc363113d711f9b81420}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a05e4207d2e6ddc363113d711f9b81420}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Disconnect@{Disconnect}}
+\index{Disconnect@{Disconnect}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Disconnect()}{Disconnect()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Disconnect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{writer }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00599}{599}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a824fcbd5f13cb3e5e891e69e23f14c1c}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a824fcbd5f13cb3e5e891e69e23f14c1c}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!GetMaxSinglePacketSize@{GetMaxSinglePacketSize}}
+\index{GetMaxSinglePacketSize@{GetMaxSinglePacketSize}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{GetMaxSinglePacketSize()}{GetMaxSinglePacketSize()}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Get\+Max\+Single\+Packet\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options }\end{DoxyParamCaption})}
+
+
+
+Gets maximum size of packet that will be not fragmented. 
+
+
+\begin{DoxyParams}{매개변수}
+{\em options} & Type of packet that you want send\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+size in bytes
+\end{DoxyReturn}
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00347}{347}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a2a7a5516f307edb7223d36dc88ac9449}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a2a7a5516f307edb7223d36dc88ac9449}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!GetPacketsCountInReliableQueue@{GetPacketsCountInReliableQueue}}
+\index{GetPacketsCountInReliableQueue@{GetPacketsCountInReliableQueue}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{GetPacketsCountInReliableQueue()}{GetPacketsCountInReliableQueue()}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Get\+Packets\+Count\+In\+Reliable\+Queue (\begin{DoxyParamCaption}\item[{byte}]{channel\+Number,  }\item[{bool}]{ordered }\end{DoxyParamCaption})}
+
+
+
+Returns packets count in queue for reliable channel 
+
+
+\begin{DoxyParams}{매개변수}
+{\em channel\+Number} & number of channel 0-\/63\\
+\hline
+{\em ordered} & type of channel Reliable\+Ordered or Reliable\+Unordered\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+packets count in channel queue
+\end{DoxyReturn}
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00245}{245}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a1c5f794c310e5b076b7f6f17627efd42}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a1c5f794c310e5b076b7f6f17627efd42}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Send@{Send}}
+\index{Send@{Send}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Send()}{Send()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Send (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{byte}]{channel\+Number,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{delivery\+Method }\end{DoxyParamCaption})}
+
+
+
+Send data to peer 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data\\
+\hline
+{\em channel\+Number} & Number of channel (from 0 to channels\+Count -\/ 1)\\
+\hline
+{\em delivery\+Method} & Send options (reliable, unreliable, etc.)\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_too_big_packet_exception}{Too\+Big\+Packet\+Exception}}} & If size exceeds maximum limit\+:\\
+\hline
+\end{DoxyExceptions}
+MTU -\/ header\+Size bytes for Unreliable
+
+Fragment count exceeded ushort.\+Max\+Value
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00463}{463}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a3adca4396cc1b8c97b067ac640e149dd}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a3adca4396cc1b8c97b067ac640e149dd}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Send@{Send}}
+\index{Send@{Send}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Send()}{Send()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Send (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{delivery\+Method }\end{DoxyParamCaption})}
+
+
+
+Send data to peer (channel -\/ 0) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data\\
+\hline
+{\em delivery\+Method} & Send options (reliable, unreliable, etc.)\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_too_big_packet_exception}{Too\+Big\+Packet\+Exception}}} & If size exceeds maximum limit\+:\\
+\hline
+\end{DoxyExceptions}
+MTU -\/ header\+Size bytes for Unreliable
+
+Fragment count exceeded ushort.\+Max\+Value
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00415}{415}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ac77d5f40c3ddc2aa5349bd37532c75e6}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ac77d5f40c3ddc2aa5349bd37532c75e6}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Send@{Send}}
+\index{Send@{Send}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Send()}{Send()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Send (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{int}]{start,  }\item[{int}]{length,  }\item[{byte}]{channel\+Number,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{delivery\+Method }\end{DoxyParamCaption})}
+
+
+
+Send data to peer 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data\\
+\hline
+{\em start} & Start of data\\
+\hline
+{\em length} & Length of data\\
+\hline
+{\em channel\+Number} & Number of channel (from 0 to channels\+Count -\/ 1)\\
+\hline
+{\em delivery\+Method} & Delivery method (reliable, unreliable, etc.)\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_too_big_packet_exception}{Too\+Big\+Packet\+Exception}}} & If size exceeds maximum limit\+:\\
+\hline
+\end{DoxyExceptions}
+MTU -\/ header\+Size bytes for Unreliable
+
+Fragment count exceeded ushort.\+Max\+Value
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00497}{497}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a7df05ed7cca9d5763f1c5bb77cd5306e}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a7df05ed7cca9d5763f1c5bb77cd5306e}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Send@{Send}}
+\index{Send@{Send}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Send()}{Send()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Send (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{int}]{start,  }\item[{int}]{length,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options }\end{DoxyParamCaption})}
+
+
+
+Send data to peer (channel -\/ 0) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data\\
+\hline
+{\em start} & Start of data\\
+\hline
+{\em length} & Length of data\\
+\hline
+{\em options} & Send options (reliable, unreliable, etc.)\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_too_big_packet_exception}{Too\+Big\+Packet\+Exception}}} & If size exceeds maximum limit\+:\\
+\hline
+\end{DoxyExceptions}
+MTU -\/ header\+Size bytes for Unreliable
+
+Fragment count exceeded ushort.\+Max\+Value
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00447}{447}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae2dd1179386300c4007095573ca86b72}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae2dd1179386300c4007095573ca86b72}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Send@{Send}}
+\index{Send@{Send}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Send()}{Send()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Send (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{data\+Writer,  }\item[{byte}]{channel\+Number,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{delivery\+Method }\end{DoxyParamCaption})}
+
+
+
+Send data to peer 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data\+Writer} & Data\+Writer with data\\
+\hline
+{\em channel\+Number} & Number of channel (from 0 to channels\+Count -\/ 1)\\
+\hline
+{\em delivery\+Method} & Send options (reliable, unreliable, etc.)\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_too_big_packet_exception}{Too\+Big\+Packet\+Exception}}} & If size exceeds maximum limit\+:\\
+\hline
+\end{DoxyExceptions}
+MTU -\/ header\+Size bytes for Unreliable
+
+Fragment count exceeded ushort.\+Max\+Value
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00479}{479}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a3c4f43bcb15cf819f99ea1ef32f158d1}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a3c4f43bcb15cf819f99ea1ef32f158d1}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Send@{Send}}
+\index{Send@{Send}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Send()}{Send()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Send (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{data\+Writer,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{delivery\+Method }\end{DoxyParamCaption})}
+
+
+
+Send data to peer (channel -\/ 0) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data\+Writer} & Data\+Writer with data\\
+\hline
+{\em delivery\+Method} & Send options (reliable, unreliable, etc.)\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_too_big_packet_exception}{Too\+Big\+Packet\+Exception}}} & If size exceeds maximum limit\+:\\
+\hline
+\end{DoxyExceptions}
+MTU -\/ header\+Size bytes for Unreliable
+
+Fragment count exceeded ushort.\+Max\+Value
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00430}{430}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab41fb5e4e307769dd0a6bc0fcd1be5e4}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab41fb5e4e307769dd0a6bc0fcd1be5e4}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!SendWithDeliveryEvent@{SendWithDeliveryEvent}}
+\index{SendWithDeliveryEvent@{SendWithDeliveryEvent}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{SendWithDeliveryEvent()}{SendWithDeliveryEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Send\+With\+Delivery\+Event (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{byte}]{channel\+Number,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{delivery\+Method,  }\item[{object}]{user\+Data }\end{DoxyParamCaption})}
+
+
+
+Send data to peer with delivery event called 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data\\
+\hline
+{\em channel\+Number} & Number of channel (from 0 to channels\+Count -\/ 1)\\
+\hline
+{\em delivery\+Method} & Delivery method (reliable, unreliable, etc.)\\
+\hline
+{\em user\+Data} & User data that will be received in Delivery\+Event\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em Argument\+Exception} & If you trying to send unreliable packet type\\
+\hline
+\end{DoxyExceptions}
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00362}{362}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a550a28c93b8c401659aeb4d49e0703e7}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a550a28c93b8c401659aeb4d49e0703e7}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!SendWithDeliveryEvent@{SendWithDeliveryEvent}}
+\index{SendWithDeliveryEvent@{SendWithDeliveryEvent}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{SendWithDeliveryEvent()}{SendWithDeliveryEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Send\+With\+Delivery\+Event (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{int}]{start,  }\item[{int}]{length,  }\item[{byte}]{channel\+Number,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{delivery\+Method,  }\item[{object}]{user\+Data }\end{DoxyParamCaption})}
+
+
+
+Send data to peer with delivery event called 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data\\
+\hline
+{\em start} & Start of data\\
+\hline
+{\em length} & Length of data\\
+\hline
+{\em channel\+Number} & Number of channel (from 0 to channels\+Count -\/ 1)\\
+\hline
+{\em delivery\+Method} & Delivery method (reliable, unreliable, etc.)\\
+\hline
+{\em user\+Data} & User data that will be received in Delivery\+Event\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em Argument\+Exception} & If you trying to send unreliable packet type\\
+\hline
+\end{DoxyExceptions}
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00381}{381}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a93ab7537c1edf7848bb7d0b0d2f73d3d}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a93ab7537c1edf7848bb7d0b0d2f73d3d}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!SendWithDeliveryEvent@{SendWithDeliveryEvent}}
+\index{SendWithDeliveryEvent@{SendWithDeliveryEvent}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{SendWithDeliveryEvent()}{SendWithDeliveryEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Send\+With\+Delivery\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{data\+Writer,  }\item[{byte}]{channel\+Number,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{delivery\+Method,  }\item[{object}]{user\+Data }\end{DoxyParamCaption})}
+
+
+
+Send data to peer with delivery event called 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data\+Writer} & Data\\
+\hline
+{\em channel\+Number} & Number of channel (from 0 to channels\+Count -\/ 1)\\
+\hline
+{\em delivery\+Method} & Delivery method (reliable, unreliable, etc.)\\
+\hline
+{\em user\+Data} & User data that will be received in Delivery\+Event\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em Argument\+Exception} & If you trying to send unreliable packet type\\
+\hline
+\end{DoxyExceptions}
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00398}{398}} 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!EndPoint@{EndPoint}}
+\index{EndPoint@{EndPoint}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{EndPoint}{EndPoint}}
+{\footnotesize\ttfamily readonly IPEnd\+Point Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+End\+Point}
+
+
+
+Peer ip address and port 
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00132}{132}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_acf6563874ed477638e44fc77f3299f0f}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_acf6563874ed477638e44fc77f3299f0f}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Id@{Id}}
+\index{Id@{Id}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Id}{Id}}
+{\footnotesize\ttfamily readonly int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Id}
+
+
+
+Peer id can be used as key in your dictionary of peers 
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00152}{152}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab5fe59fe523190a938fdb79562d85f7b}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab5fe59fe523190a938fdb79562d85f7b}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!NetManager@{NetManager}}
+\index{NetManager@{NetManager}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{NetManager}{NetManager}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Net\+Manager}
+
+
+
+Peer parent \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} 
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00137}{137}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_abd2070e63ffd5b35b14ea42a0cdf7959}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_abd2070e63ffd5b35b14ea42a0cdf7959}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Statistics@{Statistics}}
+\index{Statistics@{Statistics}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Statistics}{Statistics}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_statistics}{Net\+Statistics}} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Statistics}
+
+
+
+Statistics of peer connection 
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00196}{196}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a0fa2e8388fdcca292c70eb0b93a2ea56}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a0fa2e8388fdcca292c70eb0b93a2ea56}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Tag@{Tag}}
+\index{Tag@{Tag}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Tag}{Tag}}
+{\footnotesize\ttfamily object Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Tag}
+
+
+
+Application defined object containing data about the connection 
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00191}{191}} 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{속성 문서화}
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a6af440de96961ed6e565d834aa4c92b5}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a6af440de96961ed6e565d834aa4c92b5}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!ConnectionState@{ConnectionState}}
+\index{ConnectionState@{ConnectionState}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{ConnectionState}{ConnectionState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{Connection\+State}} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Connection\+State\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Current connection state 
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00142}{142}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a18e002547bec53dae3ce02ebe4314d7a}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a18e002547bec53dae3ce02ebe4314d7a}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Mtu@{Mtu}}
+\index{Mtu@{Mtu}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Mtu}{Mtu}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Mtu\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Current MTU -\/ Maximum Transfer Unit ( maximum udp packet size without fragmentation ) 
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00162}{162}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_afeff04b1c5afe1798cb6ca87c0e46092}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_afeff04b1c5afe1798cb6ca87c0e46092}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!Ping@{Ping}}
+\index{Ping@{Ping}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{Ping}{Ping}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Ping\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Current ping in milliseconds 
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00157}{157}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a78fc67f75cfaadac5eee8da3c9829c99}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a78fc67f75cfaadac5eee8da3c9829c99}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!RemoteTimeDelta@{RemoteTimeDelta}}
+\index{RemoteTimeDelta@{RemoteTimeDelta}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{RemoteTimeDelta}{RemoteTimeDelta}}
+{\footnotesize\ttfamily long Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Remote\+Time\+Delta\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Delta with remote time in ticks (not accurate) positive -\/ remote time \texorpdfstring{$>$}{>} our time 
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00168}{168}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a1fcfd0f686f9dd6dddcb990b8ba6cad2}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a1fcfd0f686f9dd6dddcb990b8ba6cad2}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!RemoteUtcTime@{RemoteUtcTime}}
+\index{RemoteUtcTime@{RemoteUtcTime}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{RemoteUtcTime}{RemoteUtcTime}}
+{\footnotesize\ttfamily Date\+Time Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Remote\+Utc\+Time\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Remote UTC time (not accurate) 
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00176}{176}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a444dfb30740ca6bf8b6b459d8caef54d}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a444dfb30740ca6bf8b6b459d8caef54d}} 
+\index{FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}!TimeSinceLastPacket@{TimeSinceLastPacket}}
+\index{TimeSinceLastPacket@{TimeSinceLastPacket}!FlyingWormConsole3.LiteNetLib.NetPeer@{FlyingWormConsole3.LiteNetLib.NetPeer}}
+\doxysubsubsection{\texorpdfstring{TimeSinceLastPacket}{TimeSinceLastPacket}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Peer.\+Time\+Since\+Last\+Packet\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Time since last packet received (including internal library packets) 
+
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00184}{184}} 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Console\+Pro/\+Remote/\+Lite\+Net\+Lib/\mbox{\hyperlink{_net_peer_8cs}{Net\+Peer.\+cs}}\end{DoxyCompactItemize}

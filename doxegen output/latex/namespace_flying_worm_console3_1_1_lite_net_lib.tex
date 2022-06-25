@@ -1,0 +1,388 @@
+\hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib}{}\doxysection{Flying\+Worm\+Console3.\+Lite\+Net\+Lib 네임스페이스 참조}
+\label{namespace_flying_worm_console3_1_1_lite_net_lib}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}
+\doxysubsection*{네임스페이스}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_layers}{Layers}}
+\item 
+namespace \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils}{Utils}}
+\end{DoxyCompactItemize}
+\doxysubsection*{클래스}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Base\+Channel}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request}{Connection\+Request}}
+\item 
+struct \mbox{\hyperlink{struct_flying_worm_console3_1_1_lite_net_lib_1_1_disconnect_info}{Disconnect\+Info}}
+\begin{DoxyCompactList}\small\item\em Additional information about disconnection \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_event_based_nat_punch_listener}{Event\+Based\+Nat\+Punch\+Listener}}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_event_based_net_listener}{Event\+Based\+Net\+Listener}}
+\item 
+interface \mbox{\hyperlink{interface_flying_worm_console3_1_1_lite_net_lib_1_1_i_delivery_event_listener}{IDelivery\+Event\+Listener}}
+\item 
+interface \mbox{\hyperlink{interface_flying_worm_console3_1_1_lite_net_lib_1_1_i_nat_punch_listener}{INat\+Punch\+Listener}}
+\item 
+interface \mbox{\hyperlink{interface_flying_worm_console3_1_1_lite_net_lib_1_1_i_net_event_listener}{INet\+Event\+Listener}}
+\item 
+interface \mbox{\hyperlink{interface_flying_worm_console3_1_1_lite_net_lib_1_1_i_net_logger}{INet\+Logger}}
+\begin{DoxyCompactList}\small\item\em Interface to implement for your own logger \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_flying_worm_console3_1_1_lite_net_lib_1_1_i_ntp_event_listener}{INtp\+Event\+Listener}}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_invalid_packet_exception}{Invalid\+Packet\+Exception}}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_nat_punch_module}{Nat\+Punch\+Module}}
+\begin{DoxyCompactList}\small\item\em Module for UDP NAT Hole punching operations. Can be accessed from \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} \end{DoxyCompactList}\item 
+class {\bfseries Net\+Connect\+Accept\+Packet}
+\item 
+class {\bfseries Net\+Connect\+Request\+Packet}
+\item 
+class {\bfseries Net\+Constants}
+\begin{DoxyCompactList}\small\item\em Network constants. Can be tuned from sources for your purposes. \end{DoxyCompactList}\item 
+class {\bfseries Net\+Debug}
+\begin{DoxyCompactList}\small\item\em Static class for defining your own \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib}{Lite\+Net\+Lib}} logger instead of Console.\+Write\+Line or Debug.\+Log if compiled with UNITY flag \end{DoxyCompactList}\item 
+class {\bfseries Net\+Event}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}}
+\begin{DoxyCompactList}\small\item\em Main class for all network operations. Can be used as client and/or server. \end{DoxyCompactList}\item 
+class {\bfseries Net\+Packet}
+\item 
+class {\bfseries Net\+Packet\+Pool}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_packet_reader}{Net\+Packet\+Reader}}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}
+\begin{DoxyCompactList}\small\item\em Network peer. Main purpose is sending messages to specific peer. \end{DoxyCompactList}\item 
+class {\bfseries Net\+Socket}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_statistics}{Net\+Statistics}}
+\item 
+class {\bfseries Net\+Utils}
+\begin{DoxyCompactList}\small\item\em Some specific network utilities \end{DoxyCompactList}\item 
+class {\bfseries Reliable\+Channel}
+\item 
+class {\bfseries Sequenced\+Channel}
+\item 
+class \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_too_big_packet_exception}{Too\+Big\+Packet\+Exception}}
+\end{DoxyCompactItemize}
+\doxysubsection*{열거형 타입}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ae4d99df70a94589ae7dc78f7d6b97a30}{Unconnected\+Message\+Type}} \{ \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ae4d99df70a94589ae7dc78f7d6b97a30a5e0550a8f565626e8336f4c42fac49a7}{Basic\+Message}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ae4d99df70a94589ae7dc78f7d6b97a30abe55b6387170df0ca68f41225268e842}{Broadcast}}
+ \}
+\begin{DoxyCompactList}\small\item\em Type of message that you receive in On\+Network\+Receive\+Unconnected event \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5}{Disconnect\+Reason}} \{ \newline
+\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5aaf98071f760be899f4fcf1d53a29ba17}{Connection\+Failed}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5ac85a251cc457840f1e032f1b733e9398}{Timeout}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a882d49d85bb782b3450e57004fd8e10d}{Host\+Unreachable}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a77c67a4c8e6768deafb51aaed893a456}{Network\+Unreachable}}
+, \newline
+\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a20cf11b8c5f966d196fd689f0c69f43b}{Remote\+Connection\+Close}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5aa61dcba5979e976c9eb605a3d8f61072}{Disconnect\+Peer\+Called}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5afb35ac6d1d4142e44d615d7cc11a92a2}{Connection\+Rejected}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5af89a9bf93d188fd156ac21ac3e1407eb}{Invalid\+Protocol}}
+, \newline
+\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a16197bb812b7d6026066b8f75776d75a}{Unknown\+Host}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a880b8461cba2e295e1828be8d6eedb0a}{Reconnect}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a4e4db445703497f2df34bfb2c89d9e96}{Peer\+To\+Peer\+Connection}}
+ \}
+\begin{DoxyCompactList}\small\item\em Disconnect reason that you receive in On\+Peer\+Disconnected event \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ab92f248e15886bbbb19d85973e784a29}{Nat\+Address\+Type}} \{ \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ab92f248e15886bbbb19d85973e784a29aafbf0897a5a83fdd873dfb032ec695d3}{Internal}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ab92f248e15886bbbb19d85973e784a29ab206a1b4ea1097761f78e8876f6da779}{External}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} \+: byte \{ \newline
+\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1a98a19ff88f463baefac152f8641dea36}{Unreliable}} = 4
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1ad07984f3c4d7dc421047ab828c82f3b0}{Reliable\+Unordered}} = 0
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1a0febc4cbe8cbd5b92bcff649f6242189}{Sequenced}} = 1
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1a8825768e3616ff95776145393ffe6342}{Reliable\+Ordered}} = 2
+, \newline
+\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1aa25b4716d07fb494b14935199e3ac370}{Reliable\+Sequenced}} = 3
+ \}
+\begin{DoxyCompactList}\small\item\em Sending method type \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0c}{Net\+Log\+Level}} \{ \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0ca0eaadb4fcb48a0a0ed7bc9868be9fbaa}{Warning}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0ca902b0d55fddef6f8d651fe1035b7d4bd}{Error}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0cadd4ec0ac4e58f7c32a01244ae91150b1}{Trace}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0ca4059b0251f66a18cb56f544728796875}{Info}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4}{IPv6\+Mode}} \{ \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4ab9f5c797ebbf55adccdd8539a65a0241}{Disabled}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4a9e412a29fb971bb342ba56d00f903ca3}{Separate\+Socket}}
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4a223e5f2361e608dc07f949bf5c1599f6}{Dual\+Mode}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{Connection\+State}} \+: byte \{ \newline
+\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83dae60340c5328bd1bdc50cd8f3efd83c88}{Outgoing}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83da2ec0d16e4ca169baedb9b2d50ec5c6d7}{Connected}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83dae229f6b6e80b62db3f70f076f87fa48a}{Shutdown\+Requested}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83daef70e46fd3bbc21e3e1f0b6815e750c0}{Disconnected}} = 1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4
+, \newline
+\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83daed36a1ef76a59ee3f15180e0441188ad}{Any}} = Outgoing $\vert$ Connected $\vert$ Shutdown\+Requested
+ \}
+\begin{DoxyCompactList}\small\item\em Peer connection state \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_adbb068acf21e5a88ee52dc76d8dc2c05}{Local\+Addr\+Type}} \{ \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_adbb068acf21e5a88ee52dc76d8dc2c05a42a9137a05a60eb752dcdf982e717626}{IPv4}} = 1
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_adbb068acf21e5a88ee52dc76d8dc2c05afdb7cb8f657426e7c409bfd6d1a36ce4}{IPv6}} = 2
+, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_adbb068acf21e5a88ee52dc76d8dc2c05ab1c94ca2fbc3e78fc30069c8d0f01680}{All}} = IPv4 $\vert$ IPv6
+ \}
+\begin{DoxyCompactList}\small\item\em Address type that you want to receive from Net\+Utils.\+Get\+Local\+Ip method \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{열거형 타입 문서화}
+\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}} 
+\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!ConnectionState@{ConnectionState}}
+\index{ConnectionState@{ConnectionState}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}
+\doxysubsubsection{\texorpdfstring{ConnectionState}{ConnectionState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Connection\+State}} \+: byte}
+
+
+
+Peer connection state 
+
+\begin{DoxyEnumFields}{열거형 멤버}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Outgoing@{Outgoing}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Outgoing@{Outgoing}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83dae60340c5328bd1bdc50cd8f3efd83c88}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83dae60340c5328bd1bdc50cd8f3efd83c88}} 
+Outgoing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Connected@{Connected}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Connected@{Connected}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83da2ec0d16e4ca169baedb9b2d50ec5c6d7}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83da2ec0d16e4ca169baedb9b2d50ec5c6d7}} 
+Connected&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ShutdownRequested@{ShutdownRequested}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!ShutdownRequested@{ShutdownRequested}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83dae229f6b6e80b62db3f70f076f87fa48a}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83dae229f6b6e80b62db3f70f076f87fa48a}} 
+Shutdown\+Requested&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Disconnected@{Disconnected}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Disconnected@{Disconnected}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83daef70e46fd3bbc21e3e1f0b6815e750c0}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83daef70e46fd3bbc21e3e1f0b6815e750c0}} 
+Disconnected&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Any@{Any}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Any@{Any}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83daed36a1ef76a59ee3f15180e0441188ad}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83daed36a1ef76a59ee3f15180e0441188ad}} 
+Any&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\mbox{\hyperlink{_net_peer_8cs_source}{Net\+Peer.\+cs}} 파일의 \mbox{\hyperlink{_net_peer_8cs_source_l00017}{17}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}\label{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}} 
+\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!DeliveryMethod@{DeliveryMethod}}
+\index{DeliveryMethod@{DeliveryMethod}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}
+\doxysubsubsection{\texorpdfstring{DeliveryMethod}{DeliveryMethod}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Delivery\+Method}} \+: byte}
+
+
+
+Sending method type 
+
+\begin{DoxyEnumFields}{열거형 멤버}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unreliable@{Unreliable}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Unreliable@{Unreliable}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1a98a19ff88f463baefac152f8641dea36}\label{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1a98a19ff88f463baefac152f8641dea36}} 
+Unreliable&Unreliable. Packets can be dropped, can be duplicated, can arrive without order. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ReliableUnordered@{ReliableUnordered}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!ReliableUnordered@{ReliableUnordered}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1ad07984f3c4d7dc421047ab828c82f3b0}\label{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1ad07984f3c4d7dc421047ab828c82f3b0}} 
+Reliable\+Unordered&Reliable. Packets won\textquotesingle{}t be dropped, won\textquotesingle{}t be duplicated, can arrive without order. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Sequenced@{Sequenced}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Sequenced@{Sequenced}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1a0febc4cbe8cbd5b92bcff649f6242189}\label{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1a0febc4cbe8cbd5b92bcff649f6242189}} 
+Sequenced&Unreliable. Packets can be dropped, won\textquotesingle{}t be duplicated, will arrive in order. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ReliableOrdered@{ReliableOrdered}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!ReliableOrdered@{ReliableOrdered}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1a8825768e3616ff95776145393ffe6342}\label{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1a8825768e3616ff95776145393ffe6342}} 
+Reliable\+Ordered&Reliable and ordered. Packets won\textquotesingle{}t be dropped, won\textquotesingle{}t be duplicated, will arrive in order. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ReliableSequenced@{ReliableSequenced}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!ReliableSequenced@{ReliableSequenced}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1aa25b4716d07fb494b14935199e3ac370}\label{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1aa25b4716d07fb494b14935199e3ac370}} 
+Reliable\+Sequenced&Reliable only last packet. Packets can be dropped (except the last one), won\textquotesingle{}t be duplicated, will arrive in order. Cannot be fragmented \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\mbox{\hyperlink{_net_constants_8cs_source}{Net\+Constants.\+cs}} 파일의 \mbox{\hyperlink{_net_constants_8cs_source_l00006}{6}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5}} 
+\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!DisconnectReason@{DisconnectReason}}
+\index{DisconnectReason@{DisconnectReason}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}
+\doxysubsubsection{\texorpdfstring{DisconnectReason}{DisconnectReason}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5}{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Disconnect\+Reason}}}
+
+
+
+Disconnect reason that you receive in On\+Peer\+Disconnected event 
+
+\begin{DoxyEnumFields}{열거형 멤버}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ConnectionFailed@{ConnectionFailed}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!ConnectionFailed@{ConnectionFailed}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5aaf98071f760be899f4fcf1d53a29ba17}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5aaf98071f760be899f4fcf1d53a29ba17}} 
+Connection\+Failed&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Timeout@{Timeout}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Timeout@{Timeout}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5ac85a251cc457840f1e032f1b733e9398}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5ac85a251cc457840f1e032f1b733e9398}} 
+Timeout&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HostUnreachable@{HostUnreachable}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!HostUnreachable@{HostUnreachable}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a882d49d85bb782b3450e57004fd8e10d}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a882d49d85bb782b3450e57004fd8e10d}} 
+Host\+Unreachable&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NetworkUnreachable@{NetworkUnreachable}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!NetworkUnreachable@{NetworkUnreachable}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a77c67a4c8e6768deafb51aaed893a456}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a77c67a4c8e6768deafb51aaed893a456}} 
+Network\+Unreachable&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RemoteConnectionClose@{RemoteConnectionClose}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!RemoteConnectionClose@{RemoteConnectionClose}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a20cf11b8c5f966d196fd689f0c69f43b}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a20cf11b8c5f966d196fd689f0c69f43b}} 
+Remote\+Connection\+Close&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DisconnectPeerCalled@{DisconnectPeerCalled}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!DisconnectPeerCalled@{DisconnectPeerCalled}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5aa61dcba5979e976c9eb605a3d8f61072}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5aa61dcba5979e976c9eb605a3d8f61072}} 
+Disconnect\+Peer\+Called&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ConnectionRejected@{ConnectionRejected}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!ConnectionRejected@{ConnectionRejected}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5afb35ac6d1d4142e44d615d7cc11a92a2}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5afb35ac6d1d4142e44d615d7cc11a92a2}} 
+Connection\+Rejected&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{InvalidProtocol@{InvalidProtocol}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!InvalidProtocol@{InvalidProtocol}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5af89a9bf93d188fd156ac21ac3e1407eb}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5af89a9bf93d188fd156ac21ac3e1407eb}} 
+Invalid\+Protocol&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UnknownHost@{UnknownHost}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!UnknownHost@{UnknownHost}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a16197bb812b7d6026066b8f75776d75a}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a16197bb812b7d6026066b8f75776d75a}} 
+Unknown\+Host&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Reconnect@{Reconnect}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Reconnect@{Reconnect}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a880b8461cba2e295e1828be8d6eedb0a}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a880b8461cba2e295e1828be8d6eedb0a}} 
+Reconnect&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PeerToPeerConnection@{PeerToPeerConnection}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!PeerToPeerConnection@{PeerToPeerConnection}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a4e4db445703497f2df34bfb2c89d9e96}\label{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5a4e4db445703497f2df34bfb2c89d9e96}} 
+Peer\+To\+Peer\+Connection&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\mbox{\hyperlink{_i_net_event_listener_8cs_source}{INet\+Event\+Listener.\+cs}} 파일의 \mbox{\hyperlink{_i_net_event_listener_8cs_source_l00019}{19}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4}} 
+\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!IPv6Mode@{IPv6Mode}}
+\index{IPv6Mode@{IPv6Mode}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}
+\doxysubsubsection{\texorpdfstring{IPv6Mode}{IPv6Mode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4}{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+IPv6\+Mode}}}
+
+\begin{DoxyEnumFields}{열거형 멤버}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Disabled@{Disabled}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Disabled@{Disabled}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4ab9f5c797ebbf55adccdd8539a65a0241}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4ab9f5c797ebbf55adccdd8539a65a0241}} 
+Disabled&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SeparateSocket@{SeparateSocket}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!SeparateSocket@{SeparateSocket}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4a9e412a29fb971bb342ba56d00f903ca3}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4a9e412a29fb971bb342ba56d00f903ca3}} 
+Separate\+Socket&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DualMode@{DualMode}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!DualMode@{DualMode}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4a223e5f2361e608dc07f949bf5c1599f6}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4a223e5f2361e608dc07f949bf5c1599f6}} 
+Dual\+Mode&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00013}{13}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_adbb068acf21e5a88ee52dc76d8dc2c05}\label{namespace_flying_worm_console3_1_1_lite_net_lib_adbb068acf21e5a88ee52dc76d8dc2c05}} 
+\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!LocalAddrType@{LocalAddrType}}
+\index{LocalAddrType@{LocalAddrType}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}
+\doxysubsubsection{\texorpdfstring{LocalAddrType}{LocalAddrType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_adbb068acf21e5a88ee52dc76d8dc2c05}{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Local\+Addr\+Type}}}
+
+
+
+Address type that you want to receive from Net\+Utils.\+Get\+Local\+Ip method 
+
+\begin{DoxyEnumFields}{열거형 멤버}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IPv4@{IPv4}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!IPv4@{IPv4}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_adbb068acf21e5a88ee52dc76d8dc2c05a42a9137a05a60eb752dcdf982e717626}\label{namespace_flying_worm_console3_1_1_lite_net_lib_adbb068acf21e5a88ee52dc76d8dc2c05a42a9137a05a60eb752dcdf982e717626}} 
+IPv4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IPv6@{IPv6}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!IPv6@{IPv6}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_adbb068acf21e5a88ee52dc76d8dc2c05afdb7cb8f657426e7c409bfd6d1a36ce4}\label{namespace_flying_worm_console3_1_1_lite_net_lib_adbb068acf21e5a88ee52dc76d8dc2c05afdb7cb8f657426e7c409bfd6d1a36ce4}} 
+IPv6&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{All@{All}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!All@{All}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_adbb068acf21e5a88ee52dc76d8dc2c05ab1c94ca2fbc3e78fc30069c8d0f01680}\label{namespace_flying_worm_console3_1_1_lite_net_lib_adbb068acf21e5a88ee52dc76d8dc2c05ab1c94ca2fbc3e78fc30069c8d0f01680}} 
+All&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\mbox{\hyperlink{_net_utils_8cs_source}{Net\+Utils.\+cs}} 파일의 \mbox{\hyperlink{_net_utils_8cs_source_l00013}{13}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ab92f248e15886bbbb19d85973e784a29}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ab92f248e15886bbbb19d85973e784a29}} 
+\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!NatAddressType@{NatAddressType}}
+\index{NatAddressType@{NatAddressType}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}
+\doxysubsubsection{\texorpdfstring{NatAddressType}{NatAddressType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ab92f248e15886bbbb19d85973e784a29}{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Nat\+Address\+Type}}}
+
+\begin{DoxyEnumFields}{열거형 멤버}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Internal@{Internal}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Internal@{Internal}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ab92f248e15886bbbb19d85973e784a29aafbf0897a5a83fdd873dfb032ec695d3}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ab92f248e15886bbbb19d85973e784a29aafbf0897a5a83fdd873dfb032ec695d3}} 
+Internal&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{External@{External}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!External@{External}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ab92f248e15886bbbb19d85973e784a29ab206a1b4ea1097761f78e8876f6da779}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ab92f248e15886bbbb19d85973e784a29ab206a1b4ea1097761f78e8876f6da779}} 
+External&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\mbox{\hyperlink{_nat_punch_module_8cs_source}{Nat\+Punch\+Module.\+cs}} 파일의 \mbox{\hyperlink{_nat_punch_module_8cs_source_l00008}{8}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0c}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0c}} 
+\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!NetLogLevel@{NetLogLevel}}
+\index{NetLogLevel@{NetLogLevel}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}
+\doxysubsubsection{\texorpdfstring{NetLogLevel}{NetLogLevel}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0c}{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Log\+Level}}}
+
+\begin{DoxyEnumFields}{열거형 멤버}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Warning@{Warning}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Warning@{Warning}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0ca0eaadb4fcb48a0a0ed7bc9868be9fbaa}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0ca0eaadb4fcb48a0a0ed7bc9868be9fbaa}} 
+Warning&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Error@{Error}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Error@{Error}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0ca902b0d55fddef6f8d651fe1035b7d4bd}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0ca902b0d55fddef6f8d651fe1035b7d4bd}} 
+Error&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Trace@{Trace}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Trace@{Trace}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0cadd4ec0ac4e58f7c32a01244ae91150b1}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0cadd4ec0ac4e58f7c32a01244ae91150b1}} 
+Trace&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Info@{Info}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Info@{Info}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0ca4059b0251f66a18cb56f544728796875}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0ca4059b0251f66a18cb56f544728796875}} 
+Info&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\mbox{\hyperlink{_net_debug_8cs_source}{Net\+Debug.\+cs}} 파일의 \mbox{\hyperlink{_net_debug_8cs_source_l00020}{20}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ae4d99df70a94589ae7dc78f7d6b97a30}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ae4d99df70a94589ae7dc78f7d6b97a30}} 
+\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!UnconnectedMessageType@{UnconnectedMessageType}}
+\index{UnconnectedMessageType@{UnconnectedMessageType}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}
+\doxysubsubsection{\texorpdfstring{UnconnectedMessageType}{UnconnectedMessageType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ae4d99df70a94589ae7dc78f7d6b97a30}{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Unconnected\+Message\+Type}}}
+
+
+
+Type of message that you receive in On\+Network\+Receive\+Unconnected event 
+
+\begin{DoxyEnumFields}{열거형 멤버}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BasicMessage@{BasicMessage}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!BasicMessage@{BasicMessage}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ae4d99df70a94589ae7dc78f7d6b97a30a5e0550a8f565626e8336f4c42fac49a7}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ae4d99df70a94589ae7dc78f7d6b97a30a5e0550a8f565626e8336f4c42fac49a7}} 
+Basic\+Message&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Broadcast@{Broadcast}!FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}}\index{FlyingWormConsole3.LiteNetLib@{FlyingWormConsole3.LiteNetLib}!Broadcast@{Broadcast}}}\mbox{\Hypertarget{namespace_flying_worm_console3_1_1_lite_net_lib_ae4d99df70a94589ae7dc78f7d6b97a30abe55b6387170df0ca68f41225268e842}\label{namespace_flying_worm_console3_1_1_lite_net_lib_ae4d99df70a94589ae7dc78f7d6b97a30abe55b6387170df0ca68f41225268e842}} 
+Broadcast&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\mbox{\hyperlink{_i_net_event_listener_8cs_source}{INet\+Event\+Listener.\+cs}} 파일의 \mbox{\hyperlink{_i_net_event_listener_8cs_source_l00010}{10}} 번째 라인에서 정의되었습니다.
+

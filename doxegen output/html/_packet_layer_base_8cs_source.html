@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Unity 3D Game Doxygen: Assets/ConsolePro/Remote/LiteNetLib/Layers/PacketLayerBase.cs 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Unity 3D Game Doxygen<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">3D game made by unity</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'검색','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_packet_layer_base_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">PacketLayerBase.cs</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_packet_layer_base_8cs.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>System.Net;</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_flying_worm_console3_1_1_lite_net_lib_1_1_layers.html">FlyingWormConsole3.LiteNetLib.Layers</a></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>{</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html">    5</a></span>    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code hl_class" href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html">PacketLayerBase</a></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    {</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html#a85a75bcb1ab446c71accf947049f266a">    7</a></span>        <span class="keyword">public</span> readonly <span class="keywordtype">int</span> <a class="code hl_variable" href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html#a85a75bcb1ab446c71accf947049f266a">ExtraPacketSizeForLayer</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html#abf649413b72f3b11156d96d1298e878c">    9</a></span>        <span class="keyword">protected</span> <a class="code hl_function" href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html#abf649413b72f3b11156d96d1298e878c">PacketLayerBase</a>(<span class="keywordtype">int</span> extraPacketSizeForLayer)</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>            <a class="code hl_variable" href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html#a85a75bcb1ab446c71accf947049f266a">ExtraPacketSizeForLayer</a> = extraPacketSizeForLayer;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        }</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html#a56496d9be09b8b952e797969aa890212">   14</a></span>        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html#a56496d9be09b8b952e797969aa890212">ProcessInboundPacket</a>(IPEndPoint endPoint, ref <span class="keywordtype">byte</span>[] data, ref <span class="keywordtype">int</span> offset, ref <span class="keywordtype">int</span> length);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html#afe09fb2fb8730bbb9ca9595d55251dfc">   15</a></span>        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html#afe09fb2fb8730bbb9ca9595d55251dfc">ProcessOutBoundPacket</a>(IPEndPoint endPoint, ref <span class="keywordtype">byte</span>[] data, ref <span class="keywordtype">int</span> offset, ref <span class="keywordtype">int</span> length);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    }</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
+<div class="ttc" id="aclass_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base_html"><div class="ttname"><a href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html">FlyingWormConsole3.LiteNetLib.Layers.PacketLayerBase</a></div><div class="ttdef"><b>Definition:</b> <a href="_packet_layer_base_8cs_source.html#l00005">PacketLayerBase.cs:6</a></div></div>
+<div class="ttc" id="aclass_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base_html_a56496d9be09b8b952e797969aa890212"><div class="ttname"><a href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html#a56496d9be09b8b952e797969aa890212">FlyingWormConsole3.LiteNetLib.Layers.PacketLayerBase.ProcessInboundPacket</a></div><div class="ttdeci">abstract void ProcessInboundPacket(IPEndPoint endPoint, ref byte[] data, ref int offset, ref int length)</div></div>
+<div class="ttc" id="aclass_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base_html_a85a75bcb1ab446c71accf947049f266a"><div class="ttname"><a href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html#a85a75bcb1ab446c71accf947049f266a">FlyingWormConsole3.LiteNetLib.Layers.PacketLayerBase.ExtraPacketSizeForLayer</a></div><div class="ttdeci">readonly int ExtraPacketSizeForLayer</div><div class="ttdef"><b>Definition:</b> <a href="_packet_layer_base_8cs_source.html#l00007">PacketLayerBase.cs:7</a></div></div>
+<div class="ttc" id="aclass_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base_html_abf649413b72f3b11156d96d1298e878c"><div class="ttname"><a href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html#abf649413b72f3b11156d96d1298e878c">FlyingWormConsole3.LiteNetLib.Layers.PacketLayerBase.PacketLayerBase</a></div><div class="ttdeci">PacketLayerBase(int extraPacketSizeForLayer)</div><div class="ttdef"><b>Definition:</b> <a href="_packet_layer_base_8cs_source.html#l00009">PacketLayerBase.cs:9</a></div></div>
+<div class="ttc" id="aclass_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base_html_afe09fb2fb8730bbb9ca9595d55251dfc"><div class="ttname"><a href="class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base.html#afe09fb2fb8730bbb9ca9595d55251dfc">FlyingWormConsole3.LiteNetLib.Layers.PacketLayerBase.ProcessOutBoundPacket</a></div><div class="ttdeci">abstract void ProcessOutBoundPacket(IPEndPoint endPoint, ref byte[] data, ref int offset, ref int length)</div></div>
+<div class="ttc" id="anamespace_flying_worm_console3_1_1_lite_net_lib_1_1_layers_html"><div class="ttname"><a href="namespace_flying_worm_console3_1_1_lite_net_lib_1_1_layers.html">FlyingWormConsole3.LiteNetLib.Layers</a></div><div class="ttdef"><b>Definition:</b> <a href="_crc32c_layer_8cs_source.html#l00005">Crc32cLayer.cs:6</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_54cf7c2ce5250bc598ac20f92a6b1464.html">ConsolePro</a></li><li class="navelem"><a class="el" href="dir_dc45fdccb5e02cfe27d1a85f17752a9b.html">Remote</a></li><li class="navelem"><a class="el" href="dir_9ba7fec62ba5246b151f695ff18b7401.html">LiteNetLib</a></li><li class="navelem"><a class="el" href="dir_8190257c42a76b0b7bca59138abcab8a.html">Layers</a></li><li class="navelem"><a class="el" href="_packet_layer_base_8cs.html">PacketLayerBase.cs</a></li>
+    <li class="footer">다음에 의해 생성됨 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+  </ul>
+</div>
+</body>
+</html>

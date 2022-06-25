@@ -1,0 +1,279 @@
+\hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer}{}\doxysection{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Serializer 클래스 참조}
+\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer}\index{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}}
+\doxysubsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a5a04d30267ebbe53dfaba2a9d91aea78}{Register\+Nested\+Type$<$ T $>$}} ()
+\begin{DoxyCompactList}\small\item\em Register custom property type \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a471bcb3c3d39918eb4cdaf074eef9e26}{Register\+Nested\+Type$<$ T $>$}} (Func$<$ T $>$ constructor)
+\begin{DoxyCompactList}\small\item\em Register custom property type \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a0df8a6862aca360776afcba4ea14f773}{Register\+Nested\+Type$<$ T $>$}} (Action$<$ \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}, T $>$ writer, Func$<$ \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}}, T $>$ reader)
+\begin{DoxyCompactList}\small\item\em Register custom property type \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a4628a001069bb57e284985954bad26ab}{Net\+Serializer}} ()
+\item 
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a3593691244281931222b2f7e333a9304}{Net\+Serializer}} (int max\+String\+Length)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_ae02c326459a1a2b6f1eb25cc1a292bbb}{Register$<$ T $>$}} ()
+\begin{DoxyCompactList}\small\item\em 
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_invalid_type_exception}{Invalid\+Type\+Exception}}} & {\itshape T} \textquotesingle{}s fields are not supported, or it has no fields\\
+\hline
+\end{DoxyExceptions}
+\end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a821570120497981077af7135bdc68c5e}{Deserialize$<$ T $>$}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} reader)
+\begin{DoxyCompactList}\small\item\em Reads packet with known type \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_ae0917f42bfad6e6de72ae06639b8e2bf}{Deserialize$<$ T $>$}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} reader, T target)
+\begin{DoxyCompactList}\small\item\em Reads packet with known type (non alloc variant) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a5637d9570ca6a606ba63f6a11342bdf3}{Serialize$<$ T $>$}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} writer, T obj)
+\begin{DoxyCompactList}\small\item\em Serialize object to \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} (fast) \end{DoxyCompactList}\item 
+byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_afec0ae88e4a5414567c4377567df0542}{Serialize$<$ T $>$}} (T obj)
+\begin{DoxyCompactList}\small\item\em Serialize object to byte array \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{상세한 설명}
+
+
+\mbox{\hyperlink{_net_serializer_8cs_source}{Net\+Serializer.\+cs}} 파일의 \mbox{\hyperlink{_net_serializer_8cs_source_l00019}{19}} 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a4628a001069bb57e284985954bad26ab}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a4628a001069bb57e284985954bad26ab}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}!NetSerializer@{NetSerializer}}
+\index{NetSerializer@{NetSerializer}!FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}}
+\doxysubsubsection{\texorpdfstring{NetSerializer()}{NetSerializer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Serializer.\+Net\+Serializer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{_net_serializer_8cs_source}{Net\+Serializer.\+cs}} 파일의 \mbox{\hyperlink{_net_serializer_8cs_source_l00570}{570}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a3593691244281931222b2f7e333a9304}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a3593691244281931222b2f7e333a9304}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}!NetSerializer@{NetSerializer}}
+\index{NetSerializer@{NetSerializer}!FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}}
+\doxysubsubsection{\texorpdfstring{NetSerializer()}{NetSerializer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Serializer.\+Net\+Serializer (\begin{DoxyParamCaption}\item[{int}]{max\+String\+Length }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{_net_serializer_8cs_source}{Net\+Serializer.\+cs}} 파일의 \mbox{\hyperlink{_net_serializer_8cs_source_l00574}{574}} 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a821570120497981077af7135bdc68c5e}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a821570120497981077af7135bdc68c5e}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}!Deserialize$<$ T $>$@{Deserialize$<$ T $>$}}
+\index{Deserialize$<$ T $>$@{Deserialize$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}}
+\doxysubsubsection{\texorpdfstring{Deserialize$<$ T $>$()}{Deserialize< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily T Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Serializer.\+Deserialize$<$ T $>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}}}]{reader }\end{DoxyParamCaption})}
+
+
+
+Reads packet with known type 
+
+
+\begin{DoxyParams}{매개변수}
+{\em reader} & \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} with packet\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+Returns packet if packet in reader is matched type
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_invalid_type_exception}{Invalid\+Type\+Exception}}} & {\itshape T} \textquotesingle{}s fields are not supported, or it has no fields\\
+\hline
+\end{DoxyExceptions}
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_serializer_8cs_source}{Net\+Serializer.\+cs}} 파일의 \mbox{\hyperlink{_net_serializer_8cs_source_l00686}{686}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_ae0917f42bfad6e6de72ae06639b8e2bf}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_ae0917f42bfad6e6de72ae06639b8e2bf}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}!Deserialize$<$ T $>$@{Deserialize$<$ T $>$}}
+\index{Deserialize$<$ T $>$@{Deserialize$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}}
+\doxysubsubsection{\texorpdfstring{Deserialize$<$ T $>$()}{Deserialize< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Serializer.\+Deserialize$<$ T $>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}}}]{reader,  }\item[{T}]{target }\end{DoxyParamCaption})}
+
+
+
+Reads packet with known type (non alloc variant) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em reader} & \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}} with packet\\
+\hline
+{\em target} & Deserialization target\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+Returns true if packet in reader is matched type
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_invalid_type_exception}{Invalid\+Type\+Exception}}} & {\itshape T} \textquotesingle{}s fields are not supported, or it has no fields\\
+\hline
+\end{DoxyExceptions}
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_serializer_8cs_source}{Net\+Serializer.\+cs}} 파일의 \mbox{\hyperlink{_net_serializer_8cs_source_l00708}{708}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_ae02c326459a1a2b6f1eb25cc1a292bbb}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_ae02c326459a1a2b6f1eb25cc1a292bbb}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}!Register$<$ T $>$@{Register$<$ T $>$}}
+\index{Register$<$ T $>$@{Register$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}}
+\doxysubsubsection{\texorpdfstring{Register$<$ T $>$()}{Register< T >()}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Serializer.\+Register$<$ T $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_invalid_type_exception}{Invalid\+Type\+Exception}}} & {\itshape T} \textquotesingle{}s fields are not supported, or it has no fields\\
+\hline
+\end{DoxyExceptions}
+
+
+
+
+\mbox{\hyperlink{_net_serializer_8cs_source}{Net\+Serializer.\+cs}} 파일의 \mbox{\hyperlink{_net_serializer_8cs_source_l00675}{675}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a5a04d30267ebbe53dfaba2a9d91aea78}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a5a04d30267ebbe53dfaba2a9d91aea78}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}!RegisterNestedType$<$ T $>$@{RegisterNestedType$<$ T $>$}}
+\index{RegisterNestedType$<$ T $>$@{RegisterNestedType$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}}
+\doxysubsubsection{\texorpdfstring{RegisterNestedType$<$ T $>$()}{RegisterNestedType< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Serializer.\+Register\+Nested\+Type$<$ T $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Register custom property type 
+
+
+\begin{DoxyTemplParams}{템플릿 파라메터}
+{\em T} & \mbox{\hyperlink{interface_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_i_net_serializable}{INet\+Serializable}} structure\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em struct}]\item[{\em T} : {\em INet\+Serializable}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_serializer_8cs_source}{Net\+Serializer.\+cs}} 파일의 \mbox{\hyperlink{_net_serializer_8cs_source_l00541}{541}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a0df8a6862aca360776afcba4ea14f773}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a0df8a6862aca360776afcba4ea14f773}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}!RegisterNestedType$<$ T $>$@{RegisterNestedType$<$ T $>$}}
+\index{RegisterNestedType$<$ T $>$@{RegisterNestedType$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}}
+\doxysubsubsection{\texorpdfstring{RegisterNestedType$<$ T $>$()}{RegisterNestedType< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Serializer.\+Register\+Nested\+Type$<$ T $>$ (\begin{DoxyParamCaption}\item[{Action$<$ \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}, T $>$}]{writer,  }\item[{Func$<$ \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_reader}{Net\+Data\+Reader}}, T $>$}]{reader }\end{DoxyParamCaption})}
+
+
+
+Register custom property type 
+
+
+\begin{DoxyTemplParams}{템플릿 파라메터}
+{\em T} & Any packet\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{매개변수}
+{\em writer} & custom type writer\\
+\hline
+{\em reader} & custom type reader\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_serializer_8cs_source}{Net\+Serializer.\+cs}} 파일의 \mbox{\hyperlink{_net_serializer_8cs_source_l00561}{561}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a471bcb3c3d39918eb4cdaf074eef9e26}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a471bcb3c3d39918eb4cdaf074eef9e26}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}!RegisterNestedType$<$ T $>$@{RegisterNestedType$<$ T $>$}}
+\index{RegisterNestedType$<$ T $>$@{RegisterNestedType$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}}
+\doxysubsubsection{\texorpdfstring{RegisterNestedType$<$ T $>$()}{RegisterNestedType< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Serializer.\+Register\+Nested\+Type$<$ T $>$ (\begin{DoxyParamCaption}\item[{Func$<$ T $>$}]{constructor }\end{DoxyParamCaption})}
+
+
+
+Register custom property type 
+
+
+\begin{DoxyTemplParams}{템플릿 파라메터}
+{\em T} & \mbox{\hyperlink{interface_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_i_net_serializable}{INet\+Serializable}} class\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em T} : {\em INet\+Serializable}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_serializer_8cs_source}{Net\+Serializer.\+cs}} 파일의 \mbox{\hyperlink{_net_serializer_8cs_source_l00550}{550}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a5637d9570ca6a606ba63f6a11342bdf3}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_a5637d9570ca6a606ba63f6a11342bdf3}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}!Serialize$<$ T $>$@{Serialize$<$ T $>$}}
+\index{Serialize$<$ T $>$@{Serialize$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}}
+\doxysubsubsection{\texorpdfstring{Serialize$<$ T $>$()}{Serialize< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Serializer.\+Serialize$<$ T $>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{writer,  }\item[{T}]{obj }\end{DoxyParamCaption})}
+
+
+
+Serialize object to \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} (fast) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em writer} & Serialization target \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}\\
+\hline
+{\em obj} & Object to serialize\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{예외}
+{\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_invalid_type_exception}{Invalid\+Type\+Exception}}} & {\itshape T} \textquotesingle{}s fields are not supported, or it has no fields\\
+\hline
+\end{DoxyExceptions}
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_serializer_8cs_source}{Net\+Serializer.\+cs}} 파일의 \mbox{\hyperlink{_net_serializer_8cs_source_l00728}{728}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_afec0ae88e4a5414567c4377567df0542}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_serializer_afec0ae88e4a5414567c4377567df0542}} 
+\index{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}!Serialize$<$ T $>$@{Serialize$<$ T $>$}}
+\index{Serialize$<$ T $>$@{Serialize$<$ T $>$}!FlyingWormConsole3.LiteNetLib.Utils.NetSerializer@{FlyingWormConsole3.LiteNetLib.Utils.NetSerializer}}
+\doxysubsubsection{\texorpdfstring{Serialize$<$ T $>$()}{Serialize< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily byte\mbox{[}$\,$\mbox{]} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Utils.\+Net\+Serializer.\+Serialize$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{obj }\end{DoxyParamCaption})}
+
+
+
+Serialize object to byte array 
+
+
+\begin{DoxyParams}{매개변수}
+{\em obj} & Object to serialize\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+byte array with serialized data
+\end{DoxyReturn}
+\begin{Desc}
+\item[타입 한정자들]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+
+
+\mbox{\hyperlink{_net_serializer_8cs_source}{Net\+Serializer.\+cs}} 파일의 \mbox{\hyperlink{_net_serializer_8cs_source_l00738}{738}} 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Console\+Pro/\+Remote/\+Lite\+Net\+Lib/\+Utils/\mbox{\hyperlink{_net_serializer_8cs}{Net\+Serializer.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,1059 @@
+\hypertarget{_net_peer_8cs_source}{}\doxysection{Net\+Peer.\+cs}
+\label{_net_peer_8cs_source}\index{Assets/ConsolePro/Remote/LiteNetLib/NetPeer.cs@{Assets/ConsolePro/Remote/LiteNetLib/NetPeer.cs}}
+\mbox{\hyperlink{_net_peer_8cs}{이 파일의 문서화 페이지로 가기}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00001}00001 \textcolor{preprocessor}{\#if DEBUG}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00002}00002 \textcolor{preprocessor}{\#define STATS\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00003}00003 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00004}00004 \textcolor{keyword}{using }System;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00005}00005 \textcolor{keyword}{using }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00006}00006 \textcolor{keyword}{using }System.Diagnostics;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00007}00007 \textcolor{keyword}{using }System.Net;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00008}00008 \textcolor{keyword}{using }System.Threading;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00009}00009 \textcolor{keyword}{using }\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_1_1_utils}{FlyingWormConsole3.LiteNetLib.Utils}};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00011}00011 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib}{FlyingWormConsole3.LiteNetLib}}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00012}00012 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00016}00016     [Flags]}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00017}\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{00017}}     \textcolor{keyword}{public} \textcolor{keyword}{enum} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}} : \textcolor{keywordtype}{byte}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00018}00018     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00019}00019         \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83dae60340c5328bd1bdc50cd8f3efd83c88}{Outgoing}}         = 1 << 1,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00020}00020         \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83da2ec0d16e4ca169baedb9b2d50ec5c6d7}{Connected}}         = 1 << 2,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00021}00021         \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83dae229f6b6e80b62db3f70f076f87fa48a}{ShutdownRequested}} = 1 << 3,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00022}00022         \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83daef70e46fd3bbc21e3e1f0b6815e750c0}{Disconnected}}      = 1 << 4,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00023}00023         \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83daed36a1ef76a59ee3f15180e0441188ad}{Any}} = \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83dae60340c5328bd1bdc50cd8f3efd83c88}{Outgoing}} | \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83da2ec0d16e4ca169baedb9b2d50ec5c6d7}{Connected}} | \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83dae229f6b6e80b62db3f70f076f87fa48a}{ShutdownRequested}}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00024}00024     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00026}00026     \textcolor{keyword}{internal} \textcolor{keyword}{enum} ConnectRequestResult}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00027}00027     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00028}00028         None,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00029}00029         P2PLose, \textcolor{comment}{//when peer connecting}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00030}00030         Reconnection,  \textcolor{comment}{//when peer was connected}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00031}00031         NewConnection  \textcolor{comment}{//when peer was disconnected}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00032}00032     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00034}00034     \textcolor{keyword}{internal} \textcolor{keyword}{enum} DisconnectResult}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00035}00035     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00036}00036         None,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00037}00037         Reject,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00038}00038         Disconnect}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00039}00039     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00041}00041     \textcolor{keyword}{internal} \textcolor{keyword}{enum} ShutdownResult}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00042}00042     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00043}00043         None,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00044}00044         Success,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00045}00045         WasConnected}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00046}00046     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00051}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{00051}}     \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{NetPeer}}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00052}00052     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00053}00053         \textcolor{comment}{//Ping and RTT}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00054}00054         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_rtt;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00055}00055         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_avgRtt;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00056}00056         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_rttCount;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00057}00057         \textcolor{keyword}{private} \textcolor{keywordtype}{double} \_resendDelay = 27.0;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00058}00058         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_pingSendTimer;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00059}00059         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_rttResetTimer;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00060}00060         \textcolor{keyword}{private} readonly Stopwatch \_pingTimer = \textcolor{keyword}{new} Stopwatch();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00061}00061         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_timeSinceLastPacket;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00062}00062         \textcolor{keyword}{private} \textcolor{keywordtype}{long} \_remoteDelta;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00064}00064         \textcolor{comment}{//Common            }}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00065}00065         \textcolor{keyword}{private} readonly NetPacketPool \_packetPool;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00066}00066         \textcolor{keyword}{private} readonly \textcolor{keywordtype}{object} \_shutdownLock = \textcolor{keyword}{new} object();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00068}00068         \textcolor{keyword}{internal} \textcolor{keyword}{volatile} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{NetPeer}} NextPeer;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00069}00069         \textcolor{keyword}{internal} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{NetPeer}} PrevPeer;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00071}00071         \textcolor{keyword}{internal} \textcolor{keywordtype}{byte} ConnectionNum}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00072}00072         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00073}00073             \textcolor{keyword}{get} \{ \textcolor{keywordflow}{return} \_connectNum; \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00074}00074             \textcolor{keyword}{private} \textcolor{keyword}{set}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00075}00075             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00076}00076                 \_connectNum = value;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00077}00077                 \_mergeData.ConnectionNumber = value;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00078}00078                 \_pingPacket.ConnectionNumber = value;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00079}00079                 \_pongPacket.ConnectionNumber = value;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00080}00080             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00081}00081         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00082}00082  }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00083}00083         \textcolor{comment}{//Channels}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00084}00084         \textcolor{keyword}{private} readonly Queue<NetPacket> \_unreliableChannel;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00085}00085         \textcolor{keyword}{private} readonly Queue<BaseChannel> \_channelSendQueue;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00086}00086         \textcolor{keyword}{private} readonly BaseChannel[] \_channels;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00088}00088         \textcolor{comment}{//MTU}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00089}00089         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_mtu;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00090}00090         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_mtuIdx;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00091}00091         \textcolor{keyword}{private} \textcolor{keywordtype}{bool} \_finishMtu;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00092}00092         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_mtuCheckTimer;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00093}00093         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_mtuCheckAttempts;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00094}00094         \textcolor{keyword}{private} \textcolor{keyword}{const} \textcolor{keywordtype}{int} MtuCheckDelay = 1000;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00095}00095         \textcolor{keyword}{private} \textcolor{keyword}{const} \textcolor{keywordtype}{int} MaxMtuCheckAttempts = 4;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00096}00096         \textcolor{keyword}{private} readonly \textcolor{keywordtype}{object} \_mtuMutex = \textcolor{keyword}{new} object();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00098}00098         \textcolor{comment}{//Fragment}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00099}00099         \textcolor{keyword}{private} \textcolor{keyword}{class }IncomingFragments}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00100}00100         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00101}00101             \textcolor{keyword}{public} NetPacket[] Fragments;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00102}00102             \textcolor{keyword}{public} \textcolor{keywordtype}{int} ReceivedCount;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00103}00103             \textcolor{keyword}{public} \textcolor{keywordtype}{int} TotalSize;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00104}00104             \textcolor{keyword}{public} \textcolor{keywordtype}{byte} ChannelId;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00105}00105         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00106}00106         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_fragmentId;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00107}00107         \textcolor{keyword}{private} readonly Dictionary<ushort, IncomingFragments> \_holdedFragments;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00108}00108         \textcolor{keyword}{private} readonly Dictionary<ushort, ushort> \_deliveredFragments;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00110}00110         \textcolor{comment}{//Merging}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00111}00111         \textcolor{keyword}{private} readonly NetPacket \_mergeData;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00112}00112         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_mergePos;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00113}00113         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_mergeCount;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00115}00115         \textcolor{comment}{//Connection}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00116}00116         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_connectAttempts;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00117}00117         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_connectTimer;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00118}00118         \textcolor{keyword}{private} \textcolor{keywordtype}{long} \_connectTime;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00119}00119         \textcolor{keyword}{private} \textcolor{keywordtype}{byte} \_connectNum;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00120}00120         \textcolor{keyword}{private} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}} \_connectionState;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00121}00121         \textcolor{keyword}{private} NetPacket \_shutdownPacket;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00122}00122         \textcolor{keyword}{private} \textcolor{keyword}{const} \textcolor{keywordtype}{int} ShutdownDelay = 300;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00123}00123         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_shutdownTimer;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00124}00124         \textcolor{keyword}{private} readonly NetPacket \_pingPacket;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00125}00125         \textcolor{keyword}{private} readonly NetPacket \_pongPacket;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00126}00126         \textcolor{keyword}{private} readonly NetPacket \_connectRequestPacket;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00127}00127         \textcolor{keyword}{private} readonly NetPacket \_connectAcceptPacket;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00128}00128 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00132}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{00132}}         \textcolor{keyword}{public} readonly IPEndPoint \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00137}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab5fe59fe523190a938fdb79562d85f7b}{00137}}         \textcolor{keyword}{public} readonly \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab5fe59fe523190a938fdb79562d85f7b}{NetManager}};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00142}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a6af440de96961ed6e565d834aa4c92b5}{00142}}         \textcolor{keyword}{public} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}} \{ \textcolor{keyword}{get} \{ \textcolor{keywordflow}{return} \_connectionState; \} \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00147}00147         \textcolor{keyword}{internal} \textcolor{keywordtype}{long} ConnectTime \{ \textcolor{keyword}{get} \{ \textcolor{keywordflow}{return} \_connectTime; \} \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00152}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_acf6563874ed477638e44fc77f3299f0f}{00152}}         \textcolor{keyword}{public} readonly \textcolor{keywordtype}{int} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_acf6563874ed477638e44fc77f3299f0f}{Id}};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00157}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_afeff04b1c5afe1798cb6ca87c0e46092}{00157}}         \textcolor{keyword}{public} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_afeff04b1c5afe1798cb6ca87c0e46092}{Ping}} \{ \textcolor{keyword}{get} \{ \textcolor{keywordflow}{return} \_avgRtt/2; \} \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00162}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a18e002547bec53dae3ce02ebe4314d7a}{00162}}         \textcolor{keyword}{public} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a18e002547bec53dae3ce02ebe4314d7a}{Mtu}} \{ \textcolor{keyword}{get} \{ \textcolor{keywordflow}{return} \_mtu; \} \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00163}00163 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00168}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a78fc67f75cfaadac5eee8da3c9829c99}{00168}}         \textcolor{keyword}{public} \textcolor{keywordtype}{long} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a78fc67f75cfaadac5eee8da3c9829c99}{RemoteTimeDelta}}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00169}00169         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00170}00170             \textcolor{keyword}{get} \{ \textcolor{keywordflow}{return} \_remoteDelta; \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00171}00171         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00172}00172 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00176}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a1fcfd0f686f9dd6dddcb990b8ba6cad2}{00176}}         \textcolor{keyword}{public} DateTime \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a1fcfd0f686f9dd6dddcb990b8ba6cad2}{RemoteUtcTime}}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00177}00177         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00178}00178             \textcolor{keyword}{get} \{ \textcolor{keywordflow}{return} \textcolor{keyword}{new} DateTime(DateTime.UtcNow.Ticks + \_remoteDelta); \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00179}00179         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00180}00180 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00184}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a444dfb30740ca6bf8b6b459d8caef54d}{00184}}         \textcolor{keyword}{public} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a444dfb30740ca6bf8b6b459d8caef54d}{TimeSinceLastPacket}} \{ \textcolor{keyword}{get} \{ \textcolor{keywordflow}{return} \_timeSinceLastPacket; \} \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00185}00185 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00186}00186         \textcolor{keyword}{internal} \textcolor{keywordtype}{double} ResendDelay \{ \textcolor{keyword}{get} \{ \textcolor{keywordflow}{return} \_resendDelay; \} \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00187}00187 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00191}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a0fa2e8388fdcca292c70eb0b93a2ea56}{00191}}         \textcolor{keyword}{public} \textcolor{keywordtype}{object} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a0fa2e8388fdcca292c70eb0b93a2ea56}{Tag}};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00192}00192 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00196}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_abd2070e63ffd5b35b14ea42a0cdf7959}{00196}}         \textcolor{keyword}{public} readonly \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_statistics}{NetStatistics}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_abd2070e63ffd5b35b14ea42a0cdf7959}{Statistics}};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00197}00197 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00198}00198         \textcolor{comment}{//incoming connection constructor}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00199}00199         \textcolor{keyword}{internal} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{NetPeer}}(\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}} netManager, IPEndPoint remoteEndPoint, \textcolor{keywordtype}{int} \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00200}00200         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00201}00201             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_acf6563874ed477638e44fc77f3299f0f}{Id}} = id;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00202}00202             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_abd2070e63ffd5b35b14ea42a0cdf7959}{Statistics}} = \textcolor{keyword}{new} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_statistics}{NetStatistics}}();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00203}00203             \_packetPool = netManager.NetPacketPool;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00204}00204             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}} = netManager;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00205}00205 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00206}00206             \textcolor{keywordflow}{if} (netManager.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac44553f61417c3ca43fb2b9b991cd8d8}{MtuOverride}} > 0)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00207}00207                 OverrideMtu(netManager.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac44553f61417c3ca43fb2b9b991cd8d8}{MtuOverride}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00208}00208             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (netManager.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a482d56378d5290546fcc39eabcb6d845}{UseSafeMtu}})}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00209}00209                 SetMtu(0);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00210}00210             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00211}00211                 SetMtu(1);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00212}00212 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00213}00213             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}} = remoteEndPoint;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00214}00214             \_connectionState = \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Connected;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00215}00215             \_mergeData = \textcolor{keyword}{new} NetPacket(PacketProperty.Merged, NetConstants.MaxPacketSize);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00216}00216             \_pongPacket = \textcolor{keyword}{new} NetPacket(PacketProperty.Pong, 0);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00217}00217             \_pingPacket = \textcolor{keyword}{new} NetPacket(PacketProperty.Ping, 0) \{Sequence = 1\};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00218}00218            }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00219}00219             \_unreliableChannel = \textcolor{keyword}{new} Queue<NetPacket>(64);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00220}00220             \_holdedFragments = \textcolor{keyword}{new} Dictionary<ushort, IncomingFragments>();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00221}00221             \_deliveredFragments = \textcolor{keyword}{new} Dictionary<ushort, ushort>();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00222}00222 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00223}00223             \_channels = \textcolor{keyword}{new} BaseChannel[netManager.ChannelsCount * 4];}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00224}00224             \_channelSendQueue = \textcolor{keyword}{new} Queue<BaseChannel>(netManager.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_af0ba172d6f483f4ef57404181544edbc}{ChannelsCount}} * 4);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00225}00225         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00226}00226 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00227}00227         \textcolor{keyword}{private} \textcolor{keywordtype}{void} SetMtu(\textcolor{keywordtype}{int} mtuIdx)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00228}00228         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00229}00229             \_mtuIdx = mtuIdx;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00230}00230             \_mtu = NetConstants.PossibleMtu[mtuIdx] -\/ \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a9af04e67e1cf8437a1d28b187461e126}{ExtraPacketSizeForLayer}};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00231}00231         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00232}00232 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00233}00233         \textcolor{keyword}{private} \textcolor{keywordtype}{void} OverrideMtu(\textcolor{keywordtype}{int} mtuValue)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00234}00234         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00235}00235             \_mtu = mtuValue;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00236}00236             \_finishMtu = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00237}00237         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00238}00238 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00245}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a2a7a5516f307edb7223d36dc88ac9449}{00245}}         \textcolor{keyword}{public} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a2a7a5516f307edb7223d36dc88ac9449}{GetPacketsCountInReliableQueue}}(\textcolor{keywordtype}{byte} channelNumber, \textcolor{keywordtype}{bool} ordered)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00246}00246         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00247}00247             \textcolor{keywordtype}{int} idx = channelNumber * 4 +}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00248}00248                        (byte) (ordered ? \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableOrdered : \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableUnordered);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00249}00249             var channel = \_channels[idx];}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00250}00250             \textcolor{keywordflow}{return} channel != \textcolor{keyword}{null} ? ((ReliableChannel)channel).PacketsInQueue : 0;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00251}00251         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00252}00252 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00253}00253         \textcolor{keyword}{private} BaseChannel CreateChannel(\textcolor{keywordtype}{byte} idx)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00254}00254         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00255}00255             BaseChannel newChannel = \_channels[idx];}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00256}00256             \textcolor{keywordflow}{if} (newChannel != \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00257}00257                 \textcolor{keywordflow}{return} newChannel;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00258}00258             \textcolor{keywordflow}{switch} ((\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}})(idx \% 4))}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00259}00259             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00260}00260                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableUnordered:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00261}00261                     newChannel = \textcolor{keyword}{new} ReliableChannel(\textcolor{keyword}{this}, \textcolor{keyword}{false}, idx);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00262}00262                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00263}00263                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.Sequenced:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00264}00264                     newChannel = \textcolor{keyword}{new} SequencedChannel(\textcolor{keyword}{this}, \textcolor{keyword}{false}, idx);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00265}00265                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00266}00266                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableOrdered:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00267}00267                     newChannel = \textcolor{keyword}{new} ReliableChannel(\textcolor{keyword}{this}, \textcolor{keyword}{true}, idx);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00268}00268                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00269}00269                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableSequenced:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00270}00270                     newChannel = \textcolor{keyword}{new} SequencedChannel(\textcolor{keyword}{this}, \textcolor{keyword}{true}, idx);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00271}00271                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00272}00272             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00273}00273             BaseChannel prevChannel = Interlocked.CompareExchange(ref \_channels[idx], newChannel, \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00274}00274             \textcolor{keywordflow}{if} (prevChannel != \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00275}00275                 \textcolor{keywordflow}{return} prevChannel;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00276}00276 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00277}00277             \textcolor{keywordflow}{return} newChannel;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00278}00278         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00279}00279 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00280}00280         \textcolor{comment}{//"{}Connect to"{} constructor}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00281}00281         \textcolor{keyword}{internal} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{NetPeer}}(\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}} netManager, IPEndPoint remoteEndPoint, \textcolor{keywordtype}{int} \textcolor{keywordtype}{id}, \textcolor{keywordtype}{byte} connectNum, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{NetDataWriter}} connectData) }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00282}00282             : this(netManager, remoteEndPoint, id)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00283}00283         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00284}00284             \_connectTime = DateTime.UtcNow.Ticks;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00285}00285             \_connectionState = \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Outgoing;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00286}00286             ConnectionNum = connectNum;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00287}00287 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00288}00288             \textcolor{comment}{//Make initial packet}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00289}00289             \_connectRequestPacket = NetConnectRequestPacket.Make(connectData, remoteEndPoint.Serialize(), \_connectTime);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00290}00290             \_connectRequestPacket.ConnectionNumber = connectNum;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00291}00291 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00292}00292             \textcolor{comment}{//Send request}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00293}00293             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.SendRaw(\_connectRequestPacket, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00294}00294 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00295}00295             NetDebug.Write(\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0c}{NetLogLevel}}.Trace, \textcolor{stringliteral}{"{}[CC] ConnectId: \{0\}, ConnectNum: \{1\}"{}}, \_connectTime, connectNum);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00296}00296         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00297}00297 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00298}00298         \textcolor{comment}{//"{}Accept"{} incoming constructor}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00299}00299         \textcolor{keyword}{internal} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{NetPeer}}(\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}} netManager, IPEndPoint remoteEndPoint, \textcolor{keywordtype}{int} \textcolor{keywordtype}{id}, \textcolor{keywordtype}{long} connectId, \textcolor{keywordtype}{byte} connectNum)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00300}00300             : this(netManager, remoteEndPoint, id)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00301}00301         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00302}00302             \_connectTime = connectId;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00303}00303             \_connectionState = \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Connected;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00304}00304             ConnectionNum = connectNum;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00305}00305 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00306}00306             \textcolor{comment}{//Make initial packet}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00307}00307             \_connectAcceptPacket = NetConnectAcceptPacket.Make(\_connectTime, connectNum, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00308}00308             \textcolor{comment}{//Send}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00309}00309             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.SendRaw(\_connectAcceptPacket, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00310}00310 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00311}00311             NetDebug.Write(\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0c}{NetLogLevel}}.Trace, \textcolor{stringliteral}{"{}[CC] ConnectId: \{0\}"{}}, \_connectTime);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00312}00312         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00313}00313 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00314}00314         \textcolor{comment}{//Reject}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00315}00315         \textcolor{keyword}{internal} \textcolor{keywordtype}{void} Reject(\textcolor{keywordtype}{long} connectionId, \textcolor{keywordtype}{byte} connectionNumber, \textcolor{keywordtype}{byte}[] data, \textcolor{keywordtype}{int} start, \textcolor{keywordtype}{int} length)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00316}00316         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00317}00317             \_connectTime = connectionId;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00318}00318             \_connectNum = connectionNumber;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00319}00319             Shutdown(data, start, length, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00320}00320         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00321}00321 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00322}00322         \textcolor{keyword}{internal} \textcolor{keywordtype}{bool} ProcessConnectAccept(NetConnectAcceptPacket packet)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00323}00323         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00324}00324             \textcolor{keywordflow}{if} (\_connectionState != \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Outgoing)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00325}00325                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00326}00326 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00327}00327             \textcolor{comment}{//check connection id}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00328}00328             \textcolor{keywordflow}{if} (packet.ConnectionId != \_connectTime)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00329}00329             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00330}00330                 NetDebug.Write(\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0c}{NetLogLevel}}.Trace, \textcolor{stringliteral}{"{}[NC] Invalid connectId: \{0\}"{}}, \_connectTime);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00331}00331                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00332}00332             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00333}00333             \textcolor{comment}{//check connect num}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00334}00334             ConnectionNum = packet.ConnectionNumber;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00335}00335 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00336}00336             NetDebug.Write(\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0c}{NetLogLevel}}.Trace, \textcolor{stringliteral}{"{}[NC] Received connection accept"{}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00337}00337             Interlocked.Exchange(ref \_timeSinceLastPacket, 0);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00338}00338             \_connectionState = \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Connected;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00339}00339             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00340}00340         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00341}00341 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00347}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a824fcbd5f13cb3e5e891e69e23f14c1c}{00347}}         \textcolor{keyword}{public} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a824fcbd5f13cb3e5e891e69e23f14c1c}{GetMaxSinglePacketSize}}(\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}} options)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00348}00348         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00349}00349             \textcolor{keywordflow}{return} \_mtu -\/ NetPacket.GetHeaderSize(options == \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.Unreliable ? PacketProperty.Unreliable : PacketProperty.Channeled);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00350}00350         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00351}00351 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00362}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab41fb5e4e307769dd0a6bc0fcd1be5e4}{00362}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab41fb5e4e307769dd0a6bc0fcd1be5e4}{SendWithDeliveryEvent}}(\textcolor{keywordtype}{byte}[] data, \textcolor{keywordtype}{byte} channelNumber, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}} deliveryMethod, \textcolor{keywordtype}{object} userData)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00363}00363         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00364}00364             \textcolor{keywordflow}{if} (deliveryMethod != \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableOrdered \&\& deliveryMethod != \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableUnordered)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00365}00365                 \textcolor{keywordflow}{throw} \textcolor{keyword}{new} ArgumentException(\textcolor{stringliteral}{"{}Delivery event will work only for ReliableOrdered/Unordered packets"{}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00366}00366             SendInternal(data, 0, data.Length, channelNumber, deliveryMethod, userData);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00367}00367         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00368}00368 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00381}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a550a28c93b8c401659aeb4d49e0703e7}{00381}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a550a28c93b8c401659aeb4d49e0703e7}{SendWithDeliveryEvent}}(\textcolor{keywordtype}{byte}[] data, \textcolor{keywordtype}{int} start, \textcolor{keywordtype}{int} length, \textcolor{keywordtype}{byte} channelNumber, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}} deliveryMethod, \textcolor{keywordtype}{object} userData)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00382}00382         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00383}00383             \textcolor{keywordflow}{if} (deliveryMethod != \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableOrdered \&\& deliveryMethod != \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableUnordered)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00384}00384                 \textcolor{keywordflow}{throw} \textcolor{keyword}{new} ArgumentException(\textcolor{stringliteral}{"{}Delivery event will work only for ReliableOrdered/Unordered packets"{}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00385}00385             SendInternal(data, start, length, channelNumber, deliveryMethod, userData);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00386}00386         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00387}00387 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00398}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a93ab7537c1edf7848bb7d0b0d2f73d3d}{00398}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a93ab7537c1edf7848bb7d0b0d2f73d3d}{SendWithDeliveryEvent}}(\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{NetDataWriter}} dataWriter, \textcolor{keywordtype}{byte} channelNumber, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}} deliveryMethod, \textcolor{keywordtype}{object} userData)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00399}00399         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00400}00400             \textcolor{keywordflow}{if} (deliveryMethod != \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableOrdered \&\& deliveryMethod != \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableUnordered)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00401}00401                 \textcolor{keywordflow}{throw} \textcolor{keyword}{new} ArgumentException(\textcolor{stringliteral}{"{}Delivery event will work only for ReliableOrdered/Unordered packets"{}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00402}00402             SendInternal(dataWriter.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer_a5110c012d61a2d205eb3c61835acb278}{Data}}, 0, dataWriter.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer_a7b8cf217eff327183d292a07f06bea23}{Length}}, channelNumber, deliveryMethod, userData);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00403}00403         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00404}00404 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00415}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a3adca4396cc1b8c97b067ac640e149dd}{00415}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a3adca4396cc1b8c97b067ac640e149dd}{Send}}(\textcolor{keywordtype}{byte}[] data, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}} deliveryMethod)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00416}00416         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00417}00417             SendInternal(data, 0, data.Length, 0, deliveryMethod, \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00418}00418         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00419}00419 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00430}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a3c4f43bcb15cf819f99ea1ef32f158d1}{00430}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a3c4f43bcb15cf819f99ea1ef32f158d1}{Send}}(\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{NetDataWriter}} dataWriter, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}} deliveryMethod)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00431}00431         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00432}00432             SendInternal(dataWriter.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer_a5110c012d61a2d205eb3c61835acb278}{Data}}, 0, dataWriter.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer_a7b8cf217eff327183d292a07f06bea23}{Length}}, 0, deliveryMethod, \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00433}00433         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00434}00434 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00447}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a7df05ed7cca9d5763f1c5bb77cd5306e}{00447}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a7df05ed7cca9d5763f1c5bb77cd5306e}{Send}}(\textcolor{keywordtype}{byte}[] data, \textcolor{keywordtype}{int} start, \textcolor{keywordtype}{int} length, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}} options)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00448}00448         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00449}00449             SendInternal(data, start, length, 0, options, \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00450}00450         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00451}00451 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00463}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a1c5f794c310e5b076b7f6f17627efd42}{00463}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a1c5f794c310e5b076b7f6f17627efd42}{Send}}(\textcolor{keywordtype}{byte}[] data, \textcolor{keywordtype}{byte} channelNumber, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}} deliveryMethod)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00464}00464         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00465}00465             SendInternal(data, 0, data.Length, channelNumber, deliveryMethod, \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00466}00466         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00467}00467 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00479}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae2dd1179386300c4007095573ca86b72}{00479}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae2dd1179386300c4007095573ca86b72}{Send}}(\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{NetDataWriter}} dataWriter, \textcolor{keywordtype}{byte} channelNumber, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}} deliveryMethod)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00480}00480         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00481}00481             SendInternal(dataWriter.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer_a5110c012d61a2d205eb3c61835acb278}{Data}}, 0, dataWriter.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer_a7b8cf217eff327183d292a07f06bea23}{Length}}, channelNumber, deliveryMethod, \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00482}00482         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00483}00483 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00497}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ac77d5f40c3ddc2aa5349bd37532c75e6}{00497}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ac77d5f40c3ddc2aa5349bd37532c75e6}{Send}}(\textcolor{keywordtype}{byte}[] data, \textcolor{keywordtype}{int} start, \textcolor{keywordtype}{int} length, \textcolor{keywordtype}{byte} channelNumber, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}} deliveryMethod)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00498}00498         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00499}00499             SendInternal(data, start, length, channelNumber, deliveryMethod, \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00500}00500         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00501}00501 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00502}00502         \textcolor{keyword}{private} \textcolor{keywordtype}{void} SendInternal(}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00503}00503             \textcolor{keywordtype}{byte}[] data, }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00504}00504             \textcolor{keywordtype}{int} start, }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00505}00505             \textcolor{keywordtype}{int} length, }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00506}00506             \textcolor{keywordtype}{byte} channelNumber, }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00507}00507             \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}} deliveryMethod,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00508}00508             \textcolor{keywordtype}{object} userData)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00509}00509         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00510}00510             \textcolor{keywordflow}{if} (\_connectionState != \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Connected || channelNumber >= \_channels.Length)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00511}00511                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00512}00512 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00513}00513             \textcolor{comment}{//Select channel}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00514}00514             PacketProperty property;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00515}00515             BaseChannel channel = \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00516}00516 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00517}00517             \textcolor{keywordflow}{if} (deliveryMethod == \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.Unreliable)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00518}00518             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00519}00519                 \textcolor{keyword}{property} = PacketProperty.Unreliable;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00520}00520             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00521}00521             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00522}00522             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00523}00523                 \textcolor{keyword}{property} = PacketProperty.Channeled;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00524}00524                 channel = CreateChannel((\textcolor{keywordtype}{byte})(channelNumber*4 + (\textcolor{keywordtype}{byte})deliveryMethod));}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00525}00525             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00526}00526 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00527}00527             \textcolor{comment}{//Prepare  }}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00528}00528             NetDebug.Write(\textcolor{stringliteral}{"{}[RS]Packet: "{}} + property);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00529}00529 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00530}00530             \textcolor{comment}{//Check fragmentation}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00531}00531             \textcolor{keywordtype}{int} headerSize = NetPacket.GetHeaderSize(property);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00532}00532             \textcolor{comment}{//Save mtu for multithread}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00533}00533             \textcolor{keywordtype}{int} mtu = \_mtu;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00534}00534             \textcolor{keywordflow}{if} (length + headerSize > mtu)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00535}00535             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00536}00536                 \textcolor{comment}{//if cannot be fragmented}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00537}00537                 \textcolor{keywordflow}{if} (deliveryMethod != \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableOrdered \&\& deliveryMethod != \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableUnordered)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00538}00538                     \textcolor{keywordflow}{throw} \textcolor{keyword}{new} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_too_big_packet_exception}{TooBigPacketException}}(\textcolor{stringliteral}{"{}Unreliable or ReliableSequenced packet size exceeded maximum of "{}} + (mtu -\/ headerSize) + \textcolor{stringliteral}{"{} bytes, Check allowed size by GetMaxSinglePacketSize()"{}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00539}00539 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00540}00540                 \textcolor{keywordtype}{int} packetFullSize = mtu -\/ headerSize;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00541}00541                 \textcolor{keywordtype}{int} packetDataSize = packetFullSize -\/ NetConstants.FragmentHeaderSize;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00542}00542                 \textcolor{keywordtype}{int} totalPackets = length / packetDataSize + (length \% packetDataSize == 0 ? 0 : 1);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00543}00543 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00544}00544                 NetDebug.Write(\textcolor{stringliteral}{"{}FragmentSend:\(\backslash\)n"{}} +}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00545}00545                            \textcolor{stringliteral}{"{} MTU: \{0\}\(\backslash\)n"{}} +}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00546}00546                            \textcolor{stringliteral}{"{} headerSize: \{1\}\(\backslash\)n"{}} +}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00547}00547                            \textcolor{stringliteral}{"{} packetFullSize: \{2\}\(\backslash\)n"{}} +}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00548}00548                            \textcolor{stringliteral}{"{} packetDataSize: \{3\}\(\backslash\)n"{}} +}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00549}00549                            \textcolor{stringliteral}{"{} totalPackets: \{4\}"{}},}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00550}00550                     mtu, headerSize, packetFullSize, packetDataSize, totalPackets);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00551}00551 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00552}00552                 \textcolor{keywordflow}{if} (totalPackets > ushort.MaxValue)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00553}00553                     \textcolor{keywordflow}{throw} \textcolor{keyword}{new} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_too_big_packet_exception}{TooBigPacketException}}(\textcolor{stringliteral}{"{}Data was split in "{}} + totalPackets + \textcolor{stringliteral}{"{} fragments, which exceeds "{}} + ushort.MaxValue);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00554}00554 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00555}00555                 ushort currentFragmentId = (ushort)Interlocked.Increment(ref \_fragmentId);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00556}00556 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00557}00557                 \textcolor{keywordflow}{for}(ushort partIdx = 0; partIdx < totalPackets; partIdx++)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00558}00558                 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00559}00559                     \textcolor{keywordtype}{int} sendLength = length > packetDataSize ? packetDataSize : length;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00560}00560 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00561}00561                     NetPacket p = \_packetPool.GetPacket(headerSize + sendLength + NetConstants.FragmentHeaderSize);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00562}00562                     p.Property = property;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00563}00563                     p.UserData = userData;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00564}00564                     p.FragmentId = currentFragmentId;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00565}00565                     p.FragmentPart = partIdx;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00566}00566                     p.FragmentsTotal = (ushort)totalPackets;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00567}00567                     p.MarkFragmented();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00568}00568 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00569}00569                     Buffer.BlockCopy(data, start + partIdx * packetDataSize, p.RawData, NetConstants.FragmentedHeaderTotalSize, sendLength);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00570}00570                     channel.AddToQueue(p);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00571}00571 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00572}00572                     length -\/= sendLength;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00573}00573                 \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00574}00574                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00575}00575             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00576}00576 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00577}00577             \textcolor{comment}{//Else just send}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00578}00578             NetPacket packet = \_packetPool.GetPacket(headerSize + length);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00579}00579             packet.Property = property;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00580}00580             Buffer.BlockCopy(data, start, packet.RawData, headerSize, length);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00581}00581             packet.UserData = userData;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00582}00582 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00583}00583             \textcolor{keywordflow}{if} (channel == \textcolor{keyword}{null}) \textcolor{comment}{//unreliable}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00584}00584             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00585}00585                 lock(\_unreliableChannel)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00586}00586                     \_unreliableChannel.Enqueue(packet);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00587}00587             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00588}00588             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00589}00589             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00590}00590                 channel.AddToQueue(packet);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00591}00591             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00592}00592         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00593}00593 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00594}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab0d1b02a418ed31f3bc7c6557952b589}{00594}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ab0d1b02a418ed31f3bc7c6557952b589}{Disconnect}}(\textcolor{keywordtype}{byte}[] data)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00595}00595         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00596}00596             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.DisconnectPeer(\textcolor{keyword}{this}, data);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00597}00597         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00598}00598 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00599}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a05e4207d2e6ddc363113d711f9b81420}{00599}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a05e4207d2e6ddc363113d711f9b81420}{Disconnect}}(\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{NetDataWriter}} writer)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00600}00600         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00601}00601             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.DisconnectPeer(\textcolor{keyword}{this}, writer);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00602}00602         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00603}00603 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00604}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a5728d091b94fd01d22398413136cefba}{00604}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a5728d091b94fd01d22398413136cefba}{Disconnect}}(\textcolor{keywordtype}{byte}[] data, \textcolor{keywordtype}{int} start, \textcolor{keywordtype}{int} count)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00605}00605         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00606}00606             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.DisconnectPeer(\textcolor{keyword}{this}, data, start, count);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00607}00607         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00608}00608 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00609}\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a35780b8c55541cd48c68702ef16b42aa}{00609}}         \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_a35780b8c55541cd48c68702ef16b42aa}{Disconnect}}()}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00610}00610         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00611}00611             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.DisconnectPeer(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00612}00612         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00613}00613 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00614}00614         \textcolor{keyword}{internal} DisconnectResult ProcessDisconnect(NetPacket packet)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00615}00615         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00616}00616             \textcolor{keywordflow}{if} ((\_connectionState == \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Connected || \_connectionState == \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Outgoing) \&\&}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00617}00617                 packet.Size >= 9 \&\&}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00618}00618                 BitConverter.ToInt64(packet.RawData, 1) == \_connectTime \&\&}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00619}00619                 packet.ConnectionNumber == \_connectNum)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00620}00620             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00621}00621                 \textcolor{keywordflow}{return} \_connectionState == ConnectionState.Connected}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00622}00622                     ? DisconnectResult.Disconnect}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00623}00623                     : DisconnectResult.Reject;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00624}00624             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00625}00625             \textcolor{keywordflow}{return} DisconnectResult.None;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00626}00626         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00627}00627 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00628}00628         \textcolor{keyword}{internal} \textcolor{keywordtype}{void} AddToReliableChannelSendQueue(BaseChannel channel)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00629}00629         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00630}00630             lock (\_channelSendQueue)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00631}00631             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00632}00632                 \_channelSendQueue.Enqueue(channel);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00633}00633             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00634}00634         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00635}00635 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00636}00636         \textcolor{keyword}{internal} ShutdownResult Shutdown(\textcolor{keywordtype}{byte}[] data, \textcolor{keywordtype}{int} start, \textcolor{keywordtype}{int} length, \textcolor{keywordtype}{bool} force)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00637}00637         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00638}00638             lock (\_shutdownLock)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00639}00639             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00640}00640                 \textcolor{comment}{//trying to shutdown already disconnected}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00641}00641                 \textcolor{keywordflow}{if} (\_connectionState == \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Disconnected ||}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00642}00642                     \_connectionState == \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.ShutdownRequested)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00643}00643                 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00644}00644                     \textcolor{keywordflow}{return} ShutdownResult.None;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00645}00645                 \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00646}00646 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00647}00647                 var result = \_connectionState == ConnectionState.Connected}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00648}00648                     ? ShutdownResult.WasConnected}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00649}00649                     : ShutdownResult.Success;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00650}00650 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00651}00651                 \textcolor{comment}{//don't send anything}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00652}00652                 \textcolor{keywordflow}{if} (force)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00653}00653                 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00654}00654                     \_connectionState = \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Disconnected;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00655}00655                     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00656}00656                 \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00657}00657 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00658}00658                 \textcolor{comment}{//reset time for reconnect protection}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00659}00659                 Interlocked.Exchange(ref \_timeSinceLastPacket, 0);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00660}00660 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00661}00661                 \textcolor{comment}{//send shutdown packet}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00662}00662                 \_shutdownPacket = \textcolor{keyword}{new} NetPacket(PacketProperty.Disconnect, length) \{ConnectionNumber = \_connectNum\};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00663}00663                 FastBitConverter.GetBytes(\_shutdownPacket.RawData, 1, \_connectTime);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00664}00664                 \textcolor{keywordflow}{if} (\_shutdownPacket.Size >= \_mtu)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00665}00665                 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00666}00666                     \textcolor{comment}{//Drop additional data}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00667}00667                     NetDebug.WriteError(\textcolor{stringliteral}{"{}[Peer] Disconnect additional data size more than MTU -\/ 8!"{}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00668}00668                 \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00669}00669                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (data != \textcolor{keyword}{null} \&\& length > 0)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00670}00670                 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00671}00671                     Buffer.BlockCopy(data, start, \_shutdownPacket.RawData, 9, length);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00672}00672                 \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00673}00673                 \_connectionState = \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.ShutdownRequested;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00674}00674                 NetDebug.Write(\textcolor{stringliteral}{"{}[Peer] Send disconnect"{}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00675}00675                 \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.SendRaw(\_shutdownPacket, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00676}00676                 \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00677}00677             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00678}00678         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00679}00679 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00680}00680         \textcolor{keyword}{private} \textcolor{keywordtype}{void} UpdateRoundTripTime(\textcolor{keywordtype}{int} roundTripTime)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00681}00681         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00682}00682             \_rtt += roundTripTime;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00683}00683             \_rttCount++;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00684}00684             \_avgRtt = \_rtt/\_rttCount;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00685}00685             \_resendDelay = 25.0 + \_avgRtt * 2.1; \textcolor{comment}{// 25 ms + double rtt}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00686}00686         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00687}00687 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00688}00688         \textcolor{keyword}{internal} \textcolor{keywordtype}{void} AddReliablePacket(\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}} method, NetPacket p)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00689}00689         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00690}00690             \textcolor{keywordflow}{if} (p.IsFragmented)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00691}00691             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00692}00692                 NetDebug.Write(\textcolor{stringliteral}{"{}Fragment. Id: \{0\}, Part: \{1\}, Total: \{2\}"{}}, p.FragmentId, p.FragmentPart, p.FragmentsTotal);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00693}00693                 \textcolor{comment}{//Get needed array from dictionary}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00694}00694                 ushort packetFragId = p.FragmentId;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00695}00695                 IncomingFragments incomingFragments;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00696}00696                 \textcolor{keywordflow}{if} (!\_holdedFragments.TryGetValue(packetFragId, out incomingFragments))}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00697}00697                 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00698}00698                     incomingFragments = \textcolor{keyword}{new} IncomingFragments}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00699}00699                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00700}00700                         Fragments = \textcolor{keyword}{new} NetPacket[p.FragmentsTotal],}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00701}00701                         ChannelId = p.ChannelId}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00702}00702                     \};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00703}00703                     \_holdedFragments.Add(packetFragId, incomingFragments);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00704}00704                 \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00705}00705 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00706}00706                 \textcolor{comment}{//Cache}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00707}00707                 var fragments = incomingFragments.Fragments;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00708}00708 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00709}00709                 \textcolor{comment}{//Error check}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00710}00710                 \textcolor{keywordflow}{if} (p.FragmentPart >= fragments.Length || }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00711}00711                     fragments[p.FragmentPart] != \textcolor{keyword}{null} || }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00712}00712                     p.ChannelId != incomingFragments.ChannelId)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00713}00713                 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00714}00714                     \_packetPool.Recycle(p);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00715}00715                     NetDebug.WriteError(\textcolor{stringliteral}{"{}Invalid fragment packet"{}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00716}00716                     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00717}00717                 \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00718}00718                 \textcolor{comment}{//Fill array}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00719}00719                 fragments[p.FragmentPart] = p;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00720}00720 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00721}00721                 \textcolor{comment}{//Increase received fragments count}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00722}00722                 incomingFragments.ReceivedCount++;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00723}00723 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00724}00724                 \textcolor{comment}{//Increase total size}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00725}00725                 incomingFragments.TotalSize += p.Size -\/ NetConstants.FragmentedHeaderTotalSize;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00726}00726 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00727}00727                 \textcolor{comment}{//Check for finish}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00728}00728                 \textcolor{keywordflow}{if} (incomingFragments.ReceivedCount != fragments.Length)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00729}00729                     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00730}00730 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00731}00731                 \textcolor{comment}{//just simple packet}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00732}00732                 NetPacket resultingPacket = \_packetPool.GetPacket(incomingFragments.TotalSize);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00733}00733 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00734}00734                 \textcolor{keywordtype}{int} pos = 0;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00735}00735                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < incomingFragments.ReceivedCount; i++)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00736}00736                 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00737}00737                     var fragment = fragments[i];}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00738}00738                     \textcolor{keywordtype}{int} writtenSize = fragment.Size -\/ NetConstants.FragmentedHeaderTotalSize;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00739}00739 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00740}00740                     \textcolor{keywordflow}{if} (pos+writtenSize > resultingPacket.RawData.Length)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00741}00741                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00742}00742                         \_holdedFragments.Remove(packetFragId);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00743}00743                         NetDebug.WriteError(\textcolor{stringliteral}{"{}Fragment error pos: \{0\} >= resultPacketSize: \{1\} , totalSize: \{2\}"{}}, }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00744}00744                             pos + writtenSize, }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00745}00745                             resultingPacket.RawData.Length,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00746}00746                             incomingFragments.TotalSize);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00747}00747                         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00748}00748                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00749}00749 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00750}00750                     \textcolor{comment}{//Create resulting big packet}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00751}00751                     Buffer.BlockCopy(}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00752}00752                         fragment.RawData,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00753}00753                         NetConstants.FragmentedHeaderTotalSize,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00754}00754                         resultingPacket.RawData,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00755}00755                         pos,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00756}00756                         writtenSize);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00757}00757                     pos += writtenSize;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00758}00758 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00759}00759                     \textcolor{comment}{//Free memory}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00760}00760                     \_packetPool.Recycle(fragment);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00761}00761                     fragments[i] = \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00762}00762                 \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00763}00763 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00764}00764                 \textcolor{comment}{//Clear memory}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00765}00765                 \_holdedFragments.Remove(packetFragId);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00766}00766 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00767}00767                 \textcolor{comment}{//Send to process}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00768}00768                 \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.CreateReceiveEvent(resultingPacket, method, 0, \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00769}00769             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00770}00770             \textcolor{keywordflow}{else} \textcolor{comment}{//Just simple packet}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00771}00771             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00772}00772                 \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.CreateReceiveEvent(p, method, NetConstants.ChanneledHeaderSize, \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00773}00773             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00774}00774         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00775}00775 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00776}00776         \textcolor{keyword}{private} \textcolor{keywordtype}{void} ProcessMtuPacket(NetPacket packet)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00777}00777         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00778}00778             \textcolor{comment}{//header + int}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00779}00779             \textcolor{keywordflow}{if} (packet.Size < NetConstants.PossibleMtu[0])}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00780}00780                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00781}00781 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00782}00782             \textcolor{comment}{//first stage check (mtu check and mtu ok)}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00783}00783             \textcolor{keywordtype}{int} receivedMtu = BitConverter.ToInt32(packet.RawData, 1);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00784}00784             \textcolor{keywordtype}{int} endMtuCheck = BitConverter.ToInt32(packet.RawData, packet.Size -\/ 4);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00785}00785             \textcolor{keywordflow}{if} (receivedMtu != packet.Size || receivedMtu != endMtuCheck || receivedMtu > NetConstants.MaxPacketSize)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00786}00786             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00787}00787                 NetDebug.WriteError(\textcolor{stringliteral}{"{}[MTU] Broken packet. RMTU \{0\}, EMTU \{1\}, PSIZE \{2\}"{}}, receivedMtu, endMtuCheck, packet.Size);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00788}00788                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00789}00789             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00790}00790 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00791}00791             \textcolor{keywordflow}{if} (packet.Property == PacketProperty.MtuCheck)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00792}00792             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00793}00793                 \_mtuCheckAttempts = 0;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00794}00794                 NetDebug.Write(\textcolor{stringliteral}{"{}[MTU] check. send back: "{}} + receivedMtu);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00795}00795                 packet.Property = PacketProperty.MtuOk;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00796}00796                 \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.SendRawAndRecycle(packet, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00797}00797             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00798}00798             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(receivedMtu > \_mtu \&\& !\_finishMtu) \textcolor{comment}{//MtuOk}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00799}00799             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00800}00800                 \textcolor{comment}{//invalid packet}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00801}00801                 \textcolor{keywordflow}{if} (receivedMtu != NetConstants.PossibleMtu[\_mtuIdx + 1])}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00802}00802                     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00803}00803 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00804}00804                 lock (\_mtuMutex)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00805}00805                 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00806}00806                     SetMtu(\_mtuIdx+1);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00807}00807                 \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00808}00808                 \textcolor{comment}{//if maxed -\/ finish.}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00809}00809                 \textcolor{keywordflow}{if} (\_mtuIdx == NetConstants.PossibleMtu.Length -\/ 1)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00810}00810                     \_finishMtu = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00811}00811 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00812}00812                 NetDebug.Write(\textcolor{stringliteral}{"{}[MTU] ok. Increase to: "{}} + \_mtu);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00813}00813             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00814}00814         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00815}00815 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00816}00816         \textcolor{keyword}{private} \textcolor{keywordtype}{void} UpdateMtuLogic(\textcolor{keywordtype}{int} deltaTime)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00817}00817         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00818}00818             \textcolor{keywordflow}{if} (\_finishMtu)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00819}00819                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00820}00820 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00821}00821             \_mtuCheckTimer += deltaTime;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00822}00822             \textcolor{keywordflow}{if} (\_mtuCheckTimer < MtuCheckDelay)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00823}00823                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00824}00824 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00825}00825             \_mtuCheckTimer = 0;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00826}00826             \_mtuCheckAttempts++;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00827}00827             \textcolor{keywordflow}{if} (\_mtuCheckAttempts >= MaxMtuCheckAttempts)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00828}00828             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00829}00829                 \_finishMtu = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00830}00830                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00831}00831             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00832}00832 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00833}00833             lock (\_mtuMutex)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00834}00834             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00835}00835                 \textcolor{keywordflow}{if} (\_mtuIdx >= NetConstants.PossibleMtu.Length -\/ 1)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00836}00836                     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00837}00837 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00838}00838                 \textcolor{comment}{//Send increased packet}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00839}00839                 \textcolor{keywordtype}{int} newMtu = NetConstants.PossibleMtu[\_mtuIdx + 1] -\/ \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a9af04e67e1cf8437a1d28b187461e126}{ExtraPacketSizeForLayer}};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00840}00840                 var p = \_packetPool.GetPacket(newMtu);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00841}00841                 p.Property = PacketProperty.MtuCheck;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00842}00842                 FastBitConverter.GetBytes(p.RawData, 1, newMtu);         \textcolor{comment}{//place into start}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00843}00843                 FastBitConverter.GetBytes(p.RawData, p.Size -\/ 4, newMtu);\textcolor{comment}{//and end of packet}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00844}00844 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00845}00845                 \textcolor{comment}{//Must check result for MTU fix}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00846}00846                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.SendRawAndRecycle(p, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}}) <= 0)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00847}00847                     \_finishMtu = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00848}00848             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00849}00849         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00850}00850 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00851}00851         \textcolor{keyword}{internal} ConnectRequestResult ProcessConnectRequest(NetConnectRequestPacket connRequest)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00852}00852         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00853}00853             \textcolor{comment}{//current or new request}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00854}00854             \textcolor{keywordflow}{switch} (\_connectionState)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00855}00855             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00856}00856                 \textcolor{comment}{//P2P case}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00857}00857                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Outgoing:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00858}00858                     \textcolor{comment}{//fast check}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00859}00859                     \textcolor{keywordflow}{if} (connRequest.ConnectionTime < \_connectTime)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00860}00860                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00861}00861                         \textcolor{keywordflow}{return} ConnectRequestResult.P2PLose;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00862}00862                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00863}00863                     \textcolor{comment}{//slow rare case check}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00864}00864                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (connRequest.ConnectionTime == \_connectTime)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00865}00865                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00866}00866                         var remoteBytes = \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}}.Serialize();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00867}00867                         var localBytes = connRequest.TargetAddress;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00868}00868                         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = remoteBytes.Size-\/1; i >= 0; i-\/-\/)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00869}00869                         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00870}00870                             \textcolor{keywordtype}{byte} rb = remoteBytes[i];}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00871}00871                             \textcolor{keywordflow}{if} (rb == localBytes[i])}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00872}00872                                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00873}00873                             \textcolor{keywordflow}{if} (rb < localBytes[i])}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00874}00874                                 \textcolor{keywordflow}{return} ConnectRequestResult.P2PLose;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00875}00875                         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00876}00876                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00877}00877                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00878}00878 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00879}00879                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Connected:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00880}00880                     \textcolor{comment}{//Old connect request}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00881}00881                     \textcolor{keywordflow}{if} (connRequest.ConnectionTime == \_connectTime)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00882}00882                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00883}00883                         \textcolor{comment}{//just reply accept}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00884}00884                         \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.SendRaw(\_connectAcceptPacket, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00885}00885                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00886}00886                     \textcolor{comment}{//New connect request}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00887}00887                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (connRequest.ConnectionTime > \_connectTime)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00888}00888                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00889}00889                         \textcolor{keywordflow}{return} ConnectRequestResult.Reconnection;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00890}00890                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00891}00891                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00892}00892 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00893}00893                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Disconnected:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00894}00894                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.ShutdownRequested:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00895}00895                     \textcolor{keywordflow}{if} (connRequest.ConnectionTime >= \_connectTime)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00896}00896                         \textcolor{keywordflow}{return} ConnectRequestResult.NewConnection;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00897}00897                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00898}00898             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00899}00899             \textcolor{keywordflow}{return} ConnectRequestResult.None;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00900}00900         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00901}00901 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00902}00902         \textcolor{comment}{//Process incoming packet}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00903}00903         \textcolor{keyword}{internal} \textcolor{keywordtype}{void} ProcessPacket(NetPacket packet)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00904}00904         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00905}00905             \textcolor{comment}{//not initialized}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00906}00906             \textcolor{keywordflow}{if} (\_connectionState == \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Outgoing || \_connectionState == \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Disconnected)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00907}00907             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00908}00908                 \_packetPool.Recycle(packet);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00909}00909                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00910}00910             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00911}00911             \textcolor{keywordflow}{if} (packet.Property == PacketProperty.ShutdownOk)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00912}00912             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00913}00913                 \textcolor{keywordflow}{if} (\_connectionState == \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.ShutdownRequested)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00914}00914                     \_connectionState = \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Disconnected;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00915}00915                 \_packetPool.Recycle(packet);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00916}00916                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00917}00917             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00918}00918             \textcolor{keywordflow}{if} (packet.ConnectionNumber != \_connectNum)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00919}00919             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00920}00920                 NetDebug.Write(\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0c}{NetLogLevel}}.Trace, \textcolor{stringliteral}{"{}[RR]Old packet"{}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00921}00921                 \_packetPool.Recycle(packet);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00922}00922                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00923}00923             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00924}00924             Interlocked.Exchange(ref \_timeSinceLastPacket, 0);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00925}00925 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00926}00926             NetDebug.Write(\textcolor{stringliteral}{"{}[RR]PacketProperty: \{0\}"{}}, packet.Property);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00927}00927             \textcolor{keywordflow}{switch} (packet.Property)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00928}00928             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00929}00929                 \textcolor{keywordflow}{case} PacketProperty.Merged:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00930}00930                     \textcolor{keywordtype}{int} pos = NetConstants.HeaderSize;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00931}00931                     \textcolor{keywordflow}{while} (pos < packet.Size)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00932}00932                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00933}00933                         ushort size = BitConverter.ToUInt16(packet.RawData, pos);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00934}00934                         pos += 2;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00935}00935                         \textcolor{keywordflow}{if} (packet.RawData.Length -\/ pos < size)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00936}00936                             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00937}00937 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00938}00938                         NetPacket mergedPacket = \_packetPool.GetPacket(size);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00939}00939                         Buffer.BlockCopy(packet.RawData, pos, mergedPacket.RawData, 0, size);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00940}00940                         mergedPacket.Size = size;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00941}00941 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00942}00942                         \textcolor{keywordflow}{if} (!mergedPacket.Verify())}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00943}00943                             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00944}00944 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00945}00945                         pos += size;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00946}00946                         ProcessPacket(mergedPacket);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00947}00947                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00948}00948                     \_packetPool.Recycle(packet);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00949}00949                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00950}00950                 \textcolor{comment}{//If we get ping, send pong}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00951}00951                 \textcolor{keywordflow}{case} PacketProperty.Ping:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00952}00952                     \textcolor{keywordflow}{if} (NetUtils.RelativeSequenceNumber(packet.Sequence, \_pongPacket.Sequence) > 0)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00953}00953                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00954}00954                         NetDebug.Write(\textcolor{stringliteral}{"{}[PP]Ping receive, send pong"{}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00955}00955                         FastBitConverter.GetBytes(\_pongPacket.RawData, 3, DateTime.UtcNow.Ticks);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00956}00956                         \_pongPacket.Sequence = packet.Sequence;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00957}00957                         \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.SendRaw(\_pongPacket, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00958}00958                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00959}00959                     \_packetPool.Recycle(packet);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00960}00960                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00961}00961 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00962}00962                 \textcolor{comment}{//If we get pong, calculate ping time and rtt}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00963}00963                 \textcolor{keywordflow}{case} PacketProperty.Pong:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00964}00964                     \textcolor{keywordflow}{if} (packet.Sequence == \_pingPacket.Sequence)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00965}00965                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00966}00966                         \_pingTimer.Stop();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00967}00967                         \textcolor{keywordtype}{int} elapsedMs = (int)\_pingTimer.ElapsedMilliseconds;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00968}00968                         \_remoteDelta = BitConverter.ToInt64(packet.RawData, 3) + (elapsedMs * TimeSpan.TicksPerMillisecond ) / 2 -\/ DateTime.UtcNow.Ticks;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00969}00969                         UpdateRoundTripTime(elapsedMs);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00970}00970                         \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.ConnectionLatencyUpdated(\textcolor{keyword}{this}, elapsedMs / 2);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00971}00971                         NetDebug.Write(\textcolor{stringliteral}{"{}[PP]Ping: \{0\} -\/ \{1\} -\/ \{2\}"{}}, packet.Sequence, elapsedMs, \_remoteDelta);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00972}00972                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00973}00973                     \_packetPool.Recycle(packet);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00974}00974                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00975}00975 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00976}00976                 \textcolor{keywordflow}{case} PacketProperty.Ack:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00977}00977                 \textcolor{keywordflow}{case} PacketProperty.Channeled:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00978}00978                     \textcolor{keywordflow}{if} (packet.ChannelId > \_channels.Length)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00979}00979                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00980}00980                         \_packetPool.Recycle(packet);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00981}00981                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00982}00982                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00983}00983                     var channel = \_channels[packet.ChannelId] ?? (packet.Property == PacketProperty.Ack ? null : CreateChannel(packet.ChannelId));}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00984}00984                     \textcolor{keywordflow}{if} (channel != \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00985}00985                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00986}00986                         \textcolor{keywordflow}{if} (!channel.ProcessPacket(packet))}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00987}00987                             \_packetPool.Recycle(packet);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00988}00988                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00989}00989                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00990}00990 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00991}00991                 \textcolor{comment}{//Simple packet without acks}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00992}00992                 \textcolor{keywordflow}{case} PacketProperty.Unreliable:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00993}00993                     \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.CreateReceiveEvent(packet, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.Unreliable, NetConstants.HeaderSize, \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00994}00994                     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00995}00995 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00996}00996                 \textcolor{keywordflow}{case} PacketProperty.MtuCheck:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00997}00997                 \textcolor{keywordflow}{case} PacketProperty.MtuOk:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00998}00998                     ProcessMtuPacket(packet);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l00999}00999                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01000}01000 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01001}01001                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01002}01002                     NetDebug.WriteError(\textcolor{stringliteral}{"{}Error! Unexpected packet type: "{}} + packet.Property);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01003}01003                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01004}01004             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01005}01005         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01006}01006 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01007}01007         \textcolor{keyword}{private} \textcolor{keywordtype}{void} SendMerged()}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01008}01008         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01009}01009             \textcolor{keywordflow}{if} (\_mergeCount == 0)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01010}01010                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01011}01011             \textcolor{keywordtype}{int} bytesSent;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01012}01012             \textcolor{keywordflow}{if} (\_mergeCount > 1)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01013}01013             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01014}01014                 NetDebug.Write(\textcolor{stringliteral}{"{}[P]Send merged: "{}} + \_mergePos + \textcolor{stringliteral}{"{}, count: "{}} + \_mergeCount);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01015}01015                 bytesSent = \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.SendRaw(\_mergeData.RawData, 0, NetConstants.HeaderSize + \_mergePos, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01016}01016             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01017}01017             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01018}01018             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01019}01019                 \textcolor{comment}{//Send without length information and merging}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01020}01020                 bytesSent = \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.SendRaw(\_mergeData.RawData, NetConstants.HeaderSize + 2, \_mergePos -\/ 2, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01021}01021             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01022}01022 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01023}01023             \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a0a51ed73d87d16c970accbaa9ec1acbb}{EnableStatistics}})}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01024}01024             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01025}01025                 \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_abd2070e63ffd5b35b14ea42a0cdf7959}{Statistics}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_statistics_aafacce892e05390075dd4213dc08caee}{IncrementPacketsSent}}();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01026}01026                 \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_abd2070e63ffd5b35b14ea42a0cdf7959}{Statistics}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_statistics_a476f3666c8d76b0743c36ec29231ca9c}{AddBytesSent}}(bytesSent);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01027}01027             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01028}01028 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01029}01029             \_mergePos = 0;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01030}01030             \_mergeCount = 0;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01031}01031         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01032}01032 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01033}01033         \textcolor{keyword}{internal} \textcolor{keywordtype}{void} SendUserData(NetPacket packet)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01034}01034         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01035}01035             packet.ConnectionNumber = \_connectNum;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01036}01036             \textcolor{keywordtype}{int} mergedPacketSize = NetConstants.HeaderSize + packet.Size + 2;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01037}01037             \textcolor{keyword}{const} \textcolor{keywordtype}{int} sizeTreshold = 20;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01038}01038             \textcolor{keywordflow}{if} (mergedPacketSize + sizeTreshold >= \_mtu)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01039}01039             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01040}01040                 NetDebug.Write(\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ad17855dae3da494fd4b87fa8b6e2db0c}{NetLogLevel}}.Trace, \textcolor{stringliteral}{"{}[P]SendingPacket: "{}} + packet.Property);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01041}01041                 \textcolor{keywordtype}{int} bytesSent = \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.SendRaw(packet, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01042}01042 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01043}01043                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a0a51ed73d87d16c970accbaa9ec1acbb}{EnableStatistics}})}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01044}01044                 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01045}01045                     \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_abd2070e63ffd5b35b14ea42a0cdf7959}{Statistics}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_statistics_aafacce892e05390075dd4213dc08caee}{IncrementPacketsSent}}();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01046}01046                     \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_abd2070e63ffd5b35b14ea42a0cdf7959}{Statistics}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_statistics_a476f3666c8d76b0743c36ec29231ca9c}{AddBytesSent}}(bytesSent);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01047}01047                 \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01048}01048 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01049}01049                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01050}01050             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01051}01051             \textcolor{keywordflow}{if} (\_mergePos + mergedPacketSize > \_mtu)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01052}01052                 SendMerged();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01053}01053 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01054}01054             FastBitConverter.GetBytes(\_mergeData.RawData, \_mergePos + NetConstants.HeaderSize, (ushort)packet.Size);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01055}01055             Buffer.BlockCopy(packet.RawData, 0, \_mergeData.RawData, \_mergePos + NetConstants.HeaderSize + 2, packet.Size);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01056}01056             \_mergePos += packet.Size + 2;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01057}01057             \_mergeCount++;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01058}01058             \textcolor{comment}{//DebugWriteForce("{}Merged: "{} + \_mergePos + "{}/"{} + (\_mtu -\/ 2) + "{}, count: "{} + \_mergeCount);}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01059}01059         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01060}01060 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01061}01061         \textcolor{keyword}{internal} \textcolor{keywordtype}{void} Update(\textcolor{keywordtype}{int} deltaTime)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01062}01062         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01063}01063             Interlocked.Add(ref \_timeSinceLastPacket, deltaTime);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01064}01064             \textcolor{keywordflow}{switch} (\_connectionState)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01065}01065             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01066}01066                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Connected:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01067}01067                     \textcolor{keywordflow}{if} (\_timeSinceLastPacket > \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aae1bf843e997760ff16cfe322cb91c27}{DisconnectTimeout}})}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01068}01068                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01069}01069                         NetDebug.Write(}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01070}01070                             \textcolor{stringliteral}{"{}[UPDATE] Disconnect by timeout: \{0\} > \{1\}"{}},}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01071}01071                             \_timeSinceLastPacket,}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01072}01072                             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aae1bf843e997760ff16cfe322cb91c27}{DisconnectTimeout}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01073}01073                         \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.DisconnectPeerForce(\textcolor{keyword}{this}, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5}{DisconnectReason}}.Timeout, 0, \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01074}01074                         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01075}01075                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01076}01076                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01077}01077 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01078}01078                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.ShutdownRequested:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01079}01079                     \textcolor{keywordflow}{if} (\_timeSinceLastPacket > \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aae1bf843e997760ff16cfe322cb91c27}{DisconnectTimeout}})}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01080}01080                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01081}01081                         \_connectionState = \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Disconnected;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01082}01082                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01083}01083                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01084}01084                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01085}01085                         \_shutdownTimer += deltaTime;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01086}01086                         \textcolor{keywordflow}{if} (\_shutdownTimer >= ShutdownDelay)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01087}01087                         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01088}01088                             \_shutdownTimer = 0;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01089}01089                             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.SendRaw(\_shutdownPacket, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01090}01090                         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01091}01091                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01092}01092                     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01093}01093 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01094}01094                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Outgoing:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01095}01095                     \_connectTimer += deltaTime;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01096}01096                     \textcolor{keywordflow}{if} (\_connectTimer > \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a31d81117b4f5d74bf58e5d1f798e3588}{ReconnectDelay}})}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01097}01097                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01098}01098                         \_connectTimer = 0;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01099}01099                         \_connectAttempts++;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01100}01100                         \textcolor{keywordflow}{if} (\_connectAttempts > \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a8563e1bccacbd6dd5e3ebfee0bf899e7}{MaxConnectAttempts}})}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01101}01101                         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01102}01102                             \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.DisconnectPeerForce(\textcolor{keyword}{this}, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa707be3df2f858c7b0c7dd97cc5b59c5}{DisconnectReason}}.ConnectionFailed, 0, \textcolor{keyword}{null});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01103}01103                             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01104}01104                         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01105}01105 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01106}01106                         \textcolor{comment}{//else send connect again}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01107}01107                         \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.SendRaw(\_connectRequestPacket, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01108}01108                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01109}01109                     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01110}01110 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01111}01111                 \textcolor{keywordflow}{case} \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{ConnectionState}}.Disconnected:}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01112}01112                     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01113}01113             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01114}01114 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01115}01115             \textcolor{comment}{//Send ping}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01116}01116             \_pingSendTimer += deltaTime;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01117}01117             \textcolor{keywordflow}{if} (\_pingSendTimer >= \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a8e0bb093dc563a36a67385dfdd2e4512}{PingInterval}})}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01118}01118             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01119}01119                 NetDebug.Write(\textcolor{stringliteral}{"{}[PP] Send ping..."{}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01120}01120                 \textcolor{comment}{//reset timer}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01121}01121                 \_pingSendTimer = 0;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01122}01122                 \textcolor{comment}{//send ping}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01123}01123                 \_pingPacket.Sequence++;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01124}01124                 \textcolor{comment}{//ping timeout}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01125}01125                 \textcolor{keywordflow}{if} (\_pingTimer.IsRunning)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01126}01126                     UpdateRoundTripTime((\textcolor{keywordtype}{int})\_pingTimer.ElapsedMilliseconds);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01127}01127                 \_pingTimer.Reset();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01128}01128                 \_pingTimer.Start();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01129}01129                 \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.SendRaw(\_pingPacket, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer_ae09aa92f7d44177dd6311cc43db4755c}{EndPoint}});}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01130}01130             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01131}01131 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01132}01132             \textcolor{comment}{//RTT -\/ round trip time}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01133}01133             \_rttResetTimer += deltaTime;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01134}01134             \textcolor{keywordflow}{if} (\_rttResetTimer >= \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a8e0bb093dc563a36a67385dfdd2e4512}{PingInterval}} * 3)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01135}01135             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01136}01136                 \_rttResetTimer = 0;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01137}01137                 \_rtt = \_avgRtt;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01138}01138                 \_rttCount = 1;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01139}01139             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01140}01140 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01141}01141             UpdateMtuLogic(deltaTime);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01142}01142 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01143}01143             \textcolor{comment}{//Pending send}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01144}01144             \textcolor{keywordflow}{if} (\_channelSendQueue.Count > 0)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01145}01145             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01146}01146                 lock (\_channelSendQueue)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01147}01147                 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01148}01148                     var count = \_channelSendQueue.Count;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01149}01149                     \textcolor{keywordflow}{while} (count-\/-\/ > 0)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01150}01150                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01151}01151                         BaseChannel channel = \_channelSendQueue.Dequeue();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01152}01152                         \textcolor{keywordflow}{if} (channel.SendAndCheckQueue())}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01153}01153                         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01154}01154                             \textcolor{comment}{// still has something to send, re-\/add it to the send queue}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01155}01155                             \_channelSendQueue.Enqueue(channel);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01156}01156                         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01157}01157                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01158}01158                 \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01159}01159             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01160}01160 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01161}01161             \textcolor{keywordflow}{if} (\_unreliableChannel.Count > 0)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01162}01162             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01163}01163                 lock (\_unreliableChannel)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01164}01164                 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01165}01165                     \textcolor{keywordflow}{while} (\_unreliableChannel.Count > 0)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01166}01166                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01167}01167                         NetPacket packet = \_unreliableChannel.Dequeue();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01168}01168                         SendUserData(packet);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01169}01169                         \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.NetPacketPool.Recycle(packet);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01170}01170                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01171}01171                 \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01172}01172             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01173}01173 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01174}01174             SendMerged();}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01175}01175         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01176}01176 }
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01177}01177         \textcolor{comment}{//For reliable channel}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01178}01178         \textcolor{keyword}{internal} \textcolor{keywordtype}{void} RecycleAndDeliver(NetPacket packet)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01179}01179         \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01180}01180             \textcolor{keywordflow}{if} (packet.UserData != \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01181}01181             \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01182}01182                 \textcolor{keywordflow}{if} (packet.IsFragmented)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01183}01183                 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01184}01184                     ushort fragCount;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01185}01185                     \_deliveredFragments.TryGetValue(packet.FragmentId, out fragCount);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01186}01186                     fragCount++;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01187}01187                     \textcolor{keywordflow}{if} (fragCount == packet.FragmentsTotal)}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01188}01188                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01189}01189                         \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.MessageDelivered(\textcolor{keyword}{this}, packet.UserData);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01190}01190                         \_deliveredFragments.Remove(packet.FragmentId);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01191}01191                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01192}01192                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01193}01193                     \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01194}01194                         \_deliveredFragments[packet.FragmentId] = fragCount;}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01195}01195                     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01196}01196                 \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01197}01197                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01198}01198                 \{}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01199}01199                     \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{NetManager}}.MessageDelivered(\textcolor{keyword}{this}, packet.UserData);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01200}01200                 \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01201}01201                 packet.UserData = \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01202}01202             \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01203}01203             \_packetPool.Recycle(packet);}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01204}01204         \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01205}01205     \}}
+\DoxyCodeLine{\Hypertarget{_net_peer_8cs_source_l01206}01206 \}}
+
+\end{DoxyCode}

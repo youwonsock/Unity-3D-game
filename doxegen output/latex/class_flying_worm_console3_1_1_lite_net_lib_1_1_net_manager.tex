@@ -1,0 +1,1712 @@
+\hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{}\doxysection{Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager 클래스 참조}
+\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+
+
+Main class for all network operations. Can be used as client and/or server.  
+
+
+Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager에 대한 상속 다이어그램 \+: \begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{클래스}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_1_1_net_peer_enumerator}{Net\+Peer\+Enumerator}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 멤버 함수}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a5e061c07857d7682e94c56ad875fdbce}{Get\+Peer\+By\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Gets peer by peer id \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a7e8515410afb020d0fe56e89cae799ca}{Net\+Manager}} (\mbox{\hyperlink{interface_flying_worm_console3_1_1_lite_net_lib_1_1_i_net_event_listener}{INet\+Event\+Listener}} listener, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base}{Packet\+Layer\+Base}} extra\+Packet\+Layer=null)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} constructor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac7f5a7ec175986311a4fb2e3ee4e7a8c}{Manual\+Update}} (int elapsed\+Milliseconds)
+\begin{DoxyCompactList}\small\item\em Update and send logic. Use this only when \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} started in manual mode \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac1a832adcf48d1f462431d4ee742fa11}{Manual\+Receive}} ()
+\begin{DoxyCompactList}\small\item\em Receive logic. It will call Receive events immediately without need to use Poll\+Events or Unsynced\+Events Use this only when \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} started in manual mode \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aaf81abcbfbdc36da97a642297b4c047d}{Send\+To\+All}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} writer, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options)
+\begin{DoxyCompactList}\small\item\em Send data to all connected peers (channel -\/ 0) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a2f32c2049fb172e4dc8fdc17e21ab063}{Send\+To\+All}} (byte\mbox{[}$\,$\mbox{]} data, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options)
+\begin{DoxyCompactList}\small\item\em Send data to all connected peers (channel -\/ 0) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a1722d65c1b5185fe2931d6c775478d3e}{Send\+To\+All}} (byte\mbox{[}$\,$\mbox{]} data, int start, int length, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options)
+\begin{DoxyCompactList}\small\item\em Send data to all connected peers (channel -\/ 0) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a648010a93401038f7f1bfbfca84ed063}{Send\+To\+All}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} writer, byte channel\+Number, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options)
+\begin{DoxyCompactList}\small\item\em Send data to all connected peers \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a1b4688c9cb26b24806dc124e01a0b44e}{Send\+To\+All}} (byte\mbox{[}$\,$\mbox{]} data, byte channel\+Number, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options)
+\begin{DoxyCompactList}\small\item\em Send data to all connected peers \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ae4512254753099ab1e9caca2c5b31aaf}{Send\+To\+All}} (byte\mbox{[}$\,$\mbox{]} data, int start, int length, byte channel\+Number, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options)
+\begin{DoxyCompactList}\small\item\em Send data to all connected peers \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_acfdd7bed9f7f54f8de2a68c9b2993d8e}{Send\+To\+All}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} writer, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} exclude\+Peer)
+\begin{DoxyCompactList}\small\item\em Send data to all connected peers (channel -\/ 0) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a5411a5534017b1054321b9de81f692bf}{Send\+To\+All}} (byte\mbox{[}$\,$\mbox{]} data, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} exclude\+Peer)
+\begin{DoxyCompactList}\small\item\em Send data to all connected peers (channel -\/ 0) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aa1d2f131303a55855a2a99627f7d0e5a}{Send\+To\+All}} (byte\mbox{[}$\,$\mbox{]} data, int start, int length, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} exclude\+Peer)
+\begin{DoxyCompactList}\small\item\em Send data to all connected peers (channel -\/ 0) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a19343d1507dd1135fa8cb52bfc42488f}{Send\+To\+All}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} writer, byte channel\+Number, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} exclude\+Peer)
+\begin{DoxyCompactList}\small\item\em Send data to all connected peers \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aa5fa732a4e1156e16eea9285f7422554}{Send\+To\+All}} (byte\mbox{[}$\,$\mbox{]} data, byte channel\+Number, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} exclude\+Peer)
+\begin{DoxyCompactList}\small\item\em Send data to all connected peers \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ace7585a343ef0e18f16b7f2eab018566}{Send\+To\+All}} (byte\mbox{[}$\,$\mbox{]} data, int start, int length, byte channel\+Number, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}} options, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} exclude\+Peer)
+\begin{DoxyCompactList}\small\item\em Send data to all connected peers \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a57af7382f7ac36399a863d91413d4c71}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Start logic thread and listening on available port \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aa75ba32d9729c2accb8a26f55436d46b}{Start}} (IPAddress address\+IPv4, IPAddress address\+IPv6, int port)
+\begin{DoxyCompactList}\small\item\em Start logic thread and listening on selected port \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ab3d14872d416bdf5f0029446801269f6}{Start}} (string address\+IPv4, string address\+IPv6, int port)
+\begin{DoxyCompactList}\small\item\em Start logic thread and listening on selected port \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a57e9a974f6c322b839851058abda4029}{Start}} (int port)
+\begin{DoxyCompactList}\small\item\em Start logic thread and listening on selected port \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a0ada7b8b742b45f712c6305510c0f3e8}{Start\+In\+Manual\+Mode}} (IPAddress address\+IPv4, IPAddress address\+IPv6, int port)
+\begin{DoxyCompactList}\small\item\em Start in manual mode and listening on selected port In this mode you should use Manual\+Receive (without Poll\+Events) for receive packets and Manual\+Update(...) for update and send packets This mode useful mostly for single-\/threaded servers \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac77add74cd2a42cf80f6891736274b41}{Start\+In\+Manual\+Mode}} (string address\+IPv4, string address\+IPv6, int port)
+\begin{DoxyCompactList}\small\item\em Start in manual mode and listening on selected port In this mode you should use Manual\+Receive (without Poll\+Events) for receive packets and Manual\+Update(...) for update and send packets This mode useful mostly for single-\/threaded servers \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a632e04d1b167448004918465b5d25a86}{Start\+In\+Manual\+Mode}} (int port)
+\begin{DoxyCompactList}\small\item\em Start in manual mode and listening on selected port In this mode you should use Manual\+Receive (without Poll\+Events) for receive packets and Manual\+Update(...) for update and send packets This mode useful mostly for single-\/threaded servers \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a56c356743aac4d3fb5d5a0eb5ae45a12}{Send\+Unconnected\+Message}} (byte\mbox{[}$\,$\mbox{]} message, IPEnd\+Point remote\+End\+Point)
+\begin{DoxyCompactList}\small\item\em Send message without connection \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aaa0071625abd5722d42375e4bf2f17fc}{Send\+Unconnected\+Message}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} writer, IPEnd\+Point remote\+End\+Point)
+\begin{DoxyCompactList}\small\item\em Send message without connection \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a89cd2d27b6d8cbb7198397af2e092a09}{Send\+Unconnected\+Message}} (byte\mbox{[}$\,$\mbox{]} message, int start, int length, IPEnd\+Point remote\+End\+Point)
+\begin{DoxyCompactList}\small\item\em Send message without connection \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_adab92bff83d9d0d08f3b9010f6f771e5}{Send\+Broadcast}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} writer, int port)
+\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ae2cfce339069cb6f1259f72e2e7073b9}{Send\+Broadcast}} (byte\mbox{[}$\,$\mbox{]} data, int port)
+\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a296b55edeb659ac3854b4cf9daa56eb0}{Send\+Broadcast}} (byte\mbox{[}$\,$\mbox{]} data, int start, int length, int port)
+\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ad1045d089b0448e2c157600c84d692a7}{Trigger\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Triggers update and send logic immediately (works asynchronously) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a89c85e0367662ff420872fedada8df5a}{Poll\+Events}} ()
+\begin{DoxyCompactList}\small\item\em Receive all pending events. Call this in game update code \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a11f2f836eaa0f9dab4bb1e45daa2d76d}{Connect}} (string address, int port, string key)
+\begin{DoxyCompactList}\small\item\em Connect to remote host \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a50898820687a736ace80d9e079c79702}{Connect}} (string address, int port, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} connection\+Data)
+\begin{DoxyCompactList}\small\item\em Connect to remote host \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a30d5a6bc746ffab85a4bab12562c11d9}{Connect}} (IPEnd\+Point target, string key)
+\begin{DoxyCompactList}\small\item\em Connect to remote host \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a89783e4cb97e8ecb8a8e75de4a65d20a}{Connect}} (IPEnd\+Point target, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} connection\+Data)
+\begin{DoxyCompactList}\small\item\em Connect to remote host \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ad5908d21b7a78f968cffd0cd9a85b68d}{Stop}} ()
+\begin{DoxyCompactList}\small\item\em Force closes connection and stop all threads. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_afb0c42055b8d5bc445330e63eac3feab}{Stop}} (bool send\+Disconnect\+Messages)
+\begin{DoxyCompactList}\small\item\em Force closes connection and stop all threads. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a66e4df5c49b6a2e9937f653d8e355d5c}{Get\+Peers\+Count}} (\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{Connection\+State}} peer\+State)
+\begin{DoxyCompactList}\small\item\em Return peers count with connection state \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a60040ce324831a26ee658de98df48ccd}{Get\+Peers\+Non\+Alloc}} (List$<$ \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} $>$ peers, \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{Connection\+State}} peer\+State)
+\begin{DoxyCompactList}\small\item\em Get copy of peers (without allocations) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aefe619b20a21dceee435746465bc93ea}{Disconnect\+All}} ()
+\begin{DoxyCompactList}\small\item\em Disconnect all peers without any additional data \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a0cbe2dcbedb6dd198b5328bca7071fd4}{Disconnect\+All}} (byte\mbox{[}$\,$\mbox{]} data, int start, int count)
+\begin{DoxyCompactList}\small\item\em Disconnect all peers with shutdown message \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a2bc6d52d6aba26a639fa6c5d8d99b58d}{Disconnect\+Peer\+Force}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} peer)
+\begin{DoxyCompactList}\small\item\em Immediately disconnect peer from server without additional data \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a6b522279f75eb31a07bcfd16e22fea63}{Disconnect\+Peer}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} peer)
+\begin{DoxyCompactList}\small\item\em Disconnect peer from server \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ad31de5b83a59d43668f61070fdafacf3}{Disconnect\+Peer}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} peer, byte\mbox{[}$\,$\mbox{]} data)
+\begin{DoxyCompactList}\small\item\em Disconnect peer from server and send additional data (Size must be less or equal MTU -\/ 8) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a9653e878ff3abaabd92eeccaff739bac}{Disconnect\+Peer}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} peer, \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}} writer)
+\begin{DoxyCompactList}\small\item\em Disconnect peer from server and send additional data (Size must be less or equal MTU -\/ 8) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a5cfe67c2e55b8e8fd5d0411f748293fc}{Disconnect\+Peer}} (\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} peer, byte\mbox{[}$\,$\mbox{]} data, int start, int count)
+\begin{DoxyCompactList}\small\item\em Disconnect peer from server and send additional data (Size must be less or equal MTU -\/ 8) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ab36a3cf164bcb3ce207a99ed6f6325fd}{Create\+Ntp\+Request}} (IPEnd\+Point end\+Point)
+\begin{DoxyCompactList}\small\item\em Create the requests for NTP server \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a8de30eaa2b33ffd044ff10899a6b5453}{Create\+Ntp\+Request}} (string ntp\+Server\+Address, int port)
+\begin{DoxyCompactList}\small\item\em Create the requests for NTP server \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a59740a27c604ba23e6f54a7889393c41}{Create\+Ntp\+Request}} (string ntp\+Server\+Address)
+\begin{DoxyCompactList}\small\item\em Create the requests for NTP server (default port) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_1_1_net_peer_enumerator}{Net\+Peer\+Enumerator}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a41f1894c9ba599d13201980e5304dc18}{Get\+Enumerator}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 속성}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac3cd0979aee0f45b8025fac86adc25aa}{Unconnected\+Messages\+Enabled}} = false
+\begin{DoxyCompactList}\small\item\em Enable messages receiving without connection. (with Send\+Unconnected\+Message method) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a397e59c61e93cc78bdcb97c75b218453}{Nat\+Punch\+Enabled}} = false
+\begin{DoxyCompactList}\small\item\em Enable nat punch messages \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac326d6ee92340e7bac591636dddc721a}{Update\+Time}} = 15
+\begin{DoxyCompactList}\small\item\em Library logic update and send period in milliseconds \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a8e0bb093dc563a36a67385dfdd2e4512}{Ping\+Interval}} = 1000
+\begin{DoxyCompactList}\small\item\em Interval for latency detection and checking connection \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aae1bf843e997760ff16cfe322cb91c27}{Disconnect\+Timeout}} = 5000
+\begin{DoxyCompactList}\small\item\em If \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} doesn\textquotesingle{}t receive any packet from remote peer during this time then connection will be closed (including library internal keepalive packets) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_af57a43cf9ae9cdc22affe866594ca95c}{Simulate\+Packet\+Loss}} = false
+\begin{DoxyCompactList}\small\item\em Simulate packet loss by dropping random amount of packets. (Works only in DEBUG mode) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a7f24e6c0ab0a0721642bc3a00105f3b9}{Simulate\+Latency}} = false
+\begin{DoxyCompactList}\small\item\em Simulate latency by holding packets for random time. (Works only in DEBUG mode) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a1ef0ab19b6b42ee6e3a7a255eb81db6b}{Simulation\+Packet\+Loss\+Chance}} = 10
+\begin{DoxyCompactList}\small\item\em Chance of packet loss when simulation enabled. value in percents (1 -\/ 100). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aaf6d750318980abb76c43cf6267b12ac}{Simulation\+Min\+Latency}} = 30
+\begin{DoxyCompactList}\small\item\em Minimum simulated latency \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_af5d16d4c3a85828ab6ef1438d57526a0}{Simulation\+Max\+Latency}} = 100
+\begin{DoxyCompactList}\small\item\em Maximum simulated latency \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a3e317cbf48981a01a111a2d9f41c143a}{Unsynced\+Events}} = false
+\begin{DoxyCompactList}\small\item\em Events automatically will be called without Poll\+Events method from another thread \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a4ac60e49e2ebddeb6c0190e1768a3aac}{Unsynced\+Receive\+Event}} = false
+\begin{DoxyCompactList}\small\item\em If true -\/ receive event will be called from \char`\"{}receive\char`\"{} thread immediately otherwise on Poll\+Events call \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a76c844e396b7554b47d09ed12be8c557}{Unsynced\+Delivery\+Event}} = false
+\begin{DoxyCompactList}\small\item\em If true -\/ delivery event will be called from \char`\"{}receive\char`\"{} thread immediately otherwise on Poll\+Events call \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a1bea09fb70122d198287b7d4c68e1d1f}{Broadcast\+Receive\+Enabled}} = false
+\begin{DoxyCompactList}\small\item\em Allows receive broadcast packets \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a31d81117b4f5d74bf58e5d1f798e3588}{Reconnect\+Delay}} = 500
+\begin{DoxyCompactList}\small\item\em Delay between initial connection attempts \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a8563e1bccacbd6dd5e3ebfee0bf899e7}{Max\+Connect\+Attempts}} = 10
+\begin{DoxyCompactList}\small\item\em Maximum connection attempts before client stops and call disconnect event. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a0e897f576496068367553c82f6cfd6b0}{Reuse\+Address}} = false
+\begin{DoxyCompactList}\small\item\em Enables socket option \char`\"{}\+Reuse\+Address\char`\"{} for specific purposes \end{DoxyCompactList}\item 
+readonly \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_statistics}{Net\+Statistics}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a3276c556100a215fc4374cde19990f87}{Statistics}}
+\begin{DoxyCompactList}\small\item\em Statistics of all connections \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a0a51ed73d87d16c970accbaa9ec1acbb}{Enable\+Statistics}} = false
+\begin{DoxyCompactList}\small\item\em Toggles the collection of network statistics for the instance and all known peers \end{DoxyCompactList}\item 
+readonly \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_nat_punch_module}{Nat\+Punch\+Module}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a6da2dd025578593b4671cabd214f99dd}{Nat\+Punch\+Module}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_nat_punch_module}{Nat\+Punch\+Module}} for NAT hole punching operations \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ab6d78aaa45ed2460f109d029c33f7f4c}{Auto\+Recycle}}
+\begin{DoxyCompactList}\small\item\em Automatically recycle \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_packet_reader}{Net\+Packet\+Reader}} after On\+Receive event \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4}{IPv6\+Mode}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_af35d3c8870bf5b20de91e22af447d4a7}{IPv6\+Enabled}} = \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4a9e412a29fb971bb342ba56d00f903ca3}{IPv6\+Mode.\+Separate\+Socket}}
+\begin{DoxyCompactList}\small\item\em IPv6 support \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac44553f61417c3ca43fb2b9b991cd8d8}{Mtu\+Override}} = 0
+\begin{DoxyCompactList}\small\item\em Override MTU for all new peers registered in this \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}}, will ignores MTU Discovery! \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a482d56378d5290546fcc39eabcb6d845}{Use\+Safe\+Mtu}} = false
+\begin{DoxyCompactList}\small\item\em Sets initial MTU to lowest possible value according to RFC1191 (576 bytes) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_abce36f972c22260470c8d8133ed0ef5d}{Disconnect\+On\+Unreachable}} = false
+\begin{DoxyCompactList}\small\item\em Disconnect peers if Host\+Unreachable or Network\+Unreachable spawned (old behaviour 0.\+9.\+x was true) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{속성}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a5e9430655114b279cc2c4b4aeefca27b}{Is\+Running}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Returns true if socket listening and update thread is running \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a73edf1f0486a5b58a0cdc3c98d017f22}{Local\+Port}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Local End\+Point (host and port) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_abc254535ed1bbdf0052cbd5a75b57229}{First\+Peer}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em First peer. Useful for Client mode \end{DoxyCompactList}\item 
+byte \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_af0ba172d6f483f4ef57404181544edbc}{Channels\+Count}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em QoS channel count per message type (value must be between 1 and 64 channels) \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} $>$ \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ad20da9efc3212b5b591d46da36432854}{Connected\+Peer\+List}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Returns connected peers list (with internal cached list) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ab983788f855cf14135e150359d60ba77}{Connected\+Peers\+Count}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Returns connected peers count \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a9af04e67e1cf8437a1d28b187461e126}{Extra\+Packet\+Size\+For\+Layer}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{상세한 설명}
+Main class for all network operations. Can be used as client and/or server. 
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00094}{94}} 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{생성자 \& 소멸자 문서화}
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a7e8515410afb020d0fe56e89cae799ca}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a7e8515410afb020d0fe56e89cae799ca}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!NetManager@{NetManager}}
+\index{NetManager@{NetManager}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{NetManager()}{NetManager()}}
+{\footnotesize\ttfamily Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Net\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_flying_worm_console3_1_1_lite_net_lib_1_1_i_net_event_listener}{INet\+Event\+Listener}}}]{listener,  }\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_layers_1_1_packet_layer_base}{Packet\+Layer\+Base}}}]{extra\+Packet\+Layer = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} constructor 
+
+
+\begin{DoxyParams}{매개변수}
+{\em listener} & Network events listener (also can implement \mbox{\hyperlink{interface_flying_worm_console3_1_1_lite_net_lib_1_1_i_delivery_event_listener}{IDelivery\+Event\+Listener}})\\
+\hline
+{\em extra\+Packet\+Layer} & Extra processing of packages, like CRC checksum or encryption. All connected Net\+Managers must have same layer.\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00436}{436}} 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{멤버 함수 문서화}
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a89783e4cb97e8ecb8a8e75de4a65d20a}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a89783e4cb97e8ecb8a8e75de4a65d20a}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!Connect@{Connect}}
+\index{Connect@{Connect}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{Connect()}{Connect()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Connect (\begin{DoxyParamCaption}\item[{IPEnd\+Point}]{target,  }\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{connection\+Data }\end{DoxyParamCaption})}
+
+
+
+Connect to remote host 
+
+
+\begin{DoxyParams}{매개변수}
+{\em target} & Server end point (ip and port)\\
+\hline
+{\em connection\+Data} & Additional data for remote peer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+New \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} if new connection, Old \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} if already connected, null peer if there is \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request}{Connection\+Request}} awaiting
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{예외}
+{\em Invalid\+Operation\+Exception} & Manager is not running. Call \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a57af7382f7ac36399a863d91413d4c71}{Start()}}\\
+\hline
+\end{DoxyExceptions}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01571}{1571}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a30d5a6bc746ffab85a4bab12562c11d9}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a30d5a6bc746ffab85a4bab12562c11d9}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!Connect@{Connect}}
+\index{Connect@{Connect}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{Connect()}{Connect()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Connect (\begin{DoxyParamCaption}\item[{IPEnd\+Point}]{target,  }\item[{string}]{key }\end{DoxyParamCaption})}
+
+
+
+Connect to remote host 
+
+
+\begin{DoxyParams}{매개변수}
+{\em target} & Server end point (ip and port)\\
+\hline
+{\em key} & Connection key\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+New \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} if new connection, Old \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} if already connected, null peer if there is \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request}{Connection\+Request}} awaiting
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{예외}
+{\em Invalid\+Operation\+Exception} & Manager is not running. Call \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a57af7382f7ac36399a863d91413d4c71}{Start()}}\\
+\hline
+\end{DoxyExceptions}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01559}{1559}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a50898820687a736ace80d9e079c79702}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a50898820687a736ace80d9e079c79702}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!Connect@{Connect}}
+\index{Connect@{Connect}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{Connect()}{Connect()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Connect (\begin{DoxyParamCaption}\item[{string}]{address,  }\item[{int}]{port,  }\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{connection\+Data }\end{DoxyParamCaption})}
+
+
+
+Connect to remote host 
+
+
+\begin{DoxyParams}{매개변수}
+{\em address} & Server IP or hostname\\
+\hline
+{\em port} & Server Port\\
+\hline
+{\em connection\+Data} & Additional data for remote peer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+New \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} if new connection, Old \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} if already connected, null peer if there is \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request}{Connection\+Request}} awaiting
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{예외}
+{\em Invalid\+Operation\+Exception} & Manager is not running. Call \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a57af7382f7ac36399a863d91413d4c71}{Start()}}\\
+\hline
+\end{DoxyExceptions}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01537}{1537}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a11f2f836eaa0f9dab4bb1e45daa2d76d}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a11f2f836eaa0f9dab4bb1e45daa2d76d}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!Connect@{Connect}}
+\index{Connect@{Connect}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{Connect()}{Connect()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Connect (\begin{DoxyParamCaption}\item[{string}]{address,  }\item[{int}]{port,  }\item[{string}]{key }\end{DoxyParamCaption})}
+
+
+
+Connect to remote host 
+
+
+\begin{DoxyParams}{매개변수}
+{\em address} & Server IP or hostname\\
+\hline
+{\em port} & Server Port\\
+\hline
+{\em key} & Connection key\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+New \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} if new connection, Old \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} if already connected, null peer if there is \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_connection_request}{Connection\+Request}} awaiting
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{예외}
+{\em Invalid\+Operation\+Exception} & Manager is not running. Call \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a57af7382f7ac36399a863d91413d4c71}{Start()}}\\
+\hline
+\end{DoxyExceptions}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01524}{1524}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ab36a3cf164bcb3ce207a99ed6f6325fd}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ab36a3cf164bcb3ce207a99ed6f6325fd}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!CreateNtpRequest@{CreateNtpRequest}}
+\index{CreateNtpRequest@{CreateNtpRequest}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{CreateNtpRequest()}{CreateNtpRequest()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Create\+Ntp\+Request (\begin{DoxyParamCaption}\item[{IPEnd\+Point}]{end\+Point }\end{DoxyParamCaption})}
+
+
+
+Create the requests for NTP server 
+
+
+\begin{DoxyParams}{매개변수}
+{\em end\+Point} & NTP Server address.\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01788}{1788}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a59740a27c604ba23e6f54a7889393c41}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a59740a27c604ba23e6f54a7889393c41}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!CreateNtpRequest@{CreateNtpRequest}}
+\index{CreateNtpRequest@{CreateNtpRequest}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{CreateNtpRequest()}{CreateNtpRequest()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Create\+Ntp\+Request (\begin{DoxyParamCaption}\item[{string}]{ntp\+Server\+Address }\end{DoxyParamCaption})}
+
+
+
+Create the requests for NTP server (default port) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em ntp\+Server\+Address} & NTP Server address.\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01808}{1808}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a8de30eaa2b33ffd044ff10899a6b5453}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a8de30eaa2b33ffd044ff10899a6b5453}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!CreateNtpRequest@{CreateNtpRequest}}
+\index{CreateNtpRequest@{CreateNtpRequest}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{CreateNtpRequest()}{CreateNtpRequest()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Create\+Ntp\+Request (\begin{DoxyParamCaption}\item[{string}]{ntp\+Server\+Address,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Create the requests for NTP server 
+
+
+\begin{DoxyParams}{매개변수}
+{\em ntp\+Server\+Address} & NTP Server address.\\
+\hline
+{\em port} & port\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01798}{1798}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aefe619b20a21dceee435746465bc93ea}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aefe619b20a21dceee435746465bc93ea}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!DisconnectAll@{DisconnectAll}}
+\index{DisconnectAll@{DisconnectAll}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{DisconnectAll()}{DisconnectAll()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Disconnect\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disconnect all peers without any additional data 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01696}{1696}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a0cbe2dcbedb6dd198b5328bca7071fd4}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a0cbe2dcbedb6dd198b5328bca7071fd4}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!DisconnectAll@{DisconnectAll}}
+\index{DisconnectAll@{DisconnectAll}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{DisconnectAll()}{DisconnectAll()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Disconnect\+All (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{int}]{start,  }\item[{int}]{count }\end{DoxyParamCaption})}
+
+
+
+Disconnect all peers with shutdown message 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data to send (must be less or equal MTU)\\
+\hline
+{\em start} & Data start\\
+\hline
+{\em count} & Data count\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01707}{1707}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a6b522279f75eb31a07bcfd16e22fea63}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a6b522279f75eb31a07bcfd16e22fea63}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!DisconnectPeer@{DisconnectPeer}}
+\index{DisconnectPeer@{DisconnectPeer}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{DisconnectPeer()}{DisconnectPeer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Disconnect\+Peer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}}]{peer }\end{DoxyParamCaption})}
+
+
+
+Disconnect peer from server 
+
+
+\begin{DoxyParams}{매개변수}
+{\em peer} & peer to disconnect\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01739}{1739}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ad31de5b83a59d43668f61070fdafacf3}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ad31de5b83a59d43668f61070fdafacf3}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!DisconnectPeer@{DisconnectPeer}}
+\index{DisconnectPeer@{DisconnectPeer}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{DisconnectPeer()}{DisconnectPeer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Disconnect\+Peer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}}]{peer,  }\item[{byte\mbox{[}$\,$\mbox{]}}]{data }\end{DoxyParamCaption})}
+
+
+
+Disconnect peer from server and send additional data (Size must be less or equal MTU -\/ 8) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em peer} & peer to disconnect\\
+\hline
+{\em data} & additional data\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01749}{1749}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a5cfe67c2e55b8e8fd5d0411f748293fc}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a5cfe67c2e55b8e8fd5d0411f748293fc}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!DisconnectPeer@{DisconnectPeer}}
+\index{DisconnectPeer@{DisconnectPeer}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{DisconnectPeer()}{DisconnectPeer()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Disconnect\+Peer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}}]{peer,  }\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{int}]{start,  }\item[{int}]{count }\end{DoxyParamCaption})}
+
+
+
+Disconnect peer from server and send additional data (Size must be less or equal MTU -\/ 8) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em peer} & peer to disconnect\\
+\hline
+{\em data} & additional data\\
+\hline
+{\em start} & data start\\
+\hline
+{\em count} & data length\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01771}{1771}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a9653e878ff3abaabd92eeccaff739bac}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a9653e878ff3abaabd92eeccaff739bac}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!DisconnectPeer@{DisconnectPeer}}
+\index{DisconnectPeer@{DisconnectPeer}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{DisconnectPeer()}{DisconnectPeer()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Disconnect\+Peer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}}]{peer,  }\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{writer }\end{DoxyParamCaption})}
+
+
+
+Disconnect peer from server and send additional data (Size must be less or equal MTU -\/ 8) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em peer} & peer to disconnect\\
+\hline
+{\em writer} & additional data\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01759}{1759}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a2bc6d52d6aba26a639fa6c5d8d99b58d}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a2bc6d52d6aba26a639fa6c5d8d99b58d}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!DisconnectPeerForce@{DisconnectPeerForce}}
+\index{DisconnectPeerForce@{DisconnectPeerForce}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{DisconnectPeerForce()}{DisconnectPeerForce()}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Disconnect\+Peer\+Force (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}}]{peer }\end{DoxyParamCaption})}
+
+
+
+Immediately disconnect peer from server without additional data 
+
+
+\begin{DoxyParams}{매개변수}
+{\em peer} & peer to disconnect\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01730}{1730}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a41f1894c9ba599d13201980e5304dc18}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a41f1894c9ba599d13201980e5304dc18}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!GetEnumerator@{GetEnumerator}}
+\index{GetEnumerator@{GetEnumerator}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{GetEnumerator()}{GetEnumerator()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_1_1_net_peer_enumerator}{Net\+Peer\+Enumerator}} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Get\+Enumerator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01814}{1814}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a5e061c07857d7682e94c56ad875fdbce}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a5e061c07857d7682e94c56ad875fdbce}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!GetPeerById@{GetPeerById}}
+\index{GetPeerById@{GetPeerById}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{GetPeerById()}{GetPeerById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Get\+Peer\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Gets peer by peer id 
+
+
+\begin{DoxyParams}{매개변수}
+{\em id} & id of peer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+Peer if peer with id exist, otherwise null
+\end{DoxyReturn}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00362}{362}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a66e4df5c49b6a2e9937f653d8e355d5c}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a66e4df5c49b6a2e9937f653d8e355d5c}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!GetPeersCount@{GetPeersCount}}
+\index{GetPeersCount@{GetPeersCount}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{GetPeersCount()}{GetPeersCount()}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Get\+Peers\+Count (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{Connection\+State}}}]{peer\+State }\end{DoxyParamCaption})}
+
+
+
+Return peers count with connection state 
+
+
+\begin{DoxyParams}{매개변수}
+{\em peer\+State} & peer connection state (you can use as bit flags)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+peers count
+\end{DoxyReturn}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01663}{1663}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a60040ce324831a26ee658de98df48ccd}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a60040ce324831a26ee658de98df48ccd}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!GetPeersNonAlloc@{GetPeersNonAlloc}}
+\index{GetPeersNonAlloc@{GetPeersNonAlloc}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{GetPeersNonAlloc()}{GetPeersNonAlloc()}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Get\+Peers\+Non\+Alloc (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} $>$}]{peers,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_aa64a4f414fc08c866495cef70473b83d}{Connection\+State}}}]{peer\+State }\end{DoxyParamCaption})}
+
+
+
+Get copy of peers (without allocations) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em peers} & List that will contain result\\
+\hline
+{\em peer\+State} & State of peers\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01681}{1681}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac1a832adcf48d1f462431d4ee742fa11}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac1a832adcf48d1f462431d4ee742fa11}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!ManualReceive@{ManualReceive}}
+\index{ManualReceive@{ManualReceive}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{ManualReceive()}{ManualReceive()}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Manual\+Receive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Receive logic. It will call Receive events immediately without need to use Poll\+Events or Unsynced\+Events Use this only when \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} started in manual mode 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00792}{792}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac7f5a7ec175986311a4fb2e3ee4e7a8c}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac7f5a7ec175986311a4fb2e3ee4e7a8c}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!ManualUpdate@{ManualUpdate}}
+\index{ManualUpdate@{ManualUpdate}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{ManualUpdate()}{ManualUpdate()}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Manual\+Update (\begin{DoxyParamCaption}\item[{int}]{elapsed\+Milliseconds }\end{DoxyParamCaption})}
+
+
+
+Update and send logic. Use this only when \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} started in manual mode 
+
+
+\begin{DoxyParams}{매개변수}
+{\em elapsed\+Milliseconds} & elapsed milliseconds since last update call\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00769}{769}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a89c85e0367662ff420872fedada8df5a}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a89c85e0367662ff420872fedada8df5a}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!PollEvents@{PollEvents}}
+\index{PollEvents@{PollEvents}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{PollEvents()}{PollEvents()}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Poll\+Events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Receive all pending events. Call this in game update code 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01500}{1500}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ae2cfce339069cb6f1259f72e2e7073b9}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ae2cfce339069cb6f1259f72e2e7073b9}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendBroadcast@{SendBroadcast}}
+\index{SendBroadcast@{SendBroadcast}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendBroadcast()}{SendBroadcast()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+Broadcast (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01461}{1461}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a296b55edeb659ac3854b4cf9daa56eb0}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a296b55edeb659ac3854b4cf9daa56eb0}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendBroadcast@{SendBroadcast}}
+\index{SendBroadcast@{SendBroadcast}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendBroadcast()}{SendBroadcast()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+Broadcast (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{int}]{start,  }\item[{int}]{length,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01466}{1466}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_adab92bff83d9d0d08f3b9010f6f771e5}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_adab92bff83d9d0d08f3b9010f6f771e5}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendBroadcast@{SendBroadcast}}
+\index{SendBroadcast@{SendBroadcast}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendBroadcast()}{SendBroadcast()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+Broadcast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{writer,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01456}{1456}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a1b4688c9cb26b24806dc124e01a0b44e}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a1b4688c9cb26b24806dc124e01a0b44e}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendToAll@{SendToAll}}
+\index{SendToAll@{SendToAll}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendToAll()}{SendToAll()}\hspace{0.1cm}{\footnotesize\ttfamily [1/12]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+To\+All (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{byte}]{channel\+Number,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options }\end{DoxyParamCaption})}
+
+
+
+Send data to all connected peers 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data\\
+\hline
+{\em channel\+Number} & Number of channel (from 0 to channels\+Count -\/ 1)\\
+\hline
+{\em options} & Send options (reliable, unreliable, etc.)\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01215}{1215}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aa5fa732a4e1156e16eea9285f7422554}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aa5fa732a4e1156e16eea9285f7422554}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendToAll@{SendToAll}}
+\index{SendToAll@{SendToAll}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendToAll()}{SendToAll()}\hspace{0.1cm}{\footnotesize\ttfamily [2/12]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+To\+All (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{byte}]{channel\+Number,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options,  }\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}}]{exclude\+Peer }\end{DoxyParamCaption})}
+
+
+
+Send data to all connected peers 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data\\
+\hline
+{\em channel\+Number} & Number of channel (from 0 to channels\+Count -\/ 1)\\
+\hline
+{\em options} & Send options (reliable, unreliable, etc.)\\
+\hline
+{\em exclude\+Peer} & Excluded peer\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01296}{1296}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a2f32c2049fb172e4dc8fdc17e21ab063}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a2f32c2049fb172e4dc8fdc17e21ab063}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendToAll@{SendToAll}}
+\index{SendToAll@{SendToAll}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendToAll()}{SendToAll()}\hspace{0.1cm}{\footnotesize\ttfamily [3/12]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+To\+All (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options }\end{DoxyParamCaption})}
+
+
+
+Send data to all connected peers (channel -\/ 0) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data\\
+\hline
+{\em options} & Send options (reliable, unreliable, etc.)\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01181}{1181}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a5411a5534017b1054321b9de81f692bf}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a5411a5534017b1054321b9de81f692bf}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendToAll@{SendToAll}}
+\index{SendToAll@{SendToAll}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendToAll()}{SendToAll()}\hspace{0.1cm}{\footnotesize\ttfamily [4/12]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+To\+All (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options,  }\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}}]{exclude\+Peer }\end{DoxyParamCaption})}
+
+
+
+Send data to all connected peers (channel -\/ 0) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data\\
+\hline
+{\em options} & Send options (reliable, unreliable, etc.)\\
+\hline
+{\em exclude\+Peer} & Excluded peer\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01259}{1259}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ae4512254753099ab1e9caca2c5b31aaf}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ae4512254753099ab1e9caca2c5b31aaf}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendToAll@{SendToAll}}
+\index{SendToAll@{SendToAll}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendToAll()}{SendToAll()}\hspace{0.1cm}{\footnotesize\ttfamily [5/12]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+To\+All (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{int}]{start,  }\item[{int}]{length,  }\item[{byte}]{channel\+Number,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options }\end{DoxyParamCaption})}
+
+
+
+Send data to all connected peers 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data\\
+\hline
+{\em start} & Start of data\\
+\hline
+{\em length} & Length of data\\
+\hline
+{\em channel\+Number} & Number of channel (from 0 to channels\+Count -\/ 1)\\
+\hline
+{\em options} & Send options (reliable, unreliable, etc.)\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01228}{1228}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ace7585a343ef0e18f16b7f2eab018566}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ace7585a343ef0e18f16b7f2eab018566}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendToAll@{SendToAll}}
+\index{SendToAll@{SendToAll}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendToAll()}{SendToAll()}\hspace{0.1cm}{\footnotesize\ttfamily [6/12]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+To\+All (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{int}]{start,  }\item[{int}]{length,  }\item[{byte}]{channel\+Number,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options,  }\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}}]{exclude\+Peer }\end{DoxyParamCaption})}
+
+
+
+Send data to all connected peers 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data\\
+\hline
+{\em start} & Start of data\\
+\hline
+{\em length} & Length of data\\
+\hline
+{\em channel\+Number} & Number of channel (from 0 to channels\+Count -\/ 1)\\
+\hline
+{\em options} & Send options (reliable, unreliable, etc.)\\
+\hline
+{\em exclude\+Peer} & Excluded peer\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01311}{1311}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a1722d65c1b5185fe2931d6c775478d3e}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a1722d65c1b5185fe2931d6c775478d3e}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendToAll@{SendToAll}}
+\index{SendToAll@{SendToAll}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendToAll()}{SendToAll()}\hspace{0.1cm}{\footnotesize\ttfamily [7/12]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+To\+All (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{int}]{start,  }\item[{int}]{length,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options }\end{DoxyParamCaption})}
+
+
+
+Send data to all connected peers (channel -\/ 0) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data\\
+\hline
+{\em start} & Start of data\\
+\hline
+{\em length} & Length of data\\
+\hline
+{\em options} & Send options (reliable, unreliable, etc.)\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01193}{1193}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aa1d2f131303a55855a2a99627f7d0e5a}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aa1d2f131303a55855a2a99627f7d0e5a}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendToAll@{SendToAll}}
+\index{SendToAll@{SendToAll}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendToAll()}{SendToAll()}\hspace{0.1cm}{\footnotesize\ttfamily [8/12]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+To\+All (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{data,  }\item[{int}]{start,  }\item[{int}]{length,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options,  }\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}}]{exclude\+Peer }\end{DoxyParamCaption})}
+
+
+
+Send data to all connected peers (channel -\/ 0) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em data} & Data\\
+\hline
+{\em start} & Start of data\\
+\hline
+{\em length} & Length of data\\
+\hline
+{\em options} & Send options (reliable, unreliable, etc.)\\
+\hline
+{\em exclude\+Peer} & Excluded peer\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01272}{1272}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a648010a93401038f7f1bfbfca84ed063}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a648010a93401038f7f1bfbfca84ed063}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendToAll@{SendToAll}}
+\index{SendToAll@{SendToAll}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendToAll()}{SendToAll()}\hspace{0.1cm}{\footnotesize\ttfamily [9/12]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+To\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{writer,  }\item[{byte}]{channel\+Number,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options }\end{DoxyParamCaption})}
+
+
+
+Send data to all connected peers 
+
+
+\begin{DoxyParams}{매개변수}
+{\em writer} & Data\+Writer with data\\
+\hline
+{\em channel\+Number} & Number of channel (from 0 to channels\+Count -\/ 1)\\
+\hline
+{\em options} & Send options (reliable, unreliable, etc.)\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01204}{1204}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a19343d1507dd1135fa8cb52bfc42488f}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a19343d1507dd1135fa8cb52bfc42488f}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendToAll@{SendToAll}}
+\index{SendToAll@{SendToAll}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendToAll()}{SendToAll()}\hspace{0.1cm}{\footnotesize\ttfamily [10/12]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+To\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{writer,  }\item[{byte}]{channel\+Number,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options,  }\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}}]{exclude\+Peer }\end{DoxyParamCaption})}
+
+
+
+Send data to all connected peers 
+
+
+\begin{DoxyParams}{매개변수}
+{\em writer} & Data\+Writer with data\\
+\hline
+{\em channel\+Number} & Number of channel (from 0 to channels\+Count -\/ 1)\\
+\hline
+{\em options} & Send options (reliable, unreliable, etc.)\\
+\hline
+{\em exclude\+Peer} & Excluded peer\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01284}{1284}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aaf81abcbfbdc36da97a642297b4c047d}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aaf81abcbfbdc36da97a642297b4c047d}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendToAll@{SendToAll}}
+\index{SendToAll@{SendToAll}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendToAll()}{SendToAll()}\hspace{0.1cm}{\footnotesize\ttfamily [11/12]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+To\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{writer,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options }\end{DoxyParamCaption})}
+
+
+
+Send data to all connected peers (channel -\/ 0) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em writer} & Data\+Writer with data\\
+\hline
+{\em options} & Send options (reliable, unreliable, etc.)\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01171}{1171}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_acfdd7bed9f7f54f8de2a68c9b2993d8e}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_acfdd7bed9f7f54f8de2a68c9b2993d8e}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendToAll@{SendToAll}}
+\index{SendToAll@{SendToAll}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendToAll()}{SendToAll()}\hspace{0.1cm}{\footnotesize\ttfamily [12/12]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+To\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{writer,  }\item[{\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{Delivery\+Method}}}]{options,  }\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}}]{exclude\+Peer }\end{DoxyParamCaption})}
+
+
+
+Send data to all connected peers (channel -\/ 0) 
+
+
+\begin{DoxyParams}{매개변수}
+{\em writer} & Data\+Writer with data\\
+\hline
+{\em options} & Send options (reliable, unreliable, etc.)\\
+\hline
+{\em exclude\+Peer} & Excluded peer\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01248}{1248}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a89cd2d27b6d8cbb7198397af2e092a09}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a89cd2d27b6d8cbb7198397af2e092a09}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendUnconnectedMessage@{SendUnconnectedMessage}}
+\index{SendUnconnectedMessage@{SendUnconnectedMessage}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendUnconnectedMessage()}{SendUnconnectedMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+Unconnected\+Message (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{message,  }\item[{int}]{start,  }\item[{int}]{length,  }\item[{IPEnd\+Point}]{remote\+End\+Point }\end{DoxyParamCaption})}
+
+
+
+Send message without connection 
+
+
+\begin{DoxyParams}{매개변수}
+{\em message} & Raw data\\
+\hline
+{\em start} & data start\\
+\hline
+{\em length} & data length\\
+\hline
+{\em remote\+End\+Point} & Packet destination\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+Operation result
+\end{DoxyReturn}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01449}{1449}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a56c356743aac4d3fb5d5a0eb5ae45a12}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a56c356743aac4d3fb5d5a0eb5ae45a12}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendUnconnectedMessage@{SendUnconnectedMessage}}
+\index{SendUnconnectedMessage@{SendUnconnectedMessage}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendUnconnectedMessage()}{SendUnconnectedMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+Unconnected\+Message (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{message,  }\item[{IPEnd\+Point}]{remote\+End\+Point }\end{DoxyParamCaption})}
+
+
+
+Send message without connection 
+
+
+\begin{DoxyParams}{매개변수}
+{\em message} & Raw data\\
+\hline
+{\em remote\+End\+Point} & Packet destination\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+Operation result
+\end{DoxyReturn}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01425}{1425}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aaa0071625abd5722d42375e4bf2f17fc}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aaa0071625abd5722d42375e4bf2f17fc}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SendUnconnectedMessage@{SendUnconnectedMessage}}
+\index{SendUnconnectedMessage@{SendUnconnectedMessage}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SendUnconnectedMessage()}{SendUnconnectedMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Send\+Unconnected\+Message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_utils_1_1_net_data_writer}{Net\+Data\+Writer}}}]{writer,  }\item[{IPEnd\+Point}]{remote\+End\+Point }\end{DoxyParamCaption})}
+
+
+
+Send message without connection 
+
+
+\begin{DoxyParams}{매개변수}
+{\em writer} & Data serializer\\
+\hline
+{\em remote\+End\+Point} & Packet destination\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{반환값}
+Operation result
+\end{DoxyReturn}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01436}{1436}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a57af7382f7ac36399a863d91413d4c71}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a57af7382f7ac36399a863d91413d4c71}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!Start@{Start}}
+\index{Start@{Start}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Start logic thread and listening on available port 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01331}{1331}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a57e9a974f6c322b839851058abda4029}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a57e9a974f6c322b839851058abda4029}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!Start@{Start}}
+\index{Start@{Start}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Start (\begin{DoxyParamCaption}\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Start logic thread and listening on selected port 
+
+
+\begin{DoxyParams}{매개변수}
+{\em port} & port to listen\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01369}{1369}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aa75ba32d9729c2accb8a26f55436d46b}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aa75ba32d9729c2accb8a26f55436d46b}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!Start@{Start}}
+\index{Start@{Start}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Start (\begin{DoxyParamCaption}\item[{IPAddress}]{address\+IPv4,  }\item[{IPAddress}]{address\+IPv6,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Start logic thread and listening on selected port 
+
+
+\begin{DoxyParams}{매개변수}
+{\em address\+IPv4} & bind to specific ipv4 address\\
+\hline
+{\em address\+IPv6} & bind to specific ipv6 address\\
+\hline
+{\em port} & port to listen\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01342}{1342}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ab3d14872d416bdf5f0029446801269f6}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ab3d14872d416bdf5f0029446801269f6}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!Start@{Start}}
+\index{Start@{Start}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Start (\begin{DoxyParamCaption}\item[{string}]{address\+IPv4,  }\item[{string}]{address\+IPv6,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Start logic thread and listening on selected port 
+
+
+\begin{DoxyParams}{매개변수}
+{\em address\+IPv4} & bind to specific ipv4 address\\
+\hline
+{\em address\+IPv6} & bind to specific ipv6 address\\
+\hline
+{\em port} & port to listen\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01358}{1358}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a632e04d1b167448004918465b5d25a86}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a632e04d1b167448004918465b5d25a86}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!StartInManualMode@{StartInManualMode}}
+\index{StartInManualMode@{StartInManualMode}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{StartInManualMode()}{StartInManualMode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Start\+In\+Manual\+Mode (\begin{DoxyParamCaption}\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Start in manual mode and listening on selected port In this mode you should use Manual\+Receive (without Poll\+Events) for receive packets and Manual\+Update(...) for update and send packets This mode useful mostly for single-\/threaded servers 
+
+
+\begin{DoxyParams}{매개변수}
+{\em port} & port to listen\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01414}{1414}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a0ada7b8b742b45f712c6305510c0f3e8}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a0ada7b8b742b45f712c6305510c0f3e8}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!StartInManualMode@{StartInManualMode}}
+\index{StartInManualMode@{StartInManualMode}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{StartInManualMode()}{StartInManualMode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Start\+In\+Manual\+Mode (\begin{DoxyParamCaption}\item[{IPAddress}]{address\+IPv4,  }\item[{IPAddress}]{address\+IPv6,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Start in manual mode and listening on selected port In this mode you should use Manual\+Receive (without Poll\+Events) for receive packets and Manual\+Update(...) for update and send packets This mode useful mostly for single-\/threaded servers 
+
+
+\begin{DoxyParams}{매개변수}
+{\em address\+IPv4} & bind to specific ipv4 address\\
+\hline
+{\em address\+IPv6} & bind to specific ipv6 address\\
+\hline
+{\em port} & port to listen\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01383}{1383}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac77add74cd2a42cf80f6891736274b41}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac77add74cd2a42cf80f6891736274b41}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!StartInManualMode@{StartInManualMode}}
+\index{StartInManualMode@{StartInManualMode}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{StartInManualMode()}{StartInManualMode()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Start\+In\+Manual\+Mode (\begin{DoxyParamCaption}\item[{string}]{address\+IPv4,  }\item[{string}]{address\+IPv6,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Start in manual mode and listening on selected port In this mode you should use Manual\+Receive (without Poll\+Events) for receive packets and Manual\+Update(...) for update and send packets This mode useful mostly for single-\/threaded servers 
+
+
+\begin{DoxyParams}{매개변수}
+{\em address\+IPv4} & bind to specific ipv4 address\\
+\hline
+{\em address\+IPv6} & bind to specific ipv6 address\\
+\hline
+{\em port} & port to listen\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01400}{1400}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ad5908d21b7a78f968cffd0cd9a85b68d}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ad5908d21b7a78f968cffd0cd9a85b68d}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!Stop@{Stop}}
+\index{Stop@{Stop}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{Stop()}{Stop()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Force closes connection and stop all threads. 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01613}{1613}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_afb0c42055b8d5bc445330e63eac3feab}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_afb0c42055b8d5bc445330e63eac3feab}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!Stop@{Stop}}
+\index{Stop@{Stop}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{Stop()}{Stop()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Stop (\begin{DoxyParamCaption}\item[{bool}]{send\+Disconnect\+Messages }\end{DoxyParamCaption})}
+
+
+
+Force closes connection and stop all threads. 
+
+
+\begin{DoxyParams}{매개변수}
+{\em send\+Disconnect\+Messages} & Send disconnect messages\\
+\hline
+\end{DoxyParams}
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01622}{1622}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ad1045d089b0448e2c157600c84d692a7}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ad1045d089b0448e2c157600c84d692a7}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!TriggerUpdate@{TriggerUpdate}}
+\index{TriggerUpdate@{TriggerUpdate}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{TriggerUpdate()}{TriggerUpdate()}}
+{\footnotesize\ttfamily void Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Trigger\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Triggers update and send logic immediately (works asynchronously) 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l01492}{1492}} 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{멤버 데이터 문서화}
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ab6d78aaa45ed2460f109d029c33f7f4c}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ab6d78aaa45ed2460f109d029c33f7f4c}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!AutoRecycle@{AutoRecycle}}
+\index{AutoRecycle@{AutoRecycle}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{AutoRecycle}{AutoRecycle}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Auto\+Recycle}
+
+
+
+Automatically recycle \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_packet_reader}{Net\+Packet\+Reader}} after On\+Receive event 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00301}{301}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a1bea09fb70122d198287b7d4c68e1d1f}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a1bea09fb70122d198287b7d4c68e1d1f}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!BroadcastReceiveEnabled@{BroadcastReceiveEnabled}}
+\index{BroadcastReceiveEnabled@{BroadcastReceiveEnabled}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{BroadcastReceiveEnabled}{BroadcastReceiveEnabled}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Broadcast\+Receive\+Enabled = false}
+
+
+
+Allows receive broadcast packets 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00256}{256}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_abce36f972c22260470c8d8133ed0ef5d}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_abce36f972c22260470c8d8133ed0ef5d}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!DisconnectOnUnreachable@{DisconnectOnUnreachable}}
+\index{DisconnectOnUnreachable@{DisconnectOnUnreachable}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{DisconnectOnUnreachable}{DisconnectOnUnreachable}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Disconnect\+On\+Unreachable = false}
+
+
+
+Disconnect peers if Host\+Unreachable or Network\+Unreachable spawned (old behaviour 0.\+9.\+x was true) 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00329}{329}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aae1bf843e997760ff16cfe322cb91c27}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aae1bf843e997760ff16cfe322cb91c27}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!DisconnectTimeout@{DisconnectTimeout}}
+\index{DisconnectTimeout@{DisconnectTimeout}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{DisconnectTimeout}{DisconnectTimeout}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Disconnect\+Timeout = 5000}
+
+
+
+If \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}} doesn\textquotesingle{}t receive any packet from remote peer during this time then connection will be closed (including library internal keepalive packets) 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00211}{211}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a0a51ed73d87d16c970accbaa9ec1acbb}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a0a51ed73d87d16c970accbaa9ec1acbb}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!EnableStatistics@{EnableStatistics}}
+\index{EnableStatistics@{EnableStatistics}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{EnableStatistics}{EnableStatistics}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Enable\+Statistics = false}
+
+
+
+Toggles the collection of network statistics for the instance and all known peers 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00281}{281}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_af35d3c8870bf5b20de91e22af447d4a7}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_af35d3c8870bf5b20de91e22af447d4a7}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!IPv6Enabled@{IPv6Enabled}}
+\index{IPv6Enabled@{IPv6Enabled}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{IPv6Enabled}{IPv6Enabled}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4}{IPv6\+Mode}} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+IPv6\+Enabled = \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_ac244d9e0651c11d2ccf5cf3d783bf5a4a9e412a29fb971bb342ba56d00f903ca3}{IPv6\+Mode.\+Separate\+Socket}}}
+
+
+
+IPv6 support 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00306}{306}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a8563e1bccacbd6dd5e3ebfee0bf899e7}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a8563e1bccacbd6dd5e3ebfee0bf899e7}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!MaxConnectAttempts@{MaxConnectAttempts}}
+\index{MaxConnectAttempts@{MaxConnectAttempts}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{MaxConnectAttempts}{MaxConnectAttempts}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Max\+Connect\+Attempts = 10}
+
+
+
+Maximum connection attempts before client stops and call disconnect event. 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00266}{266}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac44553f61417c3ca43fb2b9b991cd8d8}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac44553f61417c3ca43fb2b9b991cd8d8}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!MtuOverride@{MtuOverride}}
+\index{MtuOverride@{MtuOverride}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{MtuOverride}{MtuOverride}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Mtu\+Override = 0}
+
+
+
+Override MTU for all new peers registered in this \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager}{Net\+Manager}}, will ignores MTU Discovery! 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00311}{311}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a397e59c61e93cc78bdcb97c75b218453}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a397e59c61e93cc78bdcb97c75b218453}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!NatPunchEnabled@{NatPunchEnabled}}
+\index{NatPunchEnabled@{NatPunchEnabled}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{NatPunchEnabled}{NatPunchEnabled}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Nat\+Punch\+Enabled = false}
+
+
+
+Enable nat punch messages 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00195}{195}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a6da2dd025578593b4671cabd214f99dd}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a6da2dd025578593b4671cabd214f99dd}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!NatPunchModule@{NatPunchModule}}
+\index{NatPunchModule@{NatPunchModule}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{NatPunchModule}{NatPunchModule}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_nat_punch_module}{Nat\+Punch\+Module}} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Nat\+Punch\+Module}
+
+
+
+\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_nat_punch_module}{Nat\+Punch\+Module}} for NAT hole punching operations 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00286}{286}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a8e0bb093dc563a36a67385dfdd2e4512}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a8e0bb093dc563a36a67385dfdd2e4512}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!PingInterval@{PingInterval}}
+\index{PingInterval@{PingInterval}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{PingInterval}{PingInterval}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Ping\+Interval = 1000}
+
+
+
+Interval for latency detection and checking connection 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00205}{205}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a31d81117b4f5d74bf58e5d1f798e3588}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a31d81117b4f5d74bf58e5d1f798e3588}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!ReconnectDelay@{ReconnectDelay}}
+\index{ReconnectDelay@{ReconnectDelay}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{ReconnectDelay}{ReconnectDelay}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Reconnect\+Delay = 500}
+
+
+
+Delay between initial connection attempts 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00261}{261}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a0e897f576496068367553c82f6cfd6b0}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a0e897f576496068367553c82f6cfd6b0}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!ReuseAddress@{ReuseAddress}}
+\index{ReuseAddress@{ReuseAddress}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{ReuseAddress}{ReuseAddress}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Reuse\+Address = false}
+
+
+
+Enables socket option \char`\"{}\+Reuse\+Address\char`\"{} for specific purposes 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00271}{271}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a7f24e6c0ab0a0721642bc3a00105f3b9}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a7f24e6c0ab0a0721642bc3a00105f3b9}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SimulateLatency@{SimulateLatency}}
+\index{SimulateLatency@{SimulateLatency}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SimulateLatency}{SimulateLatency}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Simulate\+Latency = false}
+
+
+
+Simulate latency by holding packets for random time. (Works only in DEBUG mode) 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00221}{221}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_af57a43cf9ae9cdc22affe866594ca95c}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_af57a43cf9ae9cdc22affe866594ca95c}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SimulatePacketLoss@{SimulatePacketLoss}}
+\index{SimulatePacketLoss@{SimulatePacketLoss}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SimulatePacketLoss}{SimulatePacketLoss}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Simulate\+Packet\+Loss = false}
+
+
+
+Simulate packet loss by dropping random amount of packets. (Works only in DEBUG mode) 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00216}{216}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_af5d16d4c3a85828ab6ef1438d57526a0}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_af5d16d4c3a85828ab6ef1438d57526a0}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SimulationMaxLatency@{SimulationMaxLatency}}
+\index{SimulationMaxLatency@{SimulationMaxLatency}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SimulationMaxLatency}{SimulationMaxLatency}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Simulation\+Max\+Latency = 100}
+
+
+
+Maximum simulated latency 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00236}{236}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aaf6d750318980abb76c43cf6267b12ac}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_aaf6d750318980abb76c43cf6267b12ac}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SimulationMinLatency@{SimulationMinLatency}}
+\index{SimulationMinLatency@{SimulationMinLatency}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SimulationMinLatency}{SimulationMinLatency}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Simulation\+Min\+Latency = 30}
+
+
+
+Minimum simulated latency 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00231}{231}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a1ef0ab19b6b42ee6e3a7a255eb81db6b}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a1ef0ab19b6b42ee6e3a7a255eb81db6b}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!SimulationPacketLossChance@{SimulationPacketLossChance}}
+\index{SimulationPacketLossChance@{SimulationPacketLossChance}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{SimulationPacketLossChance}{SimulationPacketLossChance}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Simulation\+Packet\+Loss\+Chance = 10}
+
+
+
+Chance of packet loss when simulation enabled. value in percents (1 -\/ 100). 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00226}{226}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a3276c556100a215fc4374cde19990f87}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a3276c556100a215fc4374cde19990f87}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!Statistics@{Statistics}}
+\index{Statistics@{Statistics}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{Statistics}{Statistics}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_statistics}{Net\+Statistics}} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Statistics}
+
+
+
+Statistics of all connections 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00276}{276}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac3cd0979aee0f45b8025fac86adc25aa}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac3cd0979aee0f45b8025fac86adc25aa}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!UnconnectedMessagesEnabled@{UnconnectedMessagesEnabled}}
+\index{UnconnectedMessagesEnabled@{UnconnectedMessagesEnabled}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{UnconnectedMessagesEnabled}{UnconnectedMessagesEnabled}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Unconnected\+Messages\+Enabled = false}
+
+
+
+Enable messages receiving without connection. (with Send\+Unconnected\+Message method) 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00190}{190}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a76c844e396b7554b47d09ed12be8c557}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a76c844e396b7554b47d09ed12be8c557}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!UnsyncedDeliveryEvent@{UnsyncedDeliveryEvent}}
+\index{UnsyncedDeliveryEvent@{UnsyncedDeliveryEvent}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{UnsyncedDeliveryEvent}{UnsyncedDeliveryEvent}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Unsynced\+Delivery\+Event = false}
+
+
+
+If true -\/ delivery event will be called from \char`\"{}receive\char`\"{} thread immediately otherwise on Poll\+Events call 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00251}{251}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a3e317cbf48981a01a111a2d9f41c143a}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a3e317cbf48981a01a111a2d9f41c143a}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!UnsyncedEvents@{UnsyncedEvents}}
+\index{UnsyncedEvents@{UnsyncedEvents}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{UnsyncedEvents}{UnsyncedEvents}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Unsynced\+Events = false}
+
+
+
+Events automatically will be called without Poll\+Events method from another thread 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00241}{241}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a4ac60e49e2ebddeb6c0190e1768a3aac}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a4ac60e49e2ebddeb6c0190e1768a3aac}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!UnsyncedReceiveEvent@{UnsyncedReceiveEvent}}
+\index{UnsyncedReceiveEvent@{UnsyncedReceiveEvent}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{UnsyncedReceiveEvent}{UnsyncedReceiveEvent}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Unsynced\+Receive\+Event = false}
+
+
+
+If true -\/ receive event will be called from \char`\"{}receive\char`\"{} thread immediately otherwise on Poll\+Events call 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00246}{246}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac326d6ee92340e7bac591636dddc721a}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ac326d6ee92340e7bac591636dddc721a}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!UpdateTime@{UpdateTime}}
+\index{UpdateTime@{UpdateTime}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{UpdateTime}{UpdateTime}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Update\+Time = 15}
+
+
+
+Library logic update and send period in milliseconds 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00200}{200}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a482d56378d5290546fcc39eabcb6d845}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a482d56378d5290546fcc39eabcb6d845}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!UseSafeMtu@{UseSafeMtu}}
+\index{UseSafeMtu@{UseSafeMtu}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{UseSafeMtu}{UseSafeMtu}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Use\+Safe\+Mtu = false}
+
+
+
+Sets initial MTU to lowest possible value according to RFC1191 (576 bytes) 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00316}{316}} 번째 라인에서 정의되었습니다.
+
+
+
+\doxysubsection{속성 문서화}
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_af0ba172d6f483f4ef57404181544edbc}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_af0ba172d6f483f4ef57404181544edbc}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!ChannelsCount@{ChannelsCount}}
+\index{ChannelsCount@{ChannelsCount}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{ChannelsCount}{ChannelsCount}}
+{\footnotesize\ttfamily byte Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Channels\+Count\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+QoS channel count per message type (value must be between 1 and 64 channels) 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00334}{334}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ad20da9efc3212b5b591d46da36432854}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ad20da9efc3212b5b591d46da36432854}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!ConnectedPeerList@{ConnectedPeerList}}
+\index{ConnectedPeerList@{ConnectedPeerList}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{ConnectedPeerList}{ConnectedPeerList}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}}$>$ Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Connected\+Peer\+List\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Returns connected peers list (with internal cached list) 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00348}{348}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ab983788f855cf14135e150359d60ba77}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_ab983788f855cf14135e150359d60ba77}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!ConnectedPeersCount@{ConnectedPeersCount}}
+\index{ConnectedPeersCount@{ConnectedPeersCount}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{ConnectedPeersCount}{ConnectedPeersCount}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Connected\+Peers\+Count\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Returns connected peers count 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00370}{370}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a9af04e67e1cf8437a1d28b187461e126}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a9af04e67e1cf8437a1d28b187461e126}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!ExtraPacketSizeForLayer@{ExtraPacketSizeForLayer}}
+\index{ExtraPacketSizeForLayer@{ExtraPacketSizeForLayer}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{ExtraPacketSizeForLayer}{ExtraPacketSizeForLayer}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Extra\+Packet\+Size\+For\+Layer\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00372}{372}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_abc254535ed1bbdf0052cbd5a75b57229}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_abc254535ed1bbdf0052cbd5a75b57229}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!FirstPeer@{FirstPeer}}
+\index{FirstPeer@{FirstPeer}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{FirstPeer}{FirstPeer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_peer}{Net\+Peer}} Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+First\+Peer\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+First peer. Useful for Client mode 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00321}{321}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a5e9430655114b279cc2c4b4aeefca27b}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a5e9430655114b279cc2c4b4aeefca27b}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!IsRunning@{IsRunning}}
+\index{IsRunning@{IsRunning}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{IsRunning}{IsRunning}}
+{\footnotesize\ttfamily bool Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Is\+Running\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Returns true if socket listening and update thread is running 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00291}{291}} 번째 라인에서 정의되었습니다.
+
+\mbox{\Hypertarget{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a73edf1f0486a5b58a0cdc3c98d017f22}\label{class_flying_worm_console3_1_1_lite_net_lib_1_1_net_manager_a73edf1f0486a5b58a0cdc3c98d017f22}} 
+\index{FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}!LocalPort@{LocalPort}}
+\index{LocalPort@{LocalPort}!FlyingWormConsole3.LiteNetLib.NetManager@{FlyingWormConsole3.LiteNetLib.NetManager}}
+\doxysubsubsection{\texorpdfstring{LocalPort}{LocalPort}}
+{\footnotesize\ttfamily int Flying\+Worm\+Console3.\+Lite\+Net\+Lib.\+Net\+Manager.\+Local\+Port\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Local End\+Point (host and port) 
+
+
+
+\mbox{\hyperlink{_net_manager_8cs_source}{Net\+Manager.\+cs}} 파일의 \mbox{\hyperlink{_net_manager_8cs_source_l00296}{296}} 번째 라인에서 정의되었습니다.
+
+
+
+이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Console\+Pro/\+Remote/\+Lite\+Net\+Lib/\mbox{\hyperlink{_net_manager_8cs}{Net\+Manager.\+cs}}\end{DoxyCompactItemize}

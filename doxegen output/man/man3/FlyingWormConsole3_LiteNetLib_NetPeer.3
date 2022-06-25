@@ -1,0 +1,478 @@
+.TH "FlyingWormConsole3.LiteNetLib.NetPeer" 3 "금 6월 24 2022" "Version 1.0" "Unity 3D Game Doxygen" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FlyingWormConsole3.LiteNetLib.NetPeer \- Network peer\&. Main purpose is sending messages to specific peer\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public 멤버 함수"
+
+.in +1c
+.ti -1c
+.RI "int \fBGetPacketsCountInReliableQueue\fP (byte channelNumber, bool ordered)"
+.br
+.RI "Returns packets count in queue for reliable channel "
+.ti -1c
+.RI "int \fBGetMaxSinglePacketSize\fP (\fBDeliveryMethod\fP options)"
+.br
+.RI "Gets maximum size of packet that will be not fragmented\&. "
+.ti -1c
+.RI "void \fBSendWithDeliveryEvent\fP (byte[] data, byte channelNumber, \fBDeliveryMethod\fP deliveryMethod, object userData)"
+.br
+.RI "Send data to peer with delivery event called "
+.ti -1c
+.RI "void \fBSendWithDeliveryEvent\fP (byte[] data, int start, int length, byte channelNumber, \fBDeliveryMethod\fP deliveryMethod, object userData)"
+.br
+.RI "Send data to peer with delivery event called "
+.ti -1c
+.RI "void \fBSendWithDeliveryEvent\fP (\fBNetDataWriter\fP dataWriter, byte channelNumber, \fBDeliveryMethod\fP deliveryMethod, object userData)"
+.br
+.RI "Send data to peer with delivery event called "
+.ti -1c
+.RI "void \fBSend\fP (byte[] data, \fBDeliveryMethod\fP deliveryMethod)"
+.br
+.RI "Send data to peer (channel - 0) "
+.ti -1c
+.RI "void \fBSend\fP (\fBNetDataWriter\fP dataWriter, \fBDeliveryMethod\fP deliveryMethod)"
+.br
+.RI "Send data to peer (channel - 0) "
+.ti -1c
+.RI "void \fBSend\fP (byte[] data, int start, int length, \fBDeliveryMethod\fP options)"
+.br
+.RI "Send data to peer (channel - 0) "
+.ti -1c
+.RI "void \fBSend\fP (byte[] data, byte channelNumber, \fBDeliveryMethod\fP deliveryMethod)"
+.br
+.RI "Send data to peer "
+.ti -1c
+.RI "void \fBSend\fP (\fBNetDataWriter\fP dataWriter, byte channelNumber, \fBDeliveryMethod\fP deliveryMethod)"
+.br
+.RI "Send data to peer "
+.ti -1c
+.RI "void \fBSend\fP (byte[] data, int start, int length, byte channelNumber, \fBDeliveryMethod\fP deliveryMethod)"
+.br
+.RI "Send data to peer "
+.ti -1c
+.RI "void \fBDisconnect\fP (byte[] data)"
+.br
+.ti -1c
+.RI "void \fBDisconnect\fP (\fBNetDataWriter\fP writer)"
+.br
+.ti -1c
+.RI "void \fBDisconnect\fP (byte[] data, int start, int count)"
+.br
+.ti -1c
+.RI "void \fBDisconnect\fP ()"
+.br
+.in -1c
+.SS "Public 속성"
+
+.in +1c
+.ti -1c
+.RI "readonly IPEndPoint \fBEndPoint\fP"
+.br
+.RI "Peer ip address and port "
+.ti -1c
+.RI "readonly \fBNetManager\fP \fBNetManager\fP"
+.br
+.RI "Peer parent \fBNetManager\fP "
+.ti -1c
+.RI "readonly int \fBId\fP"
+.br
+.RI "Peer id can be used as key in your dictionary of peers "
+.ti -1c
+.RI "object \fBTag\fP"
+.br
+.RI "Application defined object containing data about the connection "
+.ti -1c
+.RI "readonly \fBNetStatistics\fP \fBStatistics\fP"
+.br
+.RI "Statistics of peer connection "
+.in -1c
+.SS "속성"
+
+.in +1c
+.ti -1c
+.RI "\fBConnectionState\fP \fBConnectionState\fP\fC [get]\fP"
+.br
+.RI "Current connection state "
+.ti -1c
+.RI "int \fBPing\fP\fC [get]\fP"
+.br
+.RI "Current ping in milliseconds "
+.ti -1c
+.RI "int \fBMtu\fP\fC [get]\fP"
+.br
+.RI "Current MTU - Maximum Transfer Unit ( maximum udp packet size without fragmentation ) "
+.ti -1c
+.RI "long \fBRemoteTimeDelta\fP\fC [get]\fP"
+.br
+.RI "Delta with remote time in ticks (not accurate) positive - remote time > our time "
+.ti -1c
+.RI "DateTime \fBRemoteUtcTime\fP\fC [get]\fP"
+.br
+.RI "Remote UTC time (not accurate) "
+.ti -1c
+.RI "int \fBTimeSinceLastPacket\fP\fC [get]\fP"
+.br
+.RI "Time since last packet received (including internal library packets) "
+.in -1c
+.SH "상세한 설명"
+.PP 
+Network peer\&. Main purpose is sending messages to specific peer\&. 
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB51\fP 번째 라인에서 정의되었습니다\&.
+.SH "멤버 함수 문서화"
+.PP 
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Disconnect ()"
+
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB609\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Disconnect (byte[] data)"
+
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB594\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Disconnect (byte[] data, int start, int count)"
+
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB604\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Disconnect (\fBNetDataWriter\fP writer)"
+
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB599\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.GetMaxSinglePacketSize (\fBDeliveryMethod\fP options)"
+
+.PP
+Gets maximum size of packet that will be not fragmented\&. 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIoptions\fP Type of packet that you want send
+.RE
+.PP
+\fB반환값\fP
+.RS 4
+size in bytes
+.RE
+.PP
+
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB347\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.GetPacketsCountInReliableQueue (byte channelNumber, bool ordered)"
+
+.PP
+Returns packets count in queue for reliable channel 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIchannelNumber\fP number of channel 0-63
+.br
+\fIordered\fP type of channel ReliableOrdered or ReliableUnordered
+.RE
+.PP
+\fB반환값\fP
+.RS 4
+packets count in channel queue
+.RE
+.PP
+
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB245\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Send (byte[] data, byte channelNumber, \fBDeliveryMethod\fP deliveryMethod)"
+
+.PP
+Send data to peer 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data
+.br
+\fIchannelNumber\fP Number of channel (from 0 to channelsCount - 1)
+.br
+\fIdeliveryMethod\fP Send options (reliable, unreliable, etc\&.)
+.RE
+.PP
+\fB예외\fP
+.RS 4
+\fI\fBTooBigPacketException\fP\fP If size exceeds maximum limit:
+.RE
+.PP
+MTU - headerSize bytes for Unreliable
+.PP
+Fragment count exceeded ushort\&.MaxValue
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB463\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Send (byte[] data, \fBDeliveryMethod\fP deliveryMethod)"
+
+.PP
+Send data to peer (channel - 0) 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data
+.br
+\fIdeliveryMethod\fP Send options (reliable, unreliable, etc\&.)
+.RE
+.PP
+\fB예외\fP
+.RS 4
+\fI\fBTooBigPacketException\fP\fP If size exceeds maximum limit:
+.RE
+.PP
+MTU - headerSize bytes for Unreliable
+.PP
+Fragment count exceeded ushort\&.MaxValue
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB415\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Send (byte[] data, int start, int length, byte channelNumber, \fBDeliveryMethod\fP deliveryMethod)"
+
+.PP
+Send data to peer 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data
+.br
+\fIstart\fP Start of data
+.br
+\fIlength\fP Length of data
+.br
+\fIchannelNumber\fP Number of channel (from 0 to channelsCount - 1)
+.br
+\fIdeliveryMethod\fP Delivery method (reliable, unreliable, etc\&.)
+.RE
+.PP
+\fB예외\fP
+.RS 4
+\fI\fBTooBigPacketException\fP\fP If size exceeds maximum limit:
+.RE
+.PP
+MTU - headerSize bytes for Unreliable
+.PP
+Fragment count exceeded ushort\&.MaxValue
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB497\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Send (byte[] data, int start, int length, \fBDeliveryMethod\fP options)"
+
+.PP
+Send data to peer (channel - 0) 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data
+.br
+\fIstart\fP Start of data
+.br
+\fIlength\fP Length of data
+.br
+\fIoptions\fP Send options (reliable, unreliable, etc\&.)
+.RE
+.PP
+\fB예외\fP
+.RS 4
+\fI\fBTooBigPacketException\fP\fP If size exceeds maximum limit:
+.RE
+.PP
+MTU - headerSize bytes for Unreliable
+.PP
+Fragment count exceeded ushort\&.MaxValue
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB447\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Send (\fBNetDataWriter\fP dataWriter, byte channelNumber, \fBDeliveryMethod\fP deliveryMethod)"
+
+.PP
+Send data to peer 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdataWriter\fP DataWriter with data
+.br
+\fIchannelNumber\fP Number of channel (from 0 to channelsCount - 1)
+.br
+\fIdeliveryMethod\fP Send options (reliable, unreliable, etc\&.)
+.RE
+.PP
+\fB예외\fP
+.RS 4
+\fI\fBTooBigPacketException\fP\fP If size exceeds maximum limit:
+.RE
+.PP
+MTU - headerSize bytes for Unreliable
+.PP
+Fragment count exceeded ushort\&.MaxValue
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB479\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Send (\fBNetDataWriter\fP dataWriter, \fBDeliveryMethod\fP deliveryMethod)"
+
+.PP
+Send data to peer (channel - 0) 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdataWriter\fP DataWriter with data
+.br
+\fIdeliveryMethod\fP Send options (reliable, unreliable, etc\&.)
+.RE
+.PP
+\fB예외\fP
+.RS 4
+\fI\fBTooBigPacketException\fP\fP If size exceeds maximum limit:
+.RE
+.PP
+MTU - headerSize bytes for Unreliable
+.PP
+Fragment count exceeded ushort\&.MaxValue
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB430\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.SendWithDeliveryEvent (byte[] data, byte channelNumber, \fBDeliveryMethod\fP deliveryMethod, object userData)"
+
+.PP
+Send data to peer with delivery event called 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data
+.br
+\fIchannelNumber\fP Number of channel (from 0 to channelsCount - 1)
+.br
+\fIdeliveryMethod\fP Delivery method (reliable, unreliable, etc\&.)
+.br
+\fIuserData\fP User data that will be received in DeliveryEvent
+.RE
+.PP
+\fB예외\fP
+.RS 4
+\fIArgumentException\fP If you trying to send unreliable packet type
+.RE
+.PP
+
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB362\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.SendWithDeliveryEvent (byte[] data, int start, int length, byte channelNumber, \fBDeliveryMethod\fP deliveryMethod, object userData)"
+
+.PP
+Send data to peer with delivery event called 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdata\fP Data
+.br
+\fIstart\fP Start of data
+.br
+\fIlength\fP Length of data
+.br
+\fIchannelNumber\fP Number of channel (from 0 to channelsCount - 1)
+.br
+\fIdeliveryMethod\fP Delivery method (reliable, unreliable, etc\&.)
+.br
+\fIuserData\fP User data that will be received in DeliveryEvent
+.RE
+.PP
+\fB예외\fP
+.RS 4
+\fIArgumentException\fP If you trying to send unreliable packet type
+.RE
+.PP
+
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB381\fP 번째 라인에서 정의되었습니다\&.
+.SS "void FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.SendWithDeliveryEvent (\fBNetDataWriter\fP dataWriter, byte channelNumber, \fBDeliveryMethod\fP deliveryMethod, object userData)"
+
+.PP
+Send data to peer with delivery event called 
+.PP
+\fB매개변수\fP
+.RS 4
+\fIdataWriter\fP Data
+.br
+\fIchannelNumber\fP Number of channel (from 0 to channelsCount - 1)
+.br
+\fIdeliveryMethod\fP Delivery method (reliable, unreliable, etc\&.)
+.br
+\fIuserData\fP User data that will be received in DeliveryEvent
+.RE
+.PP
+\fB예외\fP
+.RS 4
+\fIArgumentException\fP If you trying to send unreliable packet type
+.RE
+.PP
+
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB398\fP 번째 라인에서 정의되었습니다\&.
+.SH "멤버 데이터 문서화"
+.PP 
+.SS "readonly IPEndPoint FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.EndPoint"
+
+.PP
+Peer ip address and port 
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB132\fP 번째 라인에서 정의되었습니다\&.
+.SS "readonly int FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Id"
+
+.PP
+Peer id can be used as key in your dictionary of peers 
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB152\fP 번째 라인에서 정의되었습니다\&.
+.SS "readonly \fBNetManager\fP FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.NetManager"
+
+.PP
+Peer parent \fBNetManager\fP 
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB137\fP 번째 라인에서 정의되었습니다\&.
+.SS "readonly \fBNetStatistics\fP FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Statistics"
+
+.PP
+Statistics of peer connection 
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB196\fP 번째 라인에서 정의되었습니다\&.
+.SS "object FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Tag"
+
+.PP
+Application defined object containing data about the connection 
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB191\fP 번째 라인에서 정의되었습니다\&.
+.SH "속성 문서화"
+.PP 
+.SS "\fBConnectionState\fP FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.ConnectionState\fC [get]\fP"
+
+.PP
+Current connection state 
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB142\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Mtu\fC [get]\fP"
+
+.PP
+Current MTU - Maximum Transfer Unit ( maximum udp packet size without fragmentation ) 
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB162\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.Ping\fC [get]\fP"
+
+.PP
+Current ping in milliseconds 
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB157\fP 번째 라인에서 정의되었습니다\&.
+.SS "long FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.RemoteTimeDelta\fC [get]\fP"
+
+.PP
+Delta with remote time in ticks (not accurate) positive - remote time > our time 
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB168\fP 번째 라인에서 정의되었습니다\&.
+.SS "DateTime FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.RemoteUtcTime\fC [get]\fP"
+
+.PP
+Remote UTC time (not accurate) 
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB176\fP 번째 라인에서 정의되었습니다\&.
+.SS "int FlyingWormConsole3\&.LiteNetLib\&.NetPeer\&.TimeSinceLastPacket\fC [get]\fP"
+
+.PP
+Time since last packet received (including internal library packets) 
+.PP
+\fBNetPeer\&.cs\fP 파일의 \fB184\fP 번째 라인에서 정의되었습니다\&.
+
+.SH "작성자"
+.PP 
+소스 코드로부터 Unity 3D Game Doxygen를 위해 Doxygen에 의해 자동으로 생성됨\&.

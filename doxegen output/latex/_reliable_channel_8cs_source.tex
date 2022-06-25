@@ -1,0 +1,347 @@
+\hypertarget{_reliable_channel_8cs_source}{}\doxysection{Reliable\+Channel.\+cs}
+\label{_reliable_channel_8cs_source}\index{Assets/ConsolePro/Remote/LiteNetLib/ReliableChannel.cs@{Assets/ConsolePro/Remote/LiteNetLib/ReliableChannel.cs}}
+\mbox{\hyperlink{_reliable_channel_8cs}{이 파일의 문서화 페이지로 가기}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00001}00001 \textcolor{keyword}{using }System;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00003}00003 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib}{FlyingWormConsole3.LiteNetLib}}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00004}00004 \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00005}00005     \textcolor{keyword}{internal} sealed \textcolor{keyword}{class }ReliableChannel : BaseChannel}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00006}00006     \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00007}00007         \textcolor{keyword}{private} \textcolor{keyword}{struct }PendingPacket}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00008}00008         \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00009}00009             \textcolor{keyword}{private} NetPacket \_packet;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00010}00010             \textcolor{keyword}{private} \textcolor{keywordtype}{long} \_timeStamp;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00011}00011             \textcolor{keyword}{private} \textcolor{keywordtype}{bool} \_isSent;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00013}00013             \textcolor{keyword}{public} \textcolor{keyword}{override} \textcolor{keywordtype}{string} ToString()}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00014}00014             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00015}00015                 \textcolor{keywordflow}{return} \_packet == \textcolor{keyword}{null} ? \textcolor{stringliteral}{"{}Empty"{}} : \_packet.Sequence.ToString();}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00016}00016             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00018}00018             \textcolor{keyword}{public} \textcolor{keywordtype}{void} Init(NetPacket packet)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00019}00019             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00020}00020                 \_packet = packet;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00021}00021                 \_isSent = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00022}00022             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00024}00024             \textcolor{keyword}{public} \textcolor{keywordtype}{void} TrySend(\textcolor{keywordtype}{long} currentTime, NetPeer peer, out \textcolor{keywordtype}{bool} hasPacket)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00025}00025             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00026}00026                 \textcolor{keywordflow}{if} (\_packet == \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00027}00027                 \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00028}00028                     hasPacket = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00029}00029                     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00030}00030                 \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00032}00032                 hasPacket = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00033}00033                 \textcolor{keywordflow}{if} (\_isSent) \textcolor{comment}{//check send time}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00034}00034                 \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00035}00035                     \textcolor{keywordtype}{double} resendDelay = peer.ResendDelay * TimeSpan.TicksPerMillisecond;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00036}00036                     \textcolor{keywordtype}{double} packetHoldTime = currentTime -\/ \_timeStamp;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00037}00037                     \textcolor{keywordflow}{if} (packetHoldTime < resendDelay)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00038}00038                         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00039}00039                     NetDebug.Write(\textcolor{stringliteral}{"{}[RC]Resend: \{0\} > \{1\}"{}}, (\textcolor{keywordtype}{int})packetHoldTime, resendDelay);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00040}00040                 \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00041}00041                 \_timeStamp = currentTime;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00042}00042                 \_isSent = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00043}00043                 peer.SendUserData(\_packet);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00044}00044             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00046}00046             \textcolor{keyword}{public} \textcolor{keywordtype}{bool} Clear(NetPeer peer)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00047}00047             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00048}00048                 \textcolor{keywordflow}{if} (\_packet != \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00049}00049                 \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00050}00050                     peer.RecycleAndDeliver(\_packet);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00051}00051                     \_packet = \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00052}00052                     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00053}00053                 \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00054}00054                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00055}00055             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00056}00056         \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00058}00058         \textcolor{keyword}{private} readonly NetPacket \_outgoingAcks;            \textcolor{comment}{//for send acks}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00059}00059         \textcolor{keyword}{private} readonly PendingPacket[] \_pendingPackets;    \textcolor{comment}{//for unacked packets and duplicates}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00060}00060         \textcolor{keyword}{private} readonly NetPacket[] \_receivedPackets;       \textcolor{comment}{//for order}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00061}00061         \textcolor{keyword}{private} readonly \textcolor{keywordtype}{bool}[] \_earlyReceived;              \textcolor{comment}{//for unordered}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00063}00063         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_localSeqence;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00064}00064         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_remoteSequence;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00065}00065         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_localWindowStart;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00066}00066         \textcolor{keyword}{private} \textcolor{keywordtype}{int} \_remoteWindowStart;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00068}00068         \textcolor{keyword}{private} \textcolor{keywordtype}{bool} \_mustSendAcks;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00070}00070         \textcolor{keyword}{private} readonly \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}} \_deliveryMethod;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00071}00071         \textcolor{keyword}{private} readonly \textcolor{keywordtype}{bool} \_ordered;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00072}00072         \textcolor{keyword}{private} readonly \textcolor{keywordtype}{int} \_windowSize;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00073}00073         \textcolor{keyword}{private} \textcolor{keyword}{const} \textcolor{keywordtype}{int} BitsInByte = 8;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00074}00074         \textcolor{keyword}{private} readonly \textcolor{keywordtype}{byte} \_id;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00076}00076         \textcolor{keyword}{public} ReliableChannel(NetPeer peer, \textcolor{keywordtype}{bool} ordered, \textcolor{keywordtype}{byte} \textcolor{keywordtype}{id}) : base(peer)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00077}00077         \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00078}00078             \_id = id;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00079}00079             \_windowSize = NetConstants.DefaultWindowSize;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00080}00080             \_ordered = ordered;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00081}00081             \_pendingPackets = \textcolor{keyword}{new} PendingPacket[\_windowSize];}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00082}00082             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \_pendingPackets.Length; i++)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00083}00083                 \_pendingPackets[i] = \textcolor{keyword}{new} PendingPacket();}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00085}00085             \textcolor{keywordflow}{if} (\_ordered)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00086}00086             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00087}00087                 \_deliveryMethod = \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableOrdered;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00088}00088                 \_receivedPackets = \textcolor{keyword}{new} NetPacket[\_windowSize];}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00089}00089             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00090}00090             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00091}00091             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00092}00092                 \_deliveryMethod = \mbox{\hyperlink{namespace_flying_worm_console3_1_1_lite_net_lib_a3a62ebbd2dd0421e990b86f328aa90b1}{DeliveryMethod}}.ReliableUnordered;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00093}00093                 \_earlyReceived = \textcolor{keyword}{new} \textcolor{keywordtype}{bool}[\_windowSize];}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00094}00094             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00096}00096             \_localWindowStart = 0;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00097}00097             \_localSeqence = 0;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00098}00098             \_remoteSequence = 0;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00099}00099             \_remoteWindowStart = 0;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00100}00100             \_outgoingAcks = \textcolor{keyword}{new} NetPacket(PacketProperty.Ack, (\_windowSize -\/ 1) / BitsInByte + 2) \{ChannelId = \textcolor{keywordtype}{id}\};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00101}00101         \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00103}00103         \textcolor{comment}{//ProcessAck in packet}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00104}00104         \textcolor{keyword}{private} \textcolor{keywordtype}{void} ProcessAck(NetPacket packet)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00105}00105         \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00106}00106             \textcolor{keywordflow}{if} (packet.Size != \_outgoingAcks.Size)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00107}00107             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00108}00108                 NetDebug.Write(\textcolor{stringliteral}{"{}[PA]Invalid acks packet size"{}});}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00109}00109                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00110}00110             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00111}00111 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00112}00112             ushort ackWindowStart = packet.Sequence;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00113}00113             \textcolor{keywordtype}{int} windowRel = NetUtils.RelativeSequenceNumber(\_localWindowStart, ackWindowStart);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00114}00114             \textcolor{keywordflow}{if} (ackWindowStart >= NetConstants.MaxSequence || windowRel < 0)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00115}00115             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00116}00116                 NetDebug.Write(\textcolor{stringliteral}{"{}[PA]Bad window start"{}});}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00117}00117                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00118}00118             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00120}00120             \textcolor{comment}{//check relevance     }}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00121}00121             \textcolor{keywordflow}{if} (windowRel >= \_windowSize)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00122}00122             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00123}00123                 NetDebug.Write(\textcolor{stringliteral}{"{}[PA]Old acks"{}});}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00124}00124                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00125}00125             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00126}00126 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00127}00127             \textcolor{keywordtype}{byte}[] acksData = packet.RawData;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00128}00128             lock (\_pendingPackets)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00129}00129             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00130}00130                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} pendingSeq = \_localWindowStart;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00131}00131                     pendingSeq != \_localSeqence;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00132}00132                     pendingSeq = (pendingSeq + 1) \% NetConstants.MaxSequence)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00133}00133                 \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00134}00134                     \textcolor{keywordtype}{int} rel = NetUtils.RelativeSequenceNumber(pendingSeq, ackWindowStart);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00135}00135                     \textcolor{keywordflow}{if} (rel >= \_windowSize)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00136}00136                     \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00137}00137                         NetDebug.Write(\textcolor{stringliteral}{"{}[PA]REL: "{}} + rel);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00138}00138                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00139}00139                     \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00141}00141                     \textcolor{keywordtype}{int} pendingIdx = pendingSeq \% \_windowSize;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00142}00142                     \textcolor{keywordtype}{int} currentByte = NetConstants.ChanneledHeaderSize + pendingIdx / BitsInByte;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00143}00143                     \textcolor{keywordtype}{int} currentBit = pendingIdx \% BitsInByte;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00144}00144                     \textcolor{keywordflow}{if} ((acksData[currentByte] \& (1 << currentBit)) == 0)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00145}00145                     \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00146}00146                         \textcolor{keywordflow}{if} (Peer.NetManager.EnableStatistics) }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00147}00147                         \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00148}00148                             Peer.Statistics.IncrementPacketLoss();}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00149}00149                             Peer.NetManager.Statistics.IncrementPacketLoss();}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00150}00150                         \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00152}00152                         \textcolor{comment}{//Skip false ack}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00153}00153                         NetDebug.Write(\textcolor{stringliteral}{"{}[PA]False ack: \{0\}"{}}, pendingSeq);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00154}00154                         \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00155}00155                     \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00157}00157                     \textcolor{keywordflow}{if} (pendingSeq == \_localWindowStart)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00158}00158                     \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00159}00159                         \textcolor{comment}{//Move window                }}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00160}00160                         \_localWindowStart = (\_localWindowStart + 1) \% NetConstants.MaxSequence;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00161}00161                     \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00162}00162 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00163}00163                     \textcolor{comment}{//clear packet}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00164}00164                     \textcolor{keywordflow}{if} (\_pendingPackets[pendingIdx].Clear(Peer))}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00165}00165                         NetDebug.Write(\textcolor{stringliteral}{"{}[PA]Removing reliableInOrder ack: \{0\} -\/ true"{}}, pendingSeq);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00166}00166                 \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00167}00167             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00168}00168         \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00169}00169 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00170}00170         \textcolor{keyword}{protected} \textcolor{keyword}{override} \textcolor{keywordtype}{bool} SendNextPackets()}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00171}00171         \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00172}00172             \textcolor{keywordflow}{if} (\_mustSendAcks)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00173}00173             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00174}00174                 \_mustSendAcks = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00175}00175                 NetDebug.Write(\textcolor{stringliteral}{"{}[RR]SendAcks"{}});}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00176}00176                 lock(\_outgoingAcks)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00177}00177                     Peer.SendUserData(\_outgoingAcks);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00178}00178             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00180}00180             \textcolor{keywordtype}{long} currentTime = DateTime.UtcNow.Ticks;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00181}00181             \textcolor{keywordtype}{bool} hasPendingPackets = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00182}00182 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00183}00183             lock (\_pendingPackets)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00184}00184             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00185}00185                 \textcolor{comment}{//get packets from queue}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00186}00186                 lock (OutgoingQueue)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00187}00187                 \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00188}00188                     \textcolor{keywordflow}{while} (OutgoingQueue.Count > 0)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00189}00189                     \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00190}00190                         \textcolor{keywordtype}{int} relate = NetUtils.RelativeSequenceNumber(\_localSeqence, \_localWindowStart);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00191}00191                         \textcolor{keywordflow}{if} (relate >= \_windowSize)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00192}00192                             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00193}00193 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00194}00194                         var netPacket = OutgoingQueue.Dequeue();}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00195}00195                         netPacket.Sequence = (ushort) \_localSeqence;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00196}00196                         netPacket.ChannelId = \_id;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00197}00197                         \_pendingPackets[\_localSeqence \% \_windowSize].Init(netPacket);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00198}00198                         \_localSeqence = (\_localSeqence + 1) \% NetConstants.MaxSequence;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00199}00199                     \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00200}00200                 \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00201}00201 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00202}00202                 \textcolor{comment}{//send}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00203}00203                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} pendingSeq = \_localWindowStart; pendingSeq != \_localSeqence; pendingSeq = (pendingSeq + 1) \% NetConstants.MaxSequence)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00204}00204                 \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00205}00205                     \textcolor{comment}{// Please note: TrySend is invoked on a mutable struct, it's important to not extract it into a variable here}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00206}00206                     \textcolor{keywordtype}{bool} hasPacket;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00207}00207                     \_pendingPackets[pendingSeq \% \_windowSize].TrySend(currentTime, Peer, out hasPacket);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00208}00208                     \textcolor{keywordflow}{if} (hasPacket)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00209}00209                     \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00210}00210                         hasPendingPackets = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00211}00211                     \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00212}00212                 \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00213}00213             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00214}00214 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00215}00215             \textcolor{keywordflow}{return} hasPendingPackets || \_mustSendAcks || OutgoingQueue.Count > 0;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00216}00216         \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00217}00217 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00218}00218         \textcolor{comment}{//Process incoming packet}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00219}00219         \textcolor{keyword}{public} \textcolor{keyword}{override} \textcolor{keywordtype}{bool} ProcessPacket(NetPacket packet)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00220}00220         \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00221}00221             \textcolor{keywordflow}{if} (packet.Property == PacketProperty.Ack)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00222}00222             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00223}00223                 ProcessAck(packet);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00224}00224                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00225}00225             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00226}00226             \textcolor{keywordtype}{int} seq = packet.Sequence;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00227}00227             \textcolor{keywordflow}{if} (seq >= NetConstants.MaxSequence)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00228}00228             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00229}00229                 NetDebug.Write(\textcolor{stringliteral}{"{}[RR]Bad sequence"{}});}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00230}00230                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00231}00231             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00232}00232 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00233}00233             \textcolor{keywordtype}{int} relate = NetUtils.RelativeSequenceNumber(seq, \_remoteWindowStart);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00234}00234             \textcolor{keywordtype}{int} relateSeq = NetUtils.RelativeSequenceNumber(seq, \_remoteSequence);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00235}00235 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00236}00236             \textcolor{keywordflow}{if} (relateSeq > \_windowSize)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00237}00237             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00238}00238                 NetDebug.Write(\textcolor{stringliteral}{"{}[RR]Bad sequence"{}});}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00239}00239                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00240}00240             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00241}00241 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00242}00242             \textcolor{comment}{//Drop bad packets}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00243}00243             \textcolor{keywordflow}{if} (relate < 0)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00244}00244             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00245}00245                 \textcolor{comment}{//Too old packet doesn't ack}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00246}00246                 NetDebug.Write(\textcolor{stringliteral}{"{}[RR]ReliableInOrder too old"{}});}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00247}00247                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00248}00248             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00249}00249             \textcolor{keywordflow}{if} (relate >= \_windowSize * 2)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00250}00250             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00251}00251                 \textcolor{comment}{//Some very new packet}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00252}00252                 NetDebug.Write(\textcolor{stringliteral}{"{}[RR]ReliableInOrder too new"{}});}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00253}00253                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00254}00254             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00255}00255 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00256}00256             \textcolor{comment}{//If very new -\/ move window}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00257}00257             \textcolor{keywordtype}{int} ackIdx;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00258}00258             \textcolor{keywordtype}{int} ackByte;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00259}00259             \textcolor{keywordtype}{int} ackBit;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00260}00260             lock (\_outgoingAcks)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00261}00261             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00262}00262                 \textcolor{keywordflow}{if} (relate >= \_windowSize)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00263}00263                 \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00264}00264                     \textcolor{comment}{//New window position}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00265}00265                     \textcolor{keywordtype}{int} newWindowStart = (\_remoteWindowStart + relate -\/ \_windowSize + 1) \% NetConstants.MaxSequence;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00266}00266                     \_outgoingAcks.Sequence = (ushort) newWindowStart;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00267}00267 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00268}00268                     \textcolor{comment}{//Clean old data}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00269}00269                     \textcolor{keywordflow}{while} (\_remoteWindowStart != newWindowStart)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00270}00270                     \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00271}00271                         ackIdx = \_remoteWindowStart \% \_windowSize;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00272}00272                         ackByte = NetConstants.ChanneledHeaderSize + ackIdx / BitsInByte;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00273}00273                         ackBit = ackIdx \% BitsInByte;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00274}00274                         \_outgoingAcks.RawData[ackByte] \&= (byte) \string~(1 << ackBit);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00275}00275                         \_remoteWindowStart = (\_remoteWindowStart + 1) \% NetConstants.MaxSequence;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00276}00276                     \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00277}00277                 \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00278}00278 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00279}00279                 \textcolor{comment}{//Final stage -\/ process valid packet}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00280}00280                 \textcolor{comment}{//trigger acks send}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00281}00281                 \_mustSendAcks = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00282}00282                 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00283}00283                 ackIdx = seq \% \_windowSize;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00284}00284                 ackByte = NetConstants.ChanneledHeaderSize + ackIdx / BitsInByte;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00285}00285                 ackBit = ackIdx \% BitsInByte;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00286}00286                 \textcolor{keywordflow}{if} ((\_outgoingAcks.RawData[ackByte] \& (1 << ackBit)) != 0)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00287}00287                 \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00288}00288                     NetDebug.Write(\textcolor{stringliteral}{"{}[RR]ReliableInOrder duplicate"{}});}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00289}00289                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00290}00290                 \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00291}00291 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00292}00292                 \textcolor{comment}{//save ack}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00293}00293                 \_outgoingAcks.RawData[ackByte] |= (byte) (1 << ackBit);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00294}00294             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00295}00295 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00296}00296             AddToPeerChannelSendQueue();}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00297}00297 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00298}00298             \textcolor{comment}{//detailed check}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00299}00299             \textcolor{keywordflow}{if} (seq == \_remoteSequence)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00300}00300             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00301}00301                 NetDebug.Write(\textcolor{stringliteral}{"{}[RR]ReliableInOrder packet succes"{}});}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00302}00302                 Peer.AddReliablePacket(\_deliveryMethod, packet);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00303}00303                 \_remoteSequence = (\_remoteSequence + 1) \% NetConstants.MaxSequence;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00304}00304 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00305}00305                 if (\_ordered)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00306}00306                 \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00307}00307                     NetPacket p;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00308}00308                     \textcolor{keywordflow}{while} ((p = \_receivedPackets[\_remoteSequence \% \_windowSize]) != \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00309}00309                     \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00310}00310                         \textcolor{comment}{//process holden packet}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00311}00311                         \_receivedPackets[\_remoteSequence \% \_windowSize] = \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00312}00312                         Peer.AddReliablePacket(\_deliveryMethod, p);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00313}00313                         \_remoteSequence = (\_remoteSequence + 1) \% NetConstants.MaxSequence;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00314}00314                     \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00315}00315                 \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00316}00316                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00317}00317                 \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00318}00318                     \textcolor{keywordflow}{while} (\_earlyReceived[\_remoteSequence \% \_windowSize])}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00319}00319                     \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00320}00320                         \textcolor{comment}{//process early packet}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00321}00321                         \_earlyReceived[\_remoteSequence \% \_windowSize] = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00322}00322                         \_remoteSequence = (\_remoteSequence + 1) \% NetConstants.MaxSequence;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00323}00323                     \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00324}00324                 \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00325}00325                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00326}00326             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00327}00327 }
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00328}00328             \textcolor{comment}{//holden packet}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00329}00329             \textcolor{keywordflow}{if} (\_ordered)}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00330}00330             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00331}00331                 \_receivedPackets[ackIdx] = packet;}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00332}00332             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00333}00333             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00334}00334             \{}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00335}00335                 \_earlyReceived[ackIdx] = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00336}00336                 Peer.AddReliablePacket(\_deliveryMethod, packet);}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00337}00337             \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00338}00338             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00339}00339         \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00340}00340     \}}
+\DoxyCodeLine{\Hypertarget{_reliable_channel_8cs_source_l00341}00341 \}}
+
+\end{DoxyCode}
