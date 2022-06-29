@@ -144,3 +144,8 @@ Assets/ConsolePro.meta
 *.js
 *.tex
 *.eps
+*.sty
+*.bat
+*.css
+*.svg
+doxegen output/latex/Makefile
