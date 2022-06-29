@@ -7,14 +7,14 @@ using UnityEngine;
  * @details input과 movement등의 다른 클래스들의 
  * 
  * @author yws
- * @data last change 2022/06/28
+ * @date last change 2022/06/28
  */
 public class Player : Entity
 {
     #region Fields
 
     //Components
-    private PlayerInput input;
+    private IInput input;
     private EntityMovement movement;
     private Animator animator;
 
@@ -35,7 +35,7 @@ public class Player : Entity
      * UpdateManager에 등록하여 사용합니다.
      * 
      * @author yws
-     * @data last change 2022/06/28
+     * @date last change 2022/06/28
      */
     private void MovePlayer()
     {
@@ -56,7 +56,7 @@ public class Player : Entity
      * @details 플레이어의 상태에 따른 Animation을 설정해주는 메서드입니다.
      * 
      * @author yws
-     * @data last change 2022/06/28
+     * @date last change 2022/06/28
      */
     private void SetPlayerAnimation()
     {
@@ -80,7 +80,7 @@ public class Player : Entity
 
     private void Awake()
     {
-        TryGetComponent<PlayerInput>(out input);
+        TryGetComponent<IInput>(out input);
         TryGetComponent<EntityMovement>(out movement);
         transform.GetChild(0).TryGetComponent<Animator>(out animator);
     }

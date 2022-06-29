@@ -262,3 +262,8 @@ doxegen output/latex/make.bat
 doxegen output/latex/Makefile
 doxegen output/latex/refman.tex
 doxegen output/latex/tabu_doxygen.sty
+*.html
+*.png
+*.js
+*.tex
+*.eps

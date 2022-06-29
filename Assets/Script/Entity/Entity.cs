@@ -7,7 +7,7 @@ using UnityEngine;
  * @details 게임내 생명체들의 최상위 클래스입니다.
  * 
  * @author yws
- * @data last change 2022/06/28
+ * @date last change 2022/06/28
  */
 public class Entity : MonoBehaviour
 {

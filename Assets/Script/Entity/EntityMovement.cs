@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * @brief 
- * @details 
+ * @brief class Entity 객체들의 이동을 구현한 클레스
+ * @details Entity 객체들의 실질적인 이동을 구현한 클래스입니다.\n
  * 
  * @author yws
- * @data last change 2022/06/28
+ * @date last change 2022/06/28
  */
 public class EntityMovement : MonoBehaviour
 {
@@ -23,11 +23,14 @@ public class EntityMovement : MonoBehaviour
 
     #region Funtion
     /**
-     * @brief 
-     * @details 
+     * @brief 객체를 이동시키는 메서드
+     * @details 매개변수로 이동방향과 달리기 키 입력여부를 받아 이동방향으로 설정된 속도만큼 이동시킵니다.
+     * 
+     * @param[in] directionVec : 이동방향
+     * @param[in] runInput : 달리기 키 입력여부
      * 
      * @author yws
-     * @data last change 2022/06/28
+     * @date last change 2022/06/28
      */
     public void EntityMove(Vector3 directionVec, bool runInput)
     {
