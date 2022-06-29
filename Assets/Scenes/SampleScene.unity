@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1581103111, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
       propertyPath: m_CollisionDetection
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1581103114, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
       propertyPath: force
@@ -141,6 +141,14 @@ PrefabInstance:
     - target: {fileID: 1581103114, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
       propertyPath: runSpeed
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581103114, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
+      propertyPath: jumpForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581103114, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
+      propertyPath: maxJumpCount
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5461052779654786451, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
       propertyPath: m_Name
@@ -206,7 +214,7 @@ GameObject:
   - component: {fileID: 301341718}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
