@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * @brief 
- * @details 
+ * @brief class Player의 메인 컴포넌트로 관련된 다른 컴포넌트들을 연결해주는 역할
+ * @details input과 movement등의 다른 클래스들의 
  * 
  * @author yws
  * @data last change 2022/06/28
@@ -30,8 +30,9 @@ public class Player : Entity
     #region Funtion
 
     /**
-     * @brief 
-     * @details 
+     * @brief 플레이어 이동 메서드
+     * @details IInput인터페이스를 이용하여 입력에 따른 플레이어 이동을 구현한 메서드\n
+     * UpdateManager에 등록하여 사용합니다.
      * 
      * @author yws
      * @data last change 2022/06/28
@@ -51,8 +52,8 @@ public class Player : Entity
     }
 
     /**
-     * @brief 
-     * @details 
+     * @brief 플레이어 Animation설정 메서드
+     * @details 플레이어의 상태에 따른 Animation을 설정해주는 메서드입니다.
      * 
      * @author yws
      * @data last change 2022/06/28
