@@ -1,18 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Iinput : MonoBehaviour
+public interface IInput
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Vector3 GetNormalizedVec();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool GetRunInput();
 }
