@@ -33,12 +33,23 @@ public class PlayerInput : MonoBehaviour ,IInput
     /**
      * @brief 달리기 키 입력여부를 반환하는 getter
      * 
-     * @return Vector
+     * @return bool
      * 
      * @author yws
      * @date last change 2022/06/28
      */
     bool IInput.GetRunInput(){ return Input.GetButton("Run"); }
+
+
+    /**
+     * @brief 점프 키 입력여부를 반환하는 getter
+     * 
+     * @return bool
+     * 
+     * @author yws
+     * @date last change 2022/06/30
+     */
+    bool IInput.GetJumpInput(){ return Input.GetButtonDown("Jump"); }
 
     #endregion
 
