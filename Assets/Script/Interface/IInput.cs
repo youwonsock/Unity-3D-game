@@ -1,6 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
+/**
+ * 
+ */
 public interface IInput
 {
     public Vector3 GetNormalizedVec();
@@ -8,4 +11,6 @@ public interface IInput
     public bool GetRunInput();
 
     public bool GetJumpInput();
+
+    public bool GetDodgeInput();
 }

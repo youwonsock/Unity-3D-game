@@ -24,6 +24,11 @@ public class EntityMovement : MonoBehaviour
 
     [Header("Capacity")]
     [SerializeField] private int maxJumpCount;
+    [SerializeField] private float dodgeTime;
+    [SerializeField] private int dodgeCoolTime;
+
+    //for check condition
+    private bool canDodge = true;
     private int currentJumpCount;
 
     #endregion
@@ -35,6 +40,8 @@ public class EntityMovement : MonoBehaviour
     public int MaxJumpCount { get { return maxJumpCount; } }
 
     #endregion
+
+    #region Funtion and Coroutine
 
     #region Funtion
     /**
@@ -76,7 +83,54 @@ public class EntityMovement : MonoBehaviour
         }
     }
 
+    /**
+     * 
+     */
+    public void DodgeEntity(Vector3 directionVec,bool dodgeInput)
+    {
+        if(canDodge && dodgeInput)
+        {
+            speed *= 2;
+            runSpeed *= 2;
+
+            canDodge = false;
+
+            StartCoroutine(InitDodge());
+        }
+    }
     #endregion
+
+
+
+    #region Coroutine
+
+    /**
+     * 
+     */
+    IEnumerator InitDodge()
+    {
+        var wfsID = new WaitForSecondsRealtime(dodgeTime);
+        var wfsCD = new WaitForSecondsRealtime(dodgeCoolTime);
+
+        while (true)
+        {
+            yield return wfsID;
+            speed /= 2;
+            runSpeed /=2;
+
+            yield return wfsCD;
+            canDodge = true;
+
+            yield break;
+        }
+    }
+
+    #endregion
+
+    #endregion
+
+
+
 
     #region Unity Event
 

@@ -51,6 +51,11 @@ public class PlayerInput : MonoBehaviour ,IInput
      */
     bool IInput.GetJumpInput(){ return Input.GetButtonDown("Jump"); }
 
+    /**
+     * 
+     */
+    bool IInput.GetDodgeInput() { return Input.GetKeyDown(KeyCode.C); }
+
     #endregion
 
 

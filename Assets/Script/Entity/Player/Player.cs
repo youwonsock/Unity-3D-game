@@ -22,6 +22,7 @@ public class Player : Entity
     private Vector3 nomalVec;
     private bool runInput;
     private bool jumpInput;
+    private bool dodgeInput;
 
     #endregion
 
@@ -44,6 +45,7 @@ public class Player : Entity
         nomalVec = input.GetNormalizedVec();
         runInput = input.GetRunInput();
         jumpInput = input.GetJumpInput();
+        dodgeInput = input.GetDodgeInput();
 
         //set animation
         SetPlayerAnimation();
@@ -51,6 +53,7 @@ public class Player : Entity
         //move player
         movement.MoveEntity(nomalVec, runInput);
         movement.JumpEntity(jumpInput);
+        movement.DodgeEntity(nomalVec,dodgeInput);
     }
 
     /**
