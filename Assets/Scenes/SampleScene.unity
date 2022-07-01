@@ -144,11 +144,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1581103114, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
       propertyPath: dodgeTime
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1581103114, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
       propertyPath: jumpForce
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581103114, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
+      propertyPath: walkSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1581103114, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
       propertyPath: maxJumpCount

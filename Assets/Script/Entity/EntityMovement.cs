@@ -18,7 +18,7 @@ public class EntityMovement : MonoBehaviour
 
     //Values
     [Header("Velocity and Force")]
-    [SerializeField] private float speed;
+    [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
     [SerializeField] private float jumpForce;
 
@@ -29,15 +29,20 @@ public class EntityMovement : MonoBehaviour
 
     //for check condition
     private bool canDodge = true;
+    private bool canJump = false;
+
+    private bool isDodge = false;
     private int currentJumpCount;
+    private float moveSpeed;
 
     #endregion
 
     #region Getter
 
-    public int CurrentJumpCount { get { return currentJumpCount; } }
+    public bool CanJump { get { return canJump; } }
 
-    public int MaxJumpCount { get { return maxJumpCount; } }
+
+    public bool CanDodge { get { return canDodge; } }
 
     #endregion
 
@@ -45,19 +50,32 @@ public class EntityMovement : MonoBehaviour
 
     #region Funtion
     /**
-     * @brief 객체를 이동시키는 메서드
-     * @details 매개변수로 이동방향과 달리기 키 입력여부를 받아 이동방향으로 설정된 속도만큼 이동시킵니다.
+     * @brief 객체를 이동과 회피를 담당하는 메서드
+     * @details 매개변수로 이동방향과 달리기 키 입력여부, 회피 키 입력여부를 받아 이동방향으로 설정된 속도만큼 이동시킵니다.
      * 
      * @param[in] directionVec : 이동방향
      * @param[in] runInput : 달리기 키 입력여부
+     * @param[in] dodgeInput : 회피 키 입력여부
      * 
      * @author yws
-     * @date last change 2022/06/28
+     * @date last change 2022/07/01
      */
-    public void MoveEntity(Vector3 directionVec, bool runInput)
+    public void MoveEntity(Vector3 directionVec, bool runInput, bool dodgeInput)
     {
+        if(!isDodge)
+            moveSpeed = runInput ? runSpeed : walkSpeed;
+
+        if (dodgeInput && canDodge)
+        {
+            isDodge = true;
+            canDodge = false;
+            moveSpeed = runSpeed * 2;
+         
+            StartCoroutine(InitDodge());
+        }
+
         transform.LookAt(transform.position + directionVec);
-        transform.position += directionVec * (runInput ? runSpeed : speed)* Time.deltaTime;
+        transform.position += directionVec * moveSpeed * Time.deltaTime;
     }
 
     /**
@@ -70,32 +88,19 @@ public class EntityMovement : MonoBehaviour
      * @param[in] jumpInput : 점프키 입력여부
      * 
      * @author yws
-     * @date last change 2022/06/230
+     * @date last change 2022/06/30
      */
     public void JumpEntity(bool jumpInput)
     {
-        if (currentJumpCount == 0)
+        if (currentJumpCount == 0 || isDodge)
+        {
+            canJump = false;
             return;
+        }
         if (jumpInput)
         {
             currentJumpCount--;
             rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
-    }
-
-    /**
-     * 
-     */
-    public void DodgeEntity(Vector3 directionVec,bool dodgeInput)
-    {
-        if(canDodge && dodgeInput)
-        {
-            speed *= 2;
-            runSpeed *= 2;
-
-            canDodge = false;
-
-            StartCoroutine(InitDodge());
         }
     }
     #endregion
@@ -115,8 +120,7 @@ public class EntityMovement : MonoBehaviour
         while (true)
         {
             yield return wfsID;
-            speed /= 2;
-            runSpeed /=2;
+            isDodge = false;
 
             yield return wfsCD;
             canDodge = true;
@@ -145,8 +149,10 @@ public class EntityMovement : MonoBehaviour
         // init jump
 
         if (collision.collider.CompareTag("Floor"))
+        {
             currentJumpCount = maxJumpCount;
-
+            canJump = true;
+        }
         // end init jump
 
 

@@ -37,7 +37,7 @@ public class Player : Entity
      * UpdateManager에 등록하여 사용합니다.
      * 
      * @author yws
-     * @date last change 2022/06/28
+     * @date last change 2022/07/01
      */
     private void MovePlayer()
     {
@@ -51,9 +51,8 @@ public class Player : Entity
         SetPlayerAnimation();
 
         //move player
-        movement.MoveEntity(nomalVec, runInput);
+        movement.MoveEntity(nomalVec, runInput, dodgeInput);
         movement.JumpEntity(jumpInput);
-        movement.DodgeEntity(nomalVec,dodgeInput);
     }
 
     /**
@@ -62,7 +61,7 @@ public class Player : Entity
      * 일부 애니메이션 설정은 OnCollisonEnter에서 수행합니다.
      * 
      * @author yws
-     * @date last change 2022/06/28
+     * @date last change 2022/07/01
      */
     private void SetPlayerAnimation()
     {
@@ -77,12 +76,17 @@ public class Player : Entity
         // end run anim set
 
         // jump anim set
-        if (movement.CurrentJumpCount != 0 && jumpInput)
+        if (movement.CanJump&& jumpInput)
         {
             animator.SetTrigger("doJump");
             animator.SetBool("isJump", true);
         }
         // end jump anim
+
+        // dodge anim set
+        if (movement.CanDodge && dodgeInput)
+            animator.SetTrigger("doDodge");
+        // end dodge anim set
     }
 
     #endregion
