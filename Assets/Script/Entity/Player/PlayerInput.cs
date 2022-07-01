@@ -52,7 +52,12 @@ public class PlayerInput : MonoBehaviour ,IInput
     bool IInput.GetJumpInput(){ return Input.GetButtonDown("Jump"); }
 
     /**
+     * @brief 회피 키 입력여부를 반환하는 getter
      * 
+     * @return bool
+     * 
+     * @author yws
+     * @date last change 2022/07/01
      */
     bool IInput.GetDodgeInput() { return Input.GetKeyDown(KeyCode.C); }
 

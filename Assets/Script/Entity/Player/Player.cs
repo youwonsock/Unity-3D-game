@@ -76,7 +76,7 @@ public class Player : Entity
         // end run anim set
 
         // jump anim set
-        if (movement.CanJump&& jumpInput)
+        if (movement.CanJump && jumpInput)
         {
             animator.SetTrigger("doJump");
             animator.SetBool("isJump", true);
