@@ -30,6 +30,14 @@ public abstract class Item : MonoBehaviour
 
     #region Funtion
 
+
+    /**
+     * @brief Subscibe(, Fixed, Late)Update <- 이벤트 등록 메서드들
+     * @details 이벤트를 등록하는 클래스의 OnEnable에서 Subscribe~ 메서드들을 호출하여 사용합니다.
+     * 
+     * @author yws
+     * @data last change 2022/06/26
+     */
     private void RotateItem()
     {
         transform.Rotate(Vector3.up * 2);

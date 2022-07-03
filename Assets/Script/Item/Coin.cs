@@ -3,23 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * @brief Class 
+ * @brief Class 추상 클래스인 Item클래스의 상속을 받은 Coin 클래스
  * @details 
  * 
  * @author yws
- * @date last change 2022/07/03
+ * @date last change 2022/07/04
  */
 public class Coin : Item
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #region Fields
+
+    #endregion
+
+
+
+    #region Property
+
+    #endregion
+
+
+
+    #region Funtion
+
+    #endregion
+
+
+
+    #region Unity Event
+
+    #endregion
+
 }
