@@ -9,7 +9,7 @@ using UnityEngine;
  * @author yws
  * @date last change 2022/07/03
  */
-public class HandGun : Item
+public class Ammo : Item
 {
     // Start is called before the first frame update
     void Start()

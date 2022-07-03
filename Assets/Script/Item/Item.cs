@@ -30,11 +30,26 @@ public abstract class Item : MonoBehaviour
 
     #region Funtion
 
+    private void RotateItem()
+    {
+        transform.Rotate(Vector3.up * 2);
+    }
+
     #endregion
 
 
 
     #region Unity Event
+
+    private void OnEnable()
+    {
+        UpdateManager.SubscribeToFixedUpdate(RotateItem);
+    }
+
+    private void OnDisable()
+    {
+        UpdateManager.UnsubscribeFromFixedUpdate(RotateItem);
+    }
 
     #endregion
 
