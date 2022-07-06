@@ -33,13 +33,30 @@ public class Player : Entity
 
     #region Property
 
-    public bool InteractionInput() { return interactionInput; }
 
     #endregion
 
 
 
     #region Funtion
+
+    //--------------------------public--------------------------------------
+
+    /**
+     * @brief Player 무기 획득 메서드
+     * @details Player 무기 획득시 Weapon에서 호출되는 메서드입니다.\n
+     * Weapon의 GetWeapon을 호출해서 무기를 변경합니다. (의존성 해결을 위한 구조)
+     * @return bool
+     * 
+     * @author yws
+     * @date last change 2022/07/07
+     */
+    public bool GetWeapon(int itemValue)
+    {
+         return weapon.GetWeapon(itemValue, interactionInput);
+    }
+
+    //--------------------------private-------------------------------------
 
     /**
      * @brief Player의 Input을 감지하는 메서드
@@ -60,7 +77,7 @@ public class Player : Entity
 
     /**
      * @brief 무기 변경 메서드(Player)
-     * @details swapInput의 값에 따라 번호에 해당하는 무기로 변경합니다.
+     * @details swapInput을 메개변수로 PlayerWeapon의 Swap을 호출해 해당하는 무기로 변경합니다.
      * swapInput이 0이면 바로 종료합니다.
      * 
      * @author yws
@@ -68,11 +85,11 @@ public class Player : Entity
      */
     private void SwapWeapon()
     {
-        if (swapInput == 0)
+        if (swapInput == -1)
             return;
 
-        weapon.Swap(swapInput);
-        animator.SetTrigger("doSwap");
+        if(weapon.Swap(swapInput))
+            animator.SetTrigger("doSwap");
     }
 
     /**
