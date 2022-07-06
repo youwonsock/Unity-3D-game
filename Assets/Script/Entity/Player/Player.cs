@@ -23,6 +23,8 @@ public class Player : Entity
     private bool runInput;
     private bool jumpInput;
     private bool dodgeInput;
+    private bool interactionInput;
+    private int swapInput;
 
     #endregion
 
@@ -32,27 +34,45 @@ public class Player : Entity
     #region Funtion
 
     /**
-     * @brief 플레이어 이동 메서드
-     * @details IInput인터페이스를 이용하여 입력에 따른 플레이어 이동을 구현한 메서드\n
-     * UpdateManager에 등록하여 사용합니다.
+     * @brief Player의 Input을 감지하는 메서드
+     * @details IInput의 메서드를 사용해서 Player의  bool **Input 값들을 초기화 시킵니다.
      * 
      * @author yws
-     * @date last change 2022/07/01
+     * @date last change 2022/07/06
      */
-    private void MovePlayer()
+    private void GetPlayerInput()
     {
-        //set values
         nomalVec = input.GetNormalizedVec();
         runInput = input.GetRunInput();
         jumpInput = input.GetJumpInput();
         dodgeInput = input.GetDodgeInput();
+        interactionInput = input.GetInteractInput();
+        swapInput = input.GetSwapInput();
+    }
 
-        //set animation
-        SetPlayerAnimation();
-
-        //move player
-        movement.MoveEntity(nomalVec, runInput, dodgeInput);
-        movement.JumpEntity(jumpInput);
+    /**
+     * @brief 무기 변경 메서드
+     * @details swapInput의 값에 따라 번호에 해당하는 무기로 변경합니다.
+     * 
+     * @author yws
+     * @date last change 2022/07/06
+     */
+    private void SwapWeapon()
+    {
+        switch(swapInput)
+        {
+            case 0:
+                break;
+            case 1:
+                // weapon1 
+                break;
+            case 2:
+                // weapon 2
+                break;
+            case 3:
+                // weapon 3
+                break;
+        }
     }
 
     /**
@@ -61,7 +81,7 @@ public class Player : Entity
      * 일부 애니메이션 설정은 OnCollisonEnter에서 수행합니다.
      * 
      * @author yws
-     * @date last change 2022/07/01
+     * @date last change 2022/07/03
      */
     private void SetPlayerAnimation()
     {
@@ -87,6 +107,28 @@ public class Player : Entity
         if (movement.CanDodge && dodgeInput)
             animator.SetTrigger("doDodge");
         // end dodge anim set
+    }
+
+    /**
+     * @brief 플레이어 이동 메서드
+     * @details 플레이어 이동을 구현한 메서드\n
+     * UpdateManager에 등록하여 사용합니다.
+     * 
+     * @author yws
+     * @date last change 2022/07/06
+     */
+    private void ActionPlayer()
+    {
+        GetPlayerInput();
+
+        SwapWeapon();
+
+        //set animation
+        SetPlayerAnimation();
+
+        //move player
+        movement.MoveEntity(nomalVec, runInput, dodgeInput);
+        movement.JumpEntity(jumpInput);
     }
 
     #endregion

@@ -61,6 +61,38 @@ public class PlayerInput : MonoBehaviour ,IInput
      */
     bool IInput.GetDodgeInput() { return Input.GetKeyDown(KeyCode.C); }
 
+    /**
+     * @brief 상호작용 키 입력여부를 반환하는 getter
+     * 
+     * @return bool
+     * 
+     * @author yws
+     * @date last change 2022/07/06
+     */
+    bool IInput.GetInteractInput() { return Input.GetButtonDown("Interation"); }
+
+    /**
+     * @brief Swap 키 입력여부를 반환하는 getter
+     * 
+     * @return int
+     * 
+     * @author yws
+     * @date last change 2022/07/06
+     */
+    int IInput.GetSwapInput() 
+    {
+        if (Input.GetKeyDown("Swap1"))
+            return 1;
+        else if (Input.GetKeyDown("Swap2"))
+            return 2;
+        else if (Input.GetKeyDown("Swap3"))
+            return 3;
+
+        return 0;
+    }
+
+
+
     #endregion
 
 

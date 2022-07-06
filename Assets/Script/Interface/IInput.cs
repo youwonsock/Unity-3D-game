@@ -17,4 +17,8 @@ public interface IInput
     public bool GetJumpInput();
 
     public bool GetDodgeInput();
+
+    public bool GetInteractInput();
+
+    public int GetSwapInput();
 }
