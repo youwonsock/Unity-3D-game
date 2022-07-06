@@ -7,7 +7,7 @@ using UnityEngine;
  * @details input과 movement등의 다른 클래스들의 
  * 
  * @author yws
- * @date last change 2022/06/28
+ * @date last change 2022/07/07
  */
 public class Player : Entity
 {
@@ -16,6 +16,7 @@ public class Player : Entity
     //Components
     private IInput input;
     private EntityMovement movement;
+    private PlayerWeapon weapon;
     private Animator animator;
 
     //values
@@ -28,6 +29,13 @@ public class Player : Entity
 
     #endregion
 
+
+
+    #region Property
+
+    public bool InteractionInput() { return interactionInput; }
+
+    #endregion
 
 
 
@@ -51,28 +59,20 @@ public class Player : Entity
     }
 
     /**
-     * @brief 무기 변경 메서드
+     * @brief 무기 변경 메서드(Player)
      * @details swapInput의 값에 따라 번호에 해당하는 무기로 변경합니다.
+     * swapInput이 0이면 바로 종료합니다.
      * 
      * @author yws
      * @date last change 2022/07/06
      */
     private void SwapWeapon()
     {
-        switch(swapInput)
-        {
-            case 0:
-                break;
-            case 1:
-                // weapon1 
-                break;
-            case 2:
-                // weapon 2
-                break;
-            case 3:
-                // weapon 3
-                break;
-        }
+        if (swapInput == 0)
+            return;
+
+        weapon.Swap(swapInput);
+        animator.SetTrigger("doSwap");
     }
 
     /**
@@ -117,7 +117,7 @@ public class Player : Entity
      * @author yws
      * @date last change 2022/07/06
      */
-    private void ActionPlayer()
+    private void ActPlayer()
     {
         GetPlayerInput();
 
@@ -142,6 +142,7 @@ public class Player : Entity
     {
         TryGetComponent<IInput>(out input);
         TryGetComponent<EntityMovement>(out movement);
+        TryGetComponent<PlayerWeapon>(out weapon);
         transform.GetChild(0).TryGetComponent<Animator>(out animator);
     }
 
@@ -156,12 +157,12 @@ public class Player : Entity
 
     private void OnEnable()
     {
-        UpdateManager.SubscribeToUpdate(MovePlayer);
+        UpdateManager.SubscribeToUpdate(ActPlayer);
     }
 
     private void OnDisable()
     {
-        UpdateManager.UnsubscribeFromUpdate(MovePlayer);
+        UpdateManager.UnsubscribeFromUpdate(ActPlayer);
     }
 
     #endregion
