@@ -5083,3 +5083,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   value: 5
+  isRotate: 1

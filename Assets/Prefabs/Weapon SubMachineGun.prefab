@@ -5000,6 +5000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   value: 2
+  isRotate: 1
 --- !u!1 &4895473748344367657
 GameObject:
   m_ObjectHideFlags: 0
