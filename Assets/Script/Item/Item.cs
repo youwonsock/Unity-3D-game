@@ -50,7 +50,7 @@ public abstract class Item : MonoBehaviour
      * @author yws
      * @data last change 2022/07/07
      */
-    protected abstract void ActWhenTriggerStay();
+    protected abstract void ActWhenTriggerStay(Collider other);
 
     /**
      * @brief OnTriggerExit() 에서 실행시킬 행동을 정의한 메서드
@@ -59,7 +59,7 @@ public abstract class Item : MonoBehaviour
      * @author yws
      * @data last change 2022/07/07
      */
-    protected abstract void ActWhenTriggerExit();
+    protected abstract void ActWhenTriggerExit(Collider other);
 
     #endregion
 

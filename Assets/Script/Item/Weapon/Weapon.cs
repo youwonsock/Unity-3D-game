@@ -32,7 +32,7 @@ public class Weapon : Item
      * @author yws
      * @data last change 2022/07/07
      */
-    protected override void ActWhenTriggerStay()
+    protected override void ActWhenTriggerStay(Collider other)
     {
 
     }
@@ -44,7 +44,7 @@ public class Weapon : Item
      * @author yws
      * @data last change 2022/07/07
      */
-    protected override void ActWhenTriggerExit()
+    protected override void ActWhenTriggerExit(Collider other)
     {
 
     }
