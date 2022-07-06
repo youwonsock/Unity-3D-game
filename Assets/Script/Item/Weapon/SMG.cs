@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * @brief Class 추상 클래스인 Item클래스의 상속을 받은 SMG 클래스
+ * @brief Class Weapon클래스의 상속을 받은 SMG 클래스
  * @details 
  * 
  * @author yws
- * @date last change 2022/07/04
+ * @date last change 2022/07/07
  */
-public class SMG : Item
+public class SMG : Weapon
 {
 
     #region Fields
