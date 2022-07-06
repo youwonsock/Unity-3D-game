@@ -7,7 +7,7 @@ using UnityEngine;
  * @details 
  * 
  * @author yws
- * @date last change 2022/07/03
+ * @date last change 2022/07/07
  */
 public abstract class Item : MonoBehaviour
 {
@@ -18,12 +18,15 @@ public abstract class Item : MonoBehaviour
     //private
     [SerializeField]private ItemType type;
     [SerializeField]private int value;
+    [SerializeField]private bool isRotate;
 
     #endregion
 
 
 
     #region Property
+
+    public int Value() { return value; }
 
     #endregion
 
@@ -50,7 +53,7 @@ public abstract class Item : MonoBehaviour
      * @author yws
      * @data last change 2022/07/07
      */
-    protected abstract void ActWhenTriggerStay(Collider other);
+    protected virtual void ActWhenTriggerStay(Collider other) { }
 
     /**
      * @brief OnTriggerExit() 에서 실행시킬 행동을 정의한 메서드
@@ -59,7 +62,7 @@ public abstract class Item : MonoBehaviour
      * @author yws
      * @data last change 2022/07/07
      */
-    protected abstract void ActWhenTriggerExit(Collider other);
+    protected virtual void ActWhenTriggerExit(Collider other) { }
 
     #endregion
 
@@ -69,22 +72,24 @@ public abstract class Item : MonoBehaviour
 
     private void OnEnable()
     {
-        UpdateManager.SubscribeToFixedUpdate(RotateItem);
+        if(isRotate)
+            UpdateManager.SubscribeToFixedUpdate(RotateItem);
     }
 
     private void OnDisable()
     {
-        UpdateManager.UnsubscribeFromFixedUpdate(RotateItem);
+        if(isRotate)
+            UpdateManager.UnsubscribeFromFixedUpdate(RotateItem);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        ActWhenTriggerStay();
+        ActWhenTriggerStay(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        ActWhenTriggerExit();
+        ActWhenTriggerExit(other);
     }
 
     #endregion
