@@ -13,6 +13,8 @@ public class Weapon : Item
 {
     #region Fields
 
+    [SerializeField] private bool isPlayerWeapon;
+
     #endregion
 
 
@@ -33,8 +35,12 @@ public class Weapon : Item
      * @data last change 2022/07/07
      */
     protected override void ActWhenTriggerStay(Collider other)
-    {
-
+    { 
+        if( !isPlayerWeapon && other.CompareTag("Player"))
+        {
+            if (other.GetComponent<Player>().GetWeapon(Value()))
+                Destroy(this.gameObject);
+        }
     }
 
     /**
@@ -46,7 +52,10 @@ public class Weapon : Item
      */
     protected override void ActWhenTriggerExit(Collider other)
     {
+        if (other.CompareTag("Player"))
+        {
 
+        }
     }
     #endregion
 
