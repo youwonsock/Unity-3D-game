@@ -43,6 +43,24 @@ public abstract class Item : MonoBehaviour
         transform.Rotate(Vector3.up * 2);
     }
 
+    /**
+     * @brief OnTriggerStay() 에서 실행시킬 행동을 정의한 메서드
+     * @details Item의 OnTriggerStay()에서 실행시킬 동작을 override로 정의하는 메서드입니다.
+     * 
+     * @author yws
+     * @data last change 2022/07/07
+     */
+    protected abstract void ActWhenTriggerStay();
+
+    /**
+     * @brief OnTriggerExit() 에서 실행시킬 행동을 정의한 메서드
+     * @details Item의 OnTriggerExit()에서 실행시킬 동작을 override로 정의하는 메서드입니다.
+     * 
+     * @author yws
+     * @data last change 2022/07/07
+     */
+    protected abstract void ActWhenTriggerExit();
+
     #endregion
 
 
@@ -57,6 +75,16 @@ public abstract class Item : MonoBehaviour
     private void OnDisable()
     {
         UpdateManager.UnsubscribeFromFixedUpdate(RotateItem);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        ActWhenTriggerStay();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        ActWhenTriggerExit();
     }
 
     #endregion
