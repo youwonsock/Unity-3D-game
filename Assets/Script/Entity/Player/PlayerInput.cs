@@ -69,7 +69,7 @@ public class PlayerInput : MonoBehaviour ,IInput
      * @author yws
      * @date last change 2022/07/06
      */
-    bool IInput.GetInteractInput() { return Input.GetButtonDown("Interation"); }
+    bool IInput.GetInteractInput() { return Input.GetButton("Interation"); }
 
     /**
      * @brief Swap 키 입력여부를 반환하는 getter
@@ -81,14 +81,14 @@ public class PlayerInput : MonoBehaviour ,IInput
      */
     int IInput.GetSwapInput() 
     {
-        if (Input.GetKeyDown("Swap1"))
+        if (Input.GetButtonDown("Swap1"))
+            return 0;
+        else if (Input.GetButtonDown("Swap2"))
             return 1;
-        else if (Input.GetKeyDown("Swap2"))
+        else if (Input.GetButtonDown("Swap3"))
             return 2;
-        else if (Input.GetKeyDown("Swap3"))
-            return 3;
 
-        return 0;
+        return -1;
     }
 
 
