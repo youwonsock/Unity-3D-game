@@ -17,7 +17,7 @@ public abstract class Item : MonoBehaviour
 
     //SerializeField
     [SerializeField]private ItemType type;
-    [SerializeField]private int value;
+    [SerializeField]private int itemCode;   //아이템의 고유값 현재는 필요 X
     [SerializeField]private bool isRotate;
 
     #endregion
@@ -26,7 +26,7 @@ public abstract class Item : MonoBehaviour
 
     #region Property
 
-    public int Value { get { return value; } }
+    public int ItemCode { get { return itemCode; } }
 
     #endregion
 

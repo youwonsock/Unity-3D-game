@@ -39,6 +39,25 @@ public class Player : Entity
 
     #region Property
 
+
+    /**
+     * @brief coin getter
+     * 
+     * @author yws
+     * @date last change 2022/07/09
+     */
+    public int Coin
+    {
+        get
+        {
+            return coin;
+        }
+        set
+        {
+            coin += value;
+        }
+    }
+
     /**
      * @brief maxCoin getter
      * 
@@ -48,7 +67,7 @@ public class Player : Entity
     public int MaxGrenades { get { return maxGrenades; } }
 
     /**
-     * @brief coin getter
+     * @brief Grenades getter
      * 
      * @author yws
      * @date last change 2022/07/09

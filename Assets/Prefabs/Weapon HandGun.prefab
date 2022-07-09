@@ -5084,3 +5084,7 @@ MonoBehaviour:
   type: 4
   value: 1
   isRotate: 1
+  weaponType: 1
+  isPlayerWeapon: 0
+  ammo: 0
+  maxAmmo: 0

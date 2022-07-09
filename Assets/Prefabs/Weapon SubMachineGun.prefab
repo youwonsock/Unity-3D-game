@@ -5001,6 +5001,10 @@ MonoBehaviour:
   type: 0
   value: 2
   isRotate: 1
+  weaponType: 2
+  isPlayerWeapon: 0
+  ammo: 0
+  maxAmmo: 0
 --- !u!1 &4895473748344367657
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,8 +36,12 @@ public class Grenade : Item
      */
     protected override void ActWhenTriggerEnter(Collider other)
     {
+        if(other.CompareTag("Player"))
+        { 
+            other.GetComponent<Player>().Grenades = 1;
 
-
+            Destroy(this.gameObject);
+        }
     }
 
     #endregion

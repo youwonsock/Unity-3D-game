@@ -4998,9 +4998,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6088f3dfac7fcf640ae594d2249676e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  value: 4
+  type: 1
+  itemCode: 0
   isRotate: 1
+  amount: 100
 --- !u!1 &886662591636470312
 GameObject:
   m_ObjectHideFlags: 0

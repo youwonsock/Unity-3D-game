@@ -114,7 +114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d772c4104ed23d542bc82aeebf8996a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
+  maxHealth: 100
+  health: 0
+  coin: 0
+  maxGrenades: 4
+  grenades: 0
 --- !u!114 &1581103112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +173,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907299830}
     m_Modifications:
+    - target: {fileID: 112336219, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: maxAmmo
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 112336219, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: weaponType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 112336219, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: isPlayerWeapon
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 112336220, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 112336222, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1509416925549156319, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
       propertyPath: m_Name
       value: Weapon HandGun
@@ -270,6 +294,18 @@ PrefabInstance:
       propertyPath: value
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 871944830684443938, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
+      propertyPath: maxAmmo
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 871944830684443938, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
+      propertyPath: weaponType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 871944830684443938, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
+      propertyPath: isPlayerWeapon
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 924136447322616994, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -314,6 +350,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: 7182984656586152281, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 9006546771032203801, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
 --- !u!114 &871944830890749701 stripped
@@ -339,6 +383,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907299830}
     m_Modifications:
+    - target: {fileID: 1945868131, guid: 363fc185005bec34c983f1b2f4198c29, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945868132, guid: 363fc185005bec34c983f1b2f4198c29, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945868134, guid: 363fc185005bec34c983f1b2f4198c29, type: 3}
+      propertyPath: isPlayerWeapon
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1348174882345252545, guid: 363fc185005bec34c983f1b2f4198c29, type: 3}
       propertyPath: m_Name
       value: Weapon Hammer

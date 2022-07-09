@@ -5081,6 +5081,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 982f3a3e82c440e498cf5f0dbeb246ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 2
   value: 3
   isRotate: 1

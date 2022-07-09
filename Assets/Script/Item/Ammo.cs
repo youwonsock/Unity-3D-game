@@ -14,6 +14,9 @@ public class Ammo : Item
 
     #region Fields
 
+    // 임시! 나중의 Scriptable로 대체 예정
+    [SerializeField] int amount;
+
     #endregion
 
 
@@ -35,8 +38,12 @@ public class Ammo : Item
      */
     protected override void ActWhenTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<PlayerWeapon>().FillAmmo(amount);
 
-
+            Destroy(this.gameObject);
+        }
     }
     #endregion
 
