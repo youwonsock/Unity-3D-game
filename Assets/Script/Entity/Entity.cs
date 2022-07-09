@@ -14,7 +14,10 @@ public class Entity : MonoBehaviour
     #region Fields
 
     [Header("Info")]
+
+    //maxHealth 는 Scriptable 오브젝트로 변경 예정
     [SerializeField] private float maxHealth;
+
     [SerializeField] private float health;
 
     #endregion

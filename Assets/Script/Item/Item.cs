@@ -15,7 +15,7 @@ public abstract class Item : MonoBehaviour
     //public 
     public enum ItemType { Ammo, Coin, Grenade, Heart, Weapon };
 
-    //private
+    //SerializeField
     [SerializeField]private ItemType type;
     [SerializeField]private int value;
     [SerializeField]private bool isRotate;

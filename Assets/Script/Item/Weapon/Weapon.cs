@@ -13,8 +13,12 @@ public class Weapon : Item
 {
     #region Fields
 
-    [SerializeField] private bool isPlayerWeapon;
+    public enum WeaponType {Hammer, HandGun, SMG};
 
+    public WeaponType weaponType;
+
+    //SerializeField
+    [SerializeField] private bool isPlayerWeapon;
     [SerializeField] private int ammo;
     [SerializeField] private int maxAmmo;
 
@@ -70,7 +74,7 @@ public class Weapon : Item
     { 
         if( !isPlayerWeapon && other.CompareTag("Player"))
         {
-            if (other.GetComponent<Player>().GetWeapon(Value()))
+            if (other.GetComponent<Player>().GetWeapon(weaponType))
                 Destroy(this.gameObject);
         }
     }
@@ -94,6 +98,8 @@ public class Weapon : Item
 
 
     #region Unity Event
+
+
 
     #endregion
 }

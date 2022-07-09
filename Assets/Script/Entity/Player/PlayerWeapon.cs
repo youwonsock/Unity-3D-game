@@ -64,18 +64,17 @@ public class PlayerWeapon : MonoBehaviour
      * @author yws
      * @data last change 2022/07/07
      */
-    public bool GetWeapon(int itemValue, bool interactionInput)
+    public bool GetWeapon(Weapon.WeaponType itemValue, bool interactionInput)
     {
         if (!interactionInput)
             return false;
 
         for(int i = 0; i < weapons.Length; i++)
         {
-            if (weapons[i].Value == itemValue && !hasWeapon[i])
+            if (hasWeapon[i])
+                continue;
+            if (weapons[i].weaponType == itemValue && !hasWeapon[i])
             {
-                if (hasWeapon[i])
-                    continue;
-
                 weapons[currentWeaponIdx].gameObject.SetActive(false);
                 weapons[i].gameObject.SetActive(true);
 

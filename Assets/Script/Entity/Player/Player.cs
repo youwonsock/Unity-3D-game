@@ -45,7 +45,7 @@ public class Player : Entity
      * @author yws
      * @date last change 2022/07/09
      */
-    public float MaxGrenades { get { return maxGrenades; } }
+    public int MaxGrenades { get { return maxGrenades; } }
 
     /**
      * @brief coin getter
@@ -53,7 +53,7 @@ public class Player : Entity
      * @author yws
      * @date last change 2022/07/09
      */
-    public float Grenades 
+    public int Grenades 
     {
         get
         {
@@ -85,7 +85,7 @@ public class Player : Entity
      * @author yws
      * @date last change 2022/07/07
      */
-    public bool GetWeapon(int itemValue)
+    public bool GetWeapon(Weapon.WeaponType itemValue)
     {
          return weapon.GetWeapon(itemValue, interactionInput);
     }
