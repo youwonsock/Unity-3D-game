@@ -26,7 +26,7 @@ public class PlayerWeapon : MonoBehaviour
 
     #region Property
 
-    public int CurrentWeaponIdx() { return currentWeaponIdx; }
+    public int CurrentWeaponIdx { get { return currentWeaponIdx; } }
 
     #endregion
 
@@ -71,7 +71,7 @@ public class PlayerWeapon : MonoBehaviour
 
         for(int i = 0; i < weapons.Length; i++)
         {
-            if (weapons[i].Value() == itemValue && !hasWeapon[i])
+            if (weapons[i].Value == itemValue && !hasWeapon[i])
             {
                 if (hasWeapon[i])
                     continue;
@@ -88,6 +88,8 @@ public class PlayerWeapon : MonoBehaviour
 
         return false;
     }
+
+
 
     #endregion
 

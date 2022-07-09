@@ -29,7 +29,7 @@ public class Entity : MonoBehaviour
      * @author yws
      * @date last change 2022/07/09
      */
-    public float MaxHealth() { return maxHealth; }
+    public float MaxHealth { get { return maxHealth; } }
 
     /**
      * @brief health getter
@@ -37,7 +37,20 @@ public class Entity : MonoBehaviour
      * @author yws
      * @date last change 2022/07/09
      */
-    public float Health() { return health; }
+    public float Health 
+    { 
+        get 
+        { 
+            return health; 
+        } 
+        set
+        {
+            if (health + value > maxHealth)
+                health = maxHealth;
+            else
+                health += value;
+        }
+    }
 
     #endregion
 

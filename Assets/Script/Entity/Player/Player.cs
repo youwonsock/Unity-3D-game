@@ -14,7 +14,6 @@ public class Player : Entity
     #region Fields
 
     //SerializeField
-    [SerializeField] private int maxCoin;
     [SerializeField] private int coin;
     [SerializeField] private int maxGrenades;
     [SerializeField] private int grenades;
@@ -40,14 +39,13 @@ public class Player : Entity
 
     #region Property
 
-
     /**
      * @brief maxCoin getter
      * 
      * @author yws
      * @date last change 2022/07/09
      */
-    public float MaxCoin() { return maxCoin; }
+    public float MaxGrenades { get { return maxGrenades; } }
 
     /**
      * @brief coin getter
@@ -55,23 +53,20 @@ public class Player : Entity
      * @author yws
      * @date last change 2022/07/09
      */
-    public float Coin() { return coin; }
-
-    /**
-     * @brief maxCoin getter
-     * 
-     * @author yws
-     * @date last change 2022/07/09
-     */
-    public float MaxGrenades() { return maxGrenades; }
-
-    /**
-     * @brief coin getter
-     * 
-     * @author yws
-     * @date last change 2022/07/09
-     */
-    public float Grenades() { return grenades; }
+    public float Grenades 
+    {
+        get
+        {
+            return grenades;
+        }
+        set
+        {
+            if (grenades + value > MaxGrenades)
+                grenades = maxGrenades;
+            else
+                grenades += value;
+        }
+    }
 
     #endregion
 

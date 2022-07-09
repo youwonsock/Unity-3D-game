@@ -24,6 +24,35 @@ public class Weapon : Item
 
     #region Property
 
+    /**
+     * @brief ammo Property
+     * 
+     * @author yws
+     * @date last change 2022/07/09
+     */
+    public int Ammo 
+    { 
+        get 
+        { 
+            return ammo; 
+        } 
+        set 
+        {
+            if (ammo + value > maxAmmo)
+                ammo = maxAmmo;
+            else
+                ammo += value;
+        } 
+    }
+
+    /**
+     * @brief maxAmmo getter
+     * 
+     * @author yws
+     * @date last change 2022/07/09
+     */
+    public int MaxAmmo { get { return maxAmmo; } }
+
     #endregion
 
 

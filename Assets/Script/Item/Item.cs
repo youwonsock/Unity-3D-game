@@ -26,7 +26,7 @@ public abstract class Item : MonoBehaviour
 
     #region Property
 
-    public int Value() { return value; }
+    public int Value { get { return value; } }
 
     #endregion
 
