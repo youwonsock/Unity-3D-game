@@ -14,12 +14,6 @@ public class PlayerWeapon : MonoBehaviour
     #region Fields
 
     //SerializeField
-    [Header("Grenades")]
-    [SerializeField] private int ammo;
-    [SerializeField] private int maxAmmo;
-    [SerializeField] private int grenades;
-    [SerializeField] private int maxGrenades;
-
     [Header ("Weapon and has Weapon Check")]
     [SerializeField] private Weapon[] weapons;
     [SerializeField] private bool[] hasWeapon;

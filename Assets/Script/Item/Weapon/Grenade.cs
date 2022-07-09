@@ -9,7 +9,7 @@ using UnityEngine;
  * @author yws
  * @date last change 2022/07/07
  */
-public class Grenade : Weapon
+public class Grenade : Item
 {
 
     #region Fields

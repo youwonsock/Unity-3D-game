@@ -16,6 +16,8 @@ public class Player : Entity
     //SerializeField
     [SerializeField] private int maxCoin;
     [SerializeField] private int coin;
+    [SerializeField] private int maxGrenades;
+    [SerializeField] private int grenades;
 
 
     //Components
@@ -55,6 +57,21 @@ public class Player : Entity
      */
     public float Coin() { return coin; }
 
+    /**
+     * @brief maxCoin getter
+     * 
+     * @author yws
+     * @date last change 2022/07/09
+     */
+    public float MaxGrenades() { return maxGrenades; }
+
+    /**
+     * @brief coin getter
+     * 
+     * @author yws
+     * @date last change 2022/07/09
+     */
+    public float Grenades() { return grenades; }
 
     #endregion
 

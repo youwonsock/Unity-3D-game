@@ -15,6 +15,9 @@ public class Weapon : Item
 
     [SerializeField] private bool isPlayerWeapon;
 
+    [SerializeField] private int ammo;
+    [SerializeField] private int maxAmmo;
+
     #endregion
 
 
