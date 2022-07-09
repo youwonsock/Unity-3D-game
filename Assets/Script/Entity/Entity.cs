@@ -7,21 +7,50 @@ using UnityEngine;
  * @details 게임내 생명체들의 최상위 클래스입니다.
  * 
  * @author yws
- * @date last change 2022/06/28
+ * @date last change 2022/07/09
  */
 public class Entity : MonoBehaviour
 {
-    [SerializeField] private float Health;
+    #region Fields
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Info")]
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float health;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #endregion
+
+
+
+    #region Property
+
+    /**
+     * @brief maxHealth getter
+     * 
+     * @author yws
+     * @date last change 2022/07/09
+     */
+    public float MaxHealth() { return maxHealth; }
+
+    /**
+     * @brief health getter
+     * 
+     * @author yws
+     * @date last change 2022/07/09
+     */
+    public float Health() { return health; }
+
+    #endregion
+
+
+
+    #region Funtion
+
+    #endregion
+
+
+
+    #region Unity Event
+
+    #endregion
+
 }

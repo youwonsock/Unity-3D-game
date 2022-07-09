@@ -13,6 +13,11 @@ public class Player : Entity
 {
     #region Fields
 
+    //SerializeField
+    [SerializeField] private int maxCoin;
+    [SerializeField] private int coin;
+
+
     //Components
     private IInput input;
     private EntityMovement movement;
@@ -32,6 +37,23 @@ public class Player : Entity
 
 
     #region Property
+
+
+    /**
+     * @brief maxCoin getter
+     * 
+     * @author yws
+     * @date last change 2022/07/09
+     */
+    public float MaxCoin() { return maxCoin; }
+
+    /**
+     * @brief coin getter
+     * 
+     * @author yws
+     * @date last change 2022/07/09
+     */
+    public float Coin() { return coin; }
 
 
     #endregion
