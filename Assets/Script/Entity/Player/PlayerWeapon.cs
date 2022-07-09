@@ -89,7 +89,18 @@ public class PlayerWeapon : MonoBehaviour
         return false;
     }
 
-
+    /**
+     * @brief 탄약 보급 메서드
+     * @details 메개변수인 value의 값만큼 모든 무기의 탄약을 보충해주는 메서드입니다.
+     * 
+     * @author yws
+     * @data last change 2022/07/07
+     */
+    public void FillAmmo(int value)
+    {
+        for(int i = 0; i < weapons.Length; i++)
+            weapons[i].Ammo = value;
+    }
 
     #endregion
 
