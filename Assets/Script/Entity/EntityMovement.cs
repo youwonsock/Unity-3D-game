@@ -17,15 +17,7 @@ public class EntityMovement : MonoBehaviour
     private Rigidbody rigid;
 
     //Values
-    [Header("Velocity and Force")]
-    [SerializeField] private float walkSpeed;
-    [SerializeField] private float runSpeed;
-    [SerializeField] private float jumpForce;
-
-    [Header("Capacity")]
-    [SerializeField] private int maxJumpCount;
-    [SerializeField] private float dodgeTime;
-    [SerializeField] private int dodgeCoolTime;
+    [SerializeField]private EntityStat stat;
 
     //for check condition
     private bool canDodge = true;
@@ -64,13 +56,13 @@ public class EntityMovement : MonoBehaviour
     public void MoveEntity(Vector3 directionVec, bool runInput, bool dodgeInput)
     {
         if(!isDodge)
-            moveSpeed = runInput ? runSpeed : walkSpeed;
+            moveSpeed = runInput ? stat.runSpeed : stat.walkSpeed;
 
         if (dodgeInput && canDodge)
         {
             isDodge = true;
             canDodge = false;
-            moveSpeed = runSpeed * 2;
+            moveSpeed = stat.runSpeed * 2;
          
             StartCoroutine(InitDodge());
         }
@@ -101,7 +93,7 @@ public class EntityMovement : MonoBehaviour
         if (jumpInput)
         {
             currentJumpCount--;
-            rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rigid.AddForce(Vector3.up * stat.jumpForce, ForceMode.Impulse);
         }
     }
     #endregion
@@ -119,8 +111,8 @@ public class EntityMovement : MonoBehaviour
      */
     IEnumerator InitDodge()
     {
-        var wfsID = new WaitForSecondsRealtime(dodgeTime);
-        var wfsCD = new WaitForSecondsRealtime(dodgeCoolTime);
+        var wfsID = new WaitForSecondsRealtime(stat.dodgeTime);
+        var wfsCD = new WaitForSecondsRealtime(stat.dodgeCoolTime);
 
         while (true)
         {
@@ -145,7 +137,7 @@ public class EntityMovement : MonoBehaviour
 
     private void Awake()
     {
-        currentJumpCount = maxJumpCount;
+        currentJumpCount = stat.maxJumpCount;
         TryGetComponent<Rigidbody>(out rigid);
     }
 
@@ -155,7 +147,7 @@ public class EntityMovement : MonoBehaviour
 
         if (collision.collider.CompareTag("Floor"))
         {
-            currentJumpCount = maxJumpCount;
+            currentJumpCount = stat.maxJumpCount;
             canJump = true;
         }
         // end init jump
