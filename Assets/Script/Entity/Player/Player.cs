@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /**
  * @brief class Player의 메인 컴포넌트로 관련된 다른 컴포넌트들을 연결해주는 역할
- * @details input과 movement등의 다른 클래스들의 
+ * @details input과 movement등의 다른 클래스들이 Player의 인터페이스를 활용하여 서로 통신합니다.
  * 
  * @author yws
  * @date last change 2022/07/10
@@ -31,6 +32,21 @@ public class Player : Entity
     private bool dodgeInput;
     private bool interactionInput;
     private int swapInput;
+
+    #endregion
+
+
+
+
+    #region Event
+
+    /**
+     * @brief Event 아이템 획득시 발동되는 이벤트
+     * 
+     * @author yws
+     * @date last change 2022/07/10
+     */
+    public event Action ChangeGrenades;
 
     #endregion
 
@@ -83,6 +99,8 @@ public class Player : Entity
                 grenades = maxGrenades;
             else
                 grenades += value;
+
+            ChangeGrenades.Invoke();
         }
     }
 

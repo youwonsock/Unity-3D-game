@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /**
- * @brief class Player의 Data를 저장하는 ScriptableObject
+ * @brief class Item Data를 저장하는 ScriptableObject
  * 
  * @author yws
  * @date last change 2022/07/10

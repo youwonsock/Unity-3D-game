@@ -35,8 +35,9 @@ public abstract class Item : MonoBehaviour
 
 
     /**
-     * @brief Subscibe(, Fixed, Late)Update <- 이벤트 등록 메서드들
-     * @details 이벤트를 등록하는 클래스의 OnEnable에서 Subscribe~ 메서드들을 호출하여 사용합니다.
+     * @brief 아이템 회전 메서드
+     * @details 드랍 아이템을 회전시켜주는 메서드입니다.\n
+     * isRotate가 True일 경우 UpdateManager에 등록되어 아이템을 회전시킵니다.
      * 
      * @author yws
      * @data last change 2022/06/26
