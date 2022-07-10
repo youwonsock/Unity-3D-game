@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d772c4104ed23d542bc82aeebf8996a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  stat: {fileID: 11400000, guid: 65c6af1d8ca139648af1d61fd6d9b795, type: 2}
   health: 0
   coin: 0
   maxGrenades: 4
@@ -160,12 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aad882fc7dd884498f5da1cd4f45c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
-  runSpeed: 15
-  jumpForce: 15
-  maxJumpCount: 2
-  dodgeTime: 0.6
-  dodgeCoolTime: 3
+  stat: {fileID: 11400000, guid: 65c6af1d8ca139648af1d61fd6d9b795, type: 2}
 --- !u!1001 &174315211
 PrefabInstance:
   m_ObjectHideFlags: 0

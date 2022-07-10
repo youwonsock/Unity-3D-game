@@ -5084,4 +5084,4 @@ MonoBehaviour:
   type: 1
   itemCode: 0
   isRotate: 1
-  amount: 200
+  itemData: {fileID: 11400000, guid: 5310bc0c70b0c634289f4e716924b5cc, type: 2}

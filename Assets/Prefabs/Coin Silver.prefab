@@ -5001,7 +5001,7 @@ MonoBehaviour:
   type: 1
   itemCode: 0
   isRotate: 1
-  amount: 100
+  itemData: {fileID: 11400000, guid: cfcf088ee89d0f747b26b4ccf49a1add, type: 2}
 --- !u!1 &886662591636470312
 GameObject:
   m_ObjectHideFlags: 0
