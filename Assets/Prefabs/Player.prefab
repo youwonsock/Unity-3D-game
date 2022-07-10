@@ -617,7 +617,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5544,7 +5544,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -10471,7 +10471,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -15112,6 +15112,10 @@ PrefabInstance:
     - target: {fileID: 3039676155927782167, guid: c7c9d7d5166971040a67d4c441afd329, type: 3}
       propertyPath: ColorModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039676155927782167, guid: c7c9d7d5166971040a67d4c441afd329, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3039676155927782167, guid: c7c9d7d5166971040a67d4c441afd329, type: 3}
       propertyPath: ClampVelocityModule.drag.scalar
