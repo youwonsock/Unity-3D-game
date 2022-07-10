@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b5f2112c46e3e45af3ba4639dee67d, type: 3}
   m_Name: AmmoData
   m_EditorClassIdentifier: 
-  amount: 0
+  amount: 30

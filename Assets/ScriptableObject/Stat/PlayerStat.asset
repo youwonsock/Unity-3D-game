@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1877b3aa1aa8f28439168043fe391c01, type: 3}
   m_Name: PlayerStat
   m_EditorClassIdentifier: 
-  MaxHealth: 0
+  MaxHealth: 100
+  walkSpeed: 10
+  runSpeed: 15
+  jumpForce: 15
+  maxJumpCount: 2
+  dodgeTime: 0.6
+  dodgeCoolTime: 3
