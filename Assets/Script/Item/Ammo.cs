@@ -14,8 +14,8 @@ public class Ammo : Item
 
     #region Fields
 
-    // 임시! 나중의 Scriptable로 대체 예정
-    [SerializeField] int amount;
+    //ScriptableObject
+    [SerializeField] private ItemData itemData;
 
     #endregion
 
@@ -40,7 +40,7 @@ public class Ammo : Item
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerWeapon>().FillAmmo(amount);
+            other.GetComponent<PlayerWeapon>().FillAmmo(itemData.amount);
 
             Destroy(this.gameObject);
         }

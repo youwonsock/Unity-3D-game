@@ -14,8 +14,8 @@ public class Coin : Item
 
     #region Fields
 
-    // 임시! 나중의 Scriptable로 대체 예정
-    [SerializeField] int amount;
+    //ScriptableObject
+    [SerializeField] private ItemData itemData;
 
     #endregion
 
@@ -40,7 +40,7 @@ public class Coin : Item
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().Coin = amount;
+            other.GetComponent<Player>().Coin = itemData.amount;
 
             Destroy(this.gameObject);
         }

@@ -14,8 +14,8 @@ public class Heart : Item
 
     #region Fields
 
-    // 임시! 나중의 Scriptable로 대체 예정
-    [SerializeField] float amount;
+    //ScriptableObject
+    [SerializeField] private ItemData itemData;
 
     #endregion
 
@@ -40,7 +40,7 @@ public class Heart : Item
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().Health = amount;
+            other.GetComponent<Player>().Health = itemData.amount;
 
             Destroy(this.gameObject);
         }
