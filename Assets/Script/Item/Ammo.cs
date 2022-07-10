@@ -40,7 +40,7 @@ public class Ammo : Item
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerWeapon>().FillAmmo(itemData.amount);
+            other.GetComponent<PlayerWeapon>().FillAmmo(itemData.Amount);
 
             Destroy(this.gameObject);
         }

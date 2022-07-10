@@ -40,7 +40,7 @@ public class Coin : Item
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().Coin = itemData.amount;
+            other.GetComponent<Player>().Coin = itemData.Amount;
 
             Destroy(this.gameObject);
         }

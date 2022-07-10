@@ -9,6 +9,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemData", menuName = "Scriptable Object/ItemData")]
 public class ItemData : ScriptableObject
 {
-    [SerializeField] public int amount;
+    [SerializeField] private int amount;
+
+
+    #region Property
+
+    public int Amount { get { return amount; } }
+
+    #endregion
 }
 
