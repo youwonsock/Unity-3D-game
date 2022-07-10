@@ -7,18 +7,20 @@ using UnityEngine;
  * @details 게임내 생명체들의 최상위 클래스입니다.
  * 
  * @author yws
- * @date last change 2022/07/09
+ * @date last change 2022/07/10
  */
 public class Entity : MonoBehaviour
 {
     #region Fields
 
     [Header("Info")]
-
-    //maxHealth 는 Scriptable 오브젝트로 변경 예정
-    [SerializeField] private float maxHealth;
-
+    [SerializeField] protected EntityStat stat;
     [SerializeField] private float health;
+
+    //모든 Entity들이 공통으로 가지는 Component 
+    protected IInput input;
+    protected EntityMovement movement;
+    protected Animator animator;
 
     #endregion
 
@@ -32,7 +34,7 @@ public class Entity : MonoBehaviour
      * @author yws
      * @date last change 2022/07/09
      */
-    public float MaxHealth { get { return maxHealth; } }
+    public float MaxHealth { get { return stat.MaxHealth; } }
 
     /**
      * @brief health getter
@@ -48,8 +50,8 @@ public class Entity : MonoBehaviour
         } 
         set
         {
-            if (health + value > maxHealth)
-                health = maxHealth;
+            if (health + value > stat.MaxHealth)
+                health = stat.MaxHealth;
             else
                 health += value;
         }

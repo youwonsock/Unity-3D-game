@@ -7,7 +7,7 @@ using UnityEngine;
  * @details input과 movement등의 다른 클래스들의 
  * 
  * @author yws
- * @date last change 2022/07/07
+ * @date last change 2022/07/10
  */
 public class Player : Entity
 {
@@ -18,12 +18,11 @@ public class Player : Entity
     [SerializeField] private int maxGrenades;
     [SerializeField] private int grenades;
 
+    //ScriptableObject
+    private PlayerStat playerStat; // 아직은 사용 X
 
-    //Components
-    private IInput input;
-    private EntityMovement movement;
+    //Player가 가지는 Components
     private PlayerWeapon weapon;
-    private Animator animator;
 
     //values
     private Vector3 nomalVec;
@@ -189,6 +188,7 @@ public class Player : Entity
      */
     private void ActPlayer()
     {
+
         GetPlayerInput();
 
         SwapWeapon();
@@ -214,6 +214,8 @@ public class Player : Entity
         TryGetComponent<EntityMovement>(out movement);
         TryGetComponent<PlayerWeapon>(out weapon);
         transform.GetChild(0).TryGetComponent<Animator>(out animator);
+
+        playerStat = stat as PlayerStat;
     }
 
     private void OnCollisionEnter(Collision collision)
