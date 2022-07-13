@@ -36,6 +36,8 @@ public class EntityMovement : MonoBehaviour
 
     public bool CanDodge { get { return canDodge; } }
 
+    public bool IsDodge { get { return isDodge; } }
+
     #endregion
 
     #region Funtion and Coroutine
@@ -141,7 +143,7 @@ public class EntityMovement : MonoBehaviour
         TryGetComponent<Rigidbody>(out rigid);
 
         if (!rigid)
-            Debug.Log($"GetComponent failed : {this.name} .EntityMovement.cs");
+            Debug.Log($"Some Component is null : {this.name} .EntityMovement.cs");
     }
 
     private void OnCollisionEnter(Collision collision)
