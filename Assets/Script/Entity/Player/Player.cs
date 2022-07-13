@@ -277,8 +277,11 @@ public class Player : Entity
     }
 
     /**
-     * @brief 
-     * @details 미리 설정해둔 dodge(Time, CollTime)이 지나면 회피를 초기화합니다.
+     * @brief player의 이동가능 여부를 검사하기 위한 변수인 CanMove설정 코루틴
+     * @details canMove를 false로 설정 후\n
+     * 매개변수인 time만큼의 시간이 지난 뒤 CanMove를 True로 바꾸어 이동이 가능해집니다.
+     * 
+     * @param[in] time : 이동을 막을 시간
      * 
      * @author yws
      * @date last change 2022/07/01
