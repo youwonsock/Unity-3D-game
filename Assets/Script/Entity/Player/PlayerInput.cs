@@ -7,7 +7,7 @@ using UnityEngine;
  * @details 플레이어 Input에 따른 값을 반환하는 클레스입니다.
  * 
  * @author yws
- * @date last change 2022/06/28
+ * @date last change 2022/07/13
  */
 public class PlayerInput : MonoBehaviour ,IInput
 {
@@ -71,6 +71,18 @@ public class PlayerInput : MonoBehaviour ,IInput
      */
     bool IInput.GetInteractInput() { return Input.GetButton("Interation"); }
 
+
+    /**
+     * @brief Attack 키 입력여부를 반환하는 getter
+     * 
+     * @return int
+     * 
+     * @author yws
+     * @date last change 2022/07/13
+     */
+    bool IInput.GetAttackInput() { return Input.GetButtonDown("Fire1"); }
+
+
     /**
      * @brief Swap 키 입력여부를 반환하는 getter
      * 
@@ -90,8 +102,6 @@ public class PlayerInput : MonoBehaviour ,IInput
 
         return -1;
     }
-
-
 
     #endregion
 

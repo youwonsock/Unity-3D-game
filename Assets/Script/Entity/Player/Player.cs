@@ -25,13 +25,18 @@ public class Player : Entity
     //Player가 가지는 Components
     private PlayerWeapon weapon;
 
-    //values
+    //input fileds
     private Vector3 nomalVec;
     private bool runInput;
     private bool jumpInput;
     private bool dodgeInput;
     private bool interactionInput;
+    private bool attackInput;
     private int swapInput;
+
+
+    //for check condition
+    private bool canMove = true;
 
     #endregion
 
@@ -143,6 +148,7 @@ public class Player : Entity
         dodgeInput = input.GetDodgeInput();
         interactionInput = input.GetInteractInput();
         swapInput = input.GetSwapInput();
+        attackInput = input.GetAttackInput();
     }
 
     /**
@@ -197,8 +203,38 @@ public class Player : Entity
     }
 
     /**
-     * @brief 플레이어 이동 메서드
-     * @details 플레이어 이동을 구현한 메서드\n
+     * @brief 플레이어 공격 메서드
+     * @details 플레이어의 AttackInput이 True면 PlayerWeapon의 Attack을 호출합니다.\n
+     * Attack의 반환값을 이용해 animation을 실행시킵니다.\n
+     * 0 : hammer, 1 : SMG, 2 : HandGun, -1 : return
+     * 
+     * @author yws
+     * @date last change 2022/07/13
+     */
+    private void AttackWeapon()
+    {
+        if (!attackInput)
+            return;
+
+        switch (weapon.Attack())
+        {
+            case -1:
+                return;
+            case 0:
+                animator.SetTrigger("doSwing");
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+
+        StartCoroutine(SetCanMove(weapon.CastingTime));
+    }
+
+    /**
+     * @brief 플레이어 행동 메서드
+     * @details 플레이어 행동을 실행 시키는 메서드\n
      * UpdateManager에 등록하여 사용합니다.
      * 
      * @author yws
@@ -206,17 +242,41 @@ public class Player : Entity
      */
     private void ActPlayer()
     {
+        if (!canMove)
+            return;
 
         GetPlayerInput();
 
+        // set weapon 
+        AttackWeapon();
         SwapWeapon();
 
-        //set animation
+        // set animation
         SetPlayerAnimation();
 
-        //move player
+        // move player
         movement.MoveEntity(nomalVec, runInput, dodgeInput);
         movement.JumpEntity(jumpInput);
+    }
+
+    /**
+     * @brief 
+     * @details 미리 설정해둔 dodge(Time, CollTime)이 지나면 회피를 초기화합니다.
+     * 
+     * @author yws
+     * @date last change 2022/07/01
+     */
+    IEnumerator SetCanMove(float time)
+    {
+        canMove = false;
+
+        while (true)
+        {
+            yield return new WaitForSeconds(time);
+            canMove = true;
+
+            yield break;
+        }
     }
 
     #endregion
@@ -237,7 +297,7 @@ public class Player : Entity
         playerStat = stat as PlayerStat;
 
         if (!checkComponent || !movement || !weapon || !animator)
-            Debug.Log($"GetComponent failed : {this.name} .Player.cs");
+            Debug.Log($"Some Component is null : {this.name} .Player.cs");
     }
 
     private void OnCollisionEnter(Collision collision)

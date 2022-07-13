@@ -20,5 +20,8 @@ public interface IInput
 
     public bool GetInteractInput();
 
+    public bool GetAttackInput();
+
     public int GetSwapInput();
+
 }

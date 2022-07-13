@@ -22,8 +22,9 @@ public class Weapon : Item
     [SerializeField] private bool isPlayerWeapon;
     [SerializeField] private int ammo;
     [SerializeField] private int maxAmmo;
-    [SerializeField] private float damage;
-    [SerializeField] private float rate;
+    [SerializeField] protected float damage;
+    [SerializeField] protected float rate;
+    protected bool fireReady = true;
 
     #endregion
 
@@ -59,6 +60,14 @@ public class Weapon : Item
      * @date last change 2022/07/09
      */
     public int MaxAmmo { get { return maxAmmo; } }
+
+    /**
+     * @brief FireReady getter
+     * 
+     * @author yws
+     * @date last change 2022/07/09
+     */
+    public bool FireReady { get { return fireReady; } }
 
     #endregion
 
@@ -100,12 +109,15 @@ public class Weapon : Item
 
     /**
      * @brief 각 무기들의 공격 메서드
-     * @details 자식 클래스에서 재정의하여 각 무기의 공격을 구현하는 메서드입니다.
+     * @details 자식 클래스에서 재정의하여 각 무기의 공격을 구현하는 메서드입니다.\n
+     * 반환값인 float를 이용하여 player에서 이동을 하지 못하는 시간을 설정합니다.
+     * 
+     * @return float
      * 
      * @author yws
      * @data last change 2022/07/13
      */
-    public virtual void Attack() { }
+    public virtual float Attack() { return 0; }
 
     #endregion
 

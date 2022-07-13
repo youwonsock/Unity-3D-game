@@ -19,6 +19,7 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private bool[] hasWeapon;
 
     private int currentWeaponIdx = 0;
+    private float castingTime;
 
     #endregion
 
@@ -27,6 +28,8 @@ public class PlayerWeapon : MonoBehaviour
     #region Property
 
     public int CurrentWeaponIdx { get { return currentWeaponIdx; } }
+
+    public float CastingTime { get { return castingTime; } }
 
     #endregion
 
@@ -100,6 +103,32 @@ public class PlayerWeapon : MonoBehaviour
         for(int i = 0; i < weapons.Length; i++)
             weapons[i].Ammo = value;
     }
+
+    /**
+     * @brief 공격 메서드
+     * @details Player에서 호출하여 장비한 무기의 Attack()을 실행합니다.\n
+     * 공격한 무기의 idx 를 반환하여 player에서 animation을 실행시킵니다.\n
+     * 공격이 실패한경우 -1을 반환합니다.
+     * 
+     * @return int
+     * 
+     * @author yws
+     * @data last change 2022/07/13
+     */
+    public int Attack()
+    {
+        if (!hasWeapon[currentWeaponIdx])
+            return -1;
+
+        if (weapons[currentWeaponIdx].FireReady)
+        {
+            castingTime = weapons[currentWeaponIdx].Attack();
+            return currentWeaponIdx;
+        }
+
+        return -1;
+    }
+
 
     #endregion
 

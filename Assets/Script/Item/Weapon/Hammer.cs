@@ -39,9 +39,12 @@ public class Hammer : Weapon
      * @author yws
      * @data last change 2022/07/13
      */
-    public override void Attack()
+    public override float Attack()
     {
+        fireReady = false;
         StartCoroutine(Swing());
+
+        return rate;
     }
 
     //--------------------------private-------------------------------------
@@ -55,7 +58,7 @@ public class Hammer : Weapon
      */
     IEnumerator Swing()
     {
-        var wfs = new WaitForSecondsRealtime(0.3f);
+        var wfs = new WaitForSecondsRealtime(rate - 0.1f);
 
         yield return new WaitForSecondsRealtime(0.1f);
         attackArea.enabled = true;
@@ -63,6 +66,7 @@ public class Hammer : Weapon
 
         yield return wfs;
         attackArea.enabled = false;
+        fireReady = true;
 
         yield return wfs;
         trailRenderer.enabled = false;
