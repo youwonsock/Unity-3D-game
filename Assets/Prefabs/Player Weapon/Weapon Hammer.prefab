@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2708280437464837140}
   - component: {fileID: 4353788900464531211}
-  - component: {fileID: 4353788900464531213}
-  - component: {fileID: 4353788900464531212}
   - component: {fileID: 4353788900464531209}
   m_Layer: 0
   m_Name: Weapon Hammer
@@ -52,32 +50,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!135 &4353788900464531213
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3377257828145919662}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 3
-  m_Center: {x: 0, y: 3, z: 0}
---- !u!135 &4353788900464531212
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3377257828145919662}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &4353788900464531209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,6 +69,10 @@ MonoBehaviour:
   isPlayerWeapon: 1
   ammo: 0
   maxAmmo: 0
+  damage: 0
+  rate: 0
+  attackArea: {fileID: 0}
+  trailRenderer: {fileID: 0}
 --- !u!1 &5907562658751894529
 GameObject:
   m_ObjectHideFlags: 0

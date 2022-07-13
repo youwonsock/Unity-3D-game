@@ -62,13 +62,13 @@ public class RotateOrbit : MonoBehaviour
     private void OnEnable()
     {
         UpdateManager.SubscribeToFixedUpdate(RotateOrbitGrenades);
-        player.ChangeGrenades += ActiveOrbitGrenade;
+        player.ChangeGrenadesCount += ActiveOrbitGrenade;
     }
 
     private void OnDisable()
     {
         UpdateManager.UnsubscribeFromFixedUpdate(RotateOrbitGrenades);
-        player.ChangeGrenades -= ActiveOrbitGrenade;
+        player.ChangeGrenadesCount -= ActiveOrbitGrenade;
     }
 
     #endregion

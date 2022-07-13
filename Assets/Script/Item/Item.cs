@@ -15,6 +15,7 @@ public abstract class Item : MonoBehaviour
     //public 
     public enum ItemType { Ammo, Coin, Grenade, Heart, Weapon };
 
+    [Header ("Item")]
     //SerializeField
     [SerializeField]private ItemType type;
     [SerializeField]private int itemCode;   //아이템의 고유값 현재는 필요 X

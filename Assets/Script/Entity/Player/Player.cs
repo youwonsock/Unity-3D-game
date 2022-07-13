@@ -41,12 +41,12 @@ public class Player : Entity
     #region Event
 
     /**
-     * @brief Event 아이템 획득시 발동되는 이벤트
+     * @brief Event Grenades 아이템의 개수가 변경될때 발동되는 이벤트
      * 
      * @author yws
      * @date last change 2022/07/10
      */
-    public event Action ChangeGrenades;
+    public event Action ChangeGrenadesCount;
 
     #endregion
 
@@ -100,7 +100,7 @@ public class Player : Entity
             else
                 grenades += value;
 
-            ChangeGrenades.Invoke();
+            ChangeGrenadesCount.Invoke();
         }
     }
 
