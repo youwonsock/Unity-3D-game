@@ -138,7 +138,7 @@ public class Player : Entity
      * @details IInput의 메서드를 사용해서 Player의  bool **Input 값들을 초기화 시킵니다.
      * 
      * @author yws
-     * @date last change 2022/07/06
+     * @date last change 2022/07/13
      */
     private void GetPlayerInput()
     {
@@ -241,7 +241,7 @@ public class Player : Entity
      * dodgeInput이 true일 경우 SetCanMove를 이용하여 DodgeTime 동안 다른 방향으로의 이동을 멈춤니다.
      * 
      * @author yws
-     * @date last change 2022/07/06
+     * @date last change 2022/07/13
      */
     private void MovePlayer()
     {
@@ -258,7 +258,7 @@ public class Player : Entity
      * UpdateManager에 등록하여 사용합니다.
      * 
      * @author yws
-     * @date last change 2022/07/06
+     * @date last change 2022/07/13
      */
     private void ActPlayer()
     {
@@ -284,7 +284,7 @@ public class Player : Entity
      * @param[in] time : 이동을 막을 시간
      * 
      * @author yws
-     * @date last change 2022/07/01
+     * @date last change 2022/07/13
      */
     IEnumerator SetCanMove(float time)
     {
