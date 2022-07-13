@@ -15,10 +15,8 @@ public class Hammer : Weapon
     #region Fields
 
     [Header("Hammer")]
-    [SerializeField] private float damage;
-    [SerializeField] private float rate;
-    [SerializeField] private BoxCollider attackArea;
     [SerializeField] private TrailRenderer trailRenderer;
+    private BoxCollider attackArea;
 
 
     #endregion
@@ -33,6 +31,45 @@ public class Hammer : Weapon
 
     #region Funtion
 
+    //--------------------------public-------------------------------------
+    /**
+     * @brief Hammer 공격 메서드
+     * @details Hammer.cs에서 재정의한 Weapon의 Attack()입니다
+     * 
+     * @author yws
+     * @data last change 2022/07/13
+     */
+    public override void Attack()
+    {
+        StartCoroutine(Swing());
+    }
+
+    //--------------------------private-------------------------------------
+
+    /**
+     * @brief 각 무기들의 공격 메서드
+     * @details 자식 클래스에서 재정의하여 각 무기의 공격을 구현하는 메서드입니다.
+     * 
+     * @author yws
+     * @data last change 2022/07/13
+     */
+    IEnumerator Swing()
+    {
+        var wfs = new WaitForSecondsRealtime(0.3f);
+
+        yield return new WaitForSecondsRealtime(0.1f);
+        attackArea.enabled = true;
+        trailRenderer.enabled = true;
+
+        yield return wfs;
+        attackArea.enabled = false;
+
+        yield return wfs;
+        trailRenderer.enabled = false;
+
+        yield break;
+    }
+
     #endregion
 
 
@@ -41,13 +78,10 @@ public class Hammer : Weapon
 
     private void Awake()
     {
-        Rigidbody rb;
-
         TryGetComponent<BoxCollider>(out attackArea);
-        TryGetComponent<Rigidbody>(out rb);
 
         if (!attackArea || !trailRenderer)
-            Debug.Log($"GetComponent failed : {this.name} .Hammer.cs");
+            Debug.Log($"Some Component is null : {this.name} .Hammer.cs");
     }
 
     #endregion

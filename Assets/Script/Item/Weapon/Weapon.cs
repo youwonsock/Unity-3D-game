@@ -22,6 +22,8 @@ public class Weapon : Item
     [SerializeField] private bool isPlayerWeapon;
     [SerializeField] private int ammo;
     [SerializeField] private int maxAmmo;
+    [SerializeField] private float damage;
+    [SerializeField] private float rate;
 
     #endregion
 
@@ -95,6 +97,16 @@ public class Weapon : Item
 
         }
     }
+
+    /**
+     * @brief 각 무기들의 공격 메서드
+     * @details 자식 클래스에서 재정의하여 각 무기의 공격을 구현하는 메서드입니다.
+     * 
+     * @author yws
+     * @data last change 2022/07/13
+     */
+    public virtual void Attack() { }
+
     #endregion
 
 
