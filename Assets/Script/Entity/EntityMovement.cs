@@ -33,10 +33,11 @@ public class EntityMovement : MonoBehaviour
 
     public bool CanJump { get { return canJump; } }
 
-
     public bool CanDodge { get { return canDodge; } }
 
     public bool IsDodge { get { return isDodge; } }
+
+    public float DodgeTime { get { return stat.DodgeTime; } }
 
     #endregion
 

@@ -142,13 +142,16 @@ public class Player : Entity
      */
     private void GetPlayerInput()
     {
-        nomalVec = input.GetNormalizedVec();
-        runInput = input.GetRunInput();
-        jumpInput = input.GetJumpInput();
-        dodgeInput = input.GetDodgeInput();
-        interactionInput = input.GetInteractInput();
-        swapInput = input.GetSwapInput();
-        attackInput = input.GetAttackInput();
+        if (canMove)
+        {
+            nomalVec = input.GetNormalizedVec();
+            attackInput = input.GetAttackInput();
+            dodgeInput = input.GetDodgeInput();
+            jumpInput = input.GetJumpInput();
+            runInput = input.GetRunInput();
+            interactionInput = input.GetInteractInput();
+            swapInput = input.GetSwapInput();
+        }
     }
 
     /**
@@ -222,14 +225,31 @@ public class Player : Entity
                 return;
             case 0:
                 animator.SetTrigger("doSwing");
+                nomalVec = Vector3.zero;
+                StartCoroutine(SetCanMove(weapon.CastingTime));
                 break;
             case 1:
                 break;
             case 2:
                 break;
         }
+    }
 
-        StartCoroutine(SetCanMove(weapon.CastingTime));
+    /**
+     * @brief 플레이어 이동 메서드
+     * @details 플레이어를 이동 시키는 메서드입니다.\n
+     * dodgeInput이 true일 경우 SetCanMove를 이용하여 DodgeTime 동안 다른 방향으로의 이동을 멈춤니다.
+     * 
+     * @author yws
+     * @date last change 2022/07/06
+     */
+    private void MovePlayer()
+    {
+        if(dodgeInput)
+            StartCoroutine(SetCanMove(movement.DodgeTime));
+
+        movement.MoveEntity(nomalVec, runInput, dodgeInput);
+        movement.JumpEntity(jumpInput);
     }
 
     /**
@@ -242,8 +262,6 @@ public class Player : Entity
      */
     private void ActPlayer()
     {
-        if (!canMove)
-            return;
 
         GetPlayerInput();
 
@@ -255,8 +273,7 @@ public class Player : Entity
         SetPlayerAnimation();
 
         // move player
-        movement.MoveEntity(nomalVec, runInput, dodgeInput);
-        movement.JumpEntity(jumpInput);
+        MovePlayer();
     }
 
     /**
@@ -269,7 +286,6 @@ public class Player : Entity
     IEnumerator SetCanMove(float time)
     {
         canMove = false;
-
         while (true)
         {
             yield return new WaitForSeconds(time);
