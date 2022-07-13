@@ -8,7 +8,7 @@ using UnityEngine;
  * @details input과 movement등의 다른 클래스들이 Player의 인터페이스를 활용하여 서로 통신합니다.
  * 
  * @author yws
- * @date last change 2022/07/10
+ * @date last change 2022/07/13
  */
 public class Player : Entity
 {
@@ -228,12 +228,16 @@ public class Player : Entity
 
     private void Awake()
     {
-        TryGetComponent<IInput>(out input);
+        // input은 Null
+        bool checkComponent = TryGetComponent<IInput>(out input);
         TryGetComponent<EntityMovement>(out movement);
         TryGetComponent<PlayerWeapon>(out weapon);
         transform.GetChild(0).TryGetComponent<Animator>(out animator);
 
         playerStat = stat as PlayerStat;
+
+        if (!checkComponent || !movement || !weapon || !animator)
+            Debug.Log($"GetComponent failed : {this.name} .Player.cs");
     }
 
     private void OnCollisionEnter(Collision collision)

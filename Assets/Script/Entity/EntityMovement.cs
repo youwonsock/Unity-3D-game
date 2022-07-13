@@ -7,7 +7,7 @@ using UnityEngine;
  * @details Entity 객체들의 실질적인 이동을 구현한 클래스입니다.\n
  * 
  * @author yws
- * @date last change 2022/06/28
+ * @date last change 2022/07/13
  */
 public class EntityMovement : MonoBehaviour
 {
@@ -139,6 +139,9 @@ public class EntityMovement : MonoBehaviour
     {
         currentJumpCount = stat.MaxJumpCount;
         TryGetComponent<Rigidbody>(out rigid);
+
+        if (!rigid)
+            Debug.Log($"GetComponent failed : {this.name} .EntityMovement.cs");
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -7,7 +7,7 @@ using UnityEngine;
  * @details 
  * 
  * @author yws
- * @date last change 2022/07/07
+ * @date last change 2022/07/13
  */
 public class Weapon : Item
 {
@@ -15,6 +15,7 @@ public class Weapon : Item
 
     public enum WeaponType {Hammer, HandGun, SMG};
 
+    [Header ("Weapon")]
     public WeaponType weaponType;
 
     //SerializeField
@@ -66,13 +67,14 @@ public class Weapon : Item
     /**
      * @brief OnTriggerStay() 에서 실행시킬 행동을 정의한 메서드
      * @details Item의 OnTriggerStay()에서 실행시킬 동작을 override로 정의하는 메서드입니다.
+     * isPlayerWeapon이 True일경우 Player가 들고있는 무기이니 GetWeapon을 호출하지 않습니다.
      * 
      * @author yws
      * @data last change 2022/07/07
      */
     protected override void ActWhenTriggerStay(Collider other)
     { 
-        if( !isPlayerWeapon && other.CompareTag("Player"))
+        if(!isPlayerWeapon && other.CompareTag("Player"))
         {
             if (other.GetComponent<Player>().GetWeapon(weaponType))
                 Destroy(this.gameObject);
