@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8896818366867083395}
   - component: {fileID: 8896818366867083392}
   - component: {fileID: 8896818366867083393}
+  - component: {fileID: 687028796408739485}
   m_Layer: 0
   m_Name: Bullet SMG
   m_TagString: Untagged
@@ -171,3 +172,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &687028796408739485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8896818366867083398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d03070c259793498314be0d7615a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletData: {fileID: 11400000, guid: 8cda530f6cd2b9e4ab82a423f0a3d708, type: 2}

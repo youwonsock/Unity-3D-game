@@ -8,7 +8,7 @@ using UnityEngine;
  * @author yws
  * @date last change 2022/07/13
  */
-public abstract class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour, IDamageAble
 {
     #region Fields
 
@@ -50,7 +50,8 @@ public abstract class Entity : MonoBehaviour
         set
         {
             if (health < 0)
-                OnDeath();
+                if(OnDeath != null)
+                    OnDeath();
 
             health = Mathf.Clamp(value, -1, stat.MaxHealth);
         }
@@ -64,8 +65,30 @@ public abstract class Entity : MonoBehaviour
 
     //--------------------------public--------------------------------------
 
+    /**
+     * @brief event Entity 사망시 발동되는 이벤트
+     * 
+     * @author yws
+     * @date last change 2022/07/16
+     */
     public event Action OnDeath;
 
+    /**
+     * @brief IDamageAble의 설명 참조
+     * 
+     * @author yws
+     * @date last change 2022/07/16
+     */
+    bool IDamageAble.Hit(float Damage, float stiffen, Vector3 direction)
+    {
+        Health -= Damage;
+
+        // 경직 처리
+
+        // 피격 방향 처리
+
+        return true;
+    }
 
     //--------------------------private--------------------------------------
 

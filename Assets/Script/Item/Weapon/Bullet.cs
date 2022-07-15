@@ -11,8 +11,20 @@ using UnityEngine;
  */
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] BulletData bulletData;
+
     private void OnCollisionEnter(Collision collision)
     {
 
+        IDamageAble damageAble;
+        collision.gameObject.TryGetComponent<IDamageAble>(out damageAble);
+
+        if (damageAble != null)
+        {
+            damageAble.Hit(bulletData.Damage, bulletData.Stiffen, transform.position);
+            Destroy(gameObject, 1);
+        }
+
+        Destroy(gameObject, 1);
     }
 }

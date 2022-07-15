@@ -129,7 +129,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -15412,6 +15412,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907299830}
     m_Modifications:
+    - target: {fileID: 880508733302083397, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: maxAmmo
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 1405514620798115707, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -15653,7 +15657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3377257828145919662, guid: 363fc185005bec34c983f1b2f4198c29, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4353788900464531209, guid: 363fc185005bec34c983f1b2f4198c29, type: 3}
       propertyPath: rate
@@ -15719,6 +15723,10 @@ PrefabInstance:
     - target: {fileID: 8191984150401506406, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
       propertyPath: m_Name
       value: Weapon SubMachineGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804223386222282588, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
+      propertyPath: maxAmmo
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8855227515203978972, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
       propertyPath: m_RootOrder

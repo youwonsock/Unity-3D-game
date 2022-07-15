@@ -80,7 +80,7 @@ public class PlayerInput : MonoBehaviour ,IInput
      * @author yws
      * @date last change 2022/07/13
      */
-    bool IInput.GetAttackInput() { return Input.GetButtonDown("Fire1"); }
+    bool IInput.GetAttackInput() { return Input.GetButton("Fire1"); }
 
 
     /**

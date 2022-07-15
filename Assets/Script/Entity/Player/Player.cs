@@ -229,8 +229,10 @@ public class Player : Entity
                 StartCoroutine(SetCanMove(weapon.CastingTime));
                 break;
             case 1:
+                animator.SetTrigger("doShot");
                 break;
             case 2:
+                animator.SetTrigger("doShot");
                 break;
         }
     }
