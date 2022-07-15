@@ -49,7 +49,7 @@ public class Weapon : Item
             if (ammo + value > maxAmmo)
                 ammo = maxAmmo;
             else
-                ammo += value;
+                ammo = value;
         } 
     }
 

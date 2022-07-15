@@ -40,7 +40,7 @@ public class Heart : Item
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().Health = itemData.Amount;
+            other.GetComponent<Player>().Health += itemData.Amount;
 
             Destroy(this.gameObject);
         }

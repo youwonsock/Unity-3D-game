@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 /**
@@ -50,10 +49,10 @@ public class Entity : MonoBehaviour
         } 
         set
         {
-            if (health + value > stat.MaxHealth)
-                health = stat.MaxHealth;
-            else
-                health += value;
+            if (health < 0)
+                OnDeath();
+
+            health = Mathf.Clamp(value, 0, stat.MaxHealth);
         }
     }
 
@@ -63,11 +62,22 @@ public class Entity : MonoBehaviour
 
     #region Funtion
 
+    //--------------------------public--------------------------------------
+    public event Action OnDeath;
+
+
+    //--------------------------private--------------------------------------
+
     #endregion
 
 
 
     #region Unity Event
+
+    private void Awake()
+    {
+        health = MaxHealth;
+    }
 
     #endregion
 

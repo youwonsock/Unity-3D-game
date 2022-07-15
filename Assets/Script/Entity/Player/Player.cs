@@ -74,7 +74,7 @@ public class Player : Entity
         }
         set
         {
-            coin += value;
+            coin = value;
         }
     }
 
@@ -103,7 +103,7 @@ public class Player : Entity
             if (grenades + value > MaxGrenades)
                 grenades = maxGrenades;
             else
-                grenades += value;
+                grenades = value;
 
             ChangeGrenadesCount.Invoke();
         }
