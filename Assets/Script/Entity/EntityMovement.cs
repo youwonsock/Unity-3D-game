@@ -29,7 +29,7 @@ public class EntityMovement : MonoBehaviour
 
     #endregion
 
-    #region Getter
+    #region Property
 
     public bool CanJump { get { return canJump; } }
 

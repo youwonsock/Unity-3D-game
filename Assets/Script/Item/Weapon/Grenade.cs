@@ -41,7 +41,7 @@ public class Grenade : Item
             Player player;
             other.TryGetComponent<Player>(out player);
 
-            player.Grenades = 1;
+            player.Grenades += 1;
 
             Destroy(this.gameObject);
         }

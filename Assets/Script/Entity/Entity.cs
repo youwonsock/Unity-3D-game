@@ -8,7 +8,7 @@ using UnityEngine;
  * @author yws
  * @date last change 2022/07/13
  */
-public class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour
 {
     #region Fields
 
@@ -52,7 +52,7 @@ public class Entity : MonoBehaviour
             if (health < 0)
                 OnDeath();
 
-            health = Mathf.Clamp(value, 0, stat.MaxHealth);
+            health = Mathf.Clamp(value, -1, stat.MaxHealth);
         }
     }
 
@@ -63,6 +63,7 @@ public class Entity : MonoBehaviour
     #region Funtion
 
     //--------------------------public--------------------------------------
+
     public event Action OnDeath;
 
 

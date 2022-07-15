@@ -101,7 +101,7 @@ public class PlayerWeapon : MonoBehaviour
     public void FillAmmo(int value)
     {
         for(int i = 0; i < weapons.Length; i++)
-            weapons[i].Ammo = value;
+            weapons[i].Ammo += value;
     }
 
     /**

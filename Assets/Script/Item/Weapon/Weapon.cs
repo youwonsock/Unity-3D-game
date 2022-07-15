@@ -46,10 +46,7 @@ public class Weapon : Item
         } 
         set 
         {
-            if (ammo + value > maxAmmo)
-                ammo = maxAmmo;
-            else
-                ammo = value;
+            ammo = Mathf.Clamp(value, 0, maxAmmo);
         } 
     }
 
