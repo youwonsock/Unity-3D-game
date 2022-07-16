@@ -18,7 +18,6 @@ public class SMG : Weapon
 
     [SerializeField] float bulletSpeed;
     [SerializeField] Transform firePos;
-    [SerializeField] Transform bulletCasePos;
     [SerializeField] BulletData bulletData;
 
     #endregion
@@ -26,27 +25,6 @@ public class SMG : Weapon
 
 
     #region Property
-
-    /**
-     * @brief MagSize getter
-     * 
-     * @author yws
-     * @data last change 2022/07/17
-     */
-    public int MagSize { get { return magSize; } }
-
-    /**
-     * @brief currentMag Property
-     * 
-     * @author yws
-     * @data last change 2022/07/17
-     */
-    public int CurrentMag 
-    { 
-        get { return currentMag; } 
-        set { currentMag = Mathf.Clamp(value, 0, magSize); }
-    }
-
 
     #endregion
 
@@ -71,12 +49,39 @@ public class SMG : Weapon
             return -1;
         }
 
-        fireReady = false;
-
         ObjectPool.GetObject(ObjectPool.BulletType.SMG).SetBullet(firePos);
         StartCoroutine(FireRate());
+        fireReady = false;
+        currentMag--;
 
         return rate;
+    }
+
+    /**
+     * @brief SMG의 재장전 메서드
+     * @details Weapon의 Reload를 override하여 재장전을 구현한 메서드 입니다.
+     * 
+     * @author yws
+     * @data last change 2022/07/17
+     */
+    public override bool Reload()
+    {
+        if (currentMag == magSize || Ammo == 0)
+            return false;
+
+        if (Ammo - (magSize - currentMag) < 0)
+        {
+            currentMag += Ammo;
+            Ammo = 0;
+        }
+        else
+        {
+            Ammo -= (magSize - currentMag);
+            currentMag = magSize;
+        }
+        fireReady = true;
+
+        return true;
     }
 
     //--------------------------private-------------------------------------

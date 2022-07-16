@@ -18,7 +18,6 @@ public class HandGun : Weapon
 
     [SerializeField] float bulletSpeed;
     [SerializeField] Transform firePos;
-    [SerializeField] Transform bulletCasePos;
     [SerializeField] BulletData bulletData;
 
     #endregion
@@ -40,6 +39,7 @@ public class HandGun : Weapon
     #region Funtion
 
     //--------------------------public-------------------------------------
+    
     /**
      * @brief HandGun의 공격 메서드
      * @details Weapon의 Attack를 override하여 공격을 구현한 메서드 입니다.
@@ -55,12 +55,39 @@ public class HandGun : Weapon
             return -1;
         }
 
-        fireReady = false;
-
         ObjectPool.GetObject(ObjectPool.BulletType.HandGun).SetBullet(firePos);
         StartCoroutine(FireRate());
+        currentMag--;
+        fireReady = false;
 
         return rate;
+    }
+
+    /**
+     * @brief HandGun의 재장전 메서드
+     * @details Weapon의 Reload를 override하여 재장전을 구현한 메서드 입니다.
+     * 
+     * @author yws
+     * @data last change 2022/07/17
+     */
+    public override bool Reload()
+    {
+        if(currentMag == magSize || Ammo == 0)
+            return false;
+
+        if (Ammo - (magSize - currentMag) < 0)
+        {
+            currentMag += Ammo;
+            Ammo = 0;
+        }
+        else
+        {
+            Ammo -= (magSize-currentMag);
+            currentMag = magSize;
+        }
+        fireReady = true;
+
+        return true;
     }
 
     //--------------------------private-------------------------------------

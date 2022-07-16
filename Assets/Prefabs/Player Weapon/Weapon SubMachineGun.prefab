@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1608552647542630212
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1896643693769184842}
-  m_Layer: 0
-  m_Name: Bullet Case Pos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1896643693769184842
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608552647542630212}
-  m_LocalRotation: {x: 0, y: 0, z: 0.2588191, w: 0.9659258}
-  m_LocalPosition: {x: -0.37, y: 2.576, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8855227515203978972}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
 --- !u!1 &3875084550497933399
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +115,6 @@ Transform:
   m_Children:
   - {fileID: 7336043081769286951}
   - {fileID: 237514133923626698}
-  - {fileID: 1896643693769184842}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -30}
@@ -185,10 +153,13 @@ MonoBehaviour:
   isPlayerWeapon: 1
   ammo: 0
   maxAmmo: 150
-  damage: 0
-  rate: 0
-  firePos: {fileID: 0}
-  bulletCasePos: {fileID: 0}
+  damage: 3
+  rate: 0.2
+  magSize: 30
+  currentMag: 30
+  bulletSpeed: 50
+  firePos: {fileID: 237514133923626698}
+  bulletData: {fileID: 11400000, guid: 8a2ad671d7ad33d4f9b189c99514cb35, type: 2}
 --- !u!1 &8662813504462988820
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8662813504462988820}
   m_LocalRotation: {x: 0, y: 0, z: 0.2588191, w: 0.9659258}
-  m_LocalPosition: {x: 0.477, y: 3.056, z: 0}
+  m_LocalPosition: {x: 0.622, y: 3.131, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
