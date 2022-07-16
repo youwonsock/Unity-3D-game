@@ -5,7 +5,7 @@ using UnityEngine;
  * @details inputClass가 가지고 있어야하는 메서드들을 정의해둔 interface입니다.
  * 
  * @author yws
- * @date last change 2022/07/01
+ * @date last change 2022/07/16
  */
 public interface IInput
 {
@@ -23,4 +23,5 @@ public interface IInput
 
     public int GetSwapInput();
 
+    public bool GetReloadInput();
 }

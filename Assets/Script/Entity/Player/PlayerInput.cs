@@ -84,6 +84,17 @@ public class PlayerInput : MonoBehaviour ,IInput
 
 
     /**
+     * @brief Reload 키 입력여부를 반환하는 getter
+     * 
+     * @return bool
+     * 
+     * @author yws
+     * @date last change 2022/07/16
+     */
+    bool IInput.GetReloadInput() { return Input.GetButtonDown("Reload"); }
+
+
+    /**
      * @brief Swap 키 입력여부를 반환하는 getter
      * 
      * @return int

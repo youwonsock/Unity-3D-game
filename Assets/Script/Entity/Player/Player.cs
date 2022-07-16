@@ -32,7 +32,9 @@ public class Player : Entity
     private bool dodgeInput;
     private bool interactionInput;
     private bool attackInput;
+    private bool reloadInput;
     private int swapInput;
+    
 
 
     //for check condition
@@ -151,6 +153,7 @@ public class Player : Entity
             runInput = input.GetRunInput();
             interactionInput = input.GetInteractInput();
             swapInput = input.GetSwapInput();
+            reloadInput = input.GetReloadInput();
         }
     }
 
