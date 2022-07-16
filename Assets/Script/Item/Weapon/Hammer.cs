@@ -50,8 +50,8 @@ public class Hammer : Weapon
     //--------------------------private-------------------------------------
 
     /**
-     * @brief 각 무기들의 공격 메서드
-     * @details 자식 클래스에서 재정의하여 각 무기의 공격을 구현하는 메서드입니다.
+     * @brief Hammer의 공격의 딜레이를 구현하기 위한 코루틴
+     * @details Hammer의 fireReady와 attackArea, trailRenderer등의 공격효과의 시간을 조절하기 위한 코루틴입니다.
      * 
      * @author yws
      * @data last change 2022/07/13

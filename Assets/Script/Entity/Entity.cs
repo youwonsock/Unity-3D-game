@@ -83,6 +83,8 @@ public abstract class Entity : MonoBehaviour, IDamageAble
     {
         Health -= Damage;
 
+        Debug.Log("Player Health : "+ health);
+
         // 版流 贸府
 
         // 乔拜 规氢 贸府

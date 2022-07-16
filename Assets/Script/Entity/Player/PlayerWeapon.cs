@@ -129,6 +129,19 @@ public class PlayerWeapon : MonoBehaviour
         return -1;
     }
 
+    /**
+     * @brief 재장전 메서드
+     * @details 
+     * 
+     * @return bool
+     * 
+     * @author yws
+     * @data last change 2022/07/13
+     */
+    public bool Reload()
+    {
+        return weapons[currentWeaponIdx].Reload();
+    }
 
     #endregion
 

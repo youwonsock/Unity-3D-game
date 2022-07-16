@@ -17,7 +17,7 @@ using UnityEngine;
  * Object Pool에 접근하여 객채를 생성합니다.
  * 
  * @author yws
- * @date 2022/07/16
+ * @date 2022/07/17
  */
 public class ObjectPool : Singleton<ObjectPool>
 {

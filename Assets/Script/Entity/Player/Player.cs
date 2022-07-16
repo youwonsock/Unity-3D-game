@@ -241,6 +241,20 @@ public class Player : Entity
     }
 
     /**
+     * @brief 플레이어 재장전 메서드
+     * @details PlayerWeapon의 Reload를 호출하여 무기를 재장전하는 메서드입니다.
+     * 
+     * @author yws
+     * @date last change 2022/07/17
+     */
+    private void ReloadWeapon()
+    {
+        if (reloadInput)
+            if (weapon.Reload())
+                animator.SetTrigger("doReload");
+    }
+
+    /**
      * @brief 플레이어 이동 메서드
      * @details 플레이어를 이동 시키는 메서드입니다.\n
      * dodgeInput이 true일 경우 SetCanMove를 이용하여 DodgeTime 동안 다른 방향으로의 이동을 멈춤니다.
@@ -270,7 +284,8 @@ public class Player : Entity
 
         GetPlayerInput();
 
-        // set weapon 
+        // set weapon
+        ReloadWeapon();
         AttackWeapon();
         SwapWeapon();
 

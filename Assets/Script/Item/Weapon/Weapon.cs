@@ -107,7 +107,7 @@ public class Weapon : Item
     /**
      * @brief 각 무기들의 공격 메서드
      * @details 자식 클래스에서 재정의하여 각 무기의 공격을 구현하는 메서드입니다.\n
-     * 반환값인 float를 이용하여 player에서 이동을 하지 못하는 시간을 설정합니다.
+     * 반환값인 float를 이용하여 playerWeapon의 castingTime을 이용해 player에서 이동을 하지 못하는 시간을 설정합니다.
      * 
      * @return float
      * 
@@ -115,6 +115,19 @@ public class Weapon : Item
      * @data last change 2022/07/13
      */
     public virtual float Attack() { return 0; }
+
+    /**
+     * @brief 각 무기들의 재장전 메서드
+     * @details 자식 클래스에서 재정의하여 각 무기의 공격을 구현하는 메서드입니다.\n
+     * 반환값인 bool 이용하여 player에서 재장전 애니메이션을 재생할지 말지 결정합니다.\n
+     * 재장전이 필요없는 경우 override하지 않습니다.
+     * 
+     * @return float
+     * 
+     * @author yws
+     * @data last change 2022/07/13
+     */
+    public virtual bool Reload() { return false; }
 
     #endregion
 

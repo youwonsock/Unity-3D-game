@@ -13,6 +13,7 @@ public class BulletData : ScriptableObject
 {
     [SerializeField] private float damage;
     [SerializeField] private float time;
+    [SerializeField] private float speed;
     [SerializeField] private ObjectPool.BulletType bulletType;
 
     #region Property
@@ -20,6 +21,8 @@ public class BulletData : ScriptableObject
     public float Damage { get { return damage; } set { damage = value; } }
 
     public float Time { get { return time; } set { time = value; } }
+
+    public float Speed { get { return speed; } set { speed = value; } }
 
     public ObjectPool.BulletType BulletType { get { return bulletType; }  set { bulletType = value; } }
 
