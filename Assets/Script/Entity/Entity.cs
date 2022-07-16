@@ -79,7 +79,7 @@ public abstract class Entity : MonoBehaviour, IDamageAble
      * @author yws
      * @date last change 2022/07/16
      */
-    bool IDamageAble.Hit(float Damage, float stiffen, Vector3 direction)
+    bool IDamageAble.Hit(float Damage, Vector3 direction)
     {
         Health -= Damage;
 

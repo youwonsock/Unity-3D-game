@@ -13,7 +13,7 @@ using System;
  */
 public class UpdateManager : Singleton<UpdateManager>
 {
-    protected UpdateManager() { }
+    public UpdateManager() { }
 
     #region Fields
     

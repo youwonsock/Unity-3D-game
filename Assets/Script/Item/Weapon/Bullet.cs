@@ -9,6 +9,7 @@ using UnityEngine;
  * @author yws
  * @date last change 2022/07/15
  */
+
 public class Bullet : MonoBehaviour
 {
     [SerializeField] BulletData bulletData;
@@ -21,10 +22,10 @@ public class Bullet : MonoBehaviour
 
         if (damageAble != null)
         {
-            damageAble.Hit(bulletData.Damage, bulletData.Stiffen, transform.position);
-            Destroy(gameObject, 1);
+            damageAble.Hit(bulletData.Damage, transform.position);
+            ObjectPool.ReturnObject(this, bulletData.BulletType);
         }
 
-        Destroy(gameObject, 1);
+        ObjectPool.ReturnObject(this, bulletData.BulletType);
     }
 }

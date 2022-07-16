@@ -16,6 +16,7 @@ public class SMG : Weapon
 
     [SerializeField] Transform firePos;
     [SerializeField] Transform bulletCasePos;
+    [SerializeField] BulletData bulletData;
 
     #endregion
 
