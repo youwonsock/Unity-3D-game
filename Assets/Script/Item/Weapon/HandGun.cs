@@ -55,10 +55,10 @@ public class HandGun : Weapon
             return -1;
         }
 
-        ObjectPool.GetObject(ObjectPool.BulletType.HandGun).SetBullet(firePos);
-        StartCoroutine(FireRate());
-        currentMag--;
         fireReady = false;
+        currentMag--;
+        Invoke(nameof(Fire), 0.1f);
+        StartCoroutine(FireRate());
 
         return rate;
     }
@@ -105,6 +105,18 @@ public class HandGun : Weapon
         fireReady = true;
 
         yield break;
+    }
+
+    /**
+     * @brief 초탄이 바닥에 박히는 현상을 수정하기 위해 추가된 Invoke 실행용 메서드
+     * @details Invoke를 이용해 지연 호출하여 총알이 바닥에 박히는 현상을 방지해줍니다.
+     * 
+     * @author yws
+     * @data last change 2022/07/17
+     */
+    private void Fire()
+    {
+        ObjectPool.GetObject(ObjectPool.BulletType.HandGun).SetBullet(firePos);
     }
 
     #endregion

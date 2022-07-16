@@ -101,20 +101,21 @@ public class ObjectPool : Singleton<ObjectPool>
      */
     public static Bullet GetObject(BulletType bulletType)
     {
+
         Queue<Bullet> queue = bulletType == BulletType.HandGun ? Instance.handGunBulletQueue : Instance.SMGBulletQueue;
 
         if (queue.Count > 0)
         {
             var obj = queue.Dequeue();
-            obj.transform.SetParent(null);
             obj.gameObject.SetActive(true);
+            obj.transform.SetParent(null);
             return obj;
         }
         else
         {
             var newObj = Instance.CreateNewObject(bulletType);
-            newObj.transform.SetParent(null);
             newObj.gameObject.SetActive(true);
+            newObj.transform.SetParent(null);
             return newObj;
         }
     }

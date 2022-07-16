@@ -129,6 +129,8 @@ public class Weapon : Item
      */
     public virtual bool Reload() { return false; }
 
+
+
     #endregion
 
 

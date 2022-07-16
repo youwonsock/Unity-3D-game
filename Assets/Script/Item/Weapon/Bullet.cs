@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     private Rigidbody rigid;
 
     /**
-     * @brief 총알을 이동시키는 함수
+     * @brief 총알을 이동시키는 메서드
      * @details 매개변수 firePos를 이용하여 총알의 위치를 초기화시킨후 전방으로 진행시킵니다.
      * 
      * @param[in] firePos : 발사위치
@@ -27,6 +27,19 @@ public class Bullet : MonoBehaviour
     {
         transform.position = firePos.position;
         rigid.velocity = firePos.right * bulletData.Speed;
+        Invoke(nameof(ReturnBullet), bulletData.Time);    
+    }
+
+    /**
+     * @brief 총알을 반환하는 메서드 Invoke 이용
+     * 
+     * @author yws
+     * @date last change 2022/07/17
+     */
+    private void ReturnBullet()
+    {
+        if(this.gameObject.activeSelf)
+            ObjectPool.ReturnObject(this, bulletData.BulletType);
     }
 
     private void Awake()
@@ -39,7 +52,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
         IDamageAble damageAble;
         collision.gameObject.TryGetComponent<IDamageAble>(out damageAble);
 
@@ -47,6 +59,7 @@ public class Bullet : MonoBehaviour
         {
             damageAble.Hit(bulletData.Damage, transform.position);
             ObjectPool.ReturnObject(this, bulletData.BulletType);
+            return;
         }
 
         ObjectPool.ReturnObject(this, bulletData.BulletType);
