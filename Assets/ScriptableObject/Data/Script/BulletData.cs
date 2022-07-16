@@ -17,11 +17,11 @@ public class BulletData : ScriptableObject
 
     #region Property
 
-    public float Damage { get { return damage; } }
+    public float Damage { get { return damage; } set { damage = value; } }
 
-    public float Time { get { return time; } }
+    public float Time { get { return time; } set { time = value; } }
 
-    public float Stiffen { get { return stiffen; } }
+    public float Stiffen { get { return stiffen; } set { stiffen = value; } }
 
     #endregion
 }

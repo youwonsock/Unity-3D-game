@@ -66,10 +66,10 @@ public class Hammer : Weapon
 
         yield return wfs;
         attackArea.enabled = false;
-        fireReady = true;
 
         yield return wfs;
         trailRenderer.enabled = false;
+        fireReady = true;
 
         yield break;
     }

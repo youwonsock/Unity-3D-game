@@ -14,6 +14,9 @@ public class HandGun : Weapon
 
     #region Fields
 
+    [SerializeField] Transform firePos;
+    [SerializeField] Transform bulletCasePos;
+
     #endregion
 
 
