@@ -285,9 +285,9 @@ public class Player : Entity
         GetPlayerInput();
 
         // set weapon
-        ReloadWeapon();
         AttackWeapon();
         SwapWeapon();
+        ReloadWeapon();
 
         // set animation
         SetPlayerAnimation();

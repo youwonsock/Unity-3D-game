@@ -15,10 +15,14 @@ public class SMG : Weapon
     #region Fields
     [SerializeField] int magSize;
     [SerializeField] int currentMag;
+    [SerializeField] float reloadTime;
 
     [SerializeField] float bulletSpeed;
     [SerializeField] Transform firePos;
     [SerializeField] BulletData bulletData;
+
+    private bool isReload = false;
+    private bool isFire = false;
 
     #endregion
 
@@ -44,13 +48,14 @@ public class SMG : Weapon
      */
     public override float Attack()
     {
-        if(currentMag == 0)
+        if(currentMag == 0 || isReload)
         {
             fireReady = false;
             return -1;
         }
 
         fireReady = false;
+        isFire = true;
         currentMag--;
         Invoke(nameof(Fire), 0.1f);
         StartCoroutine(FireRate());
@@ -60,27 +65,19 @@ public class SMG : Weapon
 
     /**
      * @brief SMG의 재장전 메서드
-     * @details Weapon의 Reload를 override하여 재장전을 구현한 메서드 입니다.
+     * @details Weapon의 Reload를 override하여 재장전을 구현한 메서드 입니다.\n
      * 
      * @author yws
      * @data last change 2022/07/17
      */
     public override bool Reload()
     {
-        if (currentMag == magSize || Ammo == 0)
+        if (currentMag == magSize || Ammo == 0 || isReload || isFire)
             return false;
 
-        if (Ammo - (magSize - currentMag) < 0)
-        {
-            currentMag += Ammo;
-            Ammo = 0;
-        }
-        else
-        {
-            Ammo -= (magSize - currentMag);
-            currentMag = magSize;
-        }
-        fireReady = true;
+        fireReady = false;
+        isReload = true;
+        StartCoroutine(ReloadRate());
 
         return true;
     }
@@ -100,6 +97,35 @@ public class SMG : Weapon
     {
         yield return new WaitForSecondsRealtime(rate);
         fireReady = true;
+        isFire=false;
+
+        yield break;
+    }
+
+    /**
+     * @brief 재장전시 발사 방지를 위한 코루틴
+     * @details rate만큼의 시간이 지난 후 fireReady를 초기화하여 발사 속도를 조절합니다.
+     * 
+     * @author yws
+     * @data last change 2022/07/17
+     */
+    IEnumerator ReloadRate()
+    {
+        yield return new WaitForSecondsRealtime(reloadTime);
+
+        if (Ammo - (magSize - currentMag) < 0)
+        {
+            currentMag += Ammo;
+            Ammo = 0;
+        }
+        else
+        {
+            Ammo -= (magSize - currentMag);
+            currentMag = magSize;
+        }
+
+        fireReady = true;
+        isReload = false;
 
         yield break;
     }
