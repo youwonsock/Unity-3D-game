@@ -55,7 +55,6 @@ public class SMG : Weapon
         }
 
         fireReady = false;
-        isFire = true;
         currentMag--;
         Invoke(nameof(Fire), 0.1f);
         StartCoroutine(FireRate());
@@ -72,11 +71,10 @@ public class SMG : Weapon
      */
     public override bool Reload()
     {
-        if (currentMag == magSize || Ammo == 0 || isReload || isFire)
+        if (currentMag == magSize || Ammo == 0 || !fireReady)
             return false;
 
         fireReady = false;
-        isReload = true;
         StartCoroutine(ReloadRate());
 
         return true;
@@ -97,7 +95,6 @@ public class SMG : Weapon
     {
         yield return new WaitForSecondsRealtime(rate);
         fireReady = true;
-        isFire=false;
 
         yield break;
     }
@@ -125,7 +122,6 @@ public class SMG : Weapon
         }
 
         fireReady = true;
-        isReload = false;
 
         yield break;
     }

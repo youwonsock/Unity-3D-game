@@ -43,7 +43,7 @@ public class HandGun : Weapon
     #region Funtion
 
     //--------------------------public-------------------------------------
-    
+
     /**
      * @brief HandGun의 공격 메서드
      * @details Weapon의 Attack를 override하여 공격을 구현한 메서드 입니다.
@@ -53,14 +53,13 @@ public class HandGun : Weapon
      */
     public override float Attack()
     {
-        if (currentMag == 0|| isReload)
+        if (currentMag == 0 || isReload)
         {
             fireReady = false;
             return -1;
         }
 
         fireReady = false;
-        isFire = true;
         currentMag--;
         Invoke(nameof(Fire), 0.1f);
         StartCoroutine(FireRate());
@@ -77,11 +76,10 @@ public class HandGun : Weapon
      */
     public override bool Reload()
     {
-        if (currentMag == magSize || Ammo == 0 || isReload || isFire)
+        if (currentMag == magSize || Ammo == 0 || !fireReady)
             return false;
 
         fireReady = false;
-        isReload = true;
         StartCoroutine(ReloadRate());
 
         return true;
@@ -101,7 +99,6 @@ public class HandGun : Weapon
     {
         yield return new WaitForSecondsRealtime(rate);
         fireReady = true;
-        isFire=false;
 
         yield break;
     }
@@ -130,7 +127,6 @@ public class HandGun : Weapon
         }
 
         fireReady = true;
-        isReload = false;
 
         yield break;
     }
