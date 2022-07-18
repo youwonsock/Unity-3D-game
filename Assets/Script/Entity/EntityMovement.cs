@@ -7,7 +7,7 @@ using UnityEngine;
  * @details Entity 객체들의 실질적인 이동을 구현한 클래스입니다.\n
  * 
  * @author yws
- * @date last change 2022/07/13
+ * @date last change 2022/07/18
  */
 public class EntityMovement : MonoBehaviour
 {
@@ -23,6 +23,7 @@ public class EntityMovement : MonoBehaviour
     private bool canDodge = true;
     private bool canJump = false;
 
+    //fields
     private bool isDodge = false;
     private int currentJumpCount;
     private float moveSpeed;
@@ -72,6 +73,21 @@ public class EntityMovement : MonoBehaviour
 
         transform.LookAt(transform.position + directionVec);
         transform.position += directionVec * moveSpeed * Time.deltaTime;
+    }
+
+
+    /**
+     * @brief 마우스에 의한 회전 메서드
+     * @details 매개변수로 마우스 위치 vector3를 받아와 객체를 회전시킵니다.\n
+     * 
+     * @param[in] directionVec : 마우스 커서 방향 벡터
+     * 
+     * @author yws
+     * @date last change 2022/07/18
+     */
+    public void TurnByMouse(Vector3 directionVec)
+    {
+        transform.LookAt(transform.position + directionVec);
     }
 
     /**

@@ -34,8 +34,6 @@ public class Player : Entity
     private bool attackInput;
     private bool reloadInput;
     private int swapInput;
-    
-
 
     //for check condition
     private bool canMove = true;
@@ -268,6 +266,10 @@ public class Player : Entity
             StartCoroutine(SetCanMove(movement.DodgeTime));
 
         movement.MoveEntity(nomalVec, runInput, dodgeInput);
+        if (attackInput)
+        {
+            movement.TurnByMouse(input.GetMouseTrunVec());
+        }
         movement.JumpEntity(jumpInput);
     }
 
@@ -294,6 +296,7 @@ public class Player : Entity
 
         // move player
         MovePlayer();
+        
     }
 
     /**

@@ -11,6 +11,8 @@ public interface IInput
 {
     public Vector3 GetNormalizedVec();
 
+    public Vector3 GetMouseTrunVec();
+
     public bool GetRunInput();
 
     public bool GetJumpInput();
@@ -21,7 +23,7 @@ public interface IInput
 
     public bool GetAttackInput();
 
-    public int GetSwapInput();
-
     public bool GetReloadInput();
+
+    public int GetSwapInput();
 }

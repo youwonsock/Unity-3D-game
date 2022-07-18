@@ -22,7 +22,6 @@ public class HandGun : Weapon
     [SerializeField] BulletData bulletData;
 
     private bool isReload = false;
-    private bool isFire = false;
 
     #endregion
 

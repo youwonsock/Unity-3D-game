@@ -22,7 +22,6 @@ public class SMG : Weapon
     [SerializeField] BulletData bulletData;
 
     private bool isReload = false;
-    private bool isFire = false;
 
     #endregion
 
