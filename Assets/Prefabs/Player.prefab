@@ -15185,6 +15185,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907299830}
     m_Modifications:
+    - target: {fileID: 880508733302083397, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: reloadTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 880508733302083397, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: bulletSpeed
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 1405514620798115707, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -15458,6 +15466,14 @@ PrefabInstance:
     - target: {fileID: 8191984150401506406, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804223386222282588, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
+      propertyPath: reloadTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804223386222282588, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
+      propertyPath: bulletSpeed
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8855227515203978972, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
       propertyPath: m_RootOrder

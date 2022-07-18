@@ -71,7 +71,7 @@ public class SMG : Weapon
      */
     public override bool Reload()
     {
-        if (currentMag == magSize || Ammo == 0 || !fireReady)
+        if (currentMag == magSize || Ammo == 0 || (!fireReady && currentMag != 0))
             return false;
 
         fireReady = false;
