@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd0e4f9cf5a2b1419da3735eb36aa10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followCamera: {fileID: 0}
 --- !u!114 &7936059944116077304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15185,6 +15186,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907299830}
     m_Modifications:
+    - target: {fileID: 880508733302083397, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: magSize
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 880508733302083397, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: maxAmmo
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 880508733302083397, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: currentMag
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 880508733302083397, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
       propertyPath: reloadTime
       value: 2

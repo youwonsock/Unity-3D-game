@@ -130,22 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 215075728, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
-      propertyPath: ammo
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 215075728, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
-      propertyPath: magSize
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 215075728, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
-      propertyPath: maxAmmo
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 215075728, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
-      propertyPath: currentMag
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 5461052779654786451, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
       propertyPath: m_Name
       value: Player
