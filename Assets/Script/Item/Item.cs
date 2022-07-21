@@ -81,13 +81,13 @@ public abstract class Item : MonoBehaviour
 
     #region Unity Event
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         if(isRotate)
             UpdateManager.SubscribeToFixedUpdate(RotateItem);
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         if(isRotate)
             UpdateManager.UnsubscribeFromFixedUpdate(RotateItem);

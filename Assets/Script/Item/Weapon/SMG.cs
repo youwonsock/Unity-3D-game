@@ -139,9 +139,9 @@ public class SMG : Weapon
 
     #region Unity Event
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
-        fireReady = true;
+        base.OnEnable();
 
         if (bulletData != null)
         {
