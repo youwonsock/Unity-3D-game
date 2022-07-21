@@ -7,13 +7,13 @@ using UnityEngine;
  * @details 플레이어 Input에 따른 값을 반환하는 클레스입니다.
  * 
  * @author yws
- * @date last change 2022/07/13
+ * @date last change 2022/07/22
  */
 public class PlayerInput : MonoBehaviour ,IInput
 {
     #region Fields
 
-    [SerializeField] private Camera followCamera;
+    //[SerializeField] private Camera followCamera; 현제 사용  x
 
     private Ray ray;
     RaycastHit rayHit;
@@ -153,8 +153,8 @@ public class PlayerInput : MonoBehaviour ,IInput
 
     private void Awake()
     {
-        if (followCamera == null)
-            Debug.Log($"Some Component is null : {this.name} .PlayerInput.cs");
+        //if (followCamera == null)
+        //    Debug.Log($"Some Component is null : {this.name} .PlayerInput.cs");
     }
 
     #endregion

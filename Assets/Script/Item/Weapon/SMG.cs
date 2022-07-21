@@ -7,7 +7,7 @@ using UnityEngine;
  * @details 
  * 
  * @author yws
- * @date last change 2022/07/07
+ * @date last change 2022/07/22
  */
 public class SMG : Weapon
 {

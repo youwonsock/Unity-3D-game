@@ -7,7 +7,7 @@ using UnityEngine;
  * @details Entity 객체들의 실질적인 이동을 구현한 클래스입니다.\n
  * 
  * @author yws
- * @date last change 2022/07/18
+ * @date last change 2022/07/22
  */
 public class EntityMovement : MonoBehaviour
 {
@@ -72,7 +72,9 @@ public class EntityMovement : MonoBehaviour
         }
 
         transform.LookAt(transform.position + directionVec);
-        transform.position += directionVec * moveSpeed * Time.deltaTime;
+
+        if (!Physics.Raycast(transform.position, directionVec, 5, Constants.LayerMaskNum_Wall))
+            transform.position += directionVec * moveSpeed * Time.deltaTime;
     }
 
 
@@ -87,7 +89,8 @@ public class EntityMovement : MonoBehaviour
      */
     public void TurnByMouse(Vector3 directionVec)
     {
-        transform.LookAt(transform.position + directionVec);
+        if(!isDodge)
+            transform.LookAt(transform.position + directionVec);
     }
 
     /**

@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1581103112, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
+      propertyPath: followCamera
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 5461052779654786451, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -575,7 +579,7 @@ GameObject:
   - component: {fileID: 552539968}
   - component: {fileID: 552539967}
   - component: {fileID: 552539971}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1337,7 +1341,7 @@ GameObject:
   - component: {fileID: 1046790566}
   - component: {fileID: 1046790565}
   - component: {fileID: 1046790569}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1451,7 +1455,7 @@ GameObject:
   - component: {fileID: 1099022410}
   - component: {fileID: 1099022409}
   - component: {fileID: 1099022413}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2362,7 +2366,7 @@ GameObject:
   - component: {fileID: 2139373941}
   - component: {fileID: 2139373940}
   - component: {fileID: 2139373944}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
