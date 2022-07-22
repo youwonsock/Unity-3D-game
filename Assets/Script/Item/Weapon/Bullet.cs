@@ -50,10 +50,10 @@ public class Bullet : MonoBehaviour
             Debug.Log("bullet rigid is null");
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         IDamageAble damageAble;
-        collision.gameObject.TryGetComponent<IDamageAble>(out damageAble);
+        other.gameObject.TryGetComponent<IDamageAble>(out damageAble);
 
         if (damageAble != null)
         {

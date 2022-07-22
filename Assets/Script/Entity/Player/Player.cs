@@ -328,13 +328,19 @@ public class Player : Entity
 
     #region Unity Evenet
 
-    private void Awake()
+    protected override void Awake()
     {
-        // input¿∫ Null
+        // Entity
+        base.Awake();
+
         bool checkComponent = TryGetComponent<IInput>(out input);
         TryGetComponent<EntityMovement>(out movement);
-        TryGetComponent<PlayerWeapon>(out weapon);
+        TryGetComponent<Rigidbody>(out rigid);
         transform.GetChild(0).TryGetComponent<Animator>(out animator);
+       // mat = GetComponent<MeshRenderer>().material; not exist!!!!!
+        
+        // Player
+        TryGetComponent<PlayerWeapon>(out weapon);
 
         playerStat = stat as PlayerStat;
 

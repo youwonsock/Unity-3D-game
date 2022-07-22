@@ -88,6 +88,26 @@ public class Hammer : Weapon
             Debug.Log($"Some Component is null : {this.name} .Hammer.cs");
     }
 
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        fireReady = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            return;
+
+        IDamageAble damageAble;
+        other.gameObject.TryGetComponent<IDamageAble>(out damageAble);
+
+        if (damageAble != null)
+            damageAble.Hit(damage, transform.position);
+    }
+
     #endregion
 
 }

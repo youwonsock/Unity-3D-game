@@ -10,6 +10,7 @@ using UnityEngine;
  * @author yws
  * @date last change 2022/07/10
  */
+[CreateAssetMenu(fileName = "EntityStat", menuName = "Scriptable Object/EntityStat")]
 public class EntityStat : ScriptableObject
 {
     [Header ("Stat")]

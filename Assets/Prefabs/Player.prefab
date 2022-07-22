@@ -204,7 +204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd0e4f9cf5a2b1419da3735eb36aa10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followCamera: {fileID: 0}
 --- !u!114 &7936059944116077304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15186,6 +15185,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907299830}
     m_Modifications:
+    - target: {fileID: 223225183165069823, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 301983148650125438, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 880508733302083397, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
       propertyPath: magSize
       value: 7
@@ -15255,8 +15262,16 @@ PrefabInstance:
       value: Weapon HandGun
       objectReference: {fileID: 0}
     - target: {fileID: 1786438892929041857, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1786438892929041857, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1786438892929041857, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdd8cdfa63256e6419249f470d4f6702, type: 3}
@@ -15399,6 +15414,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907299830}
     m_Modifications:
+    - target: {fileID: 1601374336, guid: 363fc185005bec34c983f1b2f4198c29, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2708280437464837140, guid: 363fc185005bec34c983f1b2f4198c29, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -15447,6 +15466,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon Hammer
       objectReference: {fileID: 0}
+    - target: {fileID: 3377257828145919662, guid: 363fc185005bec34c983f1b2f4198c29, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377257828145919662, guid: 363fc185005bec34c983f1b2f4198c29, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907562658751894529, guid: 363fc185005bec34c983f1b2f4198c29, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 363fc185005bec34c983f1b2f4198c29, type: 3}
 --- !u!114 &1006142919 stripped
@@ -15472,13 +15503,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907299830}
     m_Modifications:
+    - target: {fileID: 3875084550497933399, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8191984150401506406, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
       propertyPath: m_Name
       value: Weapon SubMachineGun
       objectReference: {fileID: 0}
     - target: {fileID: 8191984150401506406, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191984150401506406, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191984150401506406, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8662813504462988820, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8804223386222282588, guid: 7110e8b15a363334d9692a4cef6a580d, type: 3}
       propertyPath: reloadTime
