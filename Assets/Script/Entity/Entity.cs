@@ -16,6 +16,7 @@ public abstract class Entity : MonoBehaviour, IDamageAble
     [Header("Info")]
     [SerializeField] protected EntityStat stat;
     [SerializeField] private float health;
+    protected bool isHit;
 
     //모든 Entity들이 공통으로 가지는 Component 
     [SerializeField]protected Material mat;
@@ -82,12 +83,13 @@ public abstract class Entity : MonoBehaviour, IDamageAble
      * @author yws
      * @date last change 2022/07/16
      */
-    bool IDamageAble.Hit(float Damage, Vector3 direction)
+    bool IDamageAble.Hit(float Damage, Vector3 direction, float knockForce)
     {
         // 공통 피격 처리
+        isHit = true;
         Health -= Damage;
-        Vector3 reactVec = (transform.position - direction.normalized) + Vector3.up;
-        rigid.AddForce(reactVec ,ForceMode.Impulse);
+        Vector3 reactVec = direction + Vector3.up;
+        rigid.AddForce(reactVec * knockForce,ForceMode.Impulse);
 
         // entity별 피격 처리는 OnDamaged를 override해서 구현
         OnDamaged();
@@ -105,17 +107,23 @@ public abstract class Entity : MonoBehaviour, IDamageAble
      */
     IEnumerator OnDamagedCoroutine()
     {
+        var wfs = new WaitForSecondsRealtime(0.3f);
         mat.color = Color.red;
 
-        yield return  new WaitForSecondsRealtime(0.2f);
+        yield return  wfs;
 
         if (health > 0)
+        {
             mat.color = Color.white;
+        }
         else
         {
             mat.color = Color.gray;
-            Destroy(gameObject,4);
+            Destroy(gameObject, 4);
         }
+
+        yield return wfs;
+        isHit = false;
     }
 
     //--------------------------protected--------------------------------------

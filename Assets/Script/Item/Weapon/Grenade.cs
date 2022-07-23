@@ -94,11 +94,9 @@ public class Grenade : Item
         IDamageAble damageAble;
         foreach (RaycastHit hit in rayHits)
         {
-            Debug.Log(hit.transform.gameObject);
-
             hit.transform.TryGetComponent<IDamageAble>(out damageAble);
             if (damageAble != null)
-                damageAble.Hit(grenadeData.Damage, transform.position);
+                damageAble.Hit(grenadeData.Damage, Vector3.up, 6);
         }
 
         Destroy(this.gameObject,3f);

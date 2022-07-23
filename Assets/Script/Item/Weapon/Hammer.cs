@@ -85,7 +85,7 @@ public class Hammer : Weapon
         TryGetComponent<BoxCollider>(out attackArea);
 
         if (!attackArea || !trailRenderer)
-            Debug.Log($"Some Component is null : {this.name} .Hammer.cs");
+            Debug.Log($"Some Component is null : {this.gameObject} .Hammer.cs");
     }
 
     protected override void OnEnable()
@@ -100,9 +100,9 @@ public class Hammer : Weapon
      * @details Item의 OnTriggerStay()에서 실행시킬 동작을 override로 정의하는 메서드입니다.
      * 
      * @author yws
-     * @data last change 2022/07/07
+     * @data last change 2022/07/24
      */
-    protected override void ActWhenTriggerStay(Collider other)
+    protected override void ActWhenTriggerEnter(Collider other)
     {
         base.ActWhenTriggerStay(other);
 
@@ -113,7 +113,7 @@ public class Hammer : Weapon
         other.gameObject.TryGetComponent<IDamageAble>(out damageAble);
 
         if (damageAble != null)
-            damageAble.Hit(damage, transform.position);
+            damageAble.Hit(damage, Vector3.forward, 8);
     }
 
     #endregion
