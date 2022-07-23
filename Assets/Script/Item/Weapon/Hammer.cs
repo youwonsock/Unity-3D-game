@@ -88,7 +88,6 @@ public class Hammer : Weapon
             Debug.Log($"Some Component is null : {this.name} .Hammer.cs");
     }
 
-
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -96,8 +95,17 @@ public class Hammer : Weapon
         fireReady = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    /**
+     * @brief OnTriggerStay() 에서 실행시킬 행동을 정의한 메서드
+     * @details Item의 OnTriggerStay()에서 실행시킬 동작을 override로 정의하는 메서드입니다.
+     * 
+     * @author yws
+     * @data last change 2022/07/07
+     */
+    protected override void ActWhenTriggerStay(Collider other)
     {
+        base.ActWhenTriggerStay(other);
+
         if (other.CompareTag("Player"))
             return;
 

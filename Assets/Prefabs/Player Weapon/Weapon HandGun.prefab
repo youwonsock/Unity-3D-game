@@ -188,6 +188,7 @@ MonoBehaviour:
   rate: 0.2
   magSize: 30
   currentMag: 30
+  reloadTime: 0
   bulletSpeed: 70
   firePos: {fileID: 1800078586264651324}
   bulletData: {fileID: 11400000, guid: 8a2ad671d7ad33d4f9b189c99514cb35, type: 2}
