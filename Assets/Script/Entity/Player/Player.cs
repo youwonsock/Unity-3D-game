@@ -32,6 +32,7 @@ public class Player : Entity
     private bool dodgeInput;
     private bool interactionInput;
     private bool attackInput;
+    private bool grenadeInput;
     private bool reloadInput;
     private int swapInput;
 
@@ -52,6 +53,14 @@ public class Player : Entity
      * @date last change 2022/07/10
      */
     public event Action ChangeGrenadesCount;
+
+    /**
+     * @brief Event GrenadeInput이 True인 경우 발동되는 이벤트
+     * 
+     * @author yws
+     * @date last change 2022/07/10
+     */
+    public event Action<Vector3> UseGrenade;
 
     #endregion
 
@@ -92,7 +101,7 @@ public class Player : Entity
      * @author yws
      * @date last change 2022/07/09
      */
-    public int Grenades 
+    public int Grenades
     {
         get
         {
@@ -100,12 +109,26 @@ public class Player : Entity
         }
         set
         {
-            if (grenades + value > MaxGrenades)
-                grenades = maxGrenades;
-            else
-                grenades = value;
+            grenades = Mathf.Clamp(value, 0, maxGrenades);
 
-            ChangeGrenadesCount.Invoke();
+            ChangeGrenadesCount?.Invoke();
+        }
+    }
+
+    /**
+     * @brief GrenadeInput Property\n
+     * @details grenadeInput이 true가 되면 UseGrenade에 등록된 이벤트를 실행합니다.
+     * 
+     * @author yws
+     * @date last change 2022/07/23
+     */
+    public bool GrenadeInput 
+    {
+        set 
+        { 
+            grenadeInput = value;
+            if (grenadeInput && !reloadInput && !dodgeInput)
+                UseGrenade?.Invoke(input.GetMouseTrunVec());
         }
     }
 
@@ -152,6 +175,7 @@ public class Player : Entity
             interactionInput = input.GetInteractInput();
             swapInput = input.GetSwapInput();
             reloadInput = input.GetReloadInput();
+            GrenadeInput = input.GetGrenadeInput();
         }
     }
 
@@ -337,7 +361,7 @@ public class Player : Entity
         TryGetComponent<EntityMovement>(out movement);
         TryGetComponent<Rigidbody>(out rigid);
         transform.GetChild(0).TryGetComponent<Animator>(out animator);
-       // mat = GetComponent<MeshRenderer>().material; not exist!!!!!
+        mat = transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material; // 일단은 무식하게 처리!
         
         // Player
         TryGetComponent<PlayerWeapon>(out weapon);

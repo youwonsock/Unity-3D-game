@@ -106,6 +106,16 @@ public class PlayerInput : MonoBehaviour ,IInput
      */
     bool IInput.GetAttackInput() { return Input.GetButton("Fire1"); }
 
+    /**
+     * @brief Grenade 키 입력여부를 반환하는 getter
+     * 
+     * @return int
+     * 
+     * @author yws
+     * @date last change 2022/07/23
+     */
+    bool IInput.GetGrenadeInput() { return Input.GetButtonDown("Fire2"); }
+
 
     /**
      * @brief Reload 키 입력여부를 반환하는 getter

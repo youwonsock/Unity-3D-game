@@ -17,6 +17,7 @@ public class RotateOrbit : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private int speed;
     [SerializeField] private List<GameObject> list;
+    [SerializeField] private GameObject throwGrenadeObj;
 
     #endregion
 
@@ -32,15 +33,45 @@ public class RotateOrbit : MonoBehaviour
 
     /**
      * @brief Player가 현제 소유한 Grenade개수만큼 List에 할당된 Grenade를 활성화 시키는 메서드
-     * @details Player의 GetItem 이벤트에 등록하여 사용합니다.
+     * @details Player의 ChangeGrenadesCount 이벤트에 등록하여 사용합니다.
      * 
      * @author yws
      * @data last change 2022/07/10
      */
     private void ActiveOrbitGrenade()
     {
-        for(int i = 0; i < player.Grenades; i++)
-            list[i].SetActive(true);
+        int i = 0;
+        while (i < list.Count)
+        {
+            if(i < player.Grenades)
+                list[i].SetActive(true);
+            else
+                list[i].SetActive(false);
+
+            i++;
+        }
+
+    }
+
+    /**
+     * @brief Player의 필살기인 Grenade를 사용하는 메서드
+     * @details Player의 UseGrenade 이벤트에 등록하여 player의 grenadesInput이 true인 경우 실행됩니다.
+     * 
+     * @param[in] throwVec : 던지는 방향
+     * 
+     * @author yws
+     * @data last change 2022/07/23
+     */
+    private void ThrowGrenade(Vector3 throwVec)
+    {
+        if (player.Grenades > 0)
+        {
+            player.Grenades--;
+            Grenade throwGrenade;
+            GameObject instantGrenade = Instantiate(throwGrenadeObj, transform.position, transform.rotation);
+            instantGrenade.TryGetComponent<Grenade>(out throwGrenade);
+            throwGrenade.Throw(throwVec);
+        }
     }
 
     /**
@@ -53,6 +84,7 @@ public class RotateOrbit : MonoBehaviour
     {
         transform.Rotate(Vector3.up * speed);
     }
+
     #endregion
 
 
@@ -63,12 +95,14 @@ public class RotateOrbit : MonoBehaviour
     {
         UpdateManager.SubscribeToFixedUpdate(RotateOrbitGrenades);
         player.ChangeGrenadesCount += ActiveOrbitGrenade;
+        player.UseGrenade += ThrowGrenade;
     }
 
     private void OnDisable()
     {
         UpdateManager.UnsubscribeFromFixedUpdate(RotateOrbitGrenades);
         player.ChangeGrenadesCount -= ActiveOrbitGrenade;
+        player.UseGrenade -= ThrowGrenade;
     }
 
     #endregion

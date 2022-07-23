@@ -18,11 +18,11 @@ public abstract class Entity : MonoBehaviour, IDamageAble
     [SerializeField] private float health;
 
     //모든 Entity들이 공통으로 가지는 Component 
+    [SerializeField]protected Material mat;
     protected IInput input;
     protected EntityMovement movement;
     protected Animator animator;
     protected Rigidbody rigid;
-    protected Material mat;
 
     #endregion
 
@@ -87,9 +87,7 @@ public abstract class Entity : MonoBehaviour, IDamageAble
         // 공통 피격 처리
         Health -= Damage;
         Vector3 reactVec = (transform.position - direction.normalized) + Vector3.up;
-        rigid.AddForce(reactVec * 3 ,ForceMode.Impulse);
-
-        Debug.Log((transform.position - direction).normalized);
+        rigid.AddForce(reactVec ,ForceMode.Impulse);
 
         // entity별 피격 처리는 OnDamaged를 override해서 구현
         OnDamaged();

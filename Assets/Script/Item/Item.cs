@@ -19,7 +19,7 @@ public abstract class Item : MonoBehaviour
     //SerializeField
     [SerializeField]private ItemType type;
     [SerializeField]private int itemCode;   //아이템의 고유값 현재는 필요 X
-    [SerializeField]private bool isRotate;
+    [SerializeField]protected bool isRotate;
 
     #endregion
 

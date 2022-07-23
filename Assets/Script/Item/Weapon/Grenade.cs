@@ -14,6 +14,15 @@ public class Grenade : Item
 
     #region Fields
 
+
+    [SerializeField] GrenadeData grenadeData;
+
+    [SerializeField] private GameObject meshObj;
+    [SerializeField] private GameObject effectObj;
+
+    private Rigidbody rigid;
+
+
     #endregion
 
 
@@ -26,6 +35,23 @@ public class Grenade : Item
 
     #region Funtion
 
+    /**
+     * @brief Rotate에서 호출되는 Grenade 투척 메서드
+     * @details 매개변수인 throwVec 방향으로 Grenade를 던집니다.\n
+     * 지정한 시간이 지나면 폭발 후 사라집니다.
+     * 
+     * @param[in] throwVec : 던지는 방향
+     * 
+     * @author yws
+     * @data last change 2022/07/23
+     */
+    public void Throw(Vector3 throwVec)
+    {
+        throwVec.y = 7;
+        rigid.AddForce(throwVec, ForceMode.Impulse);
+        rigid.AddTorque(Vector3.back * 10, ForceMode.Impulse);
+        StartCoroutine(Explosion());
+    }
 
     /**
      * @brief OnTriggerEnter() 에서 실행시킬 행동을 정의한 메서드
@@ -36,7 +62,7 @@ public class Grenade : Item
      */
     protected override void ActWhenTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player") && isRotate)
         {
             Player player;
             other.TryGetComponent<Player>(out player);
@@ -47,12 +73,54 @@ public class Grenade : Item
         }
     }
 
+    /**
+     * @brief Grenade의 폭발을 구현하는 Coroutine
+     * @details expTime만큼의 시간이 지난 다음 Grenade의 속도를 0으로 만든 후\n
+     * 폭발시키는 Coroutine입니다.
+     * 
+     * @author yws
+     * @data last change 2022/07/23
+     */
+    IEnumerator Explosion()
+    {
+        yield return new WaitForSecondsRealtime(grenadeData.Time);
+        rigid.velocity = rigid.angularVelocity = Vector3.zero;
+        meshObj.SetActive(false);
+        effectObj.SetActive(true);
+
+        // 피격 처리
+        RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, 15, Vector3.up, 0);
+
+        IDamageAble damageAble;
+        foreach (RaycastHit hit in rayHits)
+        {
+            Debug.Log(hit.transform.gameObject);
+
+            hit.transform.TryGetComponent<IDamageAble>(out damageAble);
+            if (damageAble != null)
+                damageAble.Hit(grenadeData.Damage, transform.position);
+        }
+
+        Destroy(this.gameObject,1.5f);
+    }
+
     #endregion
 
 
 
     #region Unity Event
 
+    private void Awake()
+    {
+        if (!isRotate)
+        {
+            if (!TryGetComponent<Rigidbody>(out rigid))
+                Debug.Log($"Some Component is null : {this.gameObject} .Grenade.cs");
+            
+            if(!grenadeData || !meshObj || !effectObj)
+                Debug.Log($"if isRotate is false, Grenades needs data, mesh, effect obj. \n Object name : "+this.gameObject);
+        }
+    }
     #endregion
 
 }

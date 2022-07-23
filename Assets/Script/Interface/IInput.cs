@@ -23,6 +23,8 @@ public interface IInput
 
     public bool GetAttackInput();
 
+    public bool GetGrenadeInput();
+
     public bool GetReloadInput();
 
     public int GetSwapInput();
