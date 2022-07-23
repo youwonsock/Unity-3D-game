@@ -361,7 +361,7 @@ public class Player : Entity
         TryGetComponent<EntityMovement>(out movement);
         TryGetComponent<Rigidbody>(out rigid);
         transform.GetChild(0).TryGetComponent<Animator>(out animator);
-        mat = transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material; // 일단은 무식하게 처리!
+        mat = transform.GetComponentInChildren<MeshRenderer>().material;
         
         // Player
         TryGetComponent<PlayerWeapon>(out weapon);

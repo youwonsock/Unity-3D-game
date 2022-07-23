@@ -57,7 +57,7 @@ public class Bullet : MonoBehaviour
 
         if (damageAble != null)
         {
-            damageAble.Hit(bulletData.Damage, transform.position);
+            damageAble.Hit(bulletData.Damage, Vector3.forward);
             ObjectPool.ReturnObject(this, bulletData.BulletType);
             return;
         }
