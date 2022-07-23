@@ -101,7 +101,7 @@ public class Grenade : Item
                 damageAble.Hit(grenadeData.Damage, transform.position);
         }
 
-        Destroy(this.gameObject,1.5f);
+        Destroy(this.gameObject,3f);
     }
 
     #endregion
