@@ -81,8 +81,7 @@ public class Enemy : Entity
             Destroy(gameObject, 4);
         }
 
-        yield return wfs;
-        isHit = false;
+        yield break;
     }
 
     /**

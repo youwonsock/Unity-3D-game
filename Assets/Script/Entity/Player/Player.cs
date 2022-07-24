@@ -370,6 +370,8 @@ public class Player : Entity
      */
     IEnumerator OnDamagedCoroutine()
     {
+        isHit = true;
+
         foreach(MeshRenderer mesh in meshs)
         {
             mesh.material.color = Color.yellow;

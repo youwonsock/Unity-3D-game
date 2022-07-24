@@ -17,6 +17,7 @@ public abstract class Entity : MonoBehaviour, IDamageAble
     [SerializeField] protected EntityStat stat;
     [SerializeField] private float health;
     protected bool isHit;
+    private bool isDead = false;
 
     //모든 Entity들이 공통으로 가지는 Component 
     protected IInput input;
@@ -54,9 +55,12 @@ public abstract class Entity : MonoBehaviour, IDamageAble
         {
             health = Mathf.Clamp(value, -1, stat.MaxHealth);
 
-            if (health < 1)
-                if(OnDeath != null)
+            if (!isDead && health < 1)
+            {
+                isDead = true;
+                if (OnDeath != null)
                     OnDeath();
+            }
         }
     }
 
@@ -88,7 +92,6 @@ public abstract class Entity : MonoBehaviour, IDamageAble
         if (isHit)
             return false;
 
-        isHit = true;
         Health -= Damage;
         if (knockForce > 0)
         {
