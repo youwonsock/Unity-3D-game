@@ -17,9 +17,17 @@ public class Enemy : Entity
 {
     #region Fields
 
-    [SerializeField] private Transform target;
+    [SerializeField] private Transform target; // find말고 다른 방법?
     [SerializeField] private NavMeshAgent nav;
-    [SerializeField] private bool isChase;  // 현재는 인스팩터에서 수동으로 추적 시작!
+    [SerializeField] private Material mat;
+    [SerializeField] protected bool isChase;  // 현재는 인스팩터에서 수동으로 추적 시작!
+    protected bool canAttack = true;
+
+    //scriptable object로 대체 예정
+    [SerializeField] protected int damage;
+    [SerializeField] protected float attackCooltime;
+    [SerializeField] protected float targetDistance = 100;
+    //scriptable object로 대체 예정
 
     #endregion
 
@@ -33,6 +41,50 @@ public class Enemy : Entity
 
     #region Funtion
 
+    //--------------------------protected--------------------------------------
+
+    /**
+     * @brief 피격시 발동되는 피격 처리 메서드
+     * @details 플레이어나 몬스터가 공격을 받았을 경우 실행되는 메서드입니다.\n
+     * 별도의 피격 처리가 필요한 경우 하위 클래스에서 override하여 각 entity마다 다른 피격 효과를 구현할 수 있습니다.
+     * 
+     * @author yws
+     * @date last change 2022/07/24
+     */
+    protected override void OnDamaged()
+    {
+        StartCoroutine(OnDamagedCoroutine());
+    }
+
+    //--------------------------private--------------------------------------
+
+    /**
+     * @brief OnDamaged에서 호출하는 Coroutine
+     * 
+     * @author yws
+     * @date last change 2022/07/23
+     */
+    IEnumerator OnDamagedCoroutine()
+    {
+        var wfs = new WaitForSecondsRealtime(0.3f);
+        mat.color = Color.red;
+
+        yield return wfs;
+
+        if (Health > 0)
+        {
+            mat.color = Color.white;
+        }
+        else
+        {
+            mat.color = Color.gray;
+            Destroy(gameObject, 4);
+        }
+
+        yield return wfs;
+        isHit = false;
+    }
+
     /**
      * @brief Enemy.cs의 UpdateManager.SubscribeToUpdate 구독 메서드
      * @details Update에서 실행해야하는 작업을 구현해두는 메서드입니다.
@@ -40,10 +92,13 @@ public class Enemy : Entity
      * @author yws
      * @date last change 2022/07/24
      */
-    private void OnUpdateWork()
+    protected virtual void OnUpdateWork()
     {
-        if(isChase && !isHit)
+        if (nav.enabled)
+        {
             nav.SetDestination(target.position);
+            nav.isStopped = !isChase;
+        }
     }
 
     /**
@@ -53,12 +108,13 @@ public class Enemy : Entity
      * @author yws
      * @date last change 2022/07/24
      */
-    private void OnFixedUpdateWork()
+    protected virtual void OnFixedUpdateWork()
     {
         if (isChase && !isHit)
         {
             rigid.velocity = Vector3.zero;
             rigid.angularVelocity = Vector3.zero;
+            targetDistance = Vector3.Distance(target.position, transform.position);
         }
     }
 
@@ -99,6 +155,10 @@ public class Enemy : Entity
 
         // OnDeath Event 추가
         OnDeath += OnDeathWork;
+
+
+        //test용으로 awake에서 anim 변경
+        animator.SetBool("isWalk", true);
     }
 
     private void OnEnable()

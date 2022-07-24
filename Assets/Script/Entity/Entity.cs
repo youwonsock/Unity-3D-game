@@ -19,7 +19,6 @@ public abstract class Entity : MonoBehaviour, IDamageAble
     protected bool isHit;
 
     //모든 Entity들이 공통으로 가지는 Component 
-    [SerializeField]protected Material mat;
     protected IInput input;
     protected EntityMovement movement;
     protected Animator animator;
@@ -86,11 +85,16 @@ public abstract class Entity : MonoBehaviour, IDamageAble
     bool IDamageAble.Hit(float Damage, Vector3 direction, float knockForce)
     {
         // 공통 피격 처리
+        if (isHit)
+            return false;
+
         isHit = true;
         Health -= Damage;
-        Vector3 reactVec = direction + Vector3.up;
-        rigid.AddForce(reactVec * knockForce,ForceMode.Impulse);
-
+        if (knockForce > 0)
+        {
+            Vector3 reactVec = direction + Vector3.up;
+            rigid.AddForce(reactVec * knockForce, ForceMode.Impulse);
+        }
         // entity별 피격 처리는 OnDamaged를 override해서 구현
         OnDamaged();
 
@@ -99,32 +103,6 @@ public abstract class Entity : MonoBehaviour, IDamageAble
 
     //--------------------------private--------------------------------------
 
-    /**
-     * @brief OnDamaged에서 호출하는 Coroutine
-     * 
-     * @author yws
-     * @date last change 2022/07/23
-     */
-    IEnumerator OnDamagedCoroutine()
-    {
-        var wfs = new WaitForSecondsRealtime(0.3f);
-        mat.color = Color.red;
-
-        yield return  wfs;
-
-        if (health > 0)
-        {
-            mat.color = Color.white;
-        }
-        else
-        {
-            mat.color = Color.gray;
-            Destroy(gameObject, 4);
-        }
-
-        yield return wfs;
-        isHit = false;
-    }
 
     //--------------------------protected--------------------------------------
 
@@ -136,10 +114,7 @@ public abstract class Entity : MonoBehaviour, IDamageAble
      * @author yws
      * @date last change 2022/07/23
      */
-    protected virtual void OnDamaged()
-    {
-        StartCoroutine(OnDamagedCoroutine());
-    }
+    protected virtual void OnDamaged() {}
 
     #endregion
 

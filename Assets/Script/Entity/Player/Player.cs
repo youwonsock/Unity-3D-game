@@ -24,6 +24,7 @@ public class Player : Entity
 
     //Player가 가지는 Components
     private PlayerWeapon weapon;
+    MeshRenderer[] meshs;
 
     //input fileds
     private Vector3 nomalVec;
@@ -155,6 +156,21 @@ public class Player : Entity
     }
 
     //--------------------------private-------------------------------------
+
+
+    /**
+     * @brief 피격시 발동되는 피격 처리 메서드
+     * @details 플레이어나 몬스터가 공격을 받았을 경우 실행되는 메서드입니다.\n
+     * 별도의 피격 처리가 필요한 경우 하위 클래스에서 override하여 각 entity마다 다른 피격 효과를 구현할 수 있습니다.
+     * 
+     * @author yws
+     * @date last change 2022/07/24
+     */
+    protected override void OnDamaged()
+    {
+        StartCoroutine(OnDamagedCoroutine());
+    }
+
 
     /**
      * @brief Player의 Input을 감지하는 메서드
@@ -345,6 +361,32 @@ public class Player : Entity
         }
     }
 
+
+    /**
+     * @brief OnDamaged에서 호출하는 Coroutine
+     * 
+     * @author yws
+     * @date last change 2022/07/24
+     */
+    IEnumerator OnDamagedCoroutine()
+    {
+        foreach(MeshRenderer mesh in meshs)
+        {
+            mesh.material.color = Color.yellow;
+        }
+
+        yield return new WaitForSecondsRealtime(1f);
+
+
+        foreach (MeshRenderer mesh in meshs)
+        {
+            mesh.material.color = Color.white;
+        }
+        isHit = false;
+
+        yield break;
+    }
+
     #endregion
 
 
@@ -361,10 +403,10 @@ public class Player : Entity
         TryGetComponent<EntityMovement>(out movement);
         TryGetComponent<Rigidbody>(out rigid);
         transform.GetChild(0).TryGetComponent<Animator>(out animator);
-        mat = transform.GetComponentInChildren<MeshRenderer>().material;
-        
+
         // Player
         TryGetComponent<PlayerWeapon>(out weapon);
+        meshs = GetComponentsInChildren<MeshRenderer>();
 
         playerStat = stat as PlayerStat;
 

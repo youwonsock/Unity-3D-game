@@ -113,7 +113,7 @@ public class Hammer : Weapon
         other.gameObject.TryGetComponent<IDamageAble>(out damageAble);
 
         if (damageAble != null)
-            damageAble.Hit(damage, Vector3.forward, 8);
+            damageAble.Hit(damage, transform.forward, 8);
     }
 
     #endregion
