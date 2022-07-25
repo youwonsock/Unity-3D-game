@@ -7,6 +7,8 @@
  */
 public static class Constants
 {
+    public enum Shooter { Player, Enemy };
+
     public const int LayerMaskNum_Wall = 128;
     public const int LayerIdx_Dead = 8;
 }

@@ -160,16 +160,22 @@ public class Enemy : Entity
         animator.SetBool("isWalk", true);
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         UpdateManager.SubscribeToUpdate(OnUpdateWork);
         UpdateManager.SubscribeToFixedUpdate(OnFixedUpdateWork);
+
+        OnDeath += OnDeathWork;
+
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         UpdateManager.UnsubscribeFromUpdate(OnUpdateWork);
         UpdateManager.UnsubscribeFromFixedUpdate(OnFixedUpdateWork);
+
+        OnDeath -= OnDeathWork;
+
     }
 
     #endregion

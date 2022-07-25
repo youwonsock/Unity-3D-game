@@ -157,6 +157,7 @@ MonoBehaviour:
   rate: 0.2
   magSize: 30
   currentMag: 30
+  reloadTime: 0
   bulletSpeed: 50
   firePos: {fileID: 237514133923626698}
   bulletData: {fileID: 11400000, guid: 8a2ad671d7ad33d4f9b189c99514cb35, type: 2}
@@ -183,11 +184,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8662813504462988820}
-  m_LocalRotation: {x: 0, y: 0, z: 0.2588191, w: 0.9659258}
-  m_LocalPosition: {x: 0.622, y: 3.131, z: 0}
+  m_LocalRotation: {x: -0.18301266, y: 0.6830127, z: 0.18301266, w: 0.6830127}
+  m_LocalPosition: {x: 0.454, y: 3.094, z: 0.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8855227515203978972}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
+  m_LocalEulerAnglesHint: {x: -30, y: 90, z: 0}

@@ -16,8 +16,8 @@ public abstract class Entity : MonoBehaviour, IDamageAble
     [Header("Info")]
     [SerializeField] protected EntityStat stat;
     [SerializeField] private float health;
-    protected bool isHit;
-    private bool isDead = false;
+    protected bool isHit = false;
+    protected bool isDead = false;
 
     //모든 Entity들이 공통으로 가지는 Component 
     protected IInput input;
@@ -61,6 +61,8 @@ public abstract class Entity : MonoBehaviour, IDamageAble
                 if (OnDeath != null)
                     OnDeath();
             }
+
+            Debug.Log("this : "+ this.gameObject+" : "+health);
         }
     }
 

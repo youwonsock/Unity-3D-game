@@ -11,8 +11,16 @@ using UnityEngine;
  */
 public class Bullet : MonoBehaviour
 {
+    #region Fields
+
     [SerializeField] BulletData bulletData;
     private Rigidbody rigid;
+
+    #endregion
+
+
+
+    #region Funtion
 
     /**
      * @brief 총알을 이동시키는 메서드
@@ -26,7 +34,8 @@ public class Bullet : MonoBehaviour
     public void SetBullet(Transform firePos)
     {
         transform.position = firePos.position;
-        rigid.velocity = firePos.right * bulletData.Speed;
+        transform.rotation = firePos.rotation;
+        rigid.velocity = firePos.forward * bulletData.Speed;
         Invoke(nameof(ReturnBullet), bulletData.Time);    
     }
 
@@ -42,6 +51,12 @@ public class Bullet : MonoBehaviour
             ObjectPool.ReturnObject(this, bulletData.BulletType);
     }
 
+    #endregion
+
+
+
+    #region Unity Event
+
     private void Awake()
     {
         TryGetComponent<Rigidbody>(out rigid);
@@ -52,6 +67,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (bulletData.Shooter == Constants.Shooter.Player && other.gameObject.CompareTag("Player"))
+            return;
+        else if (bulletData.Shooter == Constants.Shooter.Enemy && other.gameObject.CompareTag("Enemy"))
+            return;
+
         IDamageAble damageAble;
         other.gameObject.TryGetComponent<IDamageAble>(out damageAble);
 
@@ -63,5 +83,8 @@ public class Bullet : MonoBehaviour
         }
 
         ObjectPool.ReturnObject(this, bulletData.BulletType);
+        Debug.Log(this.gameObject + "bullet is end");
     }
+
+    #endregion
 }

@@ -23,16 +23,18 @@ public class ObjectPool : Singleton<ObjectPool>
 {
     public ObjectPool() { }
 
-    public enum BulletType { HandGun, SMG };
+    public enum BulletType { HandGun, SMG, Missile };
 
     #region Fields
 
     [SerializeField] GameObject handGunBulletPrefab;
     [SerializeField] GameObject SMGBulletPrefab;
+    [SerializeField] GameObject MissileBulletPrefab;
     [SerializeField] private int bulletCount;
 
     Queue<Bullet> handGunBulletQueue = new Queue<Bullet>();
     Queue<Bullet> SMGBulletQueue = new Queue<Bullet>();
+    Queue<Bullet> MissileBulletQueue = new Queue<Bullet>();
 
     #endregion
 
@@ -60,6 +62,7 @@ public class ObjectPool : Singleton<ObjectPool>
         {
             handGunBulletQueue.Enqueue(CreateNewObject(BulletType.HandGun));
             SMGBulletQueue.Enqueue(CreateNewObject(BulletType.SMG));
+            MissileBulletQueue.Enqueue(CreateNewObject(BulletType.Missile));
         }
     }
 
@@ -80,8 +83,10 @@ public class ObjectPool : Singleton<ObjectPool>
 
         if(bulletType == BulletType.HandGun)
             newObj = Instantiate(handGunBulletPrefab).GetComponent<Bullet>();
-        else
+        else if(bulletType == BulletType.SMG)
             newObj = Instantiate(SMGBulletPrefab).GetComponent<Bullet>();
+        else
+            newObj = Instantiate(MissileBulletPrefab).GetComponent<Bullet>();
 
         newObj.gameObject.SetActive(false);
         newObj.transform.SetParent(transform);
@@ -102,7 +107,23 @@ public class ObjectPool : Singleton<ObjectPool>
     public static Bullet GetObject(BulletType bulletType)
     {
 
-        Queue<Bullet> queue = bulletType == BulletType.HandGun ? Instance.handGunBulletQueue : Instance.SMGBulletQueue;
+        Queue<Bullet> queue;
+        
+        switch(bulletType)
+        {
+            case BulletType.HandGun:
+                queue = Instance.handGunBulletQueue;
+                break;
+            case BulletType.SMG:
+                queue = Instance.SMGBulletQueue;
+                break;
+            case BulletType.Missile:
+                queue = Instance.MissileBulletQueue;
+                break;
+            default:
+                Debug.Log("ObjectPool.GetObject() is fail");
+                return null;
+        }
 
         if (queue.Count > 0)
         {
@@ -135,10 +156,19 @@ public class ObjectPool : Singleton<ObjectPool>
         obj.gameObject.SetActive(false);
         obj.transform.SetParent(Instance.transform);
 
-        if (bulletType == BulletType.HandGun)
-            Instance.handGunBulletQueue.Enqueue(obj);
-        else
-            Instance.SMGBulletQueue.Enqueue(obj);
+
+        switch (bulletType)
+        {
+            case BulletType.HandGun:
+                Instance.handGunBulletQueue.Enqueue(obj);
+                break;
+            case BulletType.SMG:
+                Instance.SMGBulletQueue.Enqueue(obj);
+                break;
+            case BulletType.Missile:
+                Instance.MissileBulletQueue.Enqueue(obj);
+                break;
+        }
     }
 
     #endregion

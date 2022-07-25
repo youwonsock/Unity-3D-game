@@ -13,7 +13,6 @@ public class RangeEnemy : Enemy
 {
     #region Fields
 
-    [SerializeField] private Collider attackArea;
     [SerializeField] private float attackDistance;
 
     #endregion
@@ -36,16 +35,13 @@ public class RangeEnemy : Enemy
         rigid.velocity = Vector3.zero;
         animator.SetBool("isWalk", false);
         yield return new WaitForSecondsRealtime(1f);
+
         animator.SetBool("isAttack", true);
-        attackArea.enabled = true;
-        rigid.AddForce(transform.forward * 20, ForceMode.Impulse);
-
-        yield return new WaitForSecondsRealtime(1.5f);
-        attackArea.enabled = false;
-        rigid.velocity = Vector3.zero;
+        yield return new WaitForSecondsRealtime(0.7f);// 발사 시 잠시 멈춤
+        ObjectPool.GetObject(ObjectPool.BulletType.Missile).SetBullet(transform);
         animator.SetBool("isAttack", false);
-
-        isChase = true;// 바로 다시 추적 시작
+        
+        isChase = true;//다시 추적 시작
         animator.SetBool("isWalk", true);
 
         yield return new WaitForSecondsRealtime(attackCooltime);
@@ -77,16 +73,16 @@ public class RangeEnemy : Enemy
 
     #region Unity Event
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnEnable()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            IDamageAble damageAble;
-            other.gameObject.TryGetComponent<IDamageAble>(out damageAble);
+        base.OnEnable();
+        OnDeath += () => StopCoroutine(RangeAttack());
+    }
 
-            if (damageAble != null)
-                damageAble.Hit(damage, transform.forward, 10);
-        }
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        OnDeath -= () => StopCoroutine(RangeAttack());
     }
 
     #endregion

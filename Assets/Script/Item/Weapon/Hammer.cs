@@ -104,8 +104,6 @@ public class Hammer : Weapon
      */
     protected override void ActWhenTriggerEnter(Collider other)
     {
-        base.ActWhenTriggerStay(other);
-
         if (other.CompareTag("Player"))
             return;
 

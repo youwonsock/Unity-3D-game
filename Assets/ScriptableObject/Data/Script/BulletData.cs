@@ -13,6 +13,7 @@ public class BulletData : ScriptableObject
     [SerializeField] private float time;
     [SerializeField] private float speed;
     [SerializeField] private ObjectPool.BulletType bulletType;
+    [SerializeField] private Constants.Shooter shooter;
 
     #region Property
 
@@ -21,6 +22,8 @@ public class BulletData : ScriptableObject
     public float Time { get { return time; } set { time = value; } }
 
     public float Speed { get { return speed; } set { speed = value; } }
+
+    public Constants.Shooter Shooter { get { return shooter; } set { shooter = value; } }
 
     public ObjectPool.BulletType BulletType { get { return bulletType; }  set { bulletType = value; } }
 

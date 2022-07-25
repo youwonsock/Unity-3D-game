@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 315188047}
   - component: {fileID: 315188049}
   - component: {fileID: 315188048}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4822,7 +4822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2143265164}
   - component: {fileID: 2143265165}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4919,7 +4919,7 @@ GameObject:
   - component: {fileID: 806278938273825654}
   - component: {fileID: 7422361709327964261}
   - component: {fileID: 6673258280929699190}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Coin Silver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5013,7 +5013,7 @@ GameObject:
   - component: {fileID: 6438769627256027379}
   - component: {fileID: 4006744969586133931}
   - component: {fileID: 1656400119828080072}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mesh Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}

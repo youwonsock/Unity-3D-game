@@ -89,5 +89,18 @@ public class RushEnemy : Enemy
         }
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        OnDeath += () => StopCoroutine(RushAttack());
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        OnDeath -= () => StopCoroutine(RushAttack());
+    }
+
     #endregion
 }

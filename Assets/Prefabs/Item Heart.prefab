@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 393194606}
   - component: {fileID: 393194607}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 1684427329}
   - component: {fileID: 1684427331}
   - component: {fileID: 1684427330}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4917,7 +4917,7 @@ GameObject:
   - component: {fileID: 1339041128679573930}
   - component: {fileID: 5629927408624864094}
   - component: {fileID: 5481428051362991567}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mesh Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5002,7 +5002,7 @@ GameObject:
   - component: {fileID: 1775537089986436927}
   - component: {fileID: 8131279012294300549}
   - component: {fileID: 8279383490038066556}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Item Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
