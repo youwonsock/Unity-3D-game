@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * @brief class Enemy를 상속받은 돌진 공격 몬스터 클래스
+ * @brief class Enemy를 상속받은 원거리 공격 몬스터 클래스
  * @details 현재 coroutine에 사용되는 상수들을 stat으로 변경 예정
  * 
  * @author yws
  * @date last change 2022/07/25
  */
-public class RushEnemy : Enemy
+public class RangeEnemy : Enemy
 {
     #region Fields
 
-    [SerializeField] private BoxCollider attackArea;
+    [SerializeField] private Collider attackArea;
     [SerializeField] private float attackDistance;
 
     #endregion
@@ -23,12 +23,12 @@ public class RushEnemy : Enemy
     #region Funtions
 
     /**
-     * @brief RushEnemy의 돌진공격 코루틴
+     * @brief RangeEnemy의 원거리공격 코루틴
      * 
      * @author yws
      * @date last change 2022/07/25
      */
-    IEnumerator RushAttack()
+    IEnumerator RangeAttack()
     {
         isChase = false;
         canAttack = false;
@@ -55,7 +55,7 @@ public class RushEnemy : Enemy
     }
 
     /**
-     * @brief RushEnemy.cs의 UpdateManager.SubscribeToFixedUpdate 구독 메서드
+     * @brief RangeEnemy.cs의 UpdateManager.SubscribeToFixedUpdate 구독 메서드
      * @details FixedUpdate에서 실행해야하는 작업을 구현해두는 메서드입니다.
      * 
      * @author yws
@@ -67,7 +67,7 @@ public class RushEnemy : Enemy
 
         if (canAttack && targetDistance < attackDistance)
         {
-            StartCoroutine(RushAttack());
+            StartCoroutine(RangeAttack());
         }
     }
 
@@ -90,4 +90,5 @@ public class RushEnemy : Enemy
     }
 
     #endregion
+
 }

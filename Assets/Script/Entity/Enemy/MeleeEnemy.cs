@@ -13,7 +13,7 @@ public class MeleeEnemy : Enemy
 {
     #region Fields
 
-    [SerializeField] private Collider attackArea;
+    [SerializeField] private BoxCollider attackArea;
     [SerializeField] private float attackDistance;
 
     #endregion
