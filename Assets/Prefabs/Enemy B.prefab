@@ -100,7 +100,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5052845572594401124}
   - component: {fileID: 1705220617}
-  - component: {fileID: 1705220615}
   - component: {fileID: 1705220618}
   - component: {fileID: 609788453387235259}
   - component: {fileID: 1705220616}
@@ -110,7 +109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5052845572594401124
 Transform:
   m_ObjectHideFlags: 0
@@ -142,29 +141,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 2.5, z: 2.5}
   m_Center: {x: 0, y: 1.5, z: 0}
---- !u!114 &1705220615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9187343066701982198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b026f33f4e2ac1345af42a4b7a060623, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stat: {fileID: 11400000, guid: b72d1a676e2da344591a484e1ffc4158, type: 2}
-  health: 0
-  target: {fileID: 0}
-  nav: {fileID: 0}
-  mat: {fileID: 0}
-  isChase: 1
-  damage: 10
-  attackCooltime: 3
-  targetDistance: 100
-  attackArea: {fileID: 2576421484543960462}
-  attackDistance: 20
 --- !u!54 &1705220618
 Rigidbody:
   m_ObjectHideFlags: 0
