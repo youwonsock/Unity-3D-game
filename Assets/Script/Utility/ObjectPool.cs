@@ -17,24 +17,31 @@ using UnityEngine;
  * Object Pool에 접근하여 객채를 생성합니다.
  * 
  * @author yws
- * @date 2022/07/17
+ * @date 2022/07/28
  */
 public class ObjectPool : Singleton<ObjectPool>
 {
     public ObjectPool() { }
 
-    public enum BulletType { HandGun, SMG, Missile };
+    public enum BulletType { HandGun, SMG, Missile, BossMissile, BossRock };
 
     #region Fields
 
     [SerializeField] GameObject handGunBulletPrefab;
     [SerializeField] GameObject SMGBulletPrefab;
-    [SerializeField] GameObject MissileBulletPrefab;
-    [SerializeField] private int bulletCount;
+    [SerializeField] GameObject missileBulletPrefab;
+    [SerializeField] GameObject bossMissileBulletPrefab;
+    [SerializeField] GameObject bossRockBulletPrefab;
+
+    [SerializeField] private int playerBulletCount;
+    [SerializeField] private int missileBulletCount;
+    [SerializeField] private int bossBulletCount;
 
     Queue<Bullet> handGunBulletQueue = new Queue<Bullet>();
     Queue<Bullet> SMGBulletQueue = new Queue<Bullet>();
-    Queue<Bullet> MissileBulletQueue = new Queue<Bullet>();
+    Queue<Bullet> missileBulletQueue = new Queue<Bullet>();
+    Queue<Bullet> bossMissileBulletQueue = new Queue<Bullet>();
+    Queue<Bullet> bossRockBulletQueue = new Queue<Bullet>();
 
     #endregion
 
@@ -54,15 +61,37 @@ public class ObjectPool : Singleton<ObjectPool>
      * inspector에서 설정한 총알 수 만큼 각 queue에 총알을 추가합니다.
      * 
      * @author yws
-     * @date last change 2022/07/16
+     * @date last change 2022/07/28
      */
     private void Initialize()
     {
-        for (int i = 0; i < bulletCount; i++)
+        int i = 0;
+        bool flag = false;
+        while (true)
         {
-            handGunBulletQueue.Enqueue(CreateNewObject(BulletType.HandGun));
-            SMGBulletQueue.Enqueue(CreateNewObject(BulletType.SMG));
-            MissileBulletQueue.Enqueue(CreateNewObject(BulletType.Missile));
+            flag = false;
+
+            if (i < playerBulletCount)
+            {
+                handGunBulletQueue.Enqueue(CreateNewObject(BulletType.HandGun));
+                SMGBulletQueue.Enqueue(CreateNewObject(BulletType.SMG));
+                flag = true;
+            }
+            if(i < missileBulletCount)
+            {
+                missileBulletQueue.Enqueue(CreateNewObject(BulletType.Missile));
+                flag = true;
+            }
+            if (i < bossBulletCount)
+            {
+                bossMissileBulletQueue.Enqueue(CreateNewObject(BulletType.BossMissile));
+                bossRockBulletQueue.Enqueue(CreateNewObject(BulletType.BossRock));
+                flag = true;
+            }
+
+            i++;
+            if (!flag)
+                break;
         }
     }
 
@@ -75,18 +104,46 @@ public class ObjectPool : Singleton<ObjectPool>
      * @param[in] bulletType : 생성하는 Bullet의 종류
      * 
      * @author yws
-     * @date last change 2022/07/16
+     * @date last change 2022/07/28
      */
     private Bullet CreateNewObject(BulletType bulletType)
     {
         Bullet newObj;
 
-        if(bulletType == BulletType.HandGun)
-            newObj = Instantiate(handGunBulletPrefab).GetComponent<Bullet>();
-        else if(bulletType == BulletType.SMG)
-            newObj = Instantiate(SMGBulletPrefab).GetComponent<Bullet>();
-        else
-            newObj = Instantiate(MissileBulletPrefab).GetComponent<Bullet>();
+        #region 폐기예정
+        //if(bulletType == BulletType.HandGun)
+        //    newObj = Instantiate(handGunBulletPrefab).GetComponent<Bullet>();
+        //else if(bulletType == BulletType.SMG)
+        //    newObj = Instantiate(SMGBulletPrefab).GetComponent<Bullet>();
+        //else if(bulletType ==BulletType.Missile)
+        //    newObj = Instantiate(missileBulletPrefab).GetComponent<Bullet>();
+        //else if (bulletType == BulletType.BossMissile)
+        //    newObj = Instantiate(bossMissileBulletPrefab).GetComponent<Bullet>();
+        //else
+        //    newObj = Instantiate(bossRockBulletPrefab).GetComponent<Bullet>();
+        #endregion
+
+        switch (bulletType)
+        {
+            case BulletType.HandGun:
+                newObj = Instantiate(handGunBulletPrefab).GetComponent<Bullet>();
+                break;
+            case BulletType.SMG:
+                newObj = Instantiate(SMGBulletPrefab).GetComponent<Bullet>();
+                break;
+            case BulletType.Missile:
+                newObj = Instantiate(missileBulletPrefab).GetComponent<Bullet>();
+                break;
+            case BulletType.BossMissile:
+                newObj = Instantiate(bossMissileBulletPrefab).GetComponent<Bullet>();
+                break;
+            case BulletType.BossRock:
+                newObj = Instantiate(bossRockBulletPrefab).GetComponent<Bullet>();
+                break;
+            default:
+                Debug.Log("ObjectPool.CreateNewObject() is fail");
+                return null;
+        }
 
         newObj.gameObject.SetActive(false);
         newObj.transform.SetParent(transform);
@@ -102,7 +159,7 @@ public class ObjectPool : Singleton<ObjectPool>
      * @param[in] bulletType : Bullet의 종류
      * 
      * @author yws
-     * @date last change 2022/07/16
+     * @date last change 2022/07/28
      */
     public static Bullet GetObject(BulletType bulletType)
     {
@@ -118,7 +175,13 @@ public class ObjectPool : Singleton<ObjectPool>
                 queue = Instance.SMGBulletQueue;
                 break;
             case BulletType.Missile:
-                queue = Instance.MissileBulletQueue;
+                queue = Instance.missileBulletQueue;
+                break;
+            case BulletType.BossMissile:
+                queue = Instance.bossMissileBulletQueue;
+                break;
+            case BulletType.BossRock:
+                queue = Instance.bossRockBulletQueue;
                 break;
             default:
                 Debug.Log("ObjectPool.GetObject() is fail");
@@ -149,7 +212,7 @@ public class ObjectPool : Singleton<ObjectPool>
      * @param[in] bulletType : 반환하는 Bullet의 타입
      * 
      * @author yws
-     * @date last change 2022/07/16
+     * @date last change 2022/07/28
      */
     public static void ReturnObject(Bullet obj, BulletType bulletType)
     {
@@ -166,7 +229,13 @@ public class ObjectPool : Singleton<ObjectPool>
                 Instance.SMGBulletQueue.Enqueue(obj);
                 break;
             case BulletType.Missile:
-                Instance.MissileBulletQueue.Enqueue(obj);
+                Instance.missileBulletQueue.Enqueue(obj);
+                break;
+            case BulletType.BossMissile:
+                Instance.bossMissileBulletQueue.Enqueue(obj);
+                break;
+            case BulletType.BossRock:
+                Instance.bossRockBulletQueue.Enqueue(obj);
                 break;
         }
     }

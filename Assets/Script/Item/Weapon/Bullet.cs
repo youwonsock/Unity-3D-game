@@ -57,7 +57,7 @@ public class Bullet : MonoBehaviour
 
     #region Unity Event
 
-    private void Awake()
+    protected virtual void Awake()
     {
         TryGetComponent<Rigidbody>(out rigid);
 
