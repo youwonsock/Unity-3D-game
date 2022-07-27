@@ -15,5 +15,5 @@ MonoBehaviour:
   damage: 50
   time: 5
   speed: 20
-  bulletType: 3
+  bulletType: 2
   shooter: 1
