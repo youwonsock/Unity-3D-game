@@ -7,14 +7,16 @@ using UnityEngine;
  * @details 
  * 
  * @author yws
- * @date last change 2022/07/15
+ * @date last change 2022/07/28
  */
 public class Bullet : MonoBehaviour
 {
     #region Fields
 
     [SerializeField] BulletData bulletData;
+    [SerializeField] bool isCharging;
     private Rigidbody rigid;
+    private bool isShot;
 
     #endregion
 
@@ -29,13 +31,21 @@ public class Bullet : MonoBehaviour
      * @param[in] firePos : 발사위치
      * 
      * @author yws
-     * @date last change 2022/07/17
+     * @date last change 2022/07/28
      */
     public void SetBullet(Transform firePos)
     {
         transform.position = firePos.position;
         transform.rotation = firePos.rotation;
-        rigid.velocity = firePos.forward * bulletData.Speed;
+
+        if (isCharging)
+        {
+            StartCoroutine(GainPowerTimer());
+            StartCoroutine(GainPower());
+        }
+        else
+            rigid.velocity = firePos.forward * bulletData.Speed;
+
         Invoke(nameof(ReturnBullet), bulletData.Time);    
     }
 
@@ -49,6 +59,47 @@ public class Bullet : MonoBehaviour
     {
         if(this.gameObject.activeSelf)
             ObjectPool.ReturnObject(this, bulletData.BulletType);
+    }
+
+    /**
+     * @brief 충전 시간 계산을 위한 Coroutine
+     * 
+     * @author yws
+     * @date last change 2022/07/28
+     */
+    IEnumerator GainPowerTimer()
+    {
+        float time = Random.Range(2, 3);
+
+        yield return new WaitForSecondsRealtime(time);
+        isShot = true;
+
+        yield break;
+    }
+
+    /**
+     * @brief 충전 후 발사 총알의 충전 Coroutine
+     * @details 랜덤한 시간이 지난 후 총알을 발사합니다.
+     * 
+     * @author yws
+     * @date last change 2022/07/28
+     */
+    IEnumerator GainPower()
+    {
+        float angularPower = 2;
+        float scale = 0.1f;
+
+        while (!isShot)
+        {
+            angularPower += 0.02f;
+            scale += 0.005f;
+            transform.localScale = Vector3.one * scale;
+            rigid.AddTorque(transform.right * angularPower, ForceMode.Acceleration);
+            yield return null;
+        }
+
+        isShot = false;
+        yield break;
     }
 
     #endregion
@@ -65,8 +116,16 @@ public class Bullet : MonoBehaviour
             Debug.Log("bullet rigid is null");
     }
 
+    private void OnEnable()
+    {
+        SetBullet(transform);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        if (isCharging && other.CompareTag("Floor"))
+            return;
+
         if (bulletData.Shooter == Constants.Shooter.Player && other.gameObject.CompareTag("Player"))
             return;
         else if (bulletData.Shooter == Constants.Shooter.Enemy && other.gameObject.CompareTag("Enemy"))

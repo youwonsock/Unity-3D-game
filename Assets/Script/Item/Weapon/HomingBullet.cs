@@ -47,8 +47,6 @@ public class HomingBullet : Bullet
     {
         base.Awake();
 
-        SetBullet(transform);
-
         TryGetComponent<NavMeshAgent>(out nav);
         target = FindObjectOfType<Player>().transform;
     }
