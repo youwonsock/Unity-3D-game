@@ -110,19 +110,6 @@ public class ObjectPool : Singleton<ObjectPool>
     {
         Bullet newObj;
 
-        #region Æó±â¿¹Á¤
-        //if(bulletType == BulletType.HandGun)
-        //    newObj = Instantiate(handGunBulletPrefab).GetComponent<Bullet>();
-        //else if(bulletType == BulletType.SMG)
-        //    newObj = Instantiate(SMGBulletPrefab).GetComponent<Bullet>();
-        //else if(bulletType ==BulletType.Missile)
-        //    newObj = Instantiate(missileBulletPrefab).GetComponent<Bullet>();
-        //else if (bulletType == BulletType.BossMissile)
-        //    newObj = Instantiate(bossMissileBulletPrefab).GetComponent<Bullet>();
-        //else
-        //    newObj = Instantiate(bossRockBulletPrefab).GetComponent<Bullet>();
-        #endregion
-
         switch (bulletType)
         {
             case BulletType.HandGun:

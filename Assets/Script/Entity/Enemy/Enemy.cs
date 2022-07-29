@@ -17,9 +17,9 @@ public class Enemy : Entity
 {
     #region Fields
 
-    [SerializeField] private Transform target; // find말고 다른 방법?
-    [SerializeField] private NavMeshAgent nav;
-    [SerializeField] private Material mat;
+    [SerializeField] private MeshRenderer[] meshs;
+    [SerializeField] protected NavMeshAgent nav;
+    [SerializeField] protected Transform target; // find말고 다른 방법?
     [SerializeField] protected bool isChase;  // 현재는 인스팩터에서 수동으로 추적 시작!
     protected bool canAttack = true;
 
@@ -27,6 +27,7 @@ public class Enemy : Entity
     [SerializeField] protected int damage;
     [SerializeField] protected float attackCooltime;
     [SerializeField] protected float targetDistance = 100;
+    [SerializeField] protected float attackDistance;
     //scriptable object로 대체 예정
 
     #endregion
@@ -67,18 +68,20 @@ public class Enemy : Entity
     IEnumerator OnDamagedCoroutine()
     {
         var wfs = new WaitForSecondsRealtime(0.3f);
-        mat.color = Color.red;
+        foreach (MeshRenderer mesh in meshs)
+            mesh.material.color = Color.red;
 
         yield return wfs;
 
         if (Health > 0)
         {
-            mat.color = Color.white;
+            foreach (MeshRenderer mesh in meshs)
+                mesh.material.color = Color.white;
         }
         else
         {
-            mat.color = Color.gray;
-            Destroy(gameObject, 4);
+            foreach (MeshRenderer mesh in meshs)
+                mesh.material.color = Color.gray;
         }
 
         yield break;
@@ -147,7 +150,7 @@ public class Enemy : Entity
         TryGetComponent<EntityMovement>(out movement);
         TryGetComponent<Rigidbody>(out rigid);
         TryGetComponent<NavMeshAgent>(out nav);
-        mat = GetComponentInChildren<MeshRenderer>().material;
+        meshs = GetComponentsInChildren<MeshRenderer>();
         transform.GetChild(0).TryGetComponent<Animator>(out animator);
 
         target = FindObjectOfType<Player>().transform;

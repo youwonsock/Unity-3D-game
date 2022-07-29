@@ -14,7 +14,6 @@ public class MeleeEnemy : Enemy
     #region Fields
 
     [SerializeField] private BoxCollider attackArea;
-    [SerializeField] private float attackDistance;
 
     #endregion
 
@@ -23,7 +22,7 @@ public class MeleeEnemy : Enemy
     #region Funtions
 
     /**
-     * @brief MeleeEnemy의 근접공격 코루틴
+     * @brief MeleeEnemy의 근접공격 Coroutine
      * 
      * @author yws
      * @date last change 2022/07/23

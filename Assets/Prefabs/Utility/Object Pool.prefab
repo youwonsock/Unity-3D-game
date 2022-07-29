@@ -47,8 +47,8 @@ MonoBehaviour:
   handGunBulletPrefab: {fileID: 8366169563168941745, guid: 52bdf6abc9b73984984dbf0dad6875f4, type: 3}
   SMGBulletPrefab: {fileID: 8896818366867083398, guid: ce3be6afe1e39a447b5f8e808ff6c54c, type: 3}
   missileBulletPrefab: {fileID: 2165108516895858681, guid: 0f88f6fa031bfad4abbdf2d05070cf29, type: 3}
-  bossMissileBulletPrefab: {fileID: 0}
-  bossRockBulletPrefab: {fileID: 0}
+  bossMissileBulletPrefab: {fileID: 7285240484799690175, guid: d100b32a8a6cd9347836b0bc4ff28aea, type: 3}
+  bossRockBulletPrefab: {fileID: 3315789115732939134, guid: 6dc5038ff2f01e943aba00e3e72d8edb, type: 3}
   playerBulletCount: 50
   missileBulletCount: 10
   bossBulletCount: 5

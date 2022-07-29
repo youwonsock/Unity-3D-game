@@ -13,8 +13,6 @@ public class RangeEnemy : Enemy
 {
     #region Fields
 
-    [SerializeField] private float attackDistance;
-
     #endregion
 
 
@@ -22,13 +20,14 @@ public class RangeEnemy : Enemy
     #region Funtions
 
     /**
-     * @brief RangeEnemy의 원거리공격 코루틴
+     * @brief RangeEnemy의 원거리공격 Coroutine
      * 
      * @author yws
      * @date last change 2022/07/25
      */
     IEnumerator RangeAttack()
     {
+        //추적 종료
         isChase = false;
         canAttack = false;
 
@@ -36,12 +35,14 @@ public class RangeEnemy : Enemy
         animator.SetBool("isWalk", false);
         yield return new WaitForSecondsRealtime(1f);
 
+        //공격 시작
         animator.SetBool("isAttack", true);
         yield return new WaitForSecondsRealtime(0.7f);// 발사 시 잠시 멈춤
         ObjectPool.GetObject(ObjectPool.BulletType.Missile).SetBullet(transform);
         animator.SetBool("isAttack", false);
         
-        isChase = true;//다시 추적 시작
+        //공격 종료 및 추적 시작
+        isChase = true;
         animator.SetBool("isWalk", true);
 
         yield return new WaitForSecondsRealtime(attackCooltime);

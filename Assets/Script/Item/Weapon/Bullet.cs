@@ -69,7 +69,7 @@ public class Bullet : MonoBehaviour
      */
     IEnumerator GainPowerTimer()
     {
-        float time = Random.Range(2, 3);
+        float time = Random.Range(1.5f, 2.5f);
 
         yield return new WaitForSecondsRealtime(time);
         isShot = true;
@@ -92,7 +92,7 @@ public class Bullet : MonoBehaviour
         while (!isShot)
         {
             angularPower += 0.02f;
-            scale += 0.005f;
+            scale += 0.002f;
             transform.localScale = Vector3.one * scale;
             rigid.AddTorque(transform.right * angularPower, ForceMode.Acceleration);
             yield return null;

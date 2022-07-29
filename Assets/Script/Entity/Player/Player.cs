@@ -340,7 +340,7 @@ public class Player : Entity
     }
 
     /**
-     * @brief player의 이동가능 여부를 검사하기 위한 변수인 CanMove설정 코루틴
+     * @brief player의 이동가능 여부를 검사하기 위한 변수인 CanMove설정 Coroutine
      * @details canMove를 false로 설정 후\n
      * 매개변수인 time만큼의 시간이 지난 뒤 CanMove를 True로 바꾸어 이동이 가능해집니다.
      * 

@@ -58,11 +58,13 @@ public abstract class Entity : MonoBehaviour, IDamageAble
             if (!isDead && health < 1)
             {
                 isDead = true;
+                StopAllCoroutines();
+
                 if (OnDeath != null)
                     OnDeath();
-            }
 
-            Debug.Log("this : "+ this.gameObject+" : "+health);
+                Destroy(gameObject, 4);
+            }
         }
     }
 
