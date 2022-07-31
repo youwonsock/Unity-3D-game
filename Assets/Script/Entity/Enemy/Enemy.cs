@@ -118,7 +118,21 @@ public class Enemy : Entity
             rigid.angularVelocity = Vector3.zero;
             targetDistance = Vector3.Distance(target.position, transform.position);
         }
+        if (canAttack && targetDistance < attackDistance)
+        {
+            Attack();
+        }
     }
+
+    /**
+     * @brief Enemy의 공격 메서드
+     * @details 각 Enemy의 공격을 구현하는 메서드입니다.\n
+     * 자식 클래스에서 override하여 공격을 구현합니다.
+     * 
+     * @author yws
+     * @date last change 2022/08/01
+     */
+    protected virtual void Attack() { }
 
     /**
      * @brief Entity의 OnDeath 이벤트에 등록하는 메서드

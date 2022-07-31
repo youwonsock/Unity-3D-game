@@ -51,23 +51,16 @@ public class RangeEnemy : Enemy
         yield break;
     }
 
-    /**
-     * @brief RangeEnemy.cs의 UpdateManager.SubscribeToFixedUpdate 구독 메서드
-     * @details FixedUpdate에서 실행해야하는 작업을 구현해두는 메서드입니다.
+    /**@brief Enemy의 Attack를 override한 메서드
+     * @details Enemy의 Attack를 자식클래스에서 override하여 각 Enemy의 공격을 구현합니다.
      * 
      * @author yws
-     * @date last change 2022/07/25
+     * @date last change 2022/08/01
      */
-    protected override void OnFixedUpdateWork()
+    protected override void Attack()
     {
-        base.OnFixedUpdateWork();
-
-        if (canAttack && targetDistance < attackDistance)
-        {
-            StartCoroutine(RangeAttack());
-        }
+        StartCoroutine(RangeAttack());
     }
-
     #endregion
 
 

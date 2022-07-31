@@ -57,7 +57,7 @@ public class Boss : Enemy
      * @author yws
      * @date last change 2022/07/30
      */
-    IEnumerator Attack()
+    IEnumerator BossPattern()
     {
         yield return new WaitForSecondsRealtime(attackCooltime);
 
@@ -113,7 +113,7 @@ public class Boss : Enemy
         nav.isStopped = true;
         this.gameObject.layer = 9;
 
-        StartCoroutine(Attack());
+        StartCoroutine(BossPattern());
         yield break;
     }
 
@@ -132,7 +132,7 @@ public class Boss : Enemy
         yield return new WaitForSecondsRealtime(3f);
 
         isLookPlayer = true;
-        StartCoroutine(Attack());
+        StartCoroutine(BossPattern());
         yield break;
     }
 
@@ -154,7 +154,7 @@ public class Boss : Enemy
 
         yield return new WaitForSecondsRealtime(2.5f);
 
-        StartCoroutine(Attack());
+        StartCoroutine(BossPattern());
         yield break;
     }
 
@@ -176,7 +176,7 @@ public class Boss : Enemy
 
         UpdateManager.SubscribeToUpdate(OnUpdateWork);
 
-        StartCoroutine(Attack());
+        StartCoroutine(BossPattern());
     }
 
     protected override void OnDisable()
