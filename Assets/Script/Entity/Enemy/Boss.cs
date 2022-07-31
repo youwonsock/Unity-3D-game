@@ -61,7 +61,7 @@ public class Boss : Enemy
     {
         yield return new WaitForSecondsRealtime(attackCooltime);
 
-        switch(Random.Range(4,5))
+        switch(Random.Range(0,5))
         {
             case 0:
             case 1:
