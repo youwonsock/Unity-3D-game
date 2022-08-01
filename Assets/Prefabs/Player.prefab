@@ -190,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 11400000, guid: 65c6af1d8ca139648af1d61fd6d9b795, type: 2}
   health: 0
-  coin: 0
+  coin: 5000
   maxGrenades: 4
   grenades: 0
 --- !u!114 &1581103112

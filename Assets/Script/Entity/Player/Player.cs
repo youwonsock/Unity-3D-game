@@ -85,6 +85,7 @@ public class Player : Entity
         set
         {
             coin = value;
+            coin = Mathf.Clamp(value, 0,Constants.INF);
         }
     }
 
@@ -133,6 +134,33 @@ public class Player : Entity
         }
     }
 
+    /**
+     * @brief interactionInput Getter\n
+     * 
+     * @author yws
+     * @date last change 2022/08/02
+     */
+    public bool InteractionInput { get { return interactionInput; } }
+
+
+    /**
+     * @brief CanMove Property\n
+     * 
+     * @author yws
+     * @date last change 2022/08/02
+     */
+    public bool CanMove
+    {
+        get
+        {
+            return canMove;
+        }
+        set
+        {
+            canMove = value;
+        }
+    }
+
     #endregion
 
 
@@ -150,10 +178,14 @@ public class Player : Entity
      * @author yws
      * @date last change 2022/07/07
      */
-    public bool GetWeapon(Weapon.WeaponType itemValue)
+    public bool GetWeapon(Weapon.WeaponType itemValue, bool autoGet = false)
     {
-         return weapon.GetWeapon(itemValue, interactionInput);
+        if(!autoGet)
+            return weapon.GetWeapon(itemValue, interactionInput);
+        else
+            return weapon.GetWeapon(itemValue, true);
     }
+
 
     //--------------------------private-------------------------------------
 
@@ -183,12 +215,12 @@ public class Player : Entity
     {
         if (canMove)
         {
+            interactionInput = input.GetInteractInput();
             nomalVec = input.GetNormalizedVec();
             attackInput = input.GetAttackInput();
             dodgeInput = input.GetDodgeInput();
             jumpInput = input.GetJumpInput();
             runInput = input.GetRunInput();
-            interactionInput = input.GetInteractInput();
             swapInput = input.GetSwapInput();
             reloadInput = input.GetReloadInput();
             GrenadeInput = input.GetGrenadeInput();
