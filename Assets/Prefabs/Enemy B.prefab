@@ -155,7 +155,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &609788453387235259
 MonoBehaviour:
@@ -171,15 +171,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 11400000, guid: b72d1a676e2da344591a484e1ffc4158, type: 2}
   health: 0
-  target: {fileID: 0}
+  meshs: []
   nav: {fileID: 0}
-  mat: {fileID: 0}
+  target: {fileID: 0}
   isChase: 1
   damage: 10
   attackCooltime: 3
   targetDistance: 100
-  attackArea: {fileID: 562178565}
   attackDistance: 20
+  attackArea: {fileID: 562178565}
 --- !u!195 &1705220616
 NavMeshAgent:
   m_ObjectHideFlags: 0
