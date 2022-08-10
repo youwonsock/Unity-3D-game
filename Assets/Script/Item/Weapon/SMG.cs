@@ -14,7 +14,6 @@ public class SMG : Weapon
 
     #region Fields
     [SerializeField] int magSize;
-    [SerializeField] int currentMag;
     [SerializeField] float reloadTime;
 
     [SerializeField] float bulletSpeed;

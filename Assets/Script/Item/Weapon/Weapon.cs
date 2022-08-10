@@ -24,6 +24,7 @@ public class Weapon : Item
     [SerializeField] private int maxAmmo;
     [SerializeField] protected float damage;
     [SerializeField] protected float rate;
+    [SerializeField] protected int currentMag;
     protected bool fireReady = true;
 
     #endregion
@@ -31,6 +32,24 @@ public class Weapon : Item
 
 
     #region Property
+
+    /**
+     * @brief currentMag Property
+     * 
+     * @author yws
+     * @date last change 2022/08/11
+     */
+    public int CurrentMag
+    {
+        get
+        {
+            return currentMag;
+        }
+        set
+        {
+            currentMag = Mathf.Clamp(value, 0, currentMag);
+        }
+    }
 
     /**
      * @brief ammo Property
