@@ -31,6 +31,8 @@ public class PlayerWeapon : MonoBehaviour
 
     public float CastingTime { get { return castingTime; } }
 
+    public bool[] HasWeapon { get { return hasWeapon; } }
+
     #endregion
 
 
@@ -131,7 +133,6 @@ public class PlayerWeapon : MonoBehaviour
 
     /**
      * @brief 재장전 메서드
-     * @details 
      * 
      * @return bool
      * 
@@ -141,6 +142,39 @@ public class PlayerWeapon : MonoBehaviour
     public bool Reload()
     {
         return weapons[currentWeaponIdx].Reload();
+    }
+
+    /**
+     * @brief 현재 무기 타입 반환 메서드
+     * 
+     * @author yws
+     * @data last change 2022/0811
+     */
+    public Weapon.WeaponType GetCurrentWeaponType()
+    {
+        return weapons[currentWeaponIdx].weaponType;
+    }
+
+    /**
+     * @brief 현재 무기 탄약 반환 메서드
+     * 
+     * @author yws
+     * @data last change 2022/0811
+     */
+    public int GetCurrentAmmo()
+    {
+        return weapons[currentWeaponIdx].CurrentMag;
+    }
+
+    /**
+     * @brief 현재 무기 최대 탄약 반환 메서드
+     * 
+     * @author yws
+     * @data last change 2022/0811
+     */
+    public int GetMaxAmmo()
+    {
+        return weapons[currentWeaponIdx].Ammo;
     }
 
     #endregion

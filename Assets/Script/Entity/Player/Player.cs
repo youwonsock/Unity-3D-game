@@ -84,7 +84,6 @@ public class Player : Entity
         }
         set
         {
-            coin = value;
             coin = Mathf.Clamp(value, 0,Constants.INF);
         }
     }
@@ -161,6 +160,40 @@ public class Player : Entity
         }
     }
 
+    //-------------------------For UI------------------------------------------------
+
+    /**
+     * @brief 현재 무기 타입 반환 Property\n
+     * 
+     * @author yws
+     * @date last change 2022/08/11
+     */
+    public Weapon.WeaponType GetCurrentWeaponType { get { return weapon.GetCurrentWeaponType(); } }
+
+    /**
+     * @brief 현재 무기 탄약 반환 Property\n
+     * 
+     * @author yws
+     * @date last change 2022/08/11
+     */
+    public int CurrentWeaponAmmo { get { return weapon.GetCurrentAmmo(); } }
+
+    /**
+     * @brief 현재 무기 최대 탄약 반환 Property\n
+     * 
+     * @author yws
+     * @date last change 2022/08/11
+     */
+    public int CurrentWeaponMaxAmmo { get { return weapon.GetMaxAmmo(); } }
+
+    /**
+     * @brief 현재 가지고 있는 무기 배열 Property\n
+     * 
+     * @author yws
+     * @date last change 2022/08/11
+     */
+    public bool[] HasWeapon { get { return weapon.HasWeapon; } }
+
     #endregion
 
 
@@ -185,7 +218,6 @@ public class Player : Entity
         else
             return weapon.GetWeapon(itemValue, true);
     }
-
 
     //--------------------------private-------------------------------------
 
