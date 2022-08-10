@@ -463,7 +463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2201311154656363020
 RectTransform:
   m_ObjectHideFlags: 0
@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 2201311154758131048}
   - component: {fileID: 2201311154758131051}
   m_Layer: 5
-  m_Name: Score Text
+  m_Name: Max Score Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -747,7 +747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2201311154804048554
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1177,6 +1177,7 @@ GameObject:
   - component: {fileID: 2201311154937077157}
   - component: {fileID: 2201311154937077156}
   - component: {fileID: 2201311154937077159}
+  - component: {fileID: 1958227415}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1267,6 +1268,38 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 8191
+--- !u!114 &1958227415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201311154937077158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b437c952b1d4a42b232ab4d0f07399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuCam: {fileID: 0}
+  gameCam: {fileID: 0}
+  menuPanel: {fileID: 2201311154804048549}
+  gamePanel: {fileID: 2201311154656363023}
+  maxScoreTxt: {fileID: 2201311154758131051}
+  scoreTxt: {fileID: 2201311156576279905}
+  stageTxt: {fileID: 2201311156092499370}
+  playTimeTxt: {fileID: 2201311156043834512}
+  playerHealthTxt: {fileID: 2201311155537493286}
+  playerAmmoTxt: {fileID: 2201311155057073269}
+  playerCoinTxt: {fileID: 2201311156643092147}
+  enemyATxt: {fileID: 2201311154953531510}
+  enemyBTxt: {fileID: 2201311155999395522}
+  enemyCTxt: {fileID: 2201311155021315222}
+  weapon1Img: {fileID: 2201311154831068504}
+  weapon2Img: {fileID: 2201311155554918878}
+  weapon3Img: {fileID: 2201311156361170250}
+  weapon4Img: {fileID: 2201311156282114250}
+  bossHealthGroup: {fileID: 2201311154959350943}
+  bossHealrhBar: {fileID: 2201311154972218027}
 --- !u!1 &2201311154953531504
 GameObject:
   m_ObjectHideFlags: 0
@@ -3069,7 +3102,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2201311155615106983}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GameStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2201311155617031817
 GameObject:
   m_ObjectHideFlags: 0
@@ -4716,7 +4761,7 @@ GameObject:
   - component: {fileID: 2201311156092499371}
   - component: {fileID: 2201311156092499370}
   m_Layer: 5
-  m_Name: Score Text
+  m_Name: Stage Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
