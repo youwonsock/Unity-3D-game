@@ -25,6 +25,7 @@ public class Enemy : Entity
 
     //scriptable object로 대체 예정
     [SerializeField] protected int damage;
+    [SerializeField] protected int itemCreateProbability;
     [SerializeField] protected float attackCooltime;
     [SerializeField] protected float targetDistance = 100;
     [SerializeField] protected float attackDistance;
@@ -147,6 +148,8 @@ public class Enemy : Entity
         animator.SetTrigger("doDie");
         isChase = false;
         nav.enabled = false;
+
+        ItemManager.DropItem(itemCreateProbability, this.transform);
     }
 
     #endregion
@@ -181,18 +184,12 @@ public class Enemy : Entity
     {
         UpdateManager.SubscribeToUpdate(OnUpdateWork);
         UpdateManager.SubscribeToFixedUpdate(OnFixedUpdateWork);
-
-        OnDeath += OnDeathWork;
-
     }
 
     protected virtual void OnDisable()
     {
         UpdateManager.UnsubscribeFromUpdate(OnUpdateWork);
         UpdateManager.UnsubscribeFromFixedUpdate(OnFixedUpdateWork);
-
-        OnDeath -= OnDeathWork;
-
     }
 
     #endregion

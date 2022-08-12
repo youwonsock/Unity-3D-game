@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -85,6 +84,12 @@ public class Store : MonoBehaviour
 
 
     #region Unity Event
+
+    private void OnEnable()
+    {
+        GameManager.Instance.StartStageEvent += () => transform.parent.gameObject.SetActive(false);
+        GameManager.Instance.EndStageEvent += () => transform.parent.gameObject.SetActive(true);
+    }
 
     private void OnTriggerEnter(Collider other)
     {

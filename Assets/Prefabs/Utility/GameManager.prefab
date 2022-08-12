@@ -48,9 +48,16 @@ MonoBehaviour:
   objectPool: {fileID: 0}
   player: {fileID: 0}
   boss: {fileID: 0}
-  stage: 0
-  playTime: 0
-  isBattle: 0
-  enemyCountA: 0
-  enemyCountB: 0
-  enemyCountC: 0
+  enemySpawnZones:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemies:
+  - {fileID: 328409505970683906, guid: 464cc7c4f7ea10b47a36d7848aa9ca9a, type: 3}
+  - {fileID: 9187343066701982198, guid: 4198e2587d1fcca4cb87c16c3cfed34d, type: 3}
+  - {fileID: 3320669544841490502, guid: 06d503bba93001142b96e3510906db62, type: 3}
+  - {fileID: 7988094277207216310, guid: 83dab506297948d4d8d34c4fe12431ee, type: 3}
+  items: []
+  ammo: {fileID: 0}
+  heart: {fileID: 0}

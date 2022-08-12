@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 /**
@@ -13,25 +15,30 @@ public class GameManager : Singleton<GameManager>
 
     #region Fields
 
-    [Header ("Set in inspector")]
+    [Header ("in Game Objects")]
     [SerializeField] UiManager uiManager;
     [SerializeField] private ObjectPool objectPool;
     [SerializeField] private Player player;
     [SerializeField] private Boss boss;
 
-    [Header ("Set in Script")]
-    [SerializeField]private int score;
-    [SerializeField] private int stage;
-    [SerializeField] private float playTime;
-    [SerializeField] private bool isBattle;
-    [SerializeField] private int enemyCountA;
-    [SerializeField] private int enemyCountB;
-    [SerializeField] private int enemyCountC;
+    [Header ("Prefabs ")]
+    [SerializeField] private Transform[] enemySpawnZones;
+    [SerializeField] GameObject[] enemies;
+    [SerializeField] GameObject[] items;
 
+    private int score;
+    private int stage;
+    private float playTime;
+    private bool isBattle;
+    private int enemyCountA;
+    private int enemyCountB;
+    private int enemyCountC;
     private bool isGameStart;
 
-    #endregion
+    public event Action StartStageEvent;
+    public event Action EndStageEvent;
 
+    #endregion
 
 
     #region Property
@@ -77,7 +84,15 @@ public class GameManager : Singleton<GameManager>
      * @date last change 2022/08/11
      */
     public bool IsGameStart { get { return isGameStart; } }
-    
+
+    /**
+     * @brief Enemy Drop Items Getter\n
+     * 
+     * @author yws
+     * @date last change 2022/08/11
+     */
+    public GameObject[] Items { get { return items; } }
+
     #endregion
 
 
@@ -100,6 +115,45 @@ public class GameManager : Singleton<GameManager>
         uiManager.SetupGameUI();
 
         isGameStart = true;
+    }
+
+    /**
+     * @brief Stage 시작 시 호출되는 메서드
+     * 
+     * @author yws
+     * @date last change 2022/08/13
+     */
+    public void StartStage()
+    {
+        StartStageEvent();
+        stage++;
+        isBattle = true;
+
+        StartCoroutine(temp());
+    }
+
+    /**
+     * @brief Stage 종료 시 호출되는 메서드
+     * 
+     * @author yws
+     * @date last change 2022/08/13
+     */
+    public void EndStage()
+    {
+        player.transform.position = Vector3.up * 0.8f;
+        EndStageEvent();
+        isBattle = false;
+
+
+    }
+
+
+
+    IEnumerator temp()
+    {
+        yield return new WaitForSecondsRealtime(5);
+
+        EndStage();
     }
 
     //--------------------------private--------------------------------------
