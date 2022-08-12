@@ -216,9 +216,11 @@ MonoBehaviour:
   target: {fileID: 0}
   isChase: 1
   damage: 0
+  itemCreateProbability: 100
   attackCooltime: 1
   targetDistance: 100
   attackDistance: 0
+  type: 3
   missilePortA: {fileID: 1033583166}
   missilePortB: {fileID: 1578633271}
   jumpAttackArea: {fileID: 295206897}

@@ -9,6 +9,8 @@ using UnityEngine.UI;
  * @author yws
  * @date last change 2022/08/02
  */
+
+// 최대값일 때 구매 가능한 버그 존재!
 public class Store : MonoBehaviour
 {
     #region Fields
@@ -105,8 +107,11 @@ public class Store : MonoBehaviour
                 other.TryGetComponent<Player>(out enterPlayer);
             else
             {
-                if(enterPlayer.InteractionInput && !uiGroup.activeSelf)
+                if (enterPlayer.InteractionInput && !uiGroup.activeSelf)
+                {
+                    enterPlayer.CanMove = false;
                     SetStoreUi();
+                }
             }
         }
     }

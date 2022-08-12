@@ -77,9 +77,10 @@ public class UiManager : MonoBehaviour
      * @author yws
      * @date last change 2022/08/11
      */
-    public void SetBossUI(Boss boss)
+    public void SetBossHealthBar(Boss boss)
     {
-        bossHealrhBar.localScale = new Vector3(boss.Health / boss.MaxHealth, 1, 1);
+        if (boss != null)
+            bossHealrhBar.localScale = new Vector3(boss.Health / boss.MaxHealth, 1, 1);
     }
 
     /**
@@ -137,6 +138,18 @@ public class UiManager : MonoBehaviour
         enemyBTxt.text = enemyBCnt.ToString();
         enemyCTxt.text = enemyCCnt.ToString();
     }
+
+    /**
+     * @brief BossHealthGroup on/off ¸Þ¼­µå
+     * 
+     * @author yws
+     * @date last change 2022/08/13
+     */
+    public void SetBossUI(bool value)
+    {
+        bossHealthGroup.gameObject.SetActive(value);
+    }
+
 
     //--------------------------private--------------------------------------
 

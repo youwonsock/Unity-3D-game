@@ -13,6 +13,8 @@ using UnityEngine.AI;
  * @author yws
  * @date last change 2022/07/24
  */
+public enum EnemyType { A=0, B, C}
+
 public class Enemy : Entity
 {
     #region Fields
@@ -29,6 +31,7 @@ public class Enemy : Entity
     [SerializeField] protected float attackCooltime;
     [SerializeField] protected float targetDistance = 100;
     [SerializeField] protected float attackDistance;
+    public EnemyType type;
     //scriptable object로 대체 예정
 
     #endregion
@@ -36,6 +39,14 @@ public class Enemy : Entity
 
 
     #region Property
+
+    /**
+     * @brief Traget property
+     * 
+     * @author yws
+     * @date last change 2022/08/13
+     */
+    public Transform Target { get { return target; } set { target = value; } }
 
     #endregion
 
@@ -150,6 +161,19 @@ public class Enemy : Entity
         nav.enabled = false;
 
         ItemManager.DropItem(itemCreateProbability, this.transform);
+
+        switch (type)
+        {
+            case EnemyType.A:
+                GameManager.Instance.EnemyCountA--;
+                break;
+            case EnemyType.B:
+                GameManager.Instance.EnemyCountB--;
+                break;
+            case EnemyType.C:
+                GameManager.Instance.EnemyCountC--;
+                break;
+        }
     }
 
     #endregion
@@ -170,8 +194,6 @@ public class Enemy : Entity
         meshs = GetComponentsInChildren<MeshRenderer>();
         transform.GetChild(0).TryGetComponent<Animator>(out animator);
 
-        target = FindObjectOfType<Player>().transform;
-
         // OnDeath Event 추가
         OnDeath += OnDeathWork;
 
@@ -184,12 +206,15 @@ public class Enemy : Entity
     {
         UpdateManager.SubscribeToUpdate(OnUpdateWork);
         UpdateManager.SubscribeToFixedUpdate(OnFixedUpdateWork);
+
     }
 
     protected virtual void OnDisable()
     {
         UpdateManager.UnsubscribeFromUpdate(OnUpdateWork);
         UpdateManager.UnsubscribeFromFixedUpdate(OnFixedUpdateWork);
+
+        OnDeath -= OnDeathWork;
     }
 
     #endregion

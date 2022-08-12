@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /**
@@ -27,13 +28,14 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] GameObject[] items;
 
     private int score;
-    private int stage;
+    [SerializeField]private int stage;
     private float playTime;
-    private bool isBattle;
     private int enemyCountA;
     private int enemyCountB;
     private int enemyCountC;
     private bool isGameStart;
+    private bool isBattle;
+    private List<int> enemyIdxList = new List<int>();
 
     public event Action StartStageEvent;
     public event Action EndStageEvent;
@@ -89,9 +91,33 @@ public class GameManager : Singleton<GameManager>
      * @brief Enemy Drop Items Getter\n
      * 
      * @author yws
-     * @date last change 2022/08/11
+     * @date last change 2022/08/13
      */
     public GameObject[] Items { get { return items; } }
+
+    /**
+     * @brief EnemyCountA Property\n
+     * 
+     * @author yws
+     * @date last change 2022/08/13
+     */
+    public int EnemyCountA { get { return enemyCountA; } set { enemyCountA = value; } }
+
+    /**
+     * @brief EnemyCountA Property\n
+     * 
+     * @author yws
+     * @date last change 2022/08/13
+     */
+    public int EnemyCountB { get { return enemyCountB; } set { enemyCountB = value; } }
+
+    /**
+     * @brief EnemyCountA Property\n
+     * 
+     * @author yws
+     * @date last change 2022/08/13
+     */
+    public int EnemyCountC { get { return enemyCountC; } set { enemyCountC = value; } }
 
     #endregion
 
@@ -129,7 +155,10 @@ public class GameManager : Singleton<GameManager>
         stage++;
         isBattle = true;
 
-        StartCoroutine(temp());
+        for(int i = 0; i < enemySpawnZones.Length; i++)
+            enemySpawnZones[i].gameObject.SetActive(true);
+
+        StartCoroutine(CreateEnemy());
     }
 
     /**
@@ -140,20 +169,13 @@ public class GameManager : Singleton<GameManager>
      */
     public void EndStage()
     {
+
+        for (int i = 0; i < enemySpawnZones.Length; i++)
+            enemySpawnZones[i].gameObject.SetActive(false);
+
+        uiManager.SetBossUI(false);
         player.transform.position = Vector3.up * 0.8f;
         EndStageEvent();
-        isBattle = false;
-
-
-    }
-
-
-
-    IEnumerator temp()
-    {
-        yield return new WaitForSecondsRealtime(5);
-
-        EndStage();
     }
 
     //--------------------------private--------------------------------------
@@ -169,10 +191,86 @@ public class GameManager : Singleton<GameManager>
         if (isGameStart)
         {
             uiManager.SetPlayerUI(player);
-            uiManager.SetBossUI(boss);
+            uiManager.SetBossHealthBar(boss);
             uiManager.SetEnemyUI(enemyCountA, enemyCountB, enemyCountC);
             uiManager.SetUtilityUI();
         }
+    }
+
+    /**
+     * @brief Update 구독 메서드
+     * 
+     * @author yws
+     * @date last change 2022/08/13
+     */
+    private void OnUpdateWork()
+    {
+        //게임 시간 기록
+        playTime += Time.deltaTime;
+
+        // Stage 클리어 여부 확인
+        if (isBattle && ((enemyCountA + enemyCountB + enemyCountC) == 0) && boss == null)
+        {
+            Invoke(nameof(EndStage), 5f);
+            isBattle = false;
+        }
+    }
+
+    /**
+     * @brief Enemy 생성 Coroutine
+     * 
+     * @author yws
+     * @date last change 2022/08/13
+     */
+    IEnumerator CreateEnemy()
+    {
+        var wfs = new WaitForSecondsRealtime(1);
+
+        // 생성할 Enemy를 Random으로 결정 후 Idx를 List에 삽입
+        for (int i = 0; i < stage + 2; i++)
+            enemyIdxList.Add(UnityEngine.Random.Range(0,3));
+
+        //임시 Enemy Component 저장소
+        Enemy enemy;
+
+        // Enemy 생성 시작
+        while(enemyIdxList.Count > 0)
+        {
+            int createZoneIdx = UnityEngine.Random.Range(0,4);
+
+            // 생성 및 리스트에서 값 제거
+            GameObject instantiateEnemy = Instantiate(enemies[enemyIdxList[0]], enemySpawnZones[createZoneIdx].position, Quaternion.identity);
+            enemyIdxList.RemoveAt(0);
+
+            // Component를 얻어온 후 값 설정
+            instantiateEnemy.TryGetComponent<Enemy>(out enemy);
+            enemy.Target = player.transform;
+
+            switch (enemy.type)
+            {
+                case EnemyType.A:
+                    enemyCountA++;
+                    break;
+                case EnemyType.B:
+                    enemyCountB++;
+                    break;
+                case EnemyType.C:
+                    enemyCountC++;
+                    break;
+            }
+
+            yield return wfs;
+        }
+
+        // 5 스테이지마다 boss 생성
+        if (stage % 5 == 0)
+        {
+            uiManager.SetBossUI(true);
+            Instantiate(enemies[3], enemySpawnZones[2].position, Quaternion.identity).TryGetComponent<Boss>(out boss);
+            boss.Target = player.transform;
+        }
+        
+        yield break;
     }
 
     #endregion
@@ -181,19 +279,16 @@ public class GameManager : Singleton<GameManager>
 
     #region Unity Event
 
-    private void Update()
-    {
-        playTime += Time.deltaTime;
-    }
-
     private void OnEnable()
     {
         UpdateManager.SubscribeToLateUpdate(SetGameUI);
+        UpdateManager.SubscribeToUpdate(OnUpdateWork);
     }
 
     private void OnDisable()
     {
         UpdateManager.UnsubscribeFromLateUpdate(SetGameUI);
+        UpdateManager.UnsubscribeFromUpdate(OnUpdateWork);
     }
 
     #endregion
