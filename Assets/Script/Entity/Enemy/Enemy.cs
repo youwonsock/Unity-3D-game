@@ -13,6 +13,8 @@ using UnityEngine.AI;
  * @author yws
  * @date last change 2022/07/24
  */
+public enum EnemyType { A=0, B, C}
+
 public class Enemy : Entity
 {
     #region Fields
@@ -25,9 +27,11 @@ public class Enemy : Entity
 
     //scriptable object로 대체 예정
     [SerializeField] protected int damage;
+    [SerializeField] protected int itemCreateProbability;
     [SerializeField] protected float attackCooltime;
     [SerializeField] protected float targetDistance = 100;
     [SerializeField] protected float attackDistance;
+    public EnemyType type;
     //scriptable object로 대체 예정
 
     #endregion
@@ -35,6 +39,14 @@ public class Enemy : Entity
 
 
     #region Property
+
+    /**
+     * @brief Traget property
+     * 
+     * @author yws
+     * @date last change 2022/08/13
+     */
+    public Transform Target { get { return target; } set { target = value; } }
 
     #endregion
 
@@ -96,7 +108,7 @@ public class Enemy : Entity
      */
     protected virtual void OnUpdateWork()
     {
-        if (nav.enabled)
+        if (nav.enabled && target != null)
         {
             nav.SetDestination(target.position);
             nav.isStopped = !isChase;
@@ -116,7 +128,9 @@ public class Enemy : Entity
         {
             rigid.velocity = Vector3.zero;
             rigid.angularVelocity = Vector3.zero;
-            targetDistance = Vector3.Distance(target.position, transform.position);
+
+            if(target != null)
+                targetDistance = Vector3.Distance(target.position, transform.position);
         }
         if (canAttack && targetDistance < attackDistance)
         {
@@ -147,6 +161,23 @@ public class Enemy : Entity
         animator.SetTrigger("doDie");
         isChase = false;
         nav.enabled = false;
+
+        ItemManager.DropItem(itemCreateProbability, this.transform);
+
+        switch (type)
+        {
+            case EnemyType.A:
+                GameManager.Instance.EnemyCountA--;
+                break;
+            case EnemyType.B:
+                GameManager.Instance.EnemyCountB--;
+                break;
+            case EnemyType.C:
+                GameManager.Instance.EnemyCountC--;
+                break;
+        }
+
+        Destroy(gameObject, 4);
     }
 
     #endregion
@@ -167,8 +198,6 @@ public class Enemy : Entity
         meshs = GetComponentsInChildren<MeshRenderer>();
         transform.GetChild(0).TryGetComponent<Animator>(out animator);
 
-        target = FindObjectOfType<Player>().transform;
-
         // OnDeath Event 추가
         OnDeath += OnDeathWork;
 
@@ -182,8 +211,6 @@ public class Enemy : Entity
         UpdateManager.SubscribeToUpdate(OnUpdateWork);
         UpdateManager.SubscribeToFixedUpdate(OnFixedUpdateWork);
 
-        OnDeath += OnDeathWork;
-
     }
 
     protected virtual void OnDisable()
@@ -192,7 +219,6 @@ public class Enemy : Entity
         UpdateManager.UnsubscribeFromFixedUpdate(OnFixedUpdateWork);
 
         OnDeath -= OnDeathWork;
-
     }
 
     #endregion

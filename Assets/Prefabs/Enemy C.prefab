@@ -84,9 +84,11 @@ MonoBehaviour:
   target: {fileID: 0}
   isChase: 1
   damage: 0
+  itemCreateProbability: 50
   attackCooltime: 3
   targetDistance: 100
   attackDistance: 50
+  type: 2
 --- !u!195 &786124099
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -128,7 +128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5903297864969995812
 Transform:
   m_ObjectHideFlags: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 11400000, guid: 65c6af1d8ca139648af1d61fd6d9b795, type: 2}
   health: 0
-  coin: 5000
+  coin: 15000
   maxGrenades: 4
   grenades: 0
 --- !u!114 &1581103112

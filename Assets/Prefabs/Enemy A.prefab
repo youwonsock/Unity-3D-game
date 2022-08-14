@@ -130,6 +130,7 @@ MonoBehaviour:
   target: {fileID: 0}
   isChase: 1
   damage: 5
+  itemCreateProbability: 50
   attackCooltime: 3
   targetDistance: 100
   attackDistance: 3

@@ -40,6 +40,23 @@ public class PlayerWeapon : MonoBehaviour
     #region Funtion
 
     /**
+     * @brief 무기 초기화 메서드
+     * @details Player의 무기 상태를 초기화하는 메서드입니다.
+     * 
+     * @author yws
+     * @data last change 2022/08/15
+     */
+    public void InitPlayerWeapons()
+    {
+
+        for (int i = 0; i < HasWeapon.Length; i++)
+        {
+            weapons[i].gameObject.SetActive(false);
+            HasWeapon[i] = false;
+        }
+    }
+
+    /**
      * @brief 무기 변경 메서드(PlayerWeapon)
      * @details Player에서 호출되어 무기를 변경하는 메서드
      * hasWeapon[swapIdx]가 false이거나 바꾸려는 무기의 idx가 현재 무기와 같다면 하여 메서드를 종료합니다.

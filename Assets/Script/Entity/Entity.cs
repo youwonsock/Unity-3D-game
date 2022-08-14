@@ -62,8 +62,6 @@ public abstract class Entity : MonoBehaviour, IDamageAble
 
                 if (OnDeath != null)
                     OnDeath();
-
-                Destroy(gameObject, 4);
             }
         }
     }

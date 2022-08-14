@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +9,8 @@ using UnityEngine.UI;
  * @author yws
  * @date last change 2022/08/02
  */
+
+// 최대값일 때 구매 가능한 버그 존재!
 public class Store : MonoBehaviour
 {
     #region Fields
@@ -86,6 +87,18 @@ public class Store : MonoBehaviour
 
     #region Unity Event
 
+    private void OnEnable()
+    {
+        GameManager.Instance.StartStageEvent += () => transform.parent.gameObject.SetActive(false);
+        GameManager.Instance.EndStageEvent += () => transform.parent.gameObject.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.StartStageEvent -= () => transform.parent.gameObject.SetActive(false);
+        GameManager.Instance.EndStageEvent -= () => transform.parent.gameObject.SetActive(true);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))  
@@ -100,8 +113,11 @@ public class Store : MonoBehaviour
                 other.TryGetComponent<Player>(out enterPlayer);
             else
             {
-                if(enterPlayer.InteractionInput && !uiGroup.activeSelf)
+                if (enterPlayer.InteractionInput && !uiGroup.activeSelf)
+                {
+                    enterPlayer.CanMove = false;
                     SetStoreUi();
+                }
             }
         }
     }
