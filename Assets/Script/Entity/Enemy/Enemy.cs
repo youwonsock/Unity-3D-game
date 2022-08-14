@@ -108,7 +108,7 @@ public class Enemy : Entity
      */
     protected virtual void OnUpdateWork()
     {
-        if (nav.enabled)
+        if (nav.enabled && target != null)
         {
             nav.SetDestination(target.position);
             nav.isStopped = !isChase;
@@ -128,7 +128,9 @@ public class Enemy : Entity
         {
             rigid.velocity = Vector3.zero;
             rigid.angularVelocity = Vector3.zero;
-            targetDistance = Vector3.Distance(target.position, transform.position);
+
+            if(target != null)
+                targetDistance = Vector3.Distance(target.position, transform.position);
         }
         if (canAttack && targetDistance < attackDistance)
         {
@@ -174,6 +176,8 @@ public class Enemy : Entity
                 GameManager.Instance.EnemyCountC--;
                 break;
         }
+
+        Destroy(gameObject, 4);
     }
 
     #endregion

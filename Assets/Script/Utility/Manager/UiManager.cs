@@ -17,10 +17,12 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject gameCam;
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject gamePanel;
+    [SerializeField] private GameObject gameOverPanel;
 
     [Header ("Text")]
     [SerializeField] Text maxScoreTxt;
-    [SerializeField] Text scoreTxt;
+    [SerializeField] Text scoreTxt_gamePanel;
+    [SerializeField] Text scoreTxt_gameOverPanel;
     [SerializeField] Text stageTxt;
     [SerializeField] Text playTimeTxt;
     [SerializeField] Text playerHealthTxt;
@@ -55,6 +57,26 @@ public class UiManager : MonoBehaviour
 
     //--------------------------public--------------------------------------
 
+    /**
+     * @brief GameOver UI 설정 메서드
+     * @details value값에 따라 다른 처리를 구현한 GameOver UI 설정 메서드입니다.
+     * 
+     * @param[in] value : 설정값
+     * 
+     * @author yws
+     * @date last change 2022/08/14
+     */
+    public void SetGameOverUI(bool value)
+    {
+        gamePanel.SetActive(false);
+
+        if(value == true)
+            scoreTxt_gameOverPanel.text = scoreTxt_gamePanel.text;
+        else
+            menuPanel.SetActive(true);
+
+        gameOverPanel.SetActive(value);
+    }
 
     /**
      * @brief 게임 시작 시 Cam, Panel 설정 메서드
@@ -91,7 +113,7 @@ public class UiManager : MonoBehaviour
      */
     public void SetUtilityUI()
     {
-        scoreTxt.text = string.Format("{0:n0}", GameManager.Instance.Score);
+        scoreTxt_gamePanel.text = string.Format("{0:n0}", GameManager.Instance.Score);
         stageTxt.text = $"Stage {GameManager.Instance.Stage}";
 
         TimeSpan time = TimeSpan.FromSeconds(GameManager.Instance.PlayTime);

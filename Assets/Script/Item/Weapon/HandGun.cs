@@ -28,12 +28,6 @@ public class HandGun : Weapon
 
     #region Property
 
-    public int CurrentMag
-    {
-        get { return currentMag; }
-        set { currentMag = value; }
-    }
-
     #endregion
 
 

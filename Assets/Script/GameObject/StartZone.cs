@@ -19,6 +19,12 @@ public class StartZone : MonoBehaviour
         GameManager.Instance.EndStageEvent += () => this.gameObject.SetActive(true);
     }
 
+    private void OnDisable()
+    {
+        GameManager.Instance.StartStageEvent -= () => this.gameObject.SetActive(false);
+        GameManager.Instance.EndStageEvent -= () => this.gameObject.SetActive(true);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))

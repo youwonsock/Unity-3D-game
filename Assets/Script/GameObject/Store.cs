@@ -93,6 +93,12 @@ public class Store : MonoBehaviour
         GameManager.Instance.EndStageEvent += () => transform.parent.gameObject.SetActive(true);
     }
 
+    private void OnDisable()
+    {
+        GameManager.Instance.StartStageEvent -= () => transform.parent.gameObject.SetActive(false);
+        GameManager.Instance.EndStageEvent -= () => transform.parent.gameObject.SetActive(true);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))  

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 /**
@@ -27,8 +28,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] GameObject[] enemies;
     [SerializeField] GameObject[] items;
 
-    private int score;
     [SerializeField]private int stage;
+    private int score;
     private float playTime;
     private int enemyCountA;
     private int enemyCountB;
@@ -144,6 +145,35 @@ public class GameManager : Singleton<GameManager>
     }
 
     /**
+     * @brief 게임 재시작 메서드
+     * 
+     * @author yws
+     * @date last change 2022/08/14
+     */
+    public void ReStartGame()
+    {
+        score = 0;
+        stage = 0;
+        playTime = 0;
+        enemyCountA = 0;
+        enemyCountB = 0;
+        enemyCountC = 0;
+        isGameStart = false;
+        isBattle = false;
+
+        enemyIdxList.Clear();
+        player.InitPlayer();
+
+        Enemy[] enemys = FindObjectsOfType<Enemy>();
+        foreach(Enemy enemy in enemys)
+            Destroy(enemy.gameObject);
+
+
+        EndStage();
+        uiManager.SetGameOverUI(false);
+    }
+
+    /**
      * @brief Stage 시작 시 호출되는 메서드
      * 
      * @author yws
@@ -169,13 +199,34 @@ public class GameManager : Singleton<GameManager>
      */
     public void EndStage()
     {
-
         for (int i = 0; i < enemySpawnZones.Length; i++)
             enemySpawnZones[i].gameObject.SetActive(false);
 
         uiManager.SetBossUI(false);
         player.transform.position = Vector3.up * 0.8f;
         EndStageEvent();
+    }
+
+    /**
+     * @brief GameOver 시 호출되는 메서드
+     * 
+     * @author yws
+     * @date last change 2022/08/13
+     */
+    public void GameOver()
+    {
+        uiManager.SetGameOverUI(true);
+
+        //최고 점수 저장!
+        try
+        {
+            if (score > PlayerPrefs.GetInt("MaxScore"))
+                PlayerPrefs.SetInt("MaxScore", score);
+        }
+        catch (PlayerPrefsException e)
+        {
+            PlayerPrefs.SetInt("MaxScore", score);
+        }
     }
 
     //--------------------------private--------------------------------------

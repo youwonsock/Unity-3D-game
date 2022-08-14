@@ -203,6 +203,32 @@ public class Player : Entity
     //--------------------------public--------------------------------------
 
     /**
+     * @brief Player 초기화 메서드
+     * @details 재시작 시 Player 초기화를 위한 메서드입니다.\n
+     * Health, Grenades, HasWeapons[]등을 초기화합니다.
+     * 
+     * @author yws
+     * @date last change 2022/07/07
+     */
+    public void InitPlayer()
+    {
+        Coin = 15000; // 임시 값
+        Health = MaxHealth;
+        Grenades = 0;
+        canMove = true;
+        isHit = false;
+        isDead = false;
+
+        foreach (MeshRenderer mesh in meshs)
+        {
+            mesh.material.color = Color.white;
+        }
+        weapon.InitPlayerWeapons();
+
+        this.gameObject.SetActive(false);
+    }
+
+    /**
      * @brief Player 무기 획득 메서드
      * @details Player 무기 획득시 Weapon에서 호출되는 메서드입니다.\n
      * Weapon의 GetWeapon을 호출해서 무기를 변경합니다. (의존성 해결을 위한 구조)
@@ -221,6 +247,24 @@ public class Player : Entity
 
     //--------------------------private-------------------------------------
 
+    /**
+     * @brief 사망 시 호출되는 메서드
+     * @details Entity의 OnDeath에 추가하여 사망시 처리를 해주는 메서드입니다.
+     * 
+     * @author yws
+     * @date last change 2022/08/14
+     */
+    private void OnDeathWork()
+    {
+        animator.SetTrigger("doDie");
+        canMove = false;
+        isHit = false;
+
+        nomalVec = Vector3.zero;
+        attackInput = false;
+
+        GameManager.Instance.GameOver();
+    }
 
     /**
      * @brief 피격시 발동되는 피격 처리 메서드
@@ -473,6 +517,7 @@ public class Player : Entity
         // Player
         TryGetComponent<PlayerWeapon>(out weapon);
         meshs = GetComponentsInChildren<MeshRenderer>();
+        OnDeath += OnDeathWork;
 
         playerStat = stat as PlayerStat;
 
