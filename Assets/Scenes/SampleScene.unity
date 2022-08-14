@@ -11695,17 +11695,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9133255185617633366, guid: 83dab506297948d4d8d34c4fe12431ee, type: 3}
   m_PrefabInstance: {fileID: 2008775389}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1346455202 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 985899631, guid: 83dab506297948d4d8d34c4fe12431ee, type: 3}
-  m_PrefabInstance: {fileID: 2008775389}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f717b57dd4f130f439ed942b59083cfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1367758083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2201311155253960657, guid: 9874cad15ef0317408b718e1775178ad, type: 3}
@@ -27618,7 +27607,7 @@ PrefabInstance:
     - target: {fileID: 4891670075474544740, guid: adca96630265111469472ecfe2843ffd, type: 3}
       propertyPath: boss
       value: 
-      objectReference: {fileID: 1346455202}
+      objectReference: {fileID: 0}
     - target: {fileID: 4891670075474544740, guid: adca96630265111469472ecfe2843ffd, type: 3}
       propertyPath: player
       value: 
