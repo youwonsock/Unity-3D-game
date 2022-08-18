@@ -8,7 +8,7 @@ using UnityEngine;
  * @details input과 movement등의 다른 클래스들이 Player의 인터페이스를 활용하여 서로 통신합니다.
  * 
  * @author yws
- * @date last change 2022/07/13
+ * @date last change 2022/08/19
  */
 public class Player : Entity
 {
@@ -18,9 +18,6 @@ public class Player : Entity
     [SerializeField] private int coin;
     [SerializeField] private int maxGrenades;
     [SerializeField] private int grenades;
-
-    //ScriptableObject
-    private PlayerStat playerStat; // 아직은 사용 X
 
     //Player가 가지는 Components
     private PlayerWeapon weapon;
@@ -301,6 +298,11 @@ public class Player : Entity
             reloadInput = input.GetReloadInput();
             GrenadeInput = input.GetGrenadeInput();
         }
+        else
+        {
+            attackInput = false;
+            GrenadeInput = input.GetGrenadeInput();
+        }
     }
 
     /**
@@ -518,8 +520,6 @@ public class Player : Entity
         TryGetComponent<PlayerWeapon>(out weapon);
         meshs = GetComponentsInChildren<MeshRenderer>();
         OnDeath += OnDeathWork;
-
-        playerStat = stat as PlayerStat;
 
         if (!checkComponent || !movement || !weapon || !animator)
             Debug.Log($"Some Component is null : {this.name} .Player.cs");

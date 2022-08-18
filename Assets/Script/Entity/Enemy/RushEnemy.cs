@@ -53,7 +53,7 @@ public class RushEnemy : Enemy
         isChase = true;// 바로 다시 추적 시작
         animator.SetBool("isWalk", true);
 
-        yield return new WaitForSecondsRealtime(attackCooltime);
+        yield return new WaitForSecondsRealtime(enemyStat.AttackCooltime);
         canAttack = true;
 
         yield break;
@@ -84,7 +84,7 @@ public class RushEnemy : Enemy
             other.gameObject.TryGetComponent<IDamageAble>(out damageAble);
 
             if (damageAble != null)
-                damageAble.Hit(damage, transform.forward, 10);
+                damageAble.Hit(enemyStat.Damage, transform.forward, 10);
         }
     }
 

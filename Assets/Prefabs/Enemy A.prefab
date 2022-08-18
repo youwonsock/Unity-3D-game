@@ -96,7 +96,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &550977700
 BoxCollider:
@@ -123,17 +123,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e02ed8b3e289e9540b341313084073dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 11400000, guid: b72d1a676e2da344591a484e1ffc4158, type: 2}
+  stat: {fileID: 11400000, guid: ec95ea96f302cd2459f4902a20c4caa9, type: 2}
   health: 0
   meshs: []
   nav: {fileID: 0}
   target: {fileID: 0}
   isChase: 1
-  damage: 5
-  itemCreateProbability: 50
-  attackCooltime: 3
-  targetDistance: 100
-  attackDistance: 3
+  enemyStat: {fileID: 0}
   attackArea: {fileID: 1188707870}
 --- !u!195 &550977703
 NavMeshAgent:

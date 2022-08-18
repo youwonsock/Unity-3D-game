@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af5f1ef688b625a449c0f24683172ce8, type: 3}
-  m_Name: TestEnemyStat
+  m_Script: {fileID: 11500000, guid: 5f5b679c5ad2fe948ad46f3f48ed6cc7, type: 3}
+  m_Name: EnemyDStat
   m_EditorClassIdentifier: 
-  MaxHealth: 40
-  walkSpeed: 2
-  runSpeed: 2
-  jumpForce: 2
-  maxJumpCount: 1
-  dodgeTime: 1
-  dodgeCoolTime: 1
+  MaxHealth: 100
+  damage: 20
+  itemCreateProbability: 100
+  attackCooltime: 3
+  attackDistance: 100
+  type: 3

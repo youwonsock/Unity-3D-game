@@ -142,7 +142,6 @@ public class Bullet : MonoBehaviour
         }
 
         ObjectPool.ReturnObject(this, bulletData.BulletType);
-        Debug.Log(this.gameObject + "bullet is end");
     }
 
     #endregion

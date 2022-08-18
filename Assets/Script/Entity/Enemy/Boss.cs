@@ -59,7 +59,7 @@ public class Boss : Enemy
      */
     IEnumerator BossPattern()
     {
-        yield return new WaitForSecondsRealtime(attackCooltime);
+        yield return new WaitForSecondsRealtime(enemyStat.AttackCooltime);
 
         switch(Random.Range(0,5))
         {
@@ -194,7 +194,7 @@ public class Boss : Enemy
             other.gameObject.TryGetComponent<IDamageAble>(out damageAble);
 
             if (damageAble != null)
-                damageAble.Hit(damage, target.position - transform.position + Vector3.up * 10, 1f);
+                damageAble.Hit(enemyStat.Damage, target.position - transform.position + Vector3.up * 10, 1f);
         }
     }
 

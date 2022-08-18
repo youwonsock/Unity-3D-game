@@ -7,10 +7,11 @@ using UnityEngine.UI;
  * @details Item, Weapon Store Object에 사용되는 상점 기능을 구현한 클래스입니다.
  * 
  * @author yws
- * @date last change 2022/08/02
+ * @date last change 2022/08/19
  */
 
-// 최대값일 때 구매 가능한 버그 존재!
+public enum StoreType { Item = 0, Weapon}
+
 public class Store : MonoBehaviour
 {
     #region Fields
@@ -22,6 +23,7 @@ public class Store : MonoBehaviour
     [SerializeField] GameObject[] itemObj;
     [SerializeField] int[] itemPrice;
     [SerializeField] Text npcText;
+    [SerializeField] StoreType storeType;
 
     Player enterPlayer;
 
@@ -50,14 +52,44 @@ public class Store : MonoBehaviour
      * @brief 아이템 구매 메서드
      * 
      * @author yws
-     * @date last change 2022/08/02
+     * @date last change 2022/08/19
      */
     public void Buy(int index)
     {
+        // 이미 소지한 아이템을 구매하는 경우
+        if(storeType == StoreType.Item)
+        {
+            switch (index)
+            {
+                case 0:
+                    if (enterPlayer.Health == enterPlayer.MaxHealth)
+                    {
+                        StartCoroutine(ChangeText("이미 최대 체력입니다."));
+                        return;
+                    }
+                    break;
+                case 2:
+                    if(enterPlayer.Grenades == enterPlayer.MaxGrenades)
+                    {
+                        StartCoroutine(ChangeText("이미 최대 수류탄 소지량입니다."));
+                        return;
+                    }
+                    break;
+            }
+        }
+        else
+        {
+            if (enterPlayer.HasWeapon[index] == true)
+            {
+                StartCoroutine(ChangeText("이미 가지고 있는 무기입니다."));
+                return;
+            }
+        }
+
         int price = itemPrice[index];
         if(price > enterPlayer.Coin)
         {
-            StartCoroutine(ChangeText());
+            StartCoroutine(ChangeText("금액이 부족합니다."));
             return;
         }
 
@@ -68,15 +100,20 @@ public class Store : MonoBehaviour
     /**
      * @brief npcText 변경 Coroutine
      * 
+     * @param[in] changeText : 변경할 택스트
+     * 
      * @author yws
-     * @date last change 2022/08/02
+     * @date last change 2022/08/19
      */
-    IEnumerator ChangeText()
+    IEnumerator ChangeText(string changeText = " ChangeText의 기본 매개변수!")
     {
-        string tempText = npcText.text;
-        npcText.text = "금액이 부족합니다!";
+        npcText.text = changeText;
         yield return new WaitForSecondsRealtime(2f);
-        npcText.text = tempText;
+
+        if (storeType == StoreType.Item)
+            npcText.text = "아이템 상점";
+        else
+            npcText.text = "무기 상점";
 
         yield break;
     }
@@ -114,10 +151,9 @@ public class Store : MonoBehaviour
             else
             {
                 if (enterPlayer.InteractionInput && !uiGroup.activeSelf)
-                {
-                    enterPlayer.CanMove = false;
                     SetStoreUi();
-                }
+                else if(uiGroup.activeSelf)
+                    enterPlayer.CanMove = false;
             }
         }
     }

@@ -41,7 +41,7 @@ public class MeleeEnemy : Enemy
         isChase = true;
         animator.SetBool("isAttack", false);
 
-        yield return new WaitForSecondsRealtime(attackCooltime);
+        yield return new WaitForSecondsRealtime(enemyStat.AttackCooltime);
         canAttack = true;
 
         yield break;
@@ -72,7 +72,7 @@ public class MeleeEnemy : Enemy
             other.gameObject.TryGetComponent<IDamageAble>(out damageAble);
 
             if (damageAble != null)
-                damageAble.Hit(damage, transform.forward, 10);
+                damageAble.Hit(enemyStat.Damage, transform.forward, 10);
         }
     }
 
