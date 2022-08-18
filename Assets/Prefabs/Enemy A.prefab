@@ -64,7 +64,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4462523135328065168
 Transform:
   m_ObjectHideFlags: 0
@@ -130,10 +130,11 @@ MonoBehaviour:
   target: {fileID: 0}
   isChase: 1
   damage: 5
-  itemCreateProbability: 50
+  itemCreateProbability: 100
   attackCooltime: 3
   targetDistance: 100
   attackDistance: 3
+  type: 0
   attackArea: {fileID: 1188707870}
 --- !u!195 &550977703
 NavMeshAgent:

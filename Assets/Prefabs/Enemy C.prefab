@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2062362018885022397
 Transform:
   m_ObjectHideFlags: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
   target: {fileID: 0}
   isChase: 1
   damage: 0
-  itemCreateProbability: 50
+  itemCreateProbability: 0
   attackCooltime: 3
   targetDistance: 100
   attackDistance: 50
