@@ -297,7 +297,7 @@ public class GameManager : Singleton<GameManager>
             instantiateEnemy.TryGetComponent<Enemy>(out enemy);
             enemy.Target = player.transform;
 
-            switch (enemy.type)
+            switch (enemy.GetEnemyType)
             {
                 case EnemyType.A:
                     enemyCountA++;

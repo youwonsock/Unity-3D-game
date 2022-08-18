@@ -126,7 +126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9133255185617633366
 Transform:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 94
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &594085217
 BoxCollider:
@@ -209,18 +209,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f717b57dd4f130f439ed942b59083cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 11400000, guid: b72d1a676e2da344591a484e1ffc4158, type: 2}
+  stat: {fileID: 11400000, guid: 2549f738e8b23fb498b0e941b42a71ff, type: 2}
   health: 0
   meshs: []
   nav: {fileID: 0}
   target: {fileID: 0}
   isChase: 1
-  damage: 0
-  itemCreateProbability: 100
-  attackCooltime: 1
-  targetDistance: 100
-  attackDistance: 0
-  type: 3
+  enemyStat: {fileID: 0}
   missilePortA: {fileID: 1033583166}
   missilePortB: {fileID: 1578633271}
   jumpAttackArea: {fileID: 295206897}

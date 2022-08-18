@@ -19,9 +19,6 @@ public class Player : Entity
     [SerializeField] private int maxGrenades;
     [SerializeField] private int grenades;
 
-    //ScriptableObject
-    private PlayerStat playerStat; // 아직은 사용 X
-
     //Player가 가지는 Components
     private PlayerWeapon weapon;
     MeshRenderer[] meshs;
@@ -518,8 +515,6 @@ public class Player : Entity
         TryGetComponent<PlayerWeapon>(out weapon);
         meshs = GetComponentsInChildren<MeshRenderer>();
         OnDeath += OnDeathWork;
-
-        playerStat = stat as PlayerStat;
 
         if (!checkComponent || !movement || !weapon || !animator)
             Debug.Log($"Some Component is null : {this.name} .Player.cs");

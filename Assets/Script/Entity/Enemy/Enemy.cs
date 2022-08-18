@@ -13,7 +13,6 @@ using UnityEngine.AI;
  * @author yws
  * @date last change 2022/07/24
  */
-public enum EnemyType { A=0, B, C}
 
 public class Enemy : Entity
 {
@@ -23,16 +22,10 @@ public class Enemy : Entity
     [SerializeField] protected NavMeshAgent nav;
     [SerializeField] protected Transform target; // find말고 다른 방법?
     [SerializeField] protected bool isChase;  // 현재는 인스팩터에서 수동으로 추적 시작!
-    protected bool canAttack = true;
+    protected EnemyStat enemyStat;
 
-    //scriptable object로 대체 예정
-    [SerializeField] protected int damage;
-    [SerializeField] protected int itemCreateProbability;
-    [SerializeField] protected float attackCooltime;
-    [SerializeField] protected float targetDistance = 100;
-    [SerializeField] protected float attackDistance;
-    public EnemyType type;
-    //scriptable object로 대체 예정
+    protected float targetDistance = 100;
+    protected bool canAttack = true;
 
     #endregion
 
@@ -47,6 +40,15 @@ public class Enemy : Entity
      * @date last change 2022/08/13
      */
     public Transform Target { get { return target; } set { target = value; } }
+
+
+    /**
+     * @brief Type Getter
+     * 
+     * @author yws
+     * @date last change 2022/08/19
+     */
+    public EnemyType GetEnemyType { get { return enemyStat.Type; } }
 
     #endregion
 
@@ -132,7 +134,7 @@ public class Enemy : Entity
             if(target != null)
                 targetDistance = Vector3.Distance(target.position, transform.position);
         }
-        if (canAttack && targetDistance < attackDistance)
+        if (canAttack && targetDistance < enemyStat.AttackDistance)
         {
             Attack();
         }
@@ -162,9 +164,9 @@ public class Enemy : Entity
         isChase = false;
         nav.enabled = false;
 
-        ItemManager.DropItem(itemCreateProbability, this.transform);
+        ItemManager.DropItem(enemyStat.ItemCreateProbability, this.transform);
 
-        switch (type)
+        switch (enemyStat.Type)
         {
             case EnemyType.A:
                 GameManager.Instance.EnemyCountA--;
@@ -198,9 +200,12 @@ public class Enemy : Entity
         meshs = GetComponentsInChildren<MeshRenderer>();
         transform.GetChild(0).TryGetComponent<Animator>(out animator);
 
+        enemyStat = stat as EnemyStat;
+        if (enemyStat == null)
+            Debug.Log($"{stat}을 EnemyStat로 캐스팅에 실패하였습니다. {stat}의 타입을 확인해주세요.");
+
         // OnDeath Event 추가
         OnDeath += OnDeathWork;
-
 
         //test용으로 awake에서 anim 변경
         animator.SetBool("isWalk", true);

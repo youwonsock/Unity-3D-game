@@ -45,7 +45,7 @@ public class RangeEnemy : Enemy
         isChase = true;
         animator.SetBool("isWalk", true);
 
-        yield return new WaitForSecondsRealtime(attackCooltime);
+        yield return new WaitForSecondsRealtime(enemyStat.AttackCooltime);
         canAttack = true;
 
         yield break;

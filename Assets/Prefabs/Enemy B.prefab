@@ -109,7 +109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5052845572594401124
 Transform:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &609788453387235259
 MonoBehaviour:
@@ -169,18 +169,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b026f33f4e2ac1345af42a4b7a060623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 11400000, guid: b72d1a676e2da344591a484e1ffc4158, type: 2}
+  stat: {fileID: 11400000, guid: 18126eca3a3d8a64c8ba930ef4c85682, type: 2}
   health: 0
   meshs: []
   nav: {fileID: 0}
   target: {fileID: 0}
   isChase: 1
-  damage: 10
-  itemCreateProbability: 100
-  attackCooltime: 3
-  targetDistance: 100
-  attackDistance: 20
-  type: 1
+  enemyStat: {fileID: 0}
   attackArea: {fileID: 562178565}
 --- !u!195 &1705220616
 NavMeshAgent:

@@ -17,7 +17,7 @@ public class EntityMovement : MonoBehaviour
     private Rigidbody rigid;
 
     //Values
-    [SerializeField]private EntityStat stat;
+    [SerializeField]private PlayerStat stat;
 
     //for check condition
     private bool canDodge = true;
