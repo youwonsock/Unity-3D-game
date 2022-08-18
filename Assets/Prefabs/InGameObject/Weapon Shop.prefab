@@ -141,7 +141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6608686711322710757}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.27, z: 4.04}
+  m_LocalPosition: {x: -0, y: 0, z: 4.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4996,6 +4996,7 @@ MonoBehaviour:
   - {fileID: 547435428816858648, guid: 203326381d9b54d489646c6c2f61f53a, type: 3}
   itemPrice: f4010000b80b000088130000
   npcText: {fileID: 0}
+  storeType: 1
 --- !u!1 &6608686712116350907
 GameObject:
   m_ObjectHideFlags: 0

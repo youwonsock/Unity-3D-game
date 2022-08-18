@@ -11,7 +11,7 @@ using UnityEngine.AI;
  *          나중에 다른 방식의 추적을 구현한다면 원래 의도대로 EntityMovement를 사용하여 이동을 구현할 예정입니다.
  * 
  * @author yws
- * @date last change 2022/07/24
+ * @date last change 2022/08/19
  */
 
 public class Enemy : Entity

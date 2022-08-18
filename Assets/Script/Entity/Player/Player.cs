@@ -8,7 +8,7 @@ using UnityEngine;
  * @details input과 movement등의 다른 클래스들이 Player의 인터페이스를 활용하여 서로 통신합니다.
  * 
  * @author yws
- * @date last change 2022/07/13
+ * @date last change 2022/08/19
  */
 public class Player : Entity
 {
@@ -296,6 +296,11 @@ public class Player : Entity
             runInput = input.GetRunInput();
             swapInput = input.GetSwapInput();
             reloadInput = input.GetReloadInput();
+            GrenadeInput = input.GetGrenadeInput();
+        }
+        else
+        {
+            attackInput = false;
             GrenadeInput = input.GetGrenadeInput();
         }
     }

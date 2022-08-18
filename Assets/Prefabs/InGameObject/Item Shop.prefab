@@ -5037,6 +5037,7 @@ MonoBehaviour:
   - {fileID: 7209417620919649187, guid: 10653eccf6b69fd47938a227b4bf3863, type: 3}
   itemPrice: e8030000b0040000c4090000
   npcText: {fileID: 0}
+  storeType: 0
 --- !u!1001 &903751154999446782
 PrefabInstance:
   m_ObjectHideFlags: 0

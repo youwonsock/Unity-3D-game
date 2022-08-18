@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f5b679c5ad2fe948ad46f3f48ed6cc7, type: 3}
   m_Name: EnemyDStat
   m_EditorClassIdentifier: 
-  MaxHealth: 0
-  damage: 0
-  itemCreateProbability: 0
-  attackCooltime: 0
-  targetDistance: 100
-  attackDistance: 0
-  type: 0
+  MaxHealth: 100
+  damage: 20
+  itemCreateProbability: 100
+  attackCooltime: 3
+  attackDistance: 100
+  type: 3

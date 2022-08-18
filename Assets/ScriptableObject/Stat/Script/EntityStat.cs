@@ -8,7 +8,7 @@ using UnityEngine;
  * 
  * 
  * @author yws
- * @date last change 2022/07/10
+ * @date last change 2022/08/19
  */
 public class EntityStat : ScriptableObject
 {
